@@ -1,0 +1,15 @@
+C:\Users\franc\OneDrive\Documentos\GitHub Repositorios\AppConsultorio\AppConsultorio\obj\Debug\AppConsultorio.csproj.AssemblyReference.cache
+C:\Users\franc\OneDrive\Documentos\GitHub Repositorios\AppConsultorio\AppConsultorio\obj\Debug\AppConsultorio.csproj.SuggestedBindingRedirects.cache
+C:\Users\franc\OneDrive\Documentos\GitHub Repositorios\AppConsultorio\AppConsultorio\obj\Debug\AppConsultorio.frmLogin.resources
+C:\Users\franc\OneDrive\Documentos\GitHub Repositorios\AppConsultorio\AppConsultorio\obj\Debug\AppConsultorio.Properties.Resources.resources
+C:\Users\franc\OneDrive\Documentos\GitHub Repositorios\AppConsultorio\AppConsultorio\obj\Debug\AppConsultorio.csproj.GenerateResource.cache
+C:\Users\franc\OneDrive\Documentos\GitHub Repositorios\AppConsultorio\AppConsultorio\obj\Debug\AppConsultorio.csproj.CoreCompileInputs.cache
+C:\Users\franc\OneDrive\Documentos\GitHub Repositorios\AppConsultorio\AppConsultorio\bin\Debug\AppConsultorio.exe.config
+C:\Users\franc\OneDrive\Documentos\GitHub Repositorios\AppConsultorio\AppConsultorio\bin\Debug\AppConsultorio.exe
+C:\Users\franc\OneDrive\Documentos\GitHub Repositorios\AppConsultorio\AppConsultorio\bin\Debug\AppConsultorio.pdb
+C:\Users\franc\OneDrive\Documentos\GitHub Repositorios\AppConsultorio\AppConsultorio\obj\Debug\AppConsultorio.exe
+C:\Users\franc\OneDrive\Documentos\GitHub Repositorios\AppConsultorio\AppConsultorio\obj\Debug\AppConsultorio.pdb
+C:\Users\franc\OneDrive\Documentos\GitHub Repositorios\AppConsultorio\AppConsultorio\obj\Debug\AppConsultorio.frmCargaPacientes.resources
+C:\Users\franc\OneDrive\Documentos\GitHub Repositorios\AppConsultorio\AppConsultorio\obj\Debug\AppConsultorio.frmPacientes.resources
+C:\Users\franc\OneDrive\Documentos\GitHub Repositorios\AppConsultorio\AppConsultorio\obj\Debug\AppConsultorio.frmDetalleTurno.resources
+C:\Users\franc\OneDrive\Documentos\GitHub Repositorios\AppConsultorio\AppConsultorio\obj\Debug\AppConsultorio.frmTurnosPaciente.resources
