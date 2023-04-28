@@ -33,9 +33,9 @@
             this.txtFiltroApellido = new System.Windows.Forms.TextBox();
             this.dgvPacientes = new System.Windows.Forms.DataGridView();
             this.mnuPacientes = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.cargarPacienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editarPacienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.verTurnosPacienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.cargarPacienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPacientes)).BeginInit();
             this.mnuPacientes.SuspendLayout();
             this.SuspendLayout();
@@ -46,7 +46,7 @@
             this.lblFiltrarApellido.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFiltrarApellido.Location = new System.Drawing.Point(13, 22);
             this.lblFiltrarApellido.Name = "lblFiltrarApellido";
-            this.lblFiltrarApellido.Size = new System.Drawing.Size(69, 16);
+            this.lblFiltrarApellido.Size = new System.Drawing.Size(71, 16);
             this.lblFiltrarApellido.TabIndex = 0;
             this.lblFiltrarApellido.Text = "Apellido:";
             // 
@@ -68,6 +68,7 @@
             this.dgvPacientes.Name = "dgvPacientes";
             this.dgvPacientes.Size = new System.Drawing.Size(772, 376);
             this.dgvPacientes.TabIndex = 2;
+            this.dgvPacientes.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPacientes_CellContentClick);
             // 
             // mnuPacientes
             // 
@@ -78,26 +79,26 @@
             this.mnuPacientes.Name = "mnuPacientes";
             this.mnuPacientes.Size = new System.Drawing.Size(178, 70);
             // 
+            // cargarPacienteToolStripMenuItem
+            // 
+            this.cargarPacienteToolStripMenuItem.Name = "cargarPacienteToolStripMenuItem";
+            this.cargarPacienteToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+            this.cargarPacienteToolStripMenuItem.Text = "Cargar Paciente";
+            this.cargarPacienteToolStripMenuItem.Click += new System.EventHandler(this.cargarPacienteToolStripMenuItem_Click);
+            // 
             // editarPacienteToolStripMenuItem
             // 
             this.editarPacienteToolStripMenuItem.Name = "editarPacienteToolStripMenuItem";
-            this.editarPacienteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.editarPacienteToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
             this.editarPacienteToolStripMenuItem.Text = "Editar Paciente";
             this.editarPacienteToolStripMenuItem.Click += new System.EventHandler(this.editarPacienteToolStripMenuItem_Click);
             // 
             // verTurnosPacienteToolStripMenuItem
             // 
             this.verTurnosPacienteToolStripMenuItem.Name = "verTurnosPacienteToolStripMenuItem";
-            this.verTurnosPacienteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.verTurnosPacienteToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
             this.verTurnosPacienteToolStripMenuItem.Text = "Ver Turnos Paciente";
             this.verTurnosPacienteToolStripMenuItem.Click += new System.EventHandler(this.verTurnosPacienteToolStripMenuItem_Click);
-            // 
-            // cargarPacienteToolStripMenuItem
-            // 
-            this.cargarPacienteToolStripMenuItem.Name = "cargarPacienteToolStripMenuItem";
-            this.cargarPacienteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.cargarPacienteToolStripMenuItem.Text = "Cargar Paciente";
-            this.cargarPacienteToolStripMenuItem.Click += new System.EventHandler(this.cargarPacienteToolStripMenuItem_Click);
             // 
             // frmPacientes
             // 

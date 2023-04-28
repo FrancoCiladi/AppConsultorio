@@ -1,16 +1,19 @@
-﻿using System;
+﻿using AppConsultorio.ConsultorioDataSetTableAdapters;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace AppConsultorio
 {
-    public partial class frmPacientes : Form
+    public partial class frmPacientes : Form 
     {
         public frmPacientes()
         {
@@ -25,8 +28,13 @@ namespace AppConsultorio
 
         private void editarPacienteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmCargaPacientes frmCargaPacientes= new frmCargaPacientes();
-            frmCargaPacientes.ShowDialog();
+            if (this.dgvPacientes.CurrentRow != null){
+                Modulo.Operacion = "MODIFICAR";
+                Pacientes.idPacienteSelec = this.dgvPacientes.CurrentRow.Cells["idPaciente"].Value.ToString();
+                frmCargaPacientes frmCargaPacientes = new frmCargaPacientes();
+                frmCargaPacientes.ShowDialog();
+            }
+            
         }
 
         private void cargarPacienteToolStripMenuItem_Click(object sender, EventArgs e)
@@ -41,9 +49,52 @@ namespace AppConsultorio
             frmTurnosPaciente.ShowDialog();
         }
 
+        private void CargarGridView()
+        {
+            if (string.IsNullOrEmpty(txtFiltroApellido.Text) == false && txtFiltroApellido.Text.Trim().Length >=3)
+            {
+                DataTable Tabla = new DataTable();
+                DataGridViewLinkColumn col;
+                col = new DataGridViewLinkColumn();
+
+                Pacientes.RecuperarPacientes(txtFiltroApellido.Text, ref Tabla);
+                this.dgvPacientes.DataSource = Tabla;
+                this.dgvPacientes.Columns["idPaciente"].Visible = false;
+                this.dgvPacientes.Columns["estado"].Visible = false;
+                this.dgvPacientes.Columns["fecha_registro"].Visible = false;
+                this.dgvPacientes.Columns["idObra_Social"].Visible = false;
+                this.dgvPacientes.Columns["Telefono"].Visible = false;
+
+                col.DataPropertyName = "Telefono";
+                col.Name = "Telefono";
+                col.DisplayIndex = 3;
+                this.dgvPacientes.Columns.Add(col);
+            }
+            else
+            {
+                dgvPacientes.DataSource = null;
+            }
+        }
         private void txtFiltroApellido_TextChanged(object sender, EventArgs e)
         {
-            //ir cargando el gv a medida que escribe el apellido de los pacientes, minimo 3 caracteres, verificar caracteres al principio antes de cargar
+            if (Modulo.ValidarFiltro(txtFiltroApellido.Text.ToString()) == true)
+            {
+                CargarGridView();
+            }
+            else
+            {
+                MessageBox.Show("Ingreso caracter no permitido.", "Atencion!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtFiltroApellido.Focus();
+            }
+            
+        }
+
+        private void dgvPacientes_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (this.dgvPacientes.Columns[this.dgvPacientes.CurrentCell.ColumnIndex].HeaderText == "Telefono")
+            {
+                Process.Start("https://wa.me/+54" + this.dgvPacientes.CurrentCell.EditedFormattedValue);
+            }
         }
     }
 }
