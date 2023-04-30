@@ -23,5 +23,19 @@ namespace AppConsultorio
             frmDetalleTurno frmDetalleTurno = new frmDetalleTurno();
             frmDetalleTurno.ShowDialog();
         }
+
+        private void frmTurnosPaciente_Load(object sender, EventArgs e)
+        {
+            this.CenterToScreen();
+
+            DataTable Tabla = new DataTable();
+            Pacientes.RecuperarTurnosPaciente(Pacientes.idPacienteSelec.ToString(), ref Tabla);
+            dgvTurnosPaciente.DataSource = Tabla;
+            if(Tabla.Rows.Count == 0)
+            {
+                MessageBox.Show("El paciente seleccionado no tiene turnos asignados.", "",MessageBoxButtons.OK);
+                this.Close();
+            }
+        }
     }
 }

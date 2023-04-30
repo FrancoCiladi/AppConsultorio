@@ -51,6 +51,7 @@
             this.Controls.Add(this.dgvTurnosPaciente);
             this.Name = "frmTurnosPaciente";
             this.Text = "Turnos Paciente";
+            this.Load += new System.EventHandler(this.frmTurnosPaciente_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvTurnosPaciente)).EndInit();
             this.ResumeLayout(false);
 

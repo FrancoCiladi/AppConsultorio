@@ -36,6 +36,10 @@
             this.cargarPacienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editarPacienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.verTurnosPacienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cambiarEstadoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.habilitarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.darDeBajaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.chkPacientesDeshabilitados = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPacientes)).BeginInit();
             this.mnuPacientes.SuspendLayout();
             this.SuspendLayout();
@@ -75,9 +79,10 @@
             this.mnuPacientes.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.cargarPacienteToolStripMenuItem,
             this.editarPacienteToolStripMenuItem,
-            this.verTurnosPacienteToolStripMenuItem});
+            this.verTurnosPacienteToolStripMenuItem,
+            this.cambiarEstadoToolStripMenuItem});
             this.mnuPacientes.Name = "mnuPacientes";
-            this.mnuPacientes.Size = new System.Drawing.Size(178, 70);
+            this.mnuPacientes.Size = new System.Drawing.Size(181, 114);
             // 
             // cargarPacienteToolStripMenuItem
             // 
@@ -100,11 +105,45 @@
             this.verTurnosPacienteToolStripMenuItem.Text = "Ver Turnos Paciente";
             this.verTurnosPacienteToolStripMenuItem.Click += new System.EventHandler(this.verTurnosPacienteToolStripMenuItem_Click);
             // 
+            // cambiarEstadoToolStripMenuItem
+            // 
+            this.cambiarEstadoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.habilitarToolStripMenuItem,
+            this.darDeBajaToolStripMenuItem});
+            this.cambiarEstadoToolStripMenuItem.Name = "cambiarEstadoToolStripMenuItem";
+            this.cambiarEstadoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.cambiarEstadoToolStripMenuItem.Text = "Cambiar Estado";
+            // 
+            // habilitarToolStripMenuItem
+            // 
+            this.habilitarToolStripMenuItem.Name = "habilitarToolStripMenuItem";
+            this.habilitarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.habilitarToolStripMenuItem.Text = "Habilitar";
+            this.habilitarToolStripMenuItem.Click += new System.EventHandler(this.habilitarToolStripMenuItem_Click_1);
+            // 
+            // darDeBajaToolStripMenuItem
+            // 
+            this.darDeBajaToolStripMenuItem.Name = "darDeBajaToolStripMenuItem";
+            this.darDeBajaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.darDeBajaToolStripMenuItem.Text = "Dar de baja";
+            this.darDeBajaToolStripMenuItem.Click += new System.EventHandler(this.darDeBajaToolStripMenuItem_Click_1);
+            // 
+            // chkPacientesDeshabilitados
+            // 
+            this.chkPacientesDeshabilitados.AutoSize = true;
+            this.chkPacientesDeshabilitados.Location = new System.Drawing.Point(287, 23);
+            this.chkPacientesDeshabilitados.Name = "chkPacientesDeshabilitados";
+            this.chkPacientesDeshabilitados.Size = new System.Drawing.Size(161, 17);
+            this.chkPacientesDeshabilitados.TabIndex = 3;
+            this.chkPacientesDeshabilitados.Text = "Ver pacientes deshabilitados";
+            this.chkPacientesDeshabilitados.UseVisualStyleBackColor = true;
+            // 
             // frmPacientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.chkPacientesDeshabilitados);
             this.Controls.Add(this.dgvPacientes);
             this.Controls.Add(this.txtFiltroApellido);
             this.Controls.Add(this.lblFiltrarApellido);
@@ -128,5 +167,9 @@
         private System.Windows.Forms.ToolStripMenuItem editarPacienteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem verTurnosPacienteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cargarPacienteToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cambiarEstadoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem habilitarToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem darDeBajaToolStripMenuItem;
+        private System.Windows.Forms.CheckBox chkPacientesDeshabilitados;
     }
 }

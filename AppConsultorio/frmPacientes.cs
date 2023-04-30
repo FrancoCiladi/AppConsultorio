@@ -39,36 +39,65 @@ namespace AppConsultorio
 
         private void cargarPacienteToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Modulo.Operacion = "ALTA";
             frmAgregarPacientes frmCargaPacientes = new frmAgregarPacientes();
             frmCargaPacientes.ShowDialog();
         }
 
         private void verTurnosPacienteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmTurnosPaciente frmTurnosPaciente = new frmTurnosPaciente();
-            frmTurnosPaciente.ShowDialog();
+            if (this.dgvPacientes.CurrentRow != null)
+            {
+                Pacientes.idPacienteSelec = this.dgvPacientes.CurrentRow.Cells["idPaciente"].Value.ToString();
+                frmTurnosPaciente frmTurnosPaciente = new frmTurnosPaciente();
+                frmTurnosPaciente.ShowDialog();
+            }
+            
         }
+
 
         private void CargarGridView()
         {
             if (string.IsNullOrEmpty(txtFiltroApellido.Text) == false && txtFiltroApellido.Text.Trim().Length >=3)
             {
-                DataTable Tabla = new DataTable();
-                DataGridViewLinkColumn col;
-                col = new DataGridViewLinkColumn();
+                if(chkPacientesDeshabilitados.Checked == false)
+                {
+                    DataTable Tabla = new DataTable();
+                    DataGridViewLinkColumn col;
+                    col = new DataGridViewLinkColumn();
 
-                Pacientes.RecuperarPacientes(txtFiltroApellido.Text, ref Tabla);
-                this.dgvPacientes.DataSource = Tabla;
-                this.dgvPacientes.Columns["idPaciente"].Visible = false;
-                this.dgvPacientes.Columns["estado"].Visible = false;
-                this.dgvPacientes.Columns["fecha_registro"].Visible = false;
-                this.dgvPacientes.Columns["idObra_Social"].Visible = false;
-                this.dgvPacientes.Columns["Telefono"].Visible = false;
+                    Pacientes.RecuperarPacientesActivos(txtFiltroApellido.Text, ref Tabla);
+                    this.dgvPacientes.DataSource = Tabla;
+                    this.dgvPacientes.Columns["idPaciente"].Visible = false;
+                    this.dgvPacientes.Columns["estado"].Visible = false;
+                    this.dgvPacientes.Columns["fecha_registro"].Visible = false;
+                    this.dgvPacientes.Columns["idObra_Social"].Visible = false;
+                    this.dgvPacientes.Columns["Telefono"].Visible = false;
 
-                col.DataPropertyName = "Telefono";
-                col.Name = "Telefono";
-                col.DisplayIndex = 3;
-                this.dgvPacientes.Columns.Add(col);
+                    col.DataPropertyName = "Telefono";
+                    col.Name = "Telefono";
+                    col.DisplayIndex = 3;
+                    this.dgvPacientes.Columns.Add(col);
+                }
+                else
+                {
+                    DataTable Tabla = new DataTable();
+                    DataGridViewLinkColumn col;
+                    col = new DataGridViewLinkColumn();
+
+                    Pacientes.RecuperarPacientesDeshabilitados(txtFiltroApellido.Text, ref Tabla);
+                    this.dgvPacientes.DataSource = Tabla;
+                    this.dgvPacientes.Columns["idPaciente"].Visible = false;
+                    this.dgvPacientes.Columns["estado"].Visible = false;
+                    this.dgvPacientes.Columns["fecha_registro"].Visible = false;
+                    this.dgvPacientes.Columns["idObra_Social"].Visible = false;
+                    this.dgvPacientes.Columns["Telefono"].Visible = false;
+
+                    col.DataPropertyName = "Telefono";
+                    col.Name = "Telefono";
+                    col.DisplayIndex = 3;
+                    this.dgvPacientes.Columns.Add(col);
+                }
             }
             else
             {
@@ -100,6 +129,30 @@ namespace AppConsultorio
         private void frmPacientes_Activated(object sender, EventArgs e)
         {
             CargarGridView();
+        }
+
+
+
+        private void darDeBajaToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            if (this.dgvPacientes.CurrentRow != null)
+            {
+                DialogResult dialogResult = MessageBox.Show("¿Desea dar de baja al paciente?", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    Pacientes.idPacienteSelec = this.dgvPacientes.CurrentRow.Cells["idPaciente"].Value.ToString();
+                    Pacientes.BajaPaciente(Pacientes.idPacienteSelec.ToString());
+                }
+            }
+        }
+
+        private void habilitarToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            if (this.dgvPacientes.CurrentRow != null)
+            {
+                Pacientes.idPacienteSelec = this.dgvPacientes.CurrentRow.Cells["idPaciente"].Value.ToString();
+                Pacientes.ActivarPaciente(Pacientes.idPacienteSelec.ToString());
+            }
         }
     }
 }

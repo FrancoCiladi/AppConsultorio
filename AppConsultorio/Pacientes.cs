@@ -13,7 +13,7 @@ namespace AppConsultorio
     internal class Pacientes : Modulo
     {
         public static string idPacienteSelec;
-        public static void RecuperarPacientes(string apellido, ref DataTable Tabla)
+        public static void RecuperarPacientesActivos(string apellido, ref DataTable Tabla)
         {
             try
             {
@@ -24,7 +24,30 @@ namespace AppConsultorio
                 SqlCommand Comando = new SqlCommand();
                 Comando.Connection = Conexion;
                 Comando.CommandType = CommandType.StoredProcedure;
-                Comando.CommandText = "RECUPERAR_PACIENTES";
+                Comando.CommandText = "RECUPERAR_PACIENTES_ACTIVOS";
+                Comando.Parameters.Add("@apellido", SqlDbType.NChar, 40).Value = apellido;
+                Tabla = new DataTable();
+                Tabla.Load(Comando.ExecuteReader());
+
+                Conexion.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+        public static void RecuperarPacientesDeshabilitados(string apellido, ref DataTable Tabla)
+        {
+            try
+            {
+                SqlConnection Conexion = new SqlConnection();
+                Conexion.ConnectionString = cadenaConexion;
+                Conexion.Open();
+
+                SqlCommand Comando = new SqlCommand();
+                Comando.Connection = Conexion;
+                Comando.CommandType = CommandType.StoredProcedure;
+                Comando.CommandText = "RECUPERAR_PACIENTES_DESHABILITADOS";
                 Comando.Parameters.Add("@apellido", SqlDbType.NChar, 40).Value = apellido;
                 Tabla = new DataTable();
                 Tabla.Load(Comando.ExecuteReader());
@@ -58,8 +81,6 @@ namespace AppConsultorio
             {
                 MessageBox.Show(ex.ToString());
             }
-
-
         }
         public static void RecuperarObrasSociales(ref DataTable tabla)
         {
@@ -192,6 +213,74 @@ namespace AppConsultorio
                 MessageBox.Show(ex.Message);
             }
         }
+        public static void RecuperarTurnosPaciente(string idPacienteSelec, ref DataTable tabla)
+        {
+            try
+            {
+                SqlConnection Conexion = new SqlConnection();
+                Conexion.ConnectionString = cadenaConexion;
+                Conexion.Open();
 
+                SqlCommand Comando = new SqlCommand();
+                Comando.Connection = Conexion;
+                Comando.CommandType = CommandType.StoredProcedure;
+                Comando.CommandText = "RECUPERAR_TURNOS_PACIENTE";
+                Comando.Parameters.Add("@idPacienteSelec", SqlDbType.Int).Value = idPacienteSelec;
+                tabla = new DataTable();
+                tabla.Load(Comando.ExecuteReader());
+
+                Conexion.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+        public static void BajaPaciente(string idPacienteSelec)
+        {
+            try
+            {
+                SqlConnection Conexion = new SqlConnection();
+                Conexion.ConnectionString = cadenaConexion;
+                Conexion.Open();
+
+                SqlCommand Comando = new SqlCommand();
+                Comando.Connection = Conexion;
+                Comando.CommandType = CommandType.StoredProcedure;
+                Comando.CommandText = "BAJA_PACIENTE";
+                Comando.Parameters.Add("@idPacienteSelec", SqlDbType.NChar, 8).Value = idPacienteSelec;
+                Comando.ExecuteNonQuery();
+
+                MessageBox.Show("El paciente fue dado de baja.", "Operacion Realizada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Conexion.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        public static void ActivarPaciente(string idPacienteSelec)
+        {
+            try
+            {
+                SqlConnection Conexion = new SqlConnection();
+                Conexion.ConnectionString = cadenaConexion;
+                Conexion.Open();
+
+                SqlCommand Comando = new SqlCommand();
+                Comando.Connection = Conexion;
+                Comando.CommandType = CommandType.StoredProcedure;
+                Comando.CommandText = "ACTIVAR_PACIENTE";
+                Comando.Parameters.Add("@idPacienteSelec", SqlDbType.NChar, 8).Value = idPacienteSelec;
+                Comando.ExecuteNonQuery();
+
+                MessageBox.Show("El paciente fue habilitado.", "Operacion Realizada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Conexion.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
 }
