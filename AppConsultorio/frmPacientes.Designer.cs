@@ -46,7 +46,7 @@
             this.lblFiltrarApellido.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFiltrarApellido.Location = new System.Drawing.Point(13, 22);
             this.lblFiltrarApellido.Name = "lblFiltrarApellido";
-            this.lblFiltrarApellido.Size = new System.Drawing.Size(71, 16);
+            this.lblFiltrarApellido.Size = new System.Drawing.Size(69, 16);
             this.lblFiltrarApellido.TabIndex = 0;
             this.lblFiltrarApellido.Text = "Apellido:";
             // 
@@ -110,6 +110,7 @@
             this.Controls.Add(this.lblFiltrarApellido);
             this.Name = "frmPacientes";
             this.Text = "Pacientes";
+            this.Activated += new System.EventHandler(this.frmPacientes_Activated);
             this.Load += new System.EventHandler(this.frmPacientes_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPacientes)).EndInit();
             this.mnuPacientes.ResumeLayout(false);

@@ -31,7 +31,7 @@ namespace AppConsultorio
             if (this.dgvPacientes.CurrentRow != null){
                 Modulo.Operacion = "MODIFICAR";
                 Pacientes.idPacienteSelec = this.dgvPacientes.CurrentRow.Cells["idPaciente"].Value.ToString();
-                frmCargaPacientes frmCargaPacientes = new frmCargaPacientes();
+                frmAgregarPacientes frmCargaPacientes = new frmAgregarPacientes();
                 frmCargaPacientes.ShowDialog();
             }
             
@@ -39,7 +39,7 @@ namespace AppConsultorio
 
         private void cargarPacienteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmCargaPacientes frmCargaPacientes = new frmCargaPacientes();
+            frmAgregarPacientes frmCargaPacientes = new frmAgregarPacientes();
             frmCargaPacientes.ShowDialog();
         }
 
@@ -95,6 +95,11 @@ namespace AppConsultorio
             {
                 Process.Start("https://wa.me/+54" + this.dgvPacientes.CurrentCell.EditedFormattedValue);
             }
+        }
+
+        private void frmPacientes_Activated(object sender, EventArgs e)
+        {
+            CargarGridView();
         }
     }
 }

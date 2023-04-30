@@ -9,7 +9,7 @@ C:\Users\franc\OneDrive\Documentos\GitHub Repositorios\AppConsultorio\AppConsult
 C:\Users\franc\OneDrive\Documentos\GitHub Repositorios\AppConsultorio\AppConsultorio\bin\Debug\AppConsultorio.pdb
 C:\Users\franc\OneDrive\Documentos\GitHub Repositorios\AppConsultorio\AppConsultorio\obj\Debug\AppConsultorio.exe
 C:\Users\franc\OneDrive\Documentos\GitHub Repositorios\AppConsultorio\AppConsultorio\obj\Debug\AppConsultorio.pdb
-C:\Users\franc\OneDrive\Documentos\GitHub Repositorios\AppConsultorio\AppConsultorio\obj\Debug\AppConsultorio.frmCargaPacientes.resources
 C:\Users\franc\OneDrive\Documentos\GitHub Repositorios\AppConsultorio\AppConsultorio\obj\Debug\AppConsultorio.frmPacientes.resources
 C:\Users\franc\OneDrive\Documentos\GitHub Repositorios\AppConsultorio\AppConsultorio\obj\Debug\AppConsultorio.frmDetalleTurno.resources
 C:\Users\franc\OneDrive\Documentos\GitHub Repositorios\AppConsultorio\AppConsultorio\obj\Debug\AppConsultorio.frmTurnosPaciente.resources
+C:\Users\franc\OneDrive\Documentos\GitHub Repositorios\AppConsultorio\AppConsultorio\obj\Debug\AppConsultorio.frmAgregarPacientes.resources

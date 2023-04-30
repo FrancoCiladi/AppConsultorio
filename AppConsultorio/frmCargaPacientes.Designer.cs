@@ -1,6 +1,6 @@
 ﻿namespace AppConsultorio
 {
-    partial class frmCargaPacientes
+    partial class frmAgregarPacientes
     {
         /// <summary>
         /// Required designer variable.
@@ -34,7 +34,7 @@
             this.lblTelefono = new System.Windows.Forms.Label();
             this.lblCorreo = new System.Windows.Forms.Label();
             this.lblObraSocial = new System.Windows.Forms.Label();
-            this.btnCargar = new System.Windows.Forms.Button();
+            this.btnAgregarPaciente = new System.Windows.Forms.Button();
             this.txtApellido = new System.Windows.Forms.TextBox();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.txtNroDoc = new System.Windows.Forms.TextBox();
@@ -103,15 +103,16 @@
             this.lblObraSocial.TabIndex = 5;
             this.lblObraSocial.Text = "Obra Social:";
             // 
-            // btnCargar
+            // btnAgregarPaciente
             // 
-            this.btnCargar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCargar.Location = new System.Drawing.Point(123, 325);
-            this.btnCargar.Name = "btnCargar";
-            this.btnCargar.Size = new System.Drawing.Size(109, 47);
-            this.btnCargar.TabIndex = 6;
-            this.btnCargar.Text = "Cargar";
-            this.btnCargar.UseVisualStyleBackColor = true;
+            this.btnAgregarPaciente.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAgregarPaciente.Location = new System.Drawing.Point(123, 325);
+            this.btnAgregarPaciente.Name = "btnAgregarPaciente";
+            this.btnAgregarPaciente.Size = new System.Drawing.Size(109, 47);
+            this.btnAgregarPaciente.TabIndex = 6;
+            this.btnAgregarPaciente.Text = "Guardar";
+            this.btnAgregarPaciente.UseVisualStyleBackColor = true;
+            this.btnAgregarPaciente.Click += new System.EventHandler(this.btnAgregarPaciente_Click);
             // 
             // txtApellido
             // 
@@ -157,7 +158,7 @@
             this.cbxObrasSociales.Size = new System.Drawing.Size(172, 21);
             this.cbxObrasSociales.TabIndex = 12;
             // 
-            // frmCargaPacientes
+            // frmAgregarPacientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -168,15 +169,15 @@
             this.Controls.Add(this.txtNroDoc);
             this.Controls.Add(this.txtNombre);
             this.Controls.Add(this.txtApellido);
-            this.Controls.Add(this.btnCargar);
+            this.Controls.Add(this.btnAgregarPaciente);
             this.Controls.Add(this.lblObraSocial);
             this.Controls.Add(this.lblCorreo);
             this.Controls.Add(this.lblTelefono);
             this.Controls.Add(this.lblNroDoc);
             this.Controls.Add(this.lblNombre);
             this.Controls.Add(this.lblApellido);
-            this.Name = "frmCargaPacientes";
-            this.Text = "Carga Pacientes";
+            this.Name = "frmAgregarPacientes";
+            this.Text = "Agregar Pacientes";
             this.Load += new System.EventHandler(this.frmCargaPacientes_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -191,7 +192,7 @@
         private System.Windows.Forms.Label lblTelefono;
         private System.Windows.Forms.Label lblCorreo;
         private System.Windows.Forms.Label lblObraSocial;
-        private System.Windows.Forms.Button btnCargar;
+        private System.Windows.Forms.Button btnAgregarPaciente;
         private System.Windows.Forms.TextBox txtApellido;
         private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.TextBox txtNroDoc;
