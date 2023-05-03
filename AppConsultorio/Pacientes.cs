@@ -282,5 +282,29 @@ namespace AppConsultorio
                 MessageBox.Show(ex.Message);
             }
         }
+
+        public static void RecuperarTelefonoPaciente(string idPacienteSelec, ref DataTable tabla)
+        {
+            try
+            {
+                SqlConnection Conexion = new SqlConnection();
+                Conexion.ConnectionString = cadenaConexion;
+                Conexion.Open();
+
+                SqlCommand Comando = new SqlCommand();
+                Comando.Connection = Conexion;
+                Comando.CommandType = CommandType.StoredProcedure;
+                Comando.CommandText = "RECUPERAR_TELEFONO_PACIENTE";
+                Comando.Parameters.Add("@idPacienteSelec", SqlDbType.Int).Value = idPacienteSelec;
+                tabla = new DataTable();
+                tabla.Load(Comando.ExecuteReader());
+
+                Conexion.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
     }
 }
