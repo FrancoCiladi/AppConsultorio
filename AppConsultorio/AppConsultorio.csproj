@@ -91,6 +91,12 @@
     <Compile Include="frmTurnos.Designer.cs">
       <DependentUpon>frmTurnos.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmTurnosHistoricos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTurnosHistoricos.Designer.cs">
+      <DependentUpon>frmTurnosHistoricos.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmTurnosPaciente.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -119,6 +125,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmTurnos.resx">
       <DependentUpon>frmTurnos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTurnosHistoricos.resx">
+      <DependentUpon>frmTurnosHistoricos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmTurnosPaciente.resx">
       <DependentUpon>frmTurnosPaciente.cs</DependentUpon>

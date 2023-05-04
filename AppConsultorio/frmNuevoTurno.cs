@@ -16,5 +16,11 @@ namespace AppConsultorio
         {
             InitializeComponent();
         }
+
+        private void frmNuevoTurno_Load(object sender, EventArgs e)
+        {
+            this.CenterToScreen();
+            dtpFecha.MinDate = DateTime.Now;
+        }
     }
 }

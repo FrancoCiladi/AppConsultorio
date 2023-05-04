@@ -15,3 +15,4 @@ C:\Users\franc\OneDrive\Documentos\GitHub Repositorios\AppConsultorio\AppConsult
 C:\Users\franc\OneDrive\Documentos\GitHub Repositorios\AppConsultorio\AppConsultorio\obj\Debug\AppConsultorio.frmAgregarPacientes.resources
 C:\Users\franc\OneDrive\Documentos\GitHub Repositorios\AppConsultorio\AppConsultorio\obj\Debug\AppConsultorio.frmTurnos.resources
 C:\Users\franc\OneDrive\Documentos\GitHub Repositorios\AppConsultorio\AppConsultorio\obj\Debug\AppConsultorio.frmNuevoTurno.resources
+C:\Users\franc\OneDrive\Documentos\GitHub Repositorios\AppConsultorio\AppConsultorio\obj\Debug\AppConsultorio.frmTurnosHistoricos.resources

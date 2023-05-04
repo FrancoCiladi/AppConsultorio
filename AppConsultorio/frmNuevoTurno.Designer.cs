@@ -65,9 +65,11 @@
             // 
             // dtpHora
             // 
-            this.dtpHora.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.dtpHora.CustomFormat = "HH:mm";
+            this.dtpHora.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpHora.Location = new System.Drawing.Point(110, 156);
             this.dtpHora.Name = "dtpHora";
+            this.dtpHora.ShowUpDown = true;
             this.dtpHora.Size = new System.Drawing.Size(103, 20);
             this.dtpHora.TabIndex = 2;
             // 
@@ -93,6 +95,7 @@
             this.Controls.Add(this.dtpFecha);
             this.Name = "frmNuevoTurno";
             this.Text = "Crear Nuevo Turno";
+            this.Load += new System.EventHandler(this.frmNuevoTurno_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
