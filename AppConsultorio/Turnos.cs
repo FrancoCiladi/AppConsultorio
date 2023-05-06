@@ -148,5 +148,75 @@ namespace AppConsultorio
                 MessageBox.Show(ex.Message);
             }
         }
+        public static void VerificarDisponibilidadTurno(string fecha, string hora, ref DataTable tabla)
+        {
+            try
+            {
+                SqlConnection Conexion = new SqlConnection();
+                Conexion.ConnectionString = cadenaConexion;
+                Conexion.Open();
+
+                SqlCommand Comando = new SqlCommand();
+                Comando.Connection = Conexion;
+                Comando.CommandType = CommandType.StoredProcedure;
+                Comando.CommandText = "VERIFICAR_TURNO";
+                Comando.Parameters.Add("@fecha", SqlDbType.Date).Value = fecha;
+                Comando.Parameters.Add("@hora", SqlDbType.Time).Value = hora;
+                tabla = new DataTable();
+                tabla.Load(Comando.ExecuteReader());
+
+                Conexion.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        public static void AgregarTurno(string fecha, string hora, string idPacienteSelec)
+        {
+            try
+            {
+                SqlConnection Conexion = new SqlConnection();
+                Conexion.ConnectionString = cadenaConexion;
+                Conexion.Open();
+
+                SqlCommand Comando = new SqlCommand();
+                Comando.Connection = Conexion;
+                Comando.CommandType = CommandType.StoredProcedure;
+                Comando.CommandText = "AGREGAR_TURNO";
+                Comando.Parameters.Add("@idPacienteSelec", SqlDbType.Int).Value = idPacienteSelec;
+                Comando.Parameters.Add("@fecha", SqlDbType.Date).Value = fecha;
+                Comando.Parameters.Add("@hora", SqlDbType.Time).Value = hora;
+                Comando.ExecuteNonQuery();
+
+                MessageBox.Show("Turno asignado!", "Operacion Realizada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Conexion.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        public static void CambiarEstadoTurno()
+        {
+            try
+            {
+                SqlConnection Conexion = new SqlConnection();
+                Conexion.ConnectionString = cadenaConexion;
+                Conexion.Open();
+
+                SqlCommand Comando = new SqlCommand();
+                Comando.Connection = Conexion;
+                Comando.CommandType = CommandType.StoredProcedure;
+                Comando.CommandText = "CAMBIAR_ESTADO_TURNO";
+                Comando.ExecuteNonQuery();
+
+                Conexion.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
 }

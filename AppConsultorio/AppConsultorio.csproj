@@ -73,12 +73,6 @@
     <Compile Include="frmDetalleTurno.Designer.cs">
       <DependentUpon>frmDetalleTurno.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmNuevoTurno.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmNuevoTurno.Designer.cs">
-      <DependentUpon>frmNuevoTurno.cs</DependentUpon>
-    </Compile>
     <Compile Include="frmPacientes.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -116,9 +110,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmDetalleTurno.resx">
       <DependentUpon>frmDetalleTurno.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmNuevoTurno.resx">
-      <DependentUpon>frmNuevoTurno.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmPacientes.resx">
       <DependentUpon>frmPacientes.cs</DependentUpon>
