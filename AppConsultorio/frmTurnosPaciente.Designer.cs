@@ -36,6 +36,7 @@
             // 
             this.dgvTurnosPaciente.AllowUserToAddRows = false;
             this.dgvTurnosPaciente.AllowUserToDeleteRows = false;
+            this.dgvTurnosPaciente.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvTurnosPaciente.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvTurnosPaciente.Location = new System.Drawing.Point(13, 13);
             this.dgvTurnosPaciente.Name = "dgvTurnosPaciente";

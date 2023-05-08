@@ -13,6 +13,7 @@ namespace AppConsultorio
     internal class Turnos : Modulo
     {
         public static string idTurnoSelec;
+        public static string Observacion;
 
         public static void RecuperarTurnosReservadosDia(ref DataTable tabla)
         {
@@ -148,6 +149,29 @@ namespace AppConsultorio
                 MessageBox.Show(ex.Message);
             }
         }
+        public static void EliminarTurno(string idTurnoSelec)
+        {
+            try
+            {
+                SqlConnection Conexion = new SqlConnection();
+                Conexion.ConnectionString = cadenaConexion;
+                Conexion.Open();
+
+                SqlCommand Comando = new SqlCommand();
+                Comando.Connection = Conexion;
+                Comando.CommandType = CommandType.StoredProcedure;
+                Comando.CommandText = "ELIMINAR_TURNO";
+                Comando.Parameters.Add("@idTurnoSelec", SqlDbType.Int).Value = idTurnoSelec;
+                Comando.ExecuteNonQuery();
+
+                MessageBox.Show("El turno fue cancelado.", "Operacion Realizada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Conexion.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
         public static void VerificarDisponibilidadTurno(string fecha, string hora, ref DataTable tabla)
         {
             try
@@ -210,6 +234,77 @@ namespace AppConsultorio
                 Comando.CommandType = CommandType.StoredProcedure;
                 Comando.CommandText = "CAMBIAR_ESTADO_TURNO";
                 Comando.ExecuteNonQuery();
+
+                Conexion.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        public static void IngresarImporte(string importe, string idTurnoSelec)
+        {
+            try
+            {
+                SqlConnection Conexion = new SqlConnection();
+                Conexion.ConnectionString = cadenaConexion;
+                Conexion.Open();
+
+                SqlCommand Comando = new SqlCommand();
+                Comando.Connection = Conexion;
+                Comando.CommandType = CommandType.StoredProcedure;
+                Comando.CommandText = "INGRESAR_IMPORTE";
+                Comando.Parameters.Add("@idTurnoSelec", SqlDbType.Int).Value = idTurnoSelec;
+                Comando.Parameters.Add("@importe", SqlDbType.Int).Value = importe;
+                Comando.ExecuteNonQuery();
+
+                MessageBox.Show("Importe Ingresado!", "Operacion Realizada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Conexion.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        public static void GuardarObservaciones(string observaciones, string idTurnoSelec)
+        {
+            try
+            {
+                SqlConnection Conexion = new SqlConnection();
+                Conexion.ConnectionString = cadenaConexion;
+                Conexion.Open();
+
+                SqlCommand Comando = new SqlCommand();
+                Comando.Connection = Conexion;
+                Comando.CommandType = CommandType.StoredProcedure;
+                Comando.CommandText = "GUARDAR_OBSERVACIONES";
+                Comando.Parameters.Add("@idTurnoSelec", SqlDbType.Int).Value = idTurnoSelec;
+                Comando.Parameters.Add("@observaciones", SqlDbType.VarChar,1500).Value = observaciones;
+                Comando.ExecuteNonQuery();
+
+                MessageBox.Show("Observacion guardada.", "Operacion Realizada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Conexion.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        public static void RecuperarObservacion(string idTurnoSelec, ref DataTable tabla)
+        {
+            try
+            {
+                SqlConnection Conexion = new SqlConnection();
+                Conexion.ConnectionString = cadenaConexion;
+                Conexion.Open();
+
+                SqlCommand Comando = new SqlCommand();
+                Comando.Connection = Conexion;
+                Comando.CommandType = CommandType.StoredProcedure;
+                Comando.CommandText = "RECUPERAR_OBSERVACION";
+                Comando.Parameters.Add("@idTurnoSelec", SqlDbType.Int).Value = idTurnoSelec;
+                tabla = new DataTable();
+                tabla.Load(Comando.ExecuteReader());
 
                 Conexion.Close();
             }

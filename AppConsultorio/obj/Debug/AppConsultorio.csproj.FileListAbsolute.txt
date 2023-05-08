@@ -10,9 +10,9 @@ C:\Users\franc\OneDrive\Documentos\GitHub Repositorios\AppConsultorio\AppConsult
 C:\Users\franc\OneDrive\Documentos\GitHub Repositorios\AppConsultorio\AppConsultorio\obj\Debug\AppConsultorio.exe
 C:\Users\franc\OneDrive\Documentos\GitHub Repositorios\AppConsultorio\AppConsultorio\obj\Debug\AppConsultorio.pdb
 C:\Users\franc\OneDrive\Documentos\GitHub Repositorios\AppConsultorio\AppConsultorio\obj\Debug\AppConsultorio.frmPacientes.resources
-C:\Users\franc\OneDrive\Documentos\GitHub Repositorios\AppConsultorio\AppConsultorio\obj\Debug\AppConsultorio.frmDetalleTurno.resources
 C:\Users\franc\OneDrive\Documentos\GitHub Repositorios\AppConsultorio\AppConsultorio\obj\Debug\AppConsultorio.frmTurnosPaciente.resources
 C:\Users\franc\OneDrive\Documentos\GitHub Repositorios\AppConsultorio\AppConsultorio\obj\Debug\AppConsultorio.frmAgregarPacientes.resources
 C:\Users\franc\OneDrive\Documentos\GitHub Repositorios\AppConsultorio\AppConsultorio\obj\Debug\AppConsultorio.frmTurnos.resources
-C:\Users\franc\OneDrive\Documentos\GitHub Repositorios\AppConsultorio\AppConsultorio\obj\Debug\AppConsultorio.frmNuevoTurno.resources
 C:\Users\franc\OneDrive\Documentos\GitHub Repositorios\AppConsultorio\AppConsultorio\obj\Debug\AppConsultorio.frmTurnosHistoricos.resources
+C:\Users\franc\OneDrive\Documentos\GitHub Repositorios\AppConsultorio\AppConsultorio\obj\Debug\AppConsultorio.frmImporte.resources
+C:\Users\franc\OneDrive\Documentos\GitHub Repositorios\AppConsultorio\AppConsultorio\obj\Debug\AppConsultorio.frmObservaciones.resources

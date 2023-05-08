@@ -1,6 +1,6 @@
 ﻿namespace AppConsultorio
 {
-    partial class frmDetalleTurno
+    partial class frmImporte
     {
         /// <summary>
         /// Required designer variable.
@@ -28,44 +28,45 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.richprueba = new System.Windows.Forms.RichTextBox();
+            this.txtImporte = new System.Windows.Forms.TextBox();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // richprueba
+            // txtImporte
             // 
-            this.richprueba.Location = new System.Drawing.Point(12, 12);
-            this.richprueba.Name = "richprueba";
-            this.richprueba.Size = new System.Drawing.Size(620, 490);
-            this.richprueba.TabIndex = 0;
-            this.richprueba.Text = "";
+            this.txtImporte.Location = new System.Drawing.Point(12, 28);
+            this.txtImporte.Name = "txtImporte";
+            this.txtImporte.Size = new System.Drawing.Size(133, 20);
+            this.txtImporte.TabIndex = 0;
             // 
             // btnGuardar
             // 
-            this.btnGuardar.Location = new System.Drawing.Point(263, 521);
+            this.btnGuardar.Location = new System.Drawing.Point(167, 28);
             this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(91, 31);
+            this.btnGuardar.Size = new System.Drawing.Size(75, 23);
             this.btnGuardar.TabIndex = 1;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = true;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
-            // frmDetalleTurno
+            // frmImporte
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(644, 564);
+            this.ClientSize = new System.Drawing.Size(249, 72);
             this.Controls.Add(this.btnGuardar);
-            this.Controls.Add(this.richprueba);
-            this.Name = "frmDetalleTurno";
-            this.Text = "Detalle Turno";
-            this.Load += new System.EventHandler(this.frmDetalleTurno_Load);
+            this.Controls.Add(this.txtImporte);
+            this.Name = "frmImporte";
+            this.Text = "Ingrese Importe";
+            this.Load += new System.EventHandler(this.frmImporte_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.RichTextBox richprueba;
+        private System.Windows.Forms.TextBox txtImporte;
         private System.Windows.Forms.Button btnGuardar;
     }
 }

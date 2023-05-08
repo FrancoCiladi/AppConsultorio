@@ -28,20 +28,41 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.dgvTurnosHistoricos = new System.Windows.Forms.DataGridView();
+            this.mnuTurnosHistoricos = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.ingresarImporteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.rbRealizados = new System.Windows.Forms.RadioButton();
             this.rbCancelados = new System.Windows.Forms.RadioButton();
+            this.observacionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTurnosHistoricos)).BeginInit();
+            this.mnuTurnosHistoricos.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgvTurnosHistoricos
             // 
             this.dgvTurnosHistoricos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvTurnosHistoricos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvTurnosHistoricos.ContextMenuStrip = this.mnuTurnosHistoricos;
             this.dgvTurnosHistoricos.Location = new System.Drawing.Point(13, 66);
             this.dgvTurnosHistoricos.Name = "dgvTurnosHistoricos";
             this.dgvTurnosHistoricos.Size = new System.Drawing.Size(775, 372);
             this.dgvTurnosHistoricos.TabIndex = 0;
+            // 
+            // mnuTurnosHistoricos
+            // 
+            this.mnuTurnosHistoricos.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ingresarImporteToolStripMenuItem,
+            this.observacionesToolStripMenuItem});
+            this.mnuTurnosHistoricos.Name = "mnuTurnosHistoricos";
+            this.mnuTurnosHistoricos.Size = new System.Drawing.Size(181, 70);
+            // 
+            // ingresarImporteToolStripMenuItem
+            // 
+            this.ingresarImporteToolStripMenuItem.Name = "ingresarImporteToolStripMenuItem";
+            this.ingresarImporteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.ingresarImporteToolStripMenuItem.Text = "Ingresar Importe";
+            this.ingresarImporteToolStripMenuItem.Click += new System.EventHandler(this.ingresarImporteToolStripMenuItem_Click);
             // 
             // rbRealizados
             // 
@@ -67,6 +88,13 @@
             this.rbCancelados.UseVisualStyleBackColor = true;
             this.rbCancelados.CheckedChanged += new System.EventHandler(this.rbCancelados_CheckedChanged);
             // 
+            // observacionesToolStripMenuItem
+            // 
+            this.observacionesToolStripMenuItem.Name = "observacionesToolStripMenuItem";
+            this.observacionesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.observacionesToolStripMenuItem.Text = "Observaciones";
+            this.observacionesToolStripMenuItem.Click += new System.EventHandler(this.observacionesToolStripMenuItem_Click);
+            // 
             // frmTurnosHistoricos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -79,6 +107,7 @@
             this.Text = "Turnos Historicos";
             this.Load += new System.EventHandler(this.frmTurnosHistoricos_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvTurnosHistoricos)).EndInit();
+            this.mnuTurnosHistoricos.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -89,5 +118,8 @@
         private System.Windows.Forms.DataGridView dgvTurnosHistoricos;
         private System.Windows.Forms.RadioButton rbRealizados;
         private System.Windows.Forms.RadioButton rbCancelados;
+        private System.Windows.Forms.ContextMenuStrip mnuTurnosHistoricos;
+        private System.Windows.Forms.ToolStripMenuItem ingresarImporteToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem observacionesToolStripMenuItem;
     }
 }

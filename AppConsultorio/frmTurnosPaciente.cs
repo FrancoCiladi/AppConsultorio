@@ -19,9 +19,12 @@ namespace AppConsultorio
 
         private void dgvTurnosPaciente_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            //cuando haga doble click en uno de los turnos aparecera el detalle con las observaciones
-            frmDetalleTurno frmDetalleTurno = new frmDetalleTurno();
-            frmDetalleTurno.ShowDialog();
+            if (dgvTurnosPaciente.CurrentRow != null)
+            {
+                Turnos.idTurnoSelec = this.dgvTurnosPaciente.CurrentRow.Cells["idTurno"].Value.ToString();
+                frmObservaciones frmObservaciones = new frmObservaciones();
+                frmObservaciones.ShowDialog();
+            }
         }
 
         private void frmTurnosPaciente_Load(object sender, EventArgs e)
@@ -36,6 +39,7 @@ namespace AppConsultorio
                 MessageBox.Show("El paciente seleccionado no tiene turnos asignados.", "",MessageBoxButtons.OK);
                 this.Close();
             }
+            this.dgvTurnosPaciente.Columns["idTurno"].Visible = false;
         }
     }
 }

@@ -87,9 +87,12 @@ namespace AppConsultorio
                         DataTable tabla = new DataTable();
                         Pacientes.RecuperarTelefonoPaciente(Pacientes.idPacienteSelec, ref tabla);
                         Process.Start("https://wa.me/+54" + tabla.Rows[0]["telefono"].ToString().Trim());
+                        Turnos.EliminarTurno(Turnos.idTurnoSelec);
                     }
-                    
-                    Turnos.CancelarTurno(Turnos.idTurnoSelec);
+                    else
+                    {
+                        Turnos.CancelarTurno(Turnos.idTurnoSelec);
+                    }   
                 }       
             }
         }
@@ -288,6 +291,30 @@ namespace AppConsultorio
         private void dgvPacientes_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             Pacientes.idPacienteSelec = this.dgvPacientes.CurrentRow.Cells["idPaciente"].Value.ToString();
+        }
+
+        private void ingresarImporteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (this.dgvTurnos.CurrentRow != null)
+            {
+                Turnos.idTurnoSelec = this.dgvTurnos.CurrentRow.Cells["idTurno"].Value.ToString();
+                frmImporte frmImporte = new frmImporte();
+                frmImporte.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Debe seleccionar un turno.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void observacionesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (dgvTurnos.CurrentRow != null)
+            {
+                Turnos.idTurnoSelec = this.dgvTurnos.CurrentRow.Cells["idTurno"].Value.ToString();
+                frmObservaciones frmObservaciones = new frmObservaciones();
+                frmObservaciones.ShowDialog();
+            }
         }
     }
     

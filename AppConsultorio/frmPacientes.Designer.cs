@@ -66,6 +66,7 @@
             // 
             this.dgvPacientes.AllowUserToAddRows = false;
             this.dgvPacientes.AllowUserToDeleteRows = false;
+            this.dgvPacientes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvPacientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPacientes.ContextMenuStrip = this.mnuPacientes;
             this.dgvPacientes.Location = new System.Drawing.Point(16, 62);
@@ -82,7 +83,7 @@
             this.verTurnosPacienteToolStripMenuItem,
             this.cambiarEstadoToolStripMenuItem});
             this.mnuPacientes.Name = "mnuPacientes";
-            this.mnuPacientes.Size = new System.Drawing.Size(181, 114);
+            this.mnuPacientes.Size = new System.Drawing.Size(178, 92);
             // 
             // cargarPacienteToolStripMenuItem
             // 
@@ -111,20 +112,20 @@
             this.habilitarToolStripMenuItem,
             this.darDeBajaToolStripMenuItem});
             this.cambiarEstadoToolStripMenuItem.Name = "cambiarEstadoToolStripMenuItem";
-            this.cambiarEstadoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.cambiarEstadoToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
             this.cambiarEstadoToolStripMenuItem.Text = "Cambiar Estado";
             // 
             // habilitarToolStripMenuItem
             // 
             this.habilitarToolStripMenuItem.Name = "habilitarToolStripMenuItem";
-            this.habilitarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.habilitarToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.habilitarToolStripMenuItem.Text = "Habilitar";
             this.habilitarToolStripMenuItem.Click += new System.EventHandler(this.habilitarToolStripMenuItem_Click_1);
             // 
             // darDeBajaToolStripMenuItem
             // 
             this.darDeBajaToolStripMenuItem.Name = "darDeBajaToolStripMenuItem";
-            this.darDeBajaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.darDeBajaToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.darDeBajaToolStripMenuItem.Text = "Dar de baja";
             this.darDeBajaToolStripMenuItem.Click += new System.EventHandler(this.darDeBajaToolStripMenuItem_Click_1);
             // 

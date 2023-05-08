@@ -63,10 +63,12 @@ namespace AppConsultorio
             if (rbRealizados.Checked == true)
             {
                 rbCancelados.Checked = false;
+                mnuTurnosHistoricos.Enabled = true;
             }
             else
             {
                 rbCancelados.Checked = true;
+                mnuTurnosHistoricos.Enabled = false;
             }
             CargarGridView();
         }
@@ -76,12 +78,38 @@ namespace AppConsultorio
             if (rbCancelados.Checked == true)
             {
                 rbRealizados.Checked = false;
+                mnuTurnosHistoricos.Enabled = false;
             }
             else
             {
                 rbRealizados.Checked = true;
+                mnuTurnosHistoricos.Enabled = true;
             }
             CargarGridView();
+        }
+
+        private void ingresarImporteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (this.dgvTurnosHistoricos.CurrentRow != null)
+            {
+                Turnos.idTurnoSelec = this.dgvTurnosHistoricos.CurrentRow.Cells["idTurno"].Value.ToString();
+                frmImporte frmImporte = new frmImporte();
+                frmImporte.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Debe seleccionar un turno.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void observacionesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (dgvTurnosHistoricos.CurrentRow != null)
+            {
+                Turnos.idTurnoSelec = this.dgvTurnosHistoricos.CurrentRow.Cells["idTurno"].Value.ToString();
+                frmObservaciones frmObservaciones = new frmObservaciones();
+                frmObservaciones.ShowDialog();
+            }
         }
     }
 }
