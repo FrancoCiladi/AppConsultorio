@@ -24,9 +24,8 @@ namespace AppConsultorio
 
         private void lblNuevoUsuario_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            this.lblRepetirContraseña.Visible = true;
-            this.txtRepetirContraseña.Visible =true;
-            this.btnRegistrar.Visible = true;
+            frmCargaUsuarios frmCargaUsuarios = new frmCargaUsuarios();
+            frmCargaUsuarios.ShowDialog();
         }
 
         private void btnRegistrar_Click(object sender, EventArgs e)

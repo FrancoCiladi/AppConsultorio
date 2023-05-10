@@ -16,7 +16,7 @@ namespace AppConsultorio
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmTurnos());
+            Application.Run(new frmLogin());
         }
     }
 }

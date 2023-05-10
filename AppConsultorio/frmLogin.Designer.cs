@@ -34,9 +34,6 @@
             this.txtUsuario = new System.Windows.Forms.TextBox();
             this.txtContraseña = new System.Windows.Forms.TextBox();
             this.lblNuevoUsuario = new System.Windows.Forms.LinkLabel();
-            this.txtRepetirContraseña = new System.Windows.Forms.TextBox();
-            this.lblRepetirContraseña = new System.Windows.Forms.Label();
-            this.btnRegistrar = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -63,7 +60,7 @@
             // btnLogin
             // 
             this.btnLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogin.Location = new System.Drawing.Point(164, 216);
+            this.btnLogin.Location = new System.Drawing.Point(164, 191);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(94, 36);
             this.btnLogin.TabIndex = 2;
@@ -89,45 +86,13 @@
             // lblNuevoUsuario
             // 
             this.lblNuevoUsuario.AutoSize = true;
-            this.lblNuevoUsuario.Location = new System.Drawing.Point(325, 293);
+            this.lblNuevoUsuario.Location = new System.Drawing.Point(323, 251);
             this.lblNuevoUsuario.Name = "lblNuevoUsuario";
             this.lblNuevoUsuario.Size = new System.Drawing.Size(84, 13);
             this.lblNuevoUsuario.TabIndex = 5;
             this.lblNuevoUsuario.TabStop = true;
             this.lblNuevoUsuario.Text = "Nuevo Usuario?";
             this.lblNuevoUsuario.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblNuevoUsuario_LinkClicked);
-            // 
-            // txtRepetirContraseña
-            // 
-            this.txtRepetirContraseña.Location = new System.Drawing.Point(164, 172);
-            this.txtRepetirContraseña.Name = "txtRepetirContraseña";
-            this.txtRepetirContraseña.PasswordChar = '*';
-            this.txtRepetirContraseña.Size = new System.Drawing.Size(178, 20);
-            this.txtRepetirContraseña.TabIndex = 7;
-            this.txtRepetirContraseña.Visible = false;
-            // 
-            // lblRepetirContraseña
-            // 
-            this.lblRepetirContraseña.AutoSize = true;
-            this.lblRepetirContraseña.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRepetirContraseña.Location = new System.Drawing.Point(12, 172);
-            this.lblRepetirContraseña.Name = "lblRepetirContraseña";
-            this.lblRepetirContraseña.Size = new System.Drawing.Size(145, 16);
-            this.lblRepetirContraseña.TabIndex = 6;
-            this.lblRepetirContraseña.Text = "Repetir Contraseña:";
-            this.lblRepetirContraseña.Visible = false;
-            // 
-            // btnRegistrar
-            // 
-            this.btnRegistrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRegistrar.Location = new System.Drawing.Point(289, 216);
-            this.btnRegistrar.Name = "btnRegistrar";
-            this.btnRegistrar.Size = new System.Drawing.Size(94, 36);
-            this.btnRegistrar.TabIndex = 8;
-            this.btnRegistrar.Text = "Registrar";
-            this.btnRegistrar.UseVisualStyleBackColor = true;
-            this.btnRegistrar.Visible = false;
-            this.btnRegistrar.Click += new System.EventHandler(this.btnRegistrar_Click);
             // 
             // label1
             // 
@@ -143,11 +108,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(419, 315);
+            this.ClientSize = new System.Drawing.Size(419, 276);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.btnRegistrar);
-            this.Controls.Add(this.txtRepetirContraseña);
-            this.Controls.Add(this.lblRepetirContraseña);
             this.Controls.Add(this.lblNuevoUsuario);
             this.Controls.Add(this.txtContraseña);
             this.Controls.Add(this.txtUsuario);
@@ -170,9 +132,6 @@
         private System.Windows.Forms.TextBox txtUsuario;
         private System.Windows.Forms.TextBox txtContraseña;
         private System.Windows.Forms.LinkLabel lblNuevoUsuario;
-        private System.Windows.Forms.TextBox txtRepetirContraseña;
-        private System.Windows.Forms.Label lblRepetirContraseña;
-        private System.Windows.Forms.Button btnRegistrar;
         private System.Windows.Forms.Label label1;
     }
 }
