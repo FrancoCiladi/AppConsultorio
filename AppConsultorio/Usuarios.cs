@@ -14,7 +14,7 @@ namespace AppConsultorio
     internal class Usuarios : Modulo
     {
         public static string idUsuarioSelec;
-
+        public static int AccesoLog;
         public static void RegistrarUsuario(string usuario,string pass,string apellido, string nombre, string idGrupo)
         {
             try
@@ -28,7 +28,7 @@ namespace AppConsultorio
                 Comando.CommandType = CommandType.StoredProcedure;
                 Comando.CommandText = "REGISTRAR_USUARIO";
                 Comando.Parameters.Add("@usuario", SqlDbType.NVarChar, 30).Value = usuario;
-                Comando.Parameters.Add("@pass", SqlDbType.NVarChar, 30).Value = pass;
+                Comando.Parameters.Add("@pass", SqlDbType.Char, 64).Value = pass;
                 Comando.Parameters.Add("@apellido", SqlDbType.NChar, 30).Value = apellido;
                 Comando.Parameters.Add("@nombre", SqlDbType.NChar, 30).Value = nombre;
                 Comando.Parameters.Add("@idGrupo", SqlDbType.Int).Value = idGrupo;
@@ -86,6 +86,31 @@ namespace AppConsultorio
                 Comando.ExecuteNonQuery();
 
                 MessageBox.Show("Usuario deshabilitado.", "Operacion Realizada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                Conexion.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        public static void HabilitarUsuario(string idUsuarioSelec)
+        {
+            try
+            {
+                SqlConnection Conexion = new SqlConnection();
+                Conexion.ConnectionString = cadenaConexion;
+                Conexion.Open();
+
+                SqlCommand Comando = new SqlCommand();
+                Comando.Connection = Conexion;
+                Comando.CommandType = CommandType.StoredProcedure;
+                Comando.CommandText = "HABILITAR_USUARIO";
+                Comando.Parameters.Add("@idUsuarioSelec", SqlDbType.Int).Value = idUsuarioSelec;
+
+                Comando.ExecuteNonQuery();
+
+                MessageBox.Show("Usuario habilitado.", "Operacion Realizada", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 Conexion.Close();
             }
@@ -185,7 +210,7 @@ namespace AppConsultorio
         }
         public static string GenerarHash256(string cadena)
         {
-           System.Security.Cryptography.SHA256CryptoServiceProvider AlgoritmoHash = new System.Security.Cryptography.SHA256CryptoServiceProvider();
+            System.Security.Cryptography.SHA256CryptoServiceProvider AlgoritmoHash = new System.Security.Cryptography.SHA256CryptoServiceProvider();
             byte[] inputBytes;
             byte[] hashBytes;
             string Salida;
@@ -222,6 +247,52 @@ namespace AppConsultorio
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
+            }
+        }
+        public static void ResetearIntentosLogin(string idUsuario) 
+        {
+            try
+            {
+                SqlConnection Conexion = new SqlConnection();
+                Conexion.ConnectionString = cadenaConexion;
+                Conexion.Open();
+
+                SqlCommand Comando = new SqlCommand();
+                Comando.Connection = Conexion;
+                Comando.CommandType = CommandType.StoredProcedure;
+                Comando.CommandText = "UPDATE_RESET_INTENTOS_LOGIN";
+                Comando.Parameters.Add("@idUsuario", SqlDbType.Int).Value = idUsuario;
+
+                Comando.ExecuteNonQuery();
+
+                Conexion.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        public static void AumentarIntentosLogin(string idUsuario)
+        {
+            try
+            {
+                SqlConnection Conexion = new SqlConnection();
+                Conexion.ConnectionString = cadenaConexion;
+                Conexion.Open();
+
+                SqlCommand Comando = new SqlCommand();
+                Comando.Connection = Conexion;
+                Comando.CommandType = CommandType.StoredProcedure;
+                Comando.CommandText = "UPDATE_AUMENTAR_INTENTOS_LOGIN";
+                Comando.Parameters.Add("@idUsuario", SqlDbType.Int).Value = idUsuario;
+
+                Comando.ExecuteNonQuery();
+
+                Conexion.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
     }

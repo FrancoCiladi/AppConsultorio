@@ -19,7 +19,7 @@ namespace AppConsultorio
 
         public static bool ValidarFiltro(string cadena)
         {
-            string[] caracteres = new string[] {"\'","%","\""};
+            string[] caracteres = new string[] {"\'","%","\"","*"};
             bool ok = true;
 
             for (int i = 0;i < caracteres.Length -1;i++)

@@ -28,19 +28,102 @@ namespace AppConsultorio
             frmCargaUsuarios.ShowDialog();
         }
 
-        private void btnRegistrar_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("Registro con exito. Espere a la habilitacion de su cuenta.", "Registracion Completada!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            //verificacion de login, ver clase ejercicio 8 programacion 3
-            //esto de abajo es una prueba para llevar de un form a otro
-            this.Hide();
-            frmPacientes frmPacientes = new frmPacientes();
-            frmPacientes.ShowDialog();
-            
+            Start();    
+        }
+
+        private void txtContraseña_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                Start();
+            }
+        }
+        private void Start()
+        {
+            DataTable tabla;
+            string HashPass;
+            int LogFall;
+
+            if (!string.IsNullOrEmpty(txtUsuario.Text.ToString().Trim()))
+            {
+                if (!string.IsNullOrEmpty(txtContraseña.Text.ToString().Trim()))
+                {
+                    if (Modulo.ValidarFiltro(txtUsuario.Text.ToString()))
+                    {
+                        tabla = new DataTable();
+                        Usuarios.RecuperarUsuarioLogin(txtUsuario.Text.ToString().Trim(), ref tabla);
+                        if (tabla.Rows.Count == 1)
+                        {
+                            LogFall = int.Parse(tabla.Rows[0]["LogFall"].ToString());
+                            if (LogFall < 4)
+                            {
+                                HashPass = Usuarios.GenerarHash256(txtContraseña.Text.ToString().Trim());
+                                HashPass.Length.ToString();
+                                if (HashPass == tabla.Rows[0]["Pass"].ToString().Trim())
+                                {
+                                    if (tabla.Rows[0]["Activo"].ToString() == "1")
+                                    {
+                                        Usuarios.ResetearIntentosLogin(tabla.Rows[0]["idUsuario"].ToString());
+
+                                        Usuarios.AccesoLog = int.Parse(tabla.Rows[0]["Acceso"].ToString());
+                                        
+                                        if (Usuarios.AccesoLog <= 10)
+                                        {
+                                            this.Hide();
+                                            frmUsuarios frmUsuarios = new frmUsuarios();
+                                            frmUsuarios.ShowDialog();
+                                            this.Close();
+                                        }
+                                        else
+                                        {
+                                            this.Hide();
+                                            frmTurnos frmTurnos = new frmTurnos();
+                                            frmTurnos.ShowDialog();
+                                            this.Close();
+                                        }
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("El usuario no se encuentra activo.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    }
+                                }
+                                else
+                                {
+                                    Usuarios.AumentarIntentosLogin(tabla.Rows[0]["idUsuario"].ToString());
+                                    MessageBox.Show("Contraseña incorrecta. Intentos restantes: " + (4 - LogFall), "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                }
+                            }
+                            else
+                            {
+                                MessageBox.Show("El usuario se encuentra bloqueado.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("El logeo es incorrecto.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Ingreso un caracter no permitido.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        txtUsuario.Focus();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Ingrese una contraseña.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtContraseña.Focus();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Ingrese un usuario.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtUsuario.Focus();
+            }
+
         }
     }
 }

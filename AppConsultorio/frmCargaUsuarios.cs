@@ -36,56 +36,90 @@ namespace AppConsultorio
 
             if (!string.IsNullOrEmpty(txtApellido.Text))
             {
-                if (!string.IsNullOrEmpty(txtNombre.Text))
+                if (Modulo.ValidarFiltro(txtApellido.Text.ToString()))
                 {
-                    if (!string.IsNullOrEmpty(txtUsuario.Text))
+                    if (!string.IsNullOrEmpty(txtNombre.Text))
                     {
-                        if (!string.IsNullOrEmpty(txtContraseña.Text))
+                        if (Modulo.ValidarFiltro(txtNombre.Text.ToString()))
                         {
-                            if (!string.IsNullOrEmpty(txtRepetirContraseña.Text))
+                            if (!string.IsNullOrEmpty(txtUsuario.Text))
                             {
-                                if (txtContraseña.Text.ToString().Trim() == txtRepetirContraseña.Text.ToString().Trim())
+                                if (Modulo.ValidarFiltro(txtUsuario.Text.ToString()))
                                 {
-                                    Usuarios.VerificarUsuarioNuevo(txtUsuario.Text.ToString().Trim(),ref tabla);
-                                    if (tabla.Rows.Count == 0)
+                                    if (!string.IsNullOrEmpty(txtContraseña.Text))
                                     {
-                                        ok = true;
+                                        if (Modulo.ValidarFiltro(txtContraseña.Text.ToString()))
+                                        {
+                                            if (!string.IsNullOrEmpty(txtRepetirContraseña.Text))
+                                            {
+                                                if (txtContraseña.Text.ToString().Trim() == txtRepetirContraseña.Text.ToString().Trim())
+                                                {
+                                                    Usuarios.VerificarUsuarioNuevo(txtUsuario.Text.ToString().Trim(), ref tabla);
+                                                    if (tabla.Rows.Count == 0)
+                                                    {
+                                                        ok = true;
+                                                    }
+                                                    else
+                                                    {
+                                                        MessageBox.Show("Nombre de usuario no disponible.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                                        txtUsuario.Focus();
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    MessageBox.Show("Las contraseñas no coinciden.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                                    txtRepetirContraseña.Focus();
+                                                }
+                                            }
+                                            else
+                                            {
+                                                MessageBox.Show("Debe repetir la contraseña.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                                txtRepetirContraseña.Focus();
+                                            }
+                                        }
+                                        else
+                                        {
+                                            MessageBox.Show("Ingreso un caracter no permitido.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                            txtContraseña.Focus();
+                                        }
+                                        
                                     }
                                     else
                                     {
-                                        MessageBox.Show("Nombre de usuario no disponible.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                                        txtUsuario.Focus();
+                                        MessageBox.Show("Debe ingresar una constraseña.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                        txtContraseña.Focus();
                                     }
-
                                 }
                                 else
                                 {
-                                    MessageBox.Show("Las contraseñas no coinciden.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                                    txtRepetirContraseña.Focus();
+                                    MessageBox.Show("Ingreso un caracter no permitido.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    txtUsuario.Focus();
                                 }
+                                
                             }
                             else
                             {
-                                MessageBox.Show("Debe repetir la contraseña.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                                txtRepetirContraseña.Focus();
+                                MessageBox.Show("Debe ingresar un usuario.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                txtUsuario.Focus();
                             }
                         }
                         else
                         {
-                            MessageBox.Show("Debe ingresar una constraseña.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            txtContraseña.Focus();
+                            MessageBox.Show("Ingreso un caracter no permitido.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            txtNombre.Focus();
                         }
+                        
                     }
                     else
                     {
-                        MessageBox.Show("Debe ingresar un usuario.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        txtUsuario.Focus();
+                        MessageBox.Show("Debe ingresar un nombre.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        txtNombre.Focus();
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Debe ingresar un nombre.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    txtNombre.Focus();
+                    MessageBox.Show("Ingreso un caracter no permitido.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtApellido.Focus();
                 }
             }
             else
@@ -101,7 +135,8 @@ namespace AppConsultorio
             if (Verificar())
             {
                 string passHash = Usuarios.GenerarHash256(txtContraseña.Text.ToString().Trim());
-                Usuarios.RegistrarUsuario(txtUsuario.Text.ToString().Trim(), passHash,txtApellido.Text.ToString().Trim(), txtNombre.Text.ToString().Trim(),cbxGrupos.SelectedValue.ToString());
+                MessageBox.Show(passHash.Length.ToString());
+                Usuarios.RegistrarUsuario(txtUsuario.Text.ToString().Trim(), passHash.ToString().Trim(),txtApellido.Text.ToString().Trim(), txtNombre.Text.ToString().Trim(),cbxGrupos.SelectedValue.ToString());
                 this.Close();
             }
         }

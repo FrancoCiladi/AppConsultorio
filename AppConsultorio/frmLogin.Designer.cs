@@ -71,17 +71,20 @@
             // txtUsuario
             // 
             this.txtUsuario.Location = new System.Drawing.Point(164, 96);
+            this.txtUsuario.MaxLength = 30;
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.Size = new System.Drawing.Size(178, 20);
-            this.txtUsuario.TabIndex = 3;
+            this.txtUsuario.TabIndex = 0;
             // 
             // txtContraseña
             // 
             this.txtContraseña.Location = new System.Drawing.Point(164, 133);
+            this.txtContraseña.MaxLength = 30;
             this.txtContraseña.Name = "txtContraseña";
             this.txtContraseña.PasswordChar = '*';
             this.txtContraseña.Size = new System.Drawing.Size(178, 20);
-            this.txtContraseña.TabIndex = 4;
+            this.txtContraseña.TabIndex = 1;
+            this.txtContraseña.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtContraseña_KeyDown);
             // 
             // lblNuevoUsuario
             // 
@@ -89,7 +92,7 @@
             this.lblNuevoUsuario.Location = new System.Drawing.Point(323, 251);
             this.lblNuevoUsuario.Name = "lblNuevoUsuario";
             this.lblNuevoUsuario.Size = new System.Drawing.Size(84, 13);
-            this.lblNuevoUsuario.TabIndex = 5;
+            this.lblNuevoUsuario.TabIndex = 3;
             this.lblNuevoUsuario.TabStop = true;
             this.lblNuevoUsuario.Text = "Nuevo Usuario?";
             this.lblNuevoUsuario.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblNuevoUsuario_LinkClicked);
