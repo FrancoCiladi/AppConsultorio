@@ -37,8 +37,27 @@
     </StartupObject>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1576.0\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1576.0\lib\net40\Microsoft.ReportViewer.DataVisualization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Design, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1576.0\lib\net40\Microsoft.ReportViewer.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1576.0\lib\net40\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1576.0\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -54,6 +73,22 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ConsultorioDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ConsultorioDataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ConsultorioDataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ConsultorioDataSet2.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ConsultorioDataSet2.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="frmCancelacionesPacientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCancelacionesPacientes.Designer.cs">
+      <DependentUpon>frmCancelacionesPacientes.cs</DependentUpon>
     </Compile>
     <Compile Include="frmCargaUsuarios.cs">
       <SubType>Form</SubType>
@@ -91,6 +126,12 @@
     <Compile Include="frmPacientes.Designer.cs">
       <DependentUpon>frmPacientes.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmReporteCancelaciones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmReporteCancelaciones.Designer.cs">
+      <DependentUpon>frmReporteCancelaciones.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmTurnos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -119,8 +160,19 @@
     <Compile Include="Pacientes.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="frmInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmInfo.Designer.cs">
+      <DependentUpon>frmInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes.cs" />
+    <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="Turnos.cs" />
     <Compile Include="Usuarios.cs" />
+    <EmbeddedResource Include="frmCancelacionesPacientes.resx">
+      <DependentUpon>frmCancelacionesPacientes.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmCargaUsuarios.resx">
       <DependentUpon>frmCargaUsuarios.cs</DependentUpon>
     </EmbeddedResource>
@@ -138,6 +190,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmPacientes.resx">
       <DependentUpon>frmPacientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmReporteCancelaciones.resx">
+      <DependentUpon>frmReporteCancelaciones.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmTurnos.resx">
       <DependentUpon>frmTurnos.cs</DependentUpon>
@@ -160,6 +215,10 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="frmInfo.resx">
+      <DependentUpon>frmInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReporteCancelacionesPacientes.rdlc" />
     <None Include="ConsultorioDataSet.xsc">
       <DependentUpon>ConsultorioDataSet.xsd</DependentUpon>
     </None>
@@ -171,6 +230,29 @@
     <None Include="ConsultorioDataSet.xss">
       <DependentUpon>ConsultorioDataSet.xsd</DependentUpon>
     </None>
+    <None Include="ConsultorioDataSet1.xsc">
+      <DependentUpon>ConsultorioDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="ConsultorioDataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ConsultorioDataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ConsultorioDataSet1.xss">
+      <DependentUpon>ConsultorioDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="ConsultorioDataSet2.xsc">
+      <DependentUpon>ConsultorioDataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="ConsultorioDataSet2.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ConsultorioDataSet2.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ConsultorioDataSet2.xss">
+      <DependentUpon>ConsultorioDataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -183,6 +265,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="SqlServerTypes\readme.htm" />
+    <Content Include="SqlServerTypes\x64\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
