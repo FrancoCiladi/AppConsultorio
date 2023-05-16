@@ -109,5 +109,10 @@ namespace AppConsultorio
                 Usuarios.HabilitarUsuario(Usuarios.idUsuarioSelec);
             }
         }
+
+        private void frmUsuarios_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

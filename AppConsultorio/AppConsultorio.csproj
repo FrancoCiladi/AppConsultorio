@@ -69,6 +69,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConsultorioDataSet.cs">
+      <DependentUpon>ConsultorioDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="ConsultorioDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -83,6 +86,21 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ConsultorioDataSet2.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ConsultorioDataSet3.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ConsultorioDataSet3.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSetInfoTurnos.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSetInfoTurnos.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSetInfoTurnos2.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSetInfoTurnos2.xsd</DependentUpon>
     </Compile>
     <Compile Include="frmCancelacionesPacientes.cs">
       <SubType>Form</SubType>
@@ -108,6 +126,12 @@
     <Compile Include="frmCargaPacientes.Designer.cs">
       <DependentUpon>frmCargaPacientes.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMenu.Designer.cs">
+      <DependentUpon>frmMenu.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmObservaciones.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -131,6 +155,12 @@
     </Compile>
     <Compile Include="frmReporteCancelaciones.Designer.cs">
       <DependentUpon>frmReporteCancelaciones.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmReporteTurnos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmReporteTurnos.Designer.cs">
+      <DependentUpon>frmReporteTurnos.cs</DependentUpon>
     </Compile>
     <Compile Include="frmTurnos.cs">
       <SubType>Form</SubType>
@@ -182,6 +212,9 @@
     <EmbeddedResource Include="frmCargaPacientes.resx">
       <DependentUpon>frmCargaPacientes.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmMenu.resx">
+      <DependentUpon>frmMenu.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmObservaciones.resx">
       <DependentUpon>frmObservaciones.cs</DependentUpon>
     </EmbeddedResource>
@@ -193,6 +226,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmReporteCancelaciones.resx">
       <DependentUpon>frmReporteCancelaciones.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmReporteTurnos.resx">
+      <DependentUpon>frmReporteTurnos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmTurnos.resx">
       <DependentUpon>frmTurnos.cs</DependentUpon>
@@ -219,6 +255,7 @@
       <DependentUpon>frmInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ReporteCancelacionesPacientes.rdlc" />
+    <EmbeddedResource Include="ReporteTurnos.rdlc" />
     <None Include="ConsultorioDataSet.xsc">
       <DependentUpon>ConsultorioDataSet.xsd</DependentUpon>
     </None>
@@ -251,6 +288,39 @@
     </None>
     <None Include="ConsultorioDataSet2.xss">
       <DependentUpon>ConsultorioDataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="ConsultorioDataSet3.xsc">
+      <DependentUpon>ConsultorioDataSet3.xsd</DependentUpon>
+    </None>
+    <None Include="ConsultorioDataSet3.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ConsultorioDataSet3.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ConsultorioDataSet3.xss">
+      <DependentUpon>ConsultorioDataSet3.xsd</DependentUpon>
+    </None>
+    <None Include="DataSetInfoTurnos.xsc">
+      <DependentUpon>DataSetInfoTurnos.xsd</DependentUpon>
+    </None>
+    <None Include="DataSetInfoTurnos.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetInfoTurnos.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DataSetInfoTurnos.xss">
+      <DependentUpon>DataSetInfoTurnos.xsd</DependentUpon>
+    </None>
+    <None Include="DataSetInfoTurnos2.xsc">
+      <DependentUpon>DataSetInfoTurnos2.xsd</DependentUpon>
+    </None>
+    <None Include="DataSetInfoTurnos2.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetInfoTurnos2.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DataSetInfoTurnos2.xss">
+      <DependentUpon>DataSetInfoTurnos2.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

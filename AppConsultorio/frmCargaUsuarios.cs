@@ -135,7 +135,6 @@ namespace AppConsultorio
             if (Verificar())
             {
                 string passHash = Usuarios.GenerarHash256(txtContraseña.Text.ToString().Trim());
-                MessageBox.Show(passHash.Length.ToString());
                 Usuarios.RegistrarUsuario(txtUsuario.Text.ToString().Trim(), passHash.ToString().Trim(),txtApellido.Text.ToString().Trim(), txtNombre.Text.ToString().Trim(),cbxGrupos.SelectedValue.ToString());
                 this.Close();
             }

@@ -120,6 +120,7 @@ namespace AppConsultorio
                 this.dgvPacientes.Columns["fecha_registro"].Visible = false;
                 this.dgvPacientes.Columns["idObra_Social"].Visible = false;
                 this.dgvPacientes.Columns["Telefono"].Visible = false;
+                this.dgvPacientes.Columns["Descripcion"].HeaderText = "Obra Social";
                 this.dgvPacientes.AllowUserToAddRows = false;
                 this.dgvPacientes.AllowUserToDeleteRows = false;
 
@@ -315,6 +316,33 @@ namespace AppConsultorio
                 frmObservaciones frmObservaciones = new frmObservaciones();
                 frmObservaciones.ShowDialog();
             }
+        }
+
+        private void exportarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (dgvTurnos.Rows.Count  > 0)
+            {
+                DataTable tabla = new DataTable();
+                switch (cbxTurnosCategorias.SelectedIndex)
+                {
+                    case 0:
+                        Turnos.Seleccion = 0;
+                        break;
+                    case 1:
+                        Turnos.Seleccion = 1;
+                        break;
+                    case 2:
+                        Turnos.Seleccion = 2;
+                        break;
+                }
+                frmReporteTurnos frmReporteTurnos = new frmReporteTurnos();
+                frmReporteTurnos.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("No hay nada para exportar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            
         }
     }
     

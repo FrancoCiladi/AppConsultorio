@@ -14,7 +14,7 @@ namespace AppConsultorio
     {
         public static string idTurnoSelec;
         public static string Observacion;
-
+        public static int Seleccion;
         public static void RecuperarTurnosReservadosDia(ref DataTable tabla)
         {
             try
@@ -303,6 +303,29 @@ namespace AppConsultorio
                 Comando.CommandType = CommandType.StoredProcedure;
                 Comando.CommandText = "RECUPERAR_OBSERVACION";
                 Comando.Parameters.Add("@idTurnoSelec", SqlDbType.Int).Value = idTurnoSelec;
+                tabla = new DataTable();
+                tabla.Load(Comando.ExecuteReader());
+
+                Conexion.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        public static void RecuperarInfoTurnos (int Seleccion, ref DataTable tabla)
+        {
+            try
+            {
+                SqlConnection Conexion = new SqlConnection();
+                Conexion.ConnectionString = cadenaConexion;
+                Conexion.Open();
+
+                SqlCommand Comando = new SqlCommand();
+                Comando.Connection = Conexion;
+                Comando.CommandType = CommandType.StoredProcedure;
+                Comando.CommandText = "RECUPERAR_INFO_TURNOS";
+                Comando.Parameters.Add("@seleccion", SqlDbType.Int).Value = Seleccion;
                 tabla = new DataTable();
                 tabla.Load(Comando.ExecuteReader());
 

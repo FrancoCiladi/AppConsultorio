@@ -75,14 +75,12 @@ namespace AppConsultorio
                                             this.Hide();
                                             frmUsuarios frmUsuarios = new frmUsuarios();
                                             frmUsuarios.ShowDialog();
-                                            this.Close();
                                         }
                                         else
                                         {
                                             this.Hide();
-                                            frmTurnos frmTurnos = new frmTurnos();
-                                            frmTurnos.ShowDialog();
-                                            this.Close();
+                                            frmMenu frmMenu = new frmMenu();
+                                            frmMenu.ShowDialog();
                                         }
                                     }
                                     else

@@ -32,6 +32,7 @@
             this.mnuTurnos = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.cancelarTurnoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ingresarImporteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.observacionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlTurnoNuevo = new System.Windows.Forms.Panel();
             this.lblFiltrar = new System.Windows.Forms.Label();
             this.txtFiltrar = new System.Windows.Forms.TextBox();
@@ -59,7 +60,7 @@
             this.lblNroDoc = new System.Windows.Forms.Label();
             this.lblNombre = new System.Windows.Forms.Label();
             this.lblApellido = new System.Windows.Forms.Label();
-            this.observacionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exportarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuTurnos.SuspendLayout();
             this.pnlTurnoNuevo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPacientes)).BeginInit();
@@ -73,9 +74,10 @@
             this.mnuTurnos.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.cancelarTurnoToolStripMenuItem,
             this.ingresarImporteToolStripMenuItem,
-            this.observacionesToolStripMenuItem});
+            this.observacionesToolStripMenuItem,
+            this.exportarToolStripMenuItem});
             this.mnuTurnos.Name = "mnuTurnos";
-            this.mnuTurnos.Size = new System.Drawing.Size(181, 92);
+            this.mnuTurnos.Size = new System.Drawing.Size(181, 114);
             // 
             // cancelarTurnoToolStripMenuItem
             // 
@@ -90,6 +92,13 @@
             this.ingresarImporteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.ingresarImporteToolStripMenuItem.Text = "Ingresar Importe";
             this.ingresarImporteToolStripMenuItem.Click += new System.EventHandler(this.ingresarImporteToolStripMenuItem_Click);
+            // 
+            // observacionesToolStripMenuItem
+            // 
+            this.observacionesToolStripMenuItem.Name = "observacionesToolStripMenuItem";
+            this.observacionesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.observacionesToolStripMenuItem.Text = "Observaciones";
+            this.observacionesToolStripMenuItem.Click += new System.EventHandler(this.observacionesToolStripMenuItem_Click);
             // 
             // pnlTurnoNuevo
             // 
@@ -364,12 +373,12 @@
             this.lblApellido.TabIndex = 13;
             this.lblApellido.Text = "Apellido:";
             // 
-            // observacionesToolStripMenuItem
+            // exportarToolStripMenuItem
             // 
-            this.observacionesToolStripMenuItem.Name = "observacionesToolStripMenuItem";
-            this.observacionesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.observacionesToolStripMenuItem.Text = "Observaciones";
-            this.observacionesToolStripMenuItem.Click += new System.EventHandler(this.observacionesToolStripMenuItem_Click);
+            this.exportarToolStripMenuItem.Name = "exportarToolStripMenuItem";
+            this.exportarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exportarToolStripMenuItem.Text = "Exportar";
+            this.exportarToolStripMenuItem.Click += new System.EventHandler(this.exportarToolStripMenuItem_Click);
             // 
             // frmTurnos
             // 
@@ -429,5 +438,6 @@
         private System.Windows.Forms.Label lblApellido;
         private System.Windows.Forms.ToolStripMenuItem ingresarImporteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem observacionesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem exportarToolStripMenuItem;
     }
 }

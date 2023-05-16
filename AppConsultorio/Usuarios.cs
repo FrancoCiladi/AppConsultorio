@@ -35,7 +35,7 @@ namespace AppConsultorio
 
                 Comando.ExecuteNonQuery();
 
-                MessageBox.Show("Usuario Registrado!.Espere a ser habilitado.", "Operacion Realizada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Usuario Registrado! Espere a ser habilitado.", "Operacion Realizada", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 Conexion.Close();
             }
