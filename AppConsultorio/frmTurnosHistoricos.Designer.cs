@@ -32,9 +32,10 @@
             this.dgvTurnosHistoricos = new System.Windows.Forms.DataGridView();
             this.mnuTurnosHistoricos = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.ingresarImporteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.observacionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.rbRealizados = new System.Windows.Forms.RadioButton();
             this.rbCancelados = new System.Windows.Forms.RadioButton();
-            this.observacionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cbxMeses = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTurnosHistoricos)).BeginInit();
             this.mnuTurnosHistoricos.SuspendLayout();
             this.SuspendLayout();
@@ -55,19 +56,26 @@
             this.ingresarImporteToolStripMenuItem,
             this.observacionesToolStripMenuItem});
             this.mnuTurnosHistoricos.Name = "mnuTurnosHistoricos";
-            this.mnuTurnosHistoricos.Size = new System.Drawing.Size(181, 70);
+            this.mnuTurnosHistoricos.Size = new System.Drawing.Size(162, 48);
             // 
             // ingresarImporteToolStripMenuItem
             // 
             this.ingresarImporteToolStripMenuItem.Name = "ingresarImporteToolStripMenuItem";
-            this.ingresarImporteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.ingresarImporteToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
             this.ingresarImporteToolStripMenuItem.Text = "Ingresar Importe";
             this.ingresarImporteToolStripMenuItem.Click += new System.EventHandler(this.ingresarImporteToolStripMenuItem_Click);
+            // 
+            // observacionesToolStripMenuItem
+            // 
+            this.observacionesToolStripMenuItem.Name = "observacionesToolStripMenuItem";
+            this.observacionesToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
+            this.observacionesToolStripMenuItem.Text = "Observaciones";
+            this.observacionesToolStripMenuItem.Click += new System.EventHandler(this.observacionesToolStripMenuItem_Click);
             // 
             // rbRealizados
             // 
             this.rbRealizados.AutoSize = true;
-            this.rbRealizados.Location = new System.Drawing.Point(13, 22);
+            this.rbRealizados.Location = new System.Drawing.Point(183, 22);
             this.rbRealizados.Name = "rbRealizados";
             this.rbRealizados.Size = new System.Drawing.Size(77, 17);
             this.rbRealizados.TabIndex = 1;
@@ -79,7 +87,7 @@
             // rbCancelados
             // 
             this.rbCancelados.AutoSize = true;
-            this.rbCancelados.Location = new System.Drawing.Point(114, 22);
+            this.rbCancelados.Location = new System.Drawing.Point(283, 22);
             this.rbCancelados.Name = "rbCancelados";
             this.rbCancelados.Size = new System.Drawing.Size(81, 17);
             this.rbCancelados.TabIndex = 2;
@@ -88,23 +96,27 @@
             this.rbCancelados.UseVisualStyleBackColor = true;
             this.rbCancelados.CheckedChanged += new System.EventHandler(this.rbCancelados_CheckedChanged);
             // 
-            // observacionesToolStripMenuItem
+            // cbxMeses
             // 
-            this.observacionesToolStripMenuItem.Name = "observacionesToolStripMenuItem";
-            this.observacionesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.observacionesToolStripMenuItem.Text = "Observaciones";
-            this.observacionesToolStripMenuItem.Click += new System.EventHandler(this.observacionesToolStripMenuItem_Click);
+            this.cbxMeses.FormattingEnabled = true;
+            this.cbxMeses.Location = new System.Drawing.Point(13, 22);
+            this.cbxMeses.Name = "cbxMeses";
+            this.cbxMeses.Size = new System.Drawing.Size(121, 21);
+            this.cbxMeses.TabIndex = 3;
+            this.cbxMeses.SelectedIndexChanged += new System.EventHandler(this.cbxMeses_SelectedIndexChanged);
             // 
             // frmTurnosHistoricos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.cbxMeses);
             this.Controls.Add(this.rbCancelados);
             this.Controls.Add(this.rbRealizados);
             this.Controls.Add(this.dgvTurnosHistoricos);
             this.Name = "frmTurnosHistoricos";
             this.Text = "Turnos Historicos";
+            this.Activated += new System.EventHandler(this.frmTurnosHistoricos_Activated);
             this.Load += new System.EventHandler(this.frmTurnosHistoricos_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvTurnosHistoricos)).EndInit();
             this.mnuTurnosHistoricos.ResumeLayout(false);
@@ -121,5 +133,6 @@
         private System.Windows.Forms.ContextMenuStrip mnuTurnosHistoricos;
         private System.Windows.Forms.ToolStripMenuItem ingresarImporteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem observacionesToolStripMenuItem;
+        private System.Windows.Forms.ComboBox cbxMeses;
     }
 }

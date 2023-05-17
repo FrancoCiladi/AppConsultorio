@@ -10,14 +10,15 @@ using System.Windows.Forms;
 
 namespace AppConsultorio
 {
-    internal class Reportes : Modulo
+    internal class Reportes 
     {
         public static void RecuperarInfoReportesMensual(string fecha, ref DataTable tabla)
         {
             try
             {
+                string cadenaConexion = System.Configuration.ConfigurationManager.ConnectionStrings["CadenaConexion"].ConnectionString;
                 SqlConnection Conexion = new SqlConnection();
-                Conexion.ConnectionString = Modulo.cadenaConexion;
+                Conexion.ConnectionString = cadenaConexion;
                 Conexion.Open();
 
                 SqlCommand Comando = new SqlCommand();
@@ -39,6 +40,7 @@ namespace AppConsultorio
         {
             try
             {
+                string cadenaConexion = System.Configuration.ConfigurationManager.ConnectionStrings["CadenaConexion"].ConnectionString;
                 SqlConnection Conexion = new SqlConnection();
                 Conexion.ConnectionString = cadenaConexion;
                 Conexion.Open();

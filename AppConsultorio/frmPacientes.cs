@@ -23,7 +23,10 @@ namespace AppConsultorio
         private void frmPacientes_Load(object sender, EventArgs e)
         {
             this.CenterToScreen();
-
+            if (Usuarios.AccesoLog > 20)
+            {
+                mnuPacientes.Items[2].Visible = false;
+            }
         }
 
         private void editarPacienteToolStripMenuItem_Click(object sender, EventArgs e)

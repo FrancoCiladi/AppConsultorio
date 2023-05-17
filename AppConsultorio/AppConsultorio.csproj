@@ -56,6 +56,7 @@
       <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
@@ -76,11 +77,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ConsultorioDataSet.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="ConsultorioDataSet1.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ConsultorioDataSet1.xsd</DependentUpon>
     </Compile>
     <Compile Include="ConsultorioDataSet2.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -266,17 +262,6 @@
     </None>
     <None Include="ConsultorioDataSet.xss">
       <DependentUpon>ConsultorioDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="ConsultorioDataSet1.xsc">
-      <DependentUpon>ConsultorioDataSet1.xsd</DependentUpon>
-    </None>
-    <None Include="ConsultorioDataSet1.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>ConsultorioDataSet1.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="ConsultorioDataSet1.xss">
-      <DependentUpon>ConsultorioDataSet1.xsd</DependentUpon>
     </None>
     <None Include="ConsultorioDataSet2.xsc">
       <DependentUpon>ConsultorioDataSet2.xsd</DependentUpon>

@@ -8,14 +8,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace AppConsultorio
 {
     internal class Modulo 
     {
-        public const string cadenaConexion = "Data Source=FRANCOPC\\SQLEXPRESS;Initial Catalog=Consultorio;Persist Security Info=True;User ID=sa;Password=TurnItUp_41134538";
-
         public static string Operacion;
-
 
         public static bool ValidarFiltro(string cadena)
         {

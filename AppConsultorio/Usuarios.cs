@@ -7,11 +7,12 @@ using System.Text;
 using System.Threading.Tasks;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Windows.Forms;
+using System.Configuration;
 
 
 namespace AppConsultorio
 {
-    internal class Usuarios : Modulo
+    internal class Usuarios 
     {
         public static string idUsuarioSelec;
         public static int AccesoLog;
@@ -19,6 +20,7 @@ namespace AppConsultorio
         {
             try
             {
+                string cadenaConexion = System.Configuration.ConfigurationManager.ConnectionStrings["CadenaConexion"].ConnectionString;
                 SqlConnection Conexion = new SqlConnection();
                 Conexion.ConnectionString = cadenaConexion;
                 Conexion.Open();
@@ -48,6 +50,7 @@ namespace AppConsultorio
         {
             try
             {
+                string cadenaConexion = System.Configuration.ConfigurationManager.ConnectionStrings["CadenaConexion"].ConnectionString;
                 SqlConnection Conexion = new SqlConnection();
                 Conexion.ConnectionString = cadenaConexion;
                 Conexion.Open();
@@ -73,6 +76,7 @@ namespace AppConsultorio
         {
             try
             {
+                string cadenaConexion = System.Configuration.ConfigurationManager.ConnectionStrings["CadenaConexion"].ConnectionString;
                 SqlConnection Conexion = new SqlConnection();
                 Conexion.ConnectionString = cadenaConexion;
                 Conexion.Open();
@@ -98,6 +102,7 @@ namespace AppConsultorio
         {
             try
             {
+                string cadenaConexion = System.Configuration.ConfigurationManager.ConnectionStrings["CadenaConexion"].ConnectionString;
                 SqlConnection Conexion = new SqlConnection();
                 Conexion.ConnectionString = cadenaConexion;
                 Conexion.Open();
@@ -123,6 +128,7 @@ namespace AppConsultorio
         {
             try
             {
+                string cadenaConexion = System.Configuration.ConfigurationManager.ConnectionStrings["CadenaConexion"].ConnectionString;
                 SqlConnection Conexion = new SqlConnection();
                 Conexion.ConnectionString = cadenaConexion;
                 Conexion.Open();
@@ -145,6 +151,7 @@ namespace AppConsultorio
         {
             try
             {
+                string cadenaConexion = System.Configuration.ConfigurationManager.ConnectionStrings["CadenaConexion"].ConnectionString;
                 SqlConnection Conexion = new SqlConnection();
                 Conexion.ConnectionString = cadenaConexion;
                 Conexion.Open();
@@ -168,6 +175,7 @@ namespace AppConsultorio
         {
             try
             {
+                string cadenaConexion = System.Configuration.ConfigurationManager.ConnectionStrings["CadenaConexion"].ConnectionString;
                 SqlConnection Conexion = new SqlConnection();
                 Conexion.ConnectionString = cadenaConexion;
                 Conexion.Open();
@@ -190,6 +198,7 @@ namespace AppConsultorio
         {
             try
             {
+                string cadenaConexion = System.Configuration.ConfigurationManager.ConnectionStrings["CadenaConexion"].ConnectionString;
                 SqlConnection Conexion = new SqlConnection();
                 Conexion.ConnectionString = cadenaConexion;
                 Conexion.Open();
@@ -230,6 +239,7 @@ namespace AppConsultorio
         {
             try
             {
+                string cadenaConexion = System.Configuration.ConfigurationManager.ConnectionStrings["CadenaConexion"].ConnectionString;
                 SqlConnection Conexion = new SqlConnection();
                 Conexion.ConnectionString = cadenaConexion;
                 Conexion.Open();
@@ -253,6 +263,7 @@ namespace AppConsultorio
         {
             try
             {
+                string cadenaConexion = System.Configuration.ConfigurationManager.ConnectionStrings["CadenaConexion"].ConnectionString;
                 SqlConnection Conexion = new SqlConnection();
                 Conexion.ConnectionString = cadenaConexion;
                 Conexion.Open();
@@ -276,6 +287,7 @@ namespace AppConsultorio
         {
             try
             {
+                string cadenaConexion = System.Configuration.ConfigurationManager.ConnectionStrings["CadenaConexion"].ConnectionString;
                 SqlConnection Conexion = new SqlConnection();
                 Conexion.ConnectionString = cadenaConexion;
                 Conexion.Open();

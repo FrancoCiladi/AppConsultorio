@@ -33,6 +33,11 @@ namespace AppConsultorio
             this.pnlPacienteNuevo.Visible = false;
             CargarGridViewTurnos();
             this.dtpFecha.MinDate = DateTime.Today;
+
+            if (Usuarios.AccesoLog > 20)
+            {
+                mnuTurnos.Items[2].Visible = false;
+            }
         }
 
         private void CargarGridViewTurnos()

@@ -7,10 +7,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using System.Configuration;
 
 namespace AppConsultorio
 {
-    internal class Turnos : Modulo
+    internal class Turnos 
     {
         public static string idTurnoSelec;
         public static string Observacion;
@@ -19,6 +20,7 @@ namespace AppConsultorio
         {
             try
             {
+                string cadenaConexion = System.Configuration.ConfigurationManager.ConnectionStrings["CadenaConexion"].ConnectionString;
                 SqlConnection Conexion = new SqlConnection();
                 Conexion.ConnectionString = cadenaConexion;
                 Conexion.Open();
@@ -41,6 +43,7 @@ namespace AppConsultorio
         {
             try
             {
+                string cadenaConexion = System.Configuration.ConfigurationManager.ConnectionStrings["CadenaConexion"].ConnectionString;
                 SqlConnection Conexion = new SqlConnection();
                 Conexion.ConnectionString = cadenaConexion;
                 Conexion.Open();
@@ -63,6 +66,7 @@ namespace AppConsultorio
         {
             try
             {
+                string cadenaConexion = System.Configuration.ConfigurationManager.ConnectionStrings["CadenaConexion"].ConnectionString;
                 SqlConnection Conexion = new SqlConnection();
                 Conexion.ConnectionString = cadenaConexion;
                 Conexion.Open();
@@ -81,10 +85,11 @@ namespace AppConsultorio
                 MessageBox.Show(ex.Message);
             }
         }
-        public static void RecuperarTurnosRealizadosAño(ref DataTable tabla)
+        public static void RecuperarTurnosHistoricos(int mes, int tipo, ref DataTable tabla)
         {
             try
             {
+                string cadenaConexion = System.Configuration.ConfigurationManager.ConnectionStrings["CadenaConexion"].ConnectionString;
                 SqlConnection Conexion = new SqlConnection();
                 Conexion.ConnectionString = cadenaConexion;
                 Conexion.Open();
@@ -92,7 +97,9 @@ namespace AppConsultorio
                 SqlCommand Comando = new SqlCommand();
                 Comando.Connection = Conexion;
                 Comando.CommandType = CommandType.StoredProcedure;
-                Comando.CommandText = "RECUPERAR_TURNOS_AÑO_REALIZADOS";
+                Comando.CommandText = "CREAR_FECHA_RECUPERAR_TURNOS_HISTORICOS";
+                Comando.Parameters.Add("@mes", SqlDbType.Int).Value = mes;
+                Comando.Parameters.Add("@tipo", SqlDbType.Int).Value = tipo;
                 tabla = new DataTable();
                 tabla.Load(Comando.ExecuteReader());
 
@@ -103,33 +110,13 @@ namespace AppConsultorio
                 MessageBox.Show(ex.Message);
             }
         }
-        public static void RecuperarTurnosCanceladosAño(ref DataTable tabla)
-        {
-            try
-            {
-                SqlConnection Conexion = new SqlConnection();
-                Conexion.ConnectionString = cadenaConexion;
-                Conexion.Open();
-
-                SqlCommand Comando = new SqlCommand();
-                Comando.Connection = Conexion;
-                Comando.CommandType = CommandType.StoredProcedure;
-                Comando.CommandText = "RECUPERAR_TURNOS_AÑO_CANCELADOS";
-                tabla = new DataTable();
-                tabla.Load(Comando.ExecuteReader());
-
-                Conexion.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
+        
 
         public static void CancelarTurno(string idTurnoSelec)
         {
             try
             {
+                string cadenaConexion = System.Configuration.ConfigurationManager.ConnectionStrings["CadenaConexion"].ConnectionString;
                 SqlConnection Conexion = new SqlConnection();
                 Conexion.ConnectionString = cadenaConexion;
                 Conexion.Open();
@@ -153,6 +140,7 @@ namespace AppConsultorio
         {
             try
             {
+                string cadenaConexion = System.Configuration.ConfigurationManager.ConnectionStrings["CadenaConexion"].ConnectionString;
                 SqlConnection Conexion = new SqlConnection();
                 Conexion.ConnectionString = cadenaConexion;
                 Conexion.Open();
@@ -176,6 +164,7 @@ namespace AppConsultorio
         {
             try
             {
+                string cadenaConexion = System.Configuration.ConfigurationManager.ConnectionStrings["CadenaConexion"].ConnectionString;
                 SqlConnection Conexion = new SqlConnection();
                 Conexion.ConnectionString = cadenaConexion;
                 Conexion.Open();
@@ -200,6 +189,7 @@ namespace AppConsultorio
         {
             try
             {
+                string cadenaConexion = System.Configuration.ConfigurationManager.ConnectionStrings["CadenaConexion"].ConnectionString;
                 SqlConnection Conexion = new SqlConnection();
                 Conexion.ConnectionString = cadenaConexion;
                 Conexion.Open();
@@ -225,6 +215,7 @@ namespace AppConsultorio
         {
             try
             {
+                string cadenaConexion = System.Configuration.ConfigurationManager.ConnectionStrings["CadenaConexion"].ConnectionString;
                 SqlConnection Conexion = new SqlConnection();
                 Conexion.ConnectionString = cadenaConexion;
                 Conexion.Open();
@@ -246,6 +237,7 @@ namespace AppConsultorio
         {
             try
             {
+                string cadenaConexion = System.Configuration.ConfigurationManager.ConnectionStrings["CadenaConexion"].ConnectionString;
                 SqlConnection Conexion = new SqlConnection();
                 Conexion.ConnectionString = cadenaConexion;
                 Conexion.Open();
@@ -270,6 +262,7 @@ namespace AppConsultorio
         {
             try
             {
+                string cadenaConexion = System.Configuration.ConfigurationManager.ConnectionStrings["CadenaConexion"].ConnectionString;
                 SqlConnection Conexion = new SqlConnection();
                 Conexion.ConnectionString = cadenaConexion;
                 Conexion.Open();
@@ -294,6 +287,7 @@ namespace AppConsultorio
         {
             try
             {
+                string cadenaConexion = System.Configuration.ConfigurationManager.ConnectionStrings["CadenaConexion"].ConnectionString;
                 SqlConnection Conexion = new SqlConnection();
                 Conexion.ConnectionString = cadenaConexion;
                 Conexion.Open();
@@ -317,6 +311,7 @@ namespace AppConsultorio
         {
             try
             {
+                string cadenaConexion = System.Configuration.ConfigurationManager.ConnectionStrings["CadenaConexion"].ConnectionString;
                 SqlConnection Conexion = new SqlConnection();
                 Conexion.ConnectionString = cadenaConexion;
                 Conexion.Open();
