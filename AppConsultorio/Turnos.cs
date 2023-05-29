@@ -85,7 +85,7 @@ namespace AppConsultorio
                 MessageBox.Show(ex.Message);
             }
         }
-        public static void RecuperarTurnosHistoricos(int mes, int tipo, ref DataTable tabla)
+        public static void RecuperarTurnosHistoricos(int mes, ref DataTable tabla)
         {
             try
             {
@@ -99,7 +99,6 @@ namespace AppConsultorio
                 Comando.CommandType = CommandType.StoredProcedure;
                 Comando.CommandText = "CREAR_FECHA_RECUPERAR_TURNOS_HISTORICOS";
                 Comando.Parameters.Add("@mes", SqlDbType.Int).Value = mes;
-                Comando.Parameters.Add("@tipo", SqlDbType.Int).Value = tipo;
                 tabla = new DataTable();
                 tabla.Load(Comando.ExecuteReader());
 

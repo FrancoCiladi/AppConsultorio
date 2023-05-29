@@ -47,6 +47,7 @@
             // 
             this.lblApellido.AutoSize = true;
             this.lblApellido.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblApellido.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.lblApellido.Location = new System.Drawing.Point(24, 34);
             this.lblApellido.Name = "lblApellido";
             this.lblApellido.Size = new System.Drawing.Size(72, 18);
@@ -57,6 +58,7 @@
             // 
             this.lblNombre.AutoSize = true;
             this.lblNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNombre.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.lblNombre.Location = new System.Drawing.Point(24, 80);
             this.lblNombre.Name = "lblNombre";
             this.lblNombre.Size = new System.Drawing.Size(73, 18);
@@ -67,6 +69,7 @@
             // 
             this.lblNroDoc.AutoSize = true;
             this.lblNroDoc.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNroDoc.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.lblNroDoc.Location = new System.Drawing.Point(24, 124);
             this.lblNroDoc.Name = "lblNroDoc";
             this.lblNroDoc.Size = new System.Drawing.Size(138, 18);
@@ -77,6 +80,7 @@
             // 
             this.lblTelefono.AutoSize = true;
             this.lblTelefono.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTelefono.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.lblTelefono.Location = new System.Drawing.Point(24, 169);
             this.lblTelefono.Name = "lblTelefono";
             this.lblTelefono.Size = new System.Drawing.Size(79, 18);
@@ -87,6 +91,7 @@
             // 
             this.lblCorreo.AutoSize = true;
             this.lblCorreo.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCorreo.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.lblCorreo.Location = new System.Drawing.Point(24, 207);
             this.lblCorreo.Name = "lblCorreo";
             this.lblCorreo.Size = new System.Drawing.Size(66, 18);
@@ -97,6 +102,7 @@
             // 
             this.lblObraSocial.AutoSize = true;
             this.lblObraSocial.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblObraSocial.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.lblObraSocial.Location = new System.Drawing.Point(24, 257);
             this.lblObraSocial.Name = "lblObraSocial";
             this.lblObraSocial.Size = new System.Drawing.Size(102, 18);
@@ -167,6 +173,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.LightSeaGreen;
             this.ClientSize = new System.Drawing.Size(354, 407);
             this.Controls.Add(this.cbxObrasSociales);
             this.Controls.Add(this.txtCorreo);

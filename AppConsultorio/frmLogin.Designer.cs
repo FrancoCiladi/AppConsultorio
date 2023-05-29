@@ -41,6 +41,7 @@
             // 
             this.lblUsuario.AutoSize = true;
             this.lblUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUsuario.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.lblUsuario.Location = new System.Drawing.Point(82, 94);
             this.lblUsuario.Name = "lblUsuario";
             this.lblUsuario.Size = new System.Drawing.Size(76, 20);
@@ -51,6 +52,7 @@
             // 
             this.lblConstraseña.AutoSize = true;
             this.lblConstraseña.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblConstraseña.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.lblConstraseña.Location = new System.Drawing.Point(51, 131);
             this.lblConstraseña.Name = "lblConstraseña";
             this.lblConstraseña.Size = new System.Drawing.Size(107, 20);
@@ -111,6 +113,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.LightSeaGreen;
             this.ClientSize = new System.Drawing.Size(419, 276);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lblNuevoUsuario);

@@ -44,6 +44,7 @@
             // rbActivos
             // 
             this.rbActivos.AutoSize = true;
+            this.rbActivos.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.rbActivos.Location = new System.Drawing.Point(13, 27);
             this.rbActivos.Name = "rbActivos";
             this.rbActivos.Size = new System.Drawing.Size(60, 17);
@@ -56,6 +57,7 @@
             // rbInactivos
             // 
             this.rbInactivos.AutoSize = true;
+            this.rbInactivos.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.rbInactivos.Location = new System.Drawing.Point(94, 27);
             this.rbInactivos.Name = "rbInactivos";
             this.rbInactivos.Size = new System.Drawing.Size(68, 17);
@@ -117,6 +119,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.LightSeaGreen;
             this.ClientSize = new System.Drawing.Size(456, 450);
             this.Controls.Add(this.dgvUsuarios);
             this.Controls.Add(this.rbInactivos);

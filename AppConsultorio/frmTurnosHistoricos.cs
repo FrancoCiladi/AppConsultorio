@@ -20,7 +20,6 @@ namespace AppConsultorio
         private void frmTurnosHistoricos_Load(object sender, EventArgs e)
         {
             this.CenterToScreen();
-            rbRealizados.Checked = true;
 
             cbxMeses.Items.Add("Seleccione mes...");
             cbxMeses.Items.Add("Enero");
@@ -45,28 +44,12 @@ namespace AppConsultorio
         private void CargarGridView()
         {
             DataTable tabla = new DataTable();
-            if (rbRealizados.Checked == true)
-            {
-                Turnos.RecuperarTurnosHistoricos(cbxMeses.SelectedIndex,0,ref tabla);
-                this.dgvTurnosHistoricos.DataSource = tabla;
-                this.dgvTurnosHistoricos.Columns["fecha_cancelacion"].Visible = false;
-                this.dgvTurnosHistoricos.Columns["importe"].Visible = true;
-            }
-            else
-            {
-                if (rbCancelados.Checked == true)
-                {
-                    Turnos.RecuperarTurnosHistoricos(cbxMeses.SelectedIndex,1,ref tabla);
-                    this.dgvTurnosHistoricos.DataSource = tabla;
-                    this.dgvTurnosHistoricos.Columns["importe"].Visible = false;
-                    this.dgvTurnosHistoricos.Columns["Fecha Cancelacion"].Visible = true;
 
-                }
-            }
-            
+            Turnos.RecuperarTurnosHistoricos(cbxMeses.SelectedIndex, ref tabla);
+            this.dgvTurnosHistoricos.DataSource = tabla;
             this.dgvTurnosHistoricos.AllowUserToAddRows = false;
             this.dgvTurnosHistoricos.AllowUserToDeleteRows = false;
-
+            this.dgvTurnosHistoricos.Columns["fecha_cancelacion"].Visible = false;
             this.dgvTurnosHistoricos.Columns["idTurno"].Visible = false;
             this.dgvTurnosHistoricos.Columns["estado"].Visible = false;
             this.dgvTurnosHistoricos.Columns["fecha_creacion"].Visible = false;
@@ -76,36 +59,6 @@ namespace AppConsultorio
 
         }
 
-        private void rbRealizados_CheckedChanged(object sender, EventArgs e)
-        {
-            if (rbRealizados.Checked == true)
-            {
-                rbCancelados.Checked = false;
-                mnuTurnosHistoricos.Enabled = true;
-            }
-            else
-            {
-                rbCancelados.Checked = true;
-                mnuTurnosHistoricos.Enabled = false;
-            }
-            CargarGridView();
-        }
-
-        private void rbCancelados_CheckedChanged(object sender, EventArgs e)
-        {
-            if (rbCancelados.Checked == true)
-            {
-                rbRealizados.Checked = false;
-                mnuTurnosHistoricos.Enabled = false;
-            }
-            else
-            {
-                rbRealizados.Checked = true;
-                mnuTurnosHistoricos.Enabled = true;
-            }
-            CargarGridView();
-        }
-
         private void ingresarImporteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (this.dgvTurnosHistoricos.CurrentRow != null)
@@ -113,6 +66,7 @@ namespace AppConsultorio
                 Turnos.idTurnoSelec = this.dgvTurnosHistoricos.CurrentRow.Cells["idTurno"].Value.ToString();
                 frmImporte frmImporte = new frmImporte();
                 frmImporte.ShowDialog();
+                CargarGridView();
             }
             else
             {

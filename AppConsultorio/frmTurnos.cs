@@ -29,9 +29,9 @@ namespace AppConsultorio
             cbxTurnosCategorias.Items.Add("Mes");
             cbxTurnosCategorias.SelectedIndex = 0;
 
-            this.pnlTurnoNuevo.Visible = false;
-            this.pnlPacienteNuevo.Visible = false;
+
             CargarGridViewTurnos();
+            CargarGridViewPacientes();
             this.dtpFecha.MinDate = DateTime.Today;
 
             if (Usuarios.AccesoLog > 20)
@@ -102,14 +102,6 @@ namespace AppConsultorio
             }
         }
 
-
-        private void btnTurnoNuevo_Click(object sender, EventArgs e)
-        {
-            this.pnlTurnoNuevo.Visible = true;
-            this.pnlPacienteNuevo.Visible = true;
-            CargarGridViewPacientes();
-            CargarObrasSociales();
-        }
         private void CargarGridViewPacientes()
         {
             if (string.IsNullOrEmpty(txtFiltrar.Text) == false && txtFiltrar.Text.Trim().Length >= 3)
@@ -125,7 +117,6 @@ namespace AppConsultorio
                 this.dgvPacientes.Columns["fecha_registro"].Visible = false;
                 this.dgvPacientes.Columns["idObra_Social"].Visible = false;
                 this.dgvPacientes.Columns["Telefono"].Visible = false;
-                this.dgvPacientes.Columns["Descripcion"].HeaderText = "Obra Social";
                 this.dgvPacientes.AllowUserToAddRows = false;
                 this.dgvPacientes.AllowUserToDeleteRows = false;
 
@@ -140,18 +131,7 @@ namespace AppConsultorio
             }
         }
 
-        private void CargarObrasSociales()
-        {
-            DataTable tabla = new DataTable();
-            Pacientes.RecuperarObrasSociales(ref tabla);
-            cbxObrasSociales.DataSource = tabla;
-            cbxObrasSociales.DisplayMember = "descripcion";
-            cbxObrasSociales.ValueMember = "idObraSocial";
-            cbxObrasSociales.DropDownStyle = ComboBoxStyle.DropDownList;
-            cbxObrasSociales.SelectedIndex = 0;
-        }
-
-        private void txtFiltrar_TextChanged(object sender, EventArgs e)
+        private void txtFiltrar_TextChanged_1(object sender, EventArgs e)
         {
             if (Modulo.ValidarFiltro(txtFiltrar.Text.ToString()) == true)
             {
@@ -164,109 +144,18 @@ namespace AppConsultorio
             }
         }
 
-        private void cbxTurnosCategorias_SelectedIndexChanged_1(object sender, EventArgs e)
-        {
-            CargarGridViewTurnos();
-        }
-        private bool Verificar()
-        {
-            DataTable tabla = new DataTable();
-            bool ok = false;
-            int nrodoc;
 
-            if (!string.IsNullOrEmpty(txtApellido.Text))
-            {
-                if (!string.IsNullOrEmpty(txtNombre.Text))
-                {
-                    if ((!string.IsNullOrEmpty(txtNroDoc.Text)) && (int.TryParse(txtNroDoc.Text, out nrodoc)))
-                    {
-                        if (!string.IsNullOrEmpty(txtTelefono.Text))
-                        {
-                            if (VerificarTelefono(txtTelefono.Text))
-                            {
-                                    Pacientes.VerificarInsertPaciente(txtNroDoc.Text, ref tabla); 
-                                if (tabla.Rows.Count == 0)
-                                {
-                                    ok = true;
-                                }
-                                else
-                                {
-                                    MessageBox.Show("Ya se encuentra un paciente con el mismo DNI.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                                    txtNroDoc.Focus();
-                                }
-                            }
-                            else
-                            {
-                                MessageBox.Show("Debe ingresar un nro. de telefono valido.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                                txtTelefono.Focus();
-                            }
-                        }
-                        else
-                        {
-                            MessageBox.Show("Debe ingresar un nro. de telefono.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            txtTelefono.Focus();
-                        }
-                    }
-                    else
-                    {
-                        MessageBox.Show("Debe completar el nro. de documento del paciente.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        txtNroDoc.Focus();
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Debe completar el nombre del paciente.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    txtNombre.Focus();
-                }
-            }
-            else
-            {
-                MessageBox.Show("Debe completar el apellido del paciente.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtApellido.Focus();
-            }
-            return ok;
-        }
-        private bool VerificarTelefono(string telefono)
-        {
-            bool ok = false;
 
-            if (telefono.All(char.IsDigit))
-            {
-                ok = true;
-            }
-            return ok;
-        }
-
-        private void btnRegistrar_Click(object sender, EventArgs e)
-        {
-            if (Verificar())
-            {
-                string estado = "ACT";
-                Pacientes.InsertarPaciente(txtNroDoc.Text, txtApellido.Text, txtNombre.Text, txtTelefono.Text, txtCorreo.Text, estado, cbxObrasSociales.SelectedValue.ToString());
-                LimpiarControles();
-                CargarGridViewPacientes();
-            }
-        }
-        private void LimpiarControles()
-        {
-            this.txtApellido.Text = null;
-            this.txtCorreo.Text = null;
-            this.txtNombre.Text = null;
-            this.txtNroDoc.Text = null;
-            this.txtTelefono.Text = null;
-            cbxObrasSociales.SelectedIndex = 0;
-        }
-
-        private void btnAsignarTurno_Click(object sender, EventArgs e)
+        private void btnAsignarTurno_Click_1(object sender, EventArgs e)
         {
             if (this.dgvPacientes.CurrentRow != null)
             {
-                if (VerificarTurno())
-                {
-                    string fecha = dtpFecha.Value.ToShortDateString();
-                    string hora = dtpHora.Value.ToShortTimeString();
-                    Turnos.AgregarTurno(fecha, hora, Pacientes.idPacienteSelec);
-                }
+                    if (VerificarTurno())
+                    {
+                        string fecha = dtpFecha.Value.ToShortDateString();
+                        string hora = dtpHora.Value.ToShortTimeString();
+                        Turnos.AgregarTurno(fecha, hora, Pacientes.idPacienteSelec);
+                    }         
             }
             else
             {
@@ -294,10 +183,7 @@ namespace AppConsultorio
             return ok;
         }
 
-        private void dgvPacientes_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
-        {
-            Pacientes.idPacienteSelec = this.dgvPacientes.CurrentRow.Cells["idPaciente"].Value.ToString();
-        }
+
 
         private void ingresarImporteToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -348,6 +234,22 @@ namespace AppConsultorio
                 MessageBox.Show("No hay nada para exportar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             
+        }
+
+        private void nuevoPacienteToolStripMenuItem_Click(object sender, EventArgs e)
+        { 
+            frmAgregarPacientes frmAgregarPacientes = new frmAgregarPacientes();
+            frmAgregarPacientes.ShowDialog();
+        }
+
+        private void cbxTurnosCategorias_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            CargarGridViewTurnos();
+        }
+
+        private void dgvPacientes_RowHeaderMouseClick_1(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            Pacientes.idPacienteSelec = this.dgvPacientes.CurrentRow.Cells["idPaciente"].Value.ToString();
         }
     }
     

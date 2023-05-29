@@ -32,7 +32,6 @@
             this.btnPacientes = new System.Windows.Forms.Button();
             this.btnTurnos = new System.Windows.Forms.Button();
             this.btnTurnosHistoricos = new System.Windows.Forms.Button();
-            this.btnInfo = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnSalir
@@ -75,22 +74,11 @@
             this.btnTurnosHistoricos.UseVisualStyleBackColor = true;
             this.btnTurnosHistoricos.Click += new System.EventHandler(this.btnTurnosHistoricos_Click);
             // 
-            // btnInfo
-            // 
-            this.btnInfo.Location = new System.Drawing.Point(214, 193);
-            this.btnInfo.Name = "btnInfo";
-            this.btnInfo.Size = new System.Drawing.Size(124, 63);
-            this.btnInfo.TabIndex = 4;
-            this.btnInfo.Text = "Info";
-            this.btnInfo.UseVisualStyleBackColor = true;
-            this.btnInfo.Click += new System.EventHandler(this.btnInfo_Click);
-            // 
             // frmMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(383, 414);
-            this.Controls.Add(this.btnInfo);
             this.Controls.Add(this.btnTurnosHistoricos);
             this.Controls.Add(this.btnTurnos);
             this.Controls.Add(this.btnPacientes);
@@ -109,6 +97,5 @@
         private System.Windows.Forms.Button btnPacientes;
         private System.Windows.Forms.Button btnTurnos;
         private System.Windows.Forms.Button btnTurnosHistoricos;
-        private System.Windows.Forms.Button btnInfo;
     }
 }

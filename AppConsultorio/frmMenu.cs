@@ -22,7 +22,6 @@ namespace AppConsultorio
             this.CenterToScreen();
             if (Usuarios.AccesoLog > 20)
             {
-                btnInfo.Enabled = false;
             }
         }
 
@@ -49,10 +48,6 @@ namespace AppConsultorio
             frmTurnosHistoricos.ShowDialog();
         }
 
-        private void btnInfo_Click(object sender, EventArgs e)
-        {
-            frmInfo frmInfo = new frmInfo();
-            frmInfo.ShowDialog();
-        }
+
     }
 }

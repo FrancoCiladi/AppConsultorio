@@ -25,7 +25,7 @@ namespace AppConsultorio
             this.CenterToScreen();
             if (Usuarios.AccesoLog > 20)
             {
-                mnuPacientes.Items[2].Visible = false;
+                mnuPacientes.Items[3].Visible = false;
             }
         }
 
@@ -36,8 +36,7 @@ namespace AppConsultorio
                 Pacientes.idPacienteSelec = this.dgvPacientes.CurrentRow.Cells["idPaciente"].Value.ToString();
                 frmAgregarPacientes frmCargaPacientes = new frmAgregarPacientes();
                 frmCargaPacientes.ShowDialog();
-            }
-            
+            }     
         }
 
         private void cargarPacienteToolStripMenuItem_Click(object sender, EventArgs e)
@@ -63,8 +62,7 @@ namespace AppConsultorio
         {
             if (string.IsNullOrEmpty(txtFiltroApellido.Text) == false && txtFiltroApellido.Text.Trim().Length >=3)
             {
-                if(chkPacientesDeshabilitados.Checked == false)
-                {
+                
                     DataTable Tabla = new DataTable();
                     DataGridViewLinkColumn col;
                     col = new DataGridViewLinkColumn();
@@ -81,26 +79,8 @@ namespace AppConsultorio
                     col.Name = "Telefono";
                     col.DisplayIndex = 3;
                     this.dgvPacientes.Columns.Add(col);
-                }
-                else
-                {
-                    DataTable Tabla = new DataTable();
-                    DataGridViewLinkColumn col;
-                    col = new DataGridViewLinkColumn();
-
-                    Pacientes.RecuperarPacientesDeshabilitados(txtFiltroApellido.Text, ref Tabla);
-                    this.dgvPacientes.DataSource = Tabla;
-                    this.dgvPacientes.Columns["idPaciente"].Visible = false;
-                    this.dgvPacientes.Columns["estado"].Visible = false;
-                    this.dgvPacientes.Columns["fecha_registro"].Visible = false;
-                    this.dgvPacientes.Columns["idObra_Social"].Visible = false;
-                    this.dgvPacientes.Columns["Telefono"].Visible = false;
-
-                    col.DataPropertyName = "Telefono";
-                    col.Name = "Telefono";
-                    col.DisplayIndex = 3;
-                    this.dgvPacientes.Columns.Add(col);
-                }
+             
+                
             }
             else
             {
@@ -134,27 +114,22 @@ namespace AppConsultorio
             CargarGridView();
         }
 
-
-
-        private void darDeBajaToolStripMenuItem_Click_1(object sender, EventArgs e)
+        private void eliminarPacienteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (this.dgvPacientes.CurrentRow != null)
+            if (dgvPacientes.CurrentRow != null)
             {
-                DialogResult dialogResult = MessageBox.Show("¿Desea dar de baja al paciente?", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                if (dialogResult == DialogResult.Yes)
-                {
-                    Pacientes.idPacienteSelec = this.dgvPacientes.CurrentRow.Cells["idPaciente"].Value.ToString();
-                    Pacientes.BajaPaciente(Pacientes.idPacienteSelec.ToString());
-                }
-            }
-        }
-
-        private void habilitarToolStripMenuItem_Click_1(object sender, EventArgs e)
-        {
-            if (this.dgvPacientes.CurrentRow != null)
-            {
+                DataTable tabla = new DataTable();
                 Pacientes.idPacienteSelec = this.dgvPacientes.CurrentRow.Cells["idPaciente"].Value.ToString();
-                Pacientes.ActivarPaciente(Pacientes.idPacienteSelec.ToString());
+                Pacientes.RecuperarTurnosPaciente(Pacientes.idPacienteSelec, ref tabla);
+                if (tabla.Rows.Count == 0)
+                {
+                    Pacientes.EliminarPaciente(Pacientes.idPacienteSelec);
+                }
+                else
+                {
+                    MessageBox.Show("No se pueden eliminar pacientes con turnos asignados.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                CargarGridView();
             }
         }
     }
