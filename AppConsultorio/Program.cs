@@ -16,7 +16,13 @@ namespace AppConsultorio
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmMenuPrincipal());
+            //Application.Run(new frmLogin());
+
+            frmLogin frmLogin = new frmLogin();
+            if(frmLogin.ShowDialog() == DialogResult.OK)
+            {
+                Application.Run(new frmMenuPrincipal());
+            }
         }
     }
 }

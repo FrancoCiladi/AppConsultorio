@@ -39,6 +39,7 @@
             // 
             // lblUsuario
             // 
+            this.lblUsuario.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblUsuario.AutoSize = true;
             this.lblUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUsuario.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
@@ -50,6 +51,7 @@
             // 
             // lblConstraseña
             // 
+            this.lblConstraseña.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblConstraseña.AutoSize = true;
             this.lblConstraseña.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblConstraseña.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
@@ -61,6 +63,7 @@
             // 
             // btnLogin
             // 
+            this.btnLogin.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLogin.Location = new System.Drawing.Point(164, 191);
             this.btnLogin.Name = "btnLogin";
@@ -72,6 +75,7 @@
             // 
             // txtUsuario
             // 
+            this.txtUsuario.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtUsuario.Location = new System.Drawing.Point(164, 96);
             this.txtUsuario.MaxLength = 30;
             this.txtUsuario.Name = "txtUsuario";
@@ -80,6 +84,7 @@
             // 
             // txtContraseña
             // 
+            this.txtContraseña.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtContraseña.Location = new System.Drawing.Point(164, 133);
             this.txtContraseña.MaxLength = 30;
             this.txtContraseña.Name = "txtContraseña";
@@ -90,6 +95,7 @@
             // 
             // lblNuevoUsuario
             // 
+            this.lblNuevoUsuario.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lblNuevoUsuario.AutoSize = true;
             this.lblNuevoUsuario.Location = new System.Drawing.Point(323, 251);
             this.lblNuevoUsuario.Name = "lblNuevoUsuario";
@@ -101,6 +107,7 @@
             // 
             // label1
             // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(172, 34);

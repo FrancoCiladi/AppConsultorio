@@ -38,12 +38,15 @@
             this.btnTurnosHistoricos = new System.Windows.Forms.Button();
             this.btnPacientes = new System.Windows.Forms.Button();
             this.btnTurnos = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.pnlUsuario = new System.Windows.Forms.Panel();
+            this.btnUsuario = new System.Windows.Forms.Button();
+            this.btnCerrarSesion = new System.Windows.Forms.Button();
             this.pnlChildForms = new System.Windows.Forms.Panel();
             this.pnlTitulo = new System.Windows.Forms.Panel();
             this.lblTitulo = new System.Windows.Forms.Label();
             this.pnlMenuPrincipal.SuspendLayout();
             this.pnlBotonesInfo.SuspendLayout();
+            this.pnlUsuario.SuspendLayout();
             this.pnlChildForms.SuspendLayout();
             this.pnlTitulo.SuspendLayout();
             this.SuspendLayout();
@@ -56,7 +59,7 @@
             this.pnlMenuPrincipal.Controls.Add(this.btnTurnosHistoricos);
             this.pnlMenuPrincipal.Controls.Add(this.btnPacientes);
             this.pnlMenuPrincipal.Controls.Add(this.btnTurnos);
-            this.pnlMenuPrincipal.Controls.Add(this.panel1);
+            this.pnlMenuPrincipal.Controls.Add(this.pnlUsuario);
             this.pnlMenuPrincipal.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlMenuPrincipal.Location = new System.Drawing.Point(0, 0);
             this.pnlMenuPrincipal.Name = "pnlMenuPrincipal";
@@ -69,7 +72,7 @@
             this.pnlBotonesInfo.Controls.Add(this.btnTotalImportes);
             this.pnlBotonesInfo.Controls.Add(this.btnInfoTurnosCancelados);
             this.pnlBotonesInfo.Controls.Add(this.btnInfoTurnosRealizados);
-            this.pnlBotonesInfo.Location = new System.Drawing.Point(0, 342);
+            this.pnlBotonesInfo.Location = new System.Drawing.Point(0, 341);
             this.pnlBotonesInfo.Name = "pnlBotonesInfo";
             this.pnlBotonesInfo.Size = new System.Drawing.Size(170, 237);
             this.pnlBotonesInfo.TabIndex = 0;
@@ -150,7 +153,7 @@
             this.btnInfo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnInfo.Font = new System.Drawing.Font("Liberation Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnInfo.ForeColor = System.Drawing.Color.White;
-            this.btnInfo.Location = new System.Drawing.Point(0, 276);
+            this.btnInfo.Location = new System.Drawing.Point(0, 300);
             this.btnInfo.Name = "btnInfo";
             this.btnInfo.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
             this.btnInfo.Size = new System.Drawing.Size(170, 60);
@@ -166,7 +169,7 @@
             this.btnTurnosHistoricos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnTurnosHistoricos.Font = new System.Drawing.Font("Liberation Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTurnosHistoricos.ForeColor = System.Drawing.Color.White;
-            this.btnTurnosHistoricos.Location = new System.Drawing.Point(0, 216);
+            this.btnTurnosHistoricos.Location = new System.Drawing.Point(0, 240);
             this.btnTurnosHistoricos.Name = "btnTurnosHistoricos";
             this.btnTurnosHistoricos.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
             this.btnTurnosHistoricos.Size = new System.Drawing.Size(170, 60);
@@ -182,7 +185,7 @@
             this.btnPacientes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPacientes.Font = new System.Drawing.Font("Liberation Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPacientes.ForeColor = System.Drawing.Color.White;
-            this.btnPacientes.Location = new System.Drawing.Point(0, 156);
+            this.btnPacientes.Location = new System.Drawing.Point(0, 180);
             this.btnPacientes.Name = "btnPacientes";
             this.btnPacientes.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
             this.btnPacientes.Size = new System.Drawing.Size(170, 60);
@@ -199,7 +202,7 @@
             this.btnTurnos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnTurnos.Font = new System.Drawing.Font("Liberation Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTurnos.ForeColor = System.Drawing.Color.White;
-            this.btnTurnos.Location = new System.Drawing.Point(0, 96);
+            this.btnTurnos.Location = new System.Drawing.Point(0, 120);
             this.btnTurnos.Name = "btnTurnos";
             this.btnTurnos.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
             this.btnTurnos.Size = new System.Drawing.Size(170, 60);
@@ -208,14 +211,47 @@
             this.btnTurnos.UseVisualStyleBackColor = false;
             this.btnTurnos.Click += new System.EventHandler(this.btnTurnos_Click);
             // 
-            // panel1
+            // pnlUsuario
             // 
-            this.panel1.BackColor = System.Drawing.Color.DarkSlateGray;
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(170, 96);
-            this.panel1.TabIndex = 0;
+            this.pnlUsuario.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.pnlUsuario.Controls.Add(this.btnUsuario);
+            this.pnlUsuario.Controls.Add(this.btnCerrarSesion);
+            this.pnlUsuario.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlUsuario.Location = new System.Drawing.Point(0, 0);
+            this.pnlUsuario.Name = "pnlUsuario";
+            this.pnlUsuario.Size = new System.Drawing.Size(170, 120);
+            this.pnlUsuario.TabIndex = 0;
+            // 
+            // btnUsuario
+            // 
+            this.btnUsuario.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnUsuario.AutoSize = true;
+            this.btnUsuario.FlatAppearance.BorderSize = 0;
+            this.btnUsuario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUsuario.Font = new System.Drawing.Font("Liberation Sans", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUsuario.ForeColor = System.Drawing.Color.White;
+            this.btnUsuario.Location = new System.Drawing.Point(0, 0);
+            this.btnUsuario.Name = "btnUsuario";
+            this.btnUsuario.Size = new System.Drawing.Size(170, 77);
+            this.btnUsuario.TabIndex = 2;
+            this.btnUsuario.Text = "Usuario";
+            this.btnUsuario.UseVisualStyleBackColor = true;
+            // 
+            // btnCerrarSesion
+            // 
+            this.btnCerrarSesion.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnCerrarSesion.AutoSize = true;
+            this.btnCerrarSesion.FlatAppearance.BorderSize = 0;
+            this.btnCerrarSesion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCerrarSesion.Font = new System.Drawing.Font("Liberation Sans", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCerrarSesion.ForeColor = System.Drawing.Color.White;
+            this.btnCerrarSesion.Location = new System.Drawing.Point(0, 83);
+            this.btnCerrarSesion.Name = "btnCerrarSesion";
+            this.btnCerrarSesion.Size = new System.Drawing.Size(167, 34);
+            this.btnCerrarSesion.TabIndex = 1;
+            this.btnCerrarSesion.Text = "Cerrar Sesion";
+            this.btnCerrarSesion.UseVisualStyleBackColor = true;
+            this.btnCerrarSesion.Click += new System.EventHandler(this.btnCerrarSesion_Click);
             // 
             // pnlChildForms
             // 
@@ -258,10 +294,12 @@
             this.Controls.Add(this.pnlChildForms);
             this.Controls.Add(this.pnlMenuPrincipal);
             this.Name = "frmMenuPrincipal";
-            this.Text = "frmMenuPrincipal";
+            this.ShowIcon = false;
             this.Load += new System.EventHandler(this.frmMenuPrincipal_Load);
             this.pnlMenuPrincipal.ResumeLayout(false);
             this.pnlBotonesInfo.ResumeLayout(false);
+            this.pnlUsuario.ResumeLayout(false);
+            this.pnlUsuario.PerformLayout();
             this.pnlChildForms.ResumeLayout(false);
             this.pnlTitulo.ResumeLayout(false);
             this.pnlTitulo.PerformLayout();
@@ -276,7 +314,7 @@
         private System.Windows.Forms.Button btnTurnosHistoricos;
         private System.Windows.Forms.Button btnPacientes;
         private System.Windows.Forms.Button btnTurnos;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel pnlUsuario;
         private System.Windows.Forms.Panel pnlChildForms;
         private System.Windows.Forms.Panel pnlBotonesInfo;
         private System.Windows.Forms.Button btnInfoTurnosCancelados;
@@ -285,5 +323,7 @@
         private System.Windows.Forms.Label lblTitulo;
         private System.Windows.Forms.Button btnTotalImportes;
         private System.Windows.Forms.Button btnCancelacionesPacientes;
+        private System.Windows.Forms.Button btnCerrarSesion;
+        private System.Windows.Forms.Button btnUsuario;
     }
 }

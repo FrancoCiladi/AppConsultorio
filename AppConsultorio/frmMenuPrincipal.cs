@@ -22,12 +22,20 @@ namespace AppConsultorio
         }
         private void frmMenuPrincipal_Load(object sender, EventArgs e)
         {
+            DataTable tabla = new DataTable();
             this.CenterToScreen();
-            if (Usuarios.AccesoLog > 20) 
+            if (Usuarios.AccesoLog == 30)
             {
                 btnInfo.Visible = false;
             }
+            else if (Usuarios.AccesoLog == 10)
+            {
+                OpenChildForm(new frmListadoUsuarios(), sender);
+                pnlMenuPrincipal.Enabled = false;
+            }
+            Usuarios.RecuperarUsuarioLogeado(Usuarios.idUsuarioLog, ref tabla);
             
+            btnUsuario.Text = tabla.Rows[0]["UsuarioNombre"].ToString();
         }
        
         private void ActivarBoton(object btnSender)
@@ -127,6 +135,11 @@ namespace AppConsultorio
         {
             ActivarBoton(sender);
             OpenChildForm(new frmInfoCancelacionesPacientes(), sender);
+        }
+
+        private void btnCerrarSesion_Click(object sender, EventArgs e)
+        {
+            Application.Restart();
         }
 
 

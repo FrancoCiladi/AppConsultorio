@@ -18,8 +18,6 @@ C:\Users\franc\OneDrive\Documentos\GitHub Repositorios\AppConsultorio\AppConsult
 C:\Users\franc\OneDrive\Documentos\GitHub Repositorios\AppConsultorio\AppConsultorio\obj\Debug\AppConsultorio.frmObservaciones.resources
 C:\Users\franc\OneDrive\Documentos\GitHub Repositorios\AppConsultorio\AppConsultorio\obj\Debug\AppConsultorio.frmCargaUsuarios.resources
 C:\Users\franc\OneDrive\Documentos\GitHub Repositorios\AppConsultorio\AppConsultorio\obj\Debug\AppConsultorio.frmUsuarios.resources
-C:\Users\franc\OneDrive\Documentos\GitHub Repositorios\AppConsultorio\AppConsultorio\obj\Debug\AppConsultorio.frmInfo.resources
-C:\Users\franc\OneDrive\Documentos\GitHub Repositorios\AppConsultorio\AppConsultorio\obj\Debug\AppConsultorio.frmCancelacionesPacientes.resources
 C:\Users\franc\OneDrive\Documentos\GitHub Repositorios\AppConsultorio\AppConsultorio\bin\Debug\SqlServerTypes\x64\msvcr120.dll
 C:\Users\franc\OneDrive\Documentos\GitHub Repositorios\AppConsultorio\AppConsultorio\bin\Debug\SqlServerTypes\x64\SqlServerSpatial140.dll
 C:\Users\franc\OneDrive\Documentos\GitHub Repositorios\AppConsultorio\AppConsultorio\bin\Debug\SqlServerTypes\x86\msvcr120.dll
@@ -73,7 +71,6 @@ C:\Users\franc\OneDrive\Documentos\GitHub Repositorios\AppConsultorio\AppConsult
 C:\Users\franc\OneDrive\Documentos\GitHub Repositorios\AppConsultorio\AppConsultorio\bin\Debug\zh-CHT\Microsoft.ReportViewer.WinForms.resources.dll
 C:\Users\franc\OneDrive\Documentos\GitHub Repositorios\AppConsultorio\AppConsultorio\obj\Debug\AppConsultorio.frmReporteCancelaciones.resources
 C:\Users\franc\OneDrive\Documentos\GitHub Repositorios\AppConsultorio\AppConsultorio\obj\Debug\AppConsultorio.csproj.CopyComplete
-C:\Users\franc\OneDrive\Documentos\GitHub Repositorios\AppConsultorio\AppConsultorio\obj\Debug\AppConsultorio.frmMenu.resources
 C:\Users\franc\OneDrive\Documentos\GitHub Repositorios\AppConsultorio\AppConsultorio\obj\Debug\AppConsultorio.frmReporteTurnos.resources
 C:\Users\franc\OneDrive\Escritorio\AppConsultorio\AppConsultorio\bin\Debug\SqlServerTypes\x64\msvcr120.dll
 C:\Users\franc\OneDrive\Escritorio\AppConsultorio\AppConsultorio\bin\Debug\SqlServerTypes\x64\SqlServerSpatial140.dll
@@ -155,3 +152,8 @@ C:\Users\franc\OneDrive\Escritorio\AppConsultorio\AppConsultorio\obj\Debug\AppCo
 C:\Users\franc\OneDrive\Escritorio\AppConsultorio\AppConsultorio\obj\Debug\AppConsultorio.frmInfoTurnosCancelados.resources
 C:\Users\franc\OneDrive\Escritorio\AppConsultorio\AppConsultorio\obj\Debug\AppConsultorio.frmInfoCancelacionesPacientes.resources
 C:\Users\franc\OneDrive\Escritorio\AppConsultorio\AppConsultorio\obj\Debug\AppConsultorio.frmInfoImportes.resources
+C:\Users\franc\OneDrive\Documentos\GitHub Repositorios\AppConsultorio\AppConsultorio\obj\Debug\AppConsultorio.frmInfoCancelacionesPacientes.resources
+C:\Users\franc\OneDrive\Documentos\GitHub Repositorios\AppConsultorio\AppConsultorio\obj\Debug\AppConsultorio.frmInfoImportes.resources
+C:\Users\franc\OneDrive\Documentos\GitHub Repositorios\AppConsultorio\AppConsultorio\obj\Debug\AppConsultorio.frmInfoTurnosCancelados.resources
+C:\Users\franc\OneDrive\Documentos\GitHub Repositorios\AppConsultorio\AppConsultorio\obj\Debug\AppConsultorio.frmInfoTurnosRealizados.resources
+C:\Users\franc\OneDrive\Documentos\GitHub Repositorios\AppConsultorio\AppConsultorio\obj\Debug\AppConsultorio.frmMenuPrincipal.resources

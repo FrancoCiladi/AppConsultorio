@@ -14,7 +14,6 @@ namespace AppConsultorio
     internal class Turnos 
     {
         public static string idTurnoSelec;
-        public static string Observacion;
         public static int Seleccion;
         public static void RecuperarTurnosReservadosDia(ref DataTable tabla)
         {

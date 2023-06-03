@@ -1,6 +1,6 @@
 ﻿namespace AppConsultorio
 {
-    partial class frmUsuarios
+    partial class frmListadoUsuarios
     {
         /// <summary>
         /// Required designer variable.
@@ -69,6 +69,9 @@
             // 
             // dgvUsuarios
             // 
+            this.dgvUsuarios.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvUsuarios.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvUsuarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvUsuarios.ContextMenuStrip = this.mnuUsuarios;
@@ -85,33 +88,33 @@
             this.eliminarUsuarioToolStripMenuItem,
             this.resetearIntentosToolStripMenuItem});
             this.mnuUsuarios.Name = "mnuUsuarios";
-            this.mnuUsuarios.Size = new System.Drawing.Size(180, 92);
+            this.mnuUsuarios.Size = new System.Drawing.Size(181, 114);
             // 
             // deshabilitarUsuarioToolStripMenuItem
             // 
             this.deshabilitarUsuarioToolStripMenuItem.Name = "deshabilitarUsuarioToolStripMenuItem";
-            this.deshabilitarUsuarioToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
+            this.deshabilitarUsuarioToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.deshabilitarUsuarioToolStripMenuItem.Text = "Deshabilitar Usuario";
             this.deshabilitarUsuarioToolStripMenuItem.Click += new System.EventHandler(this.deshabilitarUsuarioToolStripMenuItem_Click);
             // 
             // habilitarUsuarioToolStripMenuItem
             // 
             this.habilitarUsuarioToolStripMenuItem.Name = "habilitarUsuarioToolStripMenuItem";
-            this.habilitarUsuarioToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
+            this.habilitarUsuarioToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.habilitarUsuarioToolStripMenuItem.Text = "Habilitar Usuario";
             this.habilitarUsuarioToolStripMenuItem.Click += new System.EventHandler(this.habilitarUsuarioToolStripMenuItem_Click);
             // 
             // eliminarUsuarioToolStripMenuItem
             // 
             this.eliminarUsuarioToolStripMenuItem.Name = "eliminarUsuarioToolStripMenuItem";
-            this.eliminarUsuarioToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
+            this.eliminarUsuarioToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.eliminarUsuarioToolStripMenuItem.Text = "Eliminar Usuario";
             this.eliminarUsuarioToolStripMenuItem.Click += new System.EventHandler(this.eliminarUsuarioToolStripMenuItem_Click);
             // 
             // resetearIntentosToolStripMenuItem
             // 
             this.resetearIntentosToolStripMenuItem.Name = "resetearIntentosToolStripMenuItem";
-            this.resetearIntentosToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
+            this.resetearIntentosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.resetearIntentosToolStripMenuItem.Text = "Resetear Intentos";
             this.resetearIntentosToolStripMenuItem.Click += new System.EventHandler(this.resetearIntentosToolStripMenuItem_Click);
             // 

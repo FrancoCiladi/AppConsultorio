@@ -11,9 +11,9 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace AppConsultorio
 {
-    public partial class frmUsuarios : Form
+    public partial class frmListadoUsuarios : Form
     {
-        public frmUsuarios()
+        public frmListadoUsuarios()
         {
             InitializeComponent();
         }
@@ -80,6 +80,7 @@ namespace AppConsultorio
             {
                 Usuarios.idUsuarioSelec = dgvUsuarios.CurrentRow.Cells["idUsuario"].Value.ToString();
                 Usuarios.DeshabilitarUsuario(Usuarios.idUsuarioSelec);
+                CargarGridView();
             }
         }
 
@@ -89,6 +90,7 @@ namespace AppConsultorio
             {
                 Usuarios.idUsuarioSelec = dgvUsuarios.CurrentRow.Cells["idUsuario"].Value.ToString();
                 Usuarios.EliminarUsuario(Usuarios.idUsuarioSelec);
+                CargarGridView();
             }
         }
 
@@ -107,6 +109,7 @@ namespace AppConsultorio
             {
                 Usuarios.idUsuarioSelec = dgvUsuarios.CurrentRow.Cells["idUsuario"].Value.ToString();
                 Usuarios.HabilitarUsuario(Usuarios.idUsuarioSelec);
+                CargarGridView();
             }
         }
 

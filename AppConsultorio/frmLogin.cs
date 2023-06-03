@@ -68,20 +68,12 @@ namespace AppConsultorio
                                     {
                                         Usuarios.ResetearIntentosLogin(tabla.Rows[0]["idUsuario"].ToString());
 
+                                        Usuarios.idUsuarioLog = tabla.Rows[0]["idUsuario"].ToString();
                                         Usuarios.AccesoLog = int.Parse(tabla.Rows[0]["Acceso"].ToString());
                                         
-                                        if (Usuarios.AccesoLog <= 10)
-                                        {
-                                            this.Hide();
-                                            frmUsuarios frmUsuarios = new frmUsuarios();
-                                            frmUsuarios.ShowDialog();
-                                        }
-                                        else
-                                        {
-                                            this.Hide();
-                                            frmMenu frmMenu = new frmMenu();
-                                            frmMenu.ShowDialog();
-                                        }
+                                        this.DialogResult = DialogResult.OK;
+
+                                        this.Close();
                                     }
                                     else
                                     {

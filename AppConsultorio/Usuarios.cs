@@ -15,6 +15,7 @@ namespace AppConsultorio
     internal class Usuarios 
     {
         public static string idUsuarioSelec;
+        public static string idUsuarioLog;
         public static int AccesoLog;
         public static void RegistrarUsuario(string usuario,string pass,string apellido, string nombre, string idGrupo)
         {
@@ -163,6 +164,30 @@ namespace AppConsultorio
                 Comando.Parameters.Add("@usuario", SqlDbType.NVarChar, 30).Value = usuario;
                 Tabla = new DataTable();
                 Tabla.Load(Comando.ExecuteReader());
+
+                Conexion.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+        public static void RecuperarUsuarioLogeado(string idUsuarioLog, ref DataTable tabla)
+        {
+            try
+            {
+                string cadenaConexion = System.Configuration.ConfigurationManager.ConnectionStrings["CadenaConexion"].ConnectionString;
+                SqlConnection Conexion = new SqlConnection();
+                Conexion.ConnectionString = cadenaConexion;
+                Conexion.Open();
+
+                SqlCommand Comando = new SqlCommand();
+                Comando.Connection = Conexion;
+                Comando.CommandType = CommandType.StoredProcedure;
+                Comando.CommandText = "RECUPERAR_USUARIO_LOGEADO";
+                Comando.Parameters.Add("@idUsuarioLog", SqlDbType.Int).Value = idUsuarioLog;
+                tabla = new DataTable();
+                tabla.Load(Comando.ExecuteReader());
 
                 Conexion.Close();
             }
