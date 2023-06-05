@@ -31,7 +31,10 @@ namespace AppConsultorio
             else if (Usuarios.AccesoLog == 10)
             {
                 OpenChildForm(new frmListadoUsuarios(), sender);
-                pnlMenuPrincipal.Enabled = false;
+                btnTurnos.Enabled = false;
+                btnPacientes.Enabled = false;
+                btnInfo.Enabled = false;
+                btnTurnosHistoricos.Enabled = false;
             }
             Usuarios.RecuperarUsuarioLogeado(Usuarios.idUsuarioLog, ref tabla);
             
@@ -142,6 +145,10 @@ namespace AppConsultorio
             Application.Restart();
         }
 
-
+        private void btnUsuario_Click(object sender, EventArgs e)
+        {
+            frmUsuario frmUsuario = new frmUsuario();
+            frmUsuario.ShowDialog();
+        }
     }
 }

@@ -72,7 +72,7 @@
             this.pnlBotonesInfo.Controls.Add(this.btnTotalImportes);
             this.pnlBotonesInfo.Controls.Add(this.btnInfoTurnosCancelados);
             this.pnlBotonesInfo.Controls.Add(this.btnInfoTurnosRealizados);
-            this.pnlBotonesInfo.Location = new System.Drawing.Point(0, 341);
+            this.pnlBotonesInfo.Location = new System.Drawing.Point(0, 366);
             this.pnlBotonesInfo.Name = "pnlBotonesInfo";
             this.pnlBotonesInfo.Size = new System.Drawing.Size(170, 237);
             this.pnlBotonesInfo.TabIndex = 0;
@@ -236,6 +236,7 @@
             this.btnUsuario.TabIndex = 2;
             this.btnUsuario.Text = "Usuario";
             this.btnUsuario.UseVisualStyleBackColor = true;
+            this.btnUsuario.Click += new System.EventHandler(this.btnUsuario_Click);
             // 
             // btnCerrarSesion
             // 

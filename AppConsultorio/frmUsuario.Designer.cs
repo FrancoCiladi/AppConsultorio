@@ -30,23 +30,21 @@
         {
             this.tctrlUsuario = new System.Windows.Forms.TabControl();
             this.tbpgModificarUsuario = new System.Windows.Forms.TabPage();
-            this.tbpgResetearClave = new System.Windows.Forms.TabPage();
-            this.cbxGrupos = new System.Windows.Forms.ComboBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.txtUsuario = new System.Windows.Forms.TextBox();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.txtApellido = new System.Windows.Forms.TextBox();
-            this.lblGrupo = new System.Windows.Forms.Label();
             this.lblUsuario = new System.Windows.Forms.Label();
             this.lblNombre = new System.Windows.Forms.Label();
             this.lblApellido = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.lblContraseñaActual = new System.Windows.Forms.Label();
-            this.lblNuevaContraseña = new System.Windows.Forms.Label();
-            this.lblRepetirContraseña = new System.Windows.Forms.Label();
-            this.txtContraseñaActual = new System.Windows.Forms.TextBox();
-            this.txtNuevaContraseña = new System.Windows.Forms.TextBox();
-            this.txtRepetirContraseña = new System.Windows.Forms.TextBox();
+            this.tbpgResetearClave = new System.Windows.Forms.TabPage();
             this.btnGuardar = new System.Windows.Forms.Button();
+            this.txtRepetirContraseña = new System.Windows.Forms.TextBox();
+            this.txtNuevaContraseña = new System.Windows.Forms.TextBox();
+            this.txtContraseñaActual = new System.Windows.Forms.TextBox();
+            this.lblRepetirContraseña = new System.Windows.Forms.Label();
+            this.lblNuevaContraseña = new System.Windows.Forms.Label();
+            this.lblContraseñaActual = new System.Windows.Forms.Label();
             this.tctrlUsuario.SuspendLayout();
             this.tbpgModificarUsuario.SuspendLayout();
             this.tbpgResetearClave.SuspendLayout();
@@ -67,11 +65,9 @@
             // 
             this.tbpgModificarUsuario.BackColor = System.Drawing.Color.Teal;
             this.tbpgModificarUsuario.Controls.Add(this.button1);
-            this.tbpgModificarUsuario.Controls.Add(this.cbxGrupos);
             this.tbpgModificarUsuario.Controls.Add(this.txtUsuario);
             this.tbpgModificarUsuario.Controls.Add(this.txtNombre);
             this.tbpgModificarUsuario.Controls.Add(this.txtApellido);
-            this.tbpgModificarUsuario.Controls.Add(this.lblGrupo);
             this.tbpgModificarUsuario.Controls.Add(this.lblUsuario);
             this.tbpgModificarUsuario.Controls.Add(this.lblNombre);
             this.tbpgModificarUsuario.Controls.Add(this.lblApellido);
@@ -82,30 +78,15 @@
             this.tbpgModificarUsuario.TabIndex = 0;
             this.tbpgModificarUsuario.Text = "Modificar Usuario";
             // 
-            // tbpgResetearClave
+            // button1
             // 
-            this.tbpgResetearClave.BackColor = System.Drawing.Color.Teal;
-            this.tbpgResetearClave.Controls.Add(this.btnGuardar);
-            this.tbpgResetearClave.Controls.Add(this.txtRepetirContraseña);
-            this.tbpgResetearClave.Controls.Add(this.txtNuevaContraseña);
-            this.tbpgResetearClave.Controls.Add(this.txtContraseñaActual);
-            this.tbpgResetearClave.Controls.Add(this.lblRepetirContraseña);
-            this.tbpgResetearClave.Controls.Add(this.lblNuevaContraseña);
-            this.tbpgResetearClave.Controls.Add(this.lblContraseñaActual);
-            this.tbpgResetearClave.Location = new System.Drawing.Point(4, 22);
-            this.tbpgResetearClave.Name = "tbpgResetearClave";
-            this.tbpgResetearClave.Padding = new System.Windows.Forms.Padding(3);
-            this.tbpgResetearClave.Size = new System.Drawing.Size(315, 262);
-            this.tbpgResetearClave.TabIndex = 1;
-            this.tbpgResetearClave.Text = "Resetear Clave";
-            // 
-            // cbxGrupos
-            // 
-            this.cbxGrupos.FormattingEnabled = true;
-            this.cbxGrupos.Location = new System.Drawing.Point(145, 148);
-            this.cbxGrupos.Name = "cbxGrupos";
-            this.cbxGrupos.Size = new System.Drawing.Size(139, 21);
-            this.cbxGrupos.TabIndex = 17;
+            this.button1.Location = new System.Drawing.Point(111, 168);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(87, 50);
+            this.button1.TabIndex = 18;
+            this.button1.Text = "Guardar Cambios";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // txtUsuario
             // 
@@ -130,17 +111,6 @@
             this.txtApellido.Name = "txtApellido";
             this.txtApellido.Size = new System.Drawing.Size(139, 20);
             this.txtApellido.TabIndex = 14;
-            // 
-            // lblGrupo
-            // 
-            this.lblGrupo.AutoSize = true;
-            this.lblGrupo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblGrupo.ForeColor = System.Drawing.Color.White;
-            this.lblGrupo.Location = new System.Drawing.Point(30, 153);
-            this.lblGrupo.Name = "lblGrupo";
-            this.lblGrupo.Size = new System.Drawing.Size(53, 16);
-            this.lblGrupo.TabIndex = 13;
-            this.lblGrupo.Text = "Grupo:";
             // 
             // lblUsuario
             // 
@@ -175,36 +145,53 @@
             this.lblApellido.TabIndex = 10;
             this.lblApellido.Text = "Apellido:";
             // 
-            // button1
+            // tbpgResetearClave
             // 
-            this.button1.Location = new System.Drawing.Point(115, 194);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(87, 50);
-            this.button1.TabIndex = 18;
-            this.button1.Text = "Guardar Cambios";
-            this.button1.UseVisualStyleBackColor = true;
+            this.tbpgResetearClave.BackColor = System.Drawing.Color.Teal;
+            this.tbpgResetearClave.Controls.Add(this.btnGuardar);
+            this.tbpgResetearClave.Controls.Add(this.txtRepetirContraseña);
+            this.tbpgResetearClave.Controls.Add(this.txtNuevaContraseña);
+            this.tbpgResetearClave.Controls.Add(this.txtContraseñaActual);
+            this.tbpgResetearClave.Controls.Add(this.lblRepetirContraseña);
+            this.tbpgResetearClave.Controls.Add(this.lblNuevaContraseña);
+            this.tbpgResetearClave.Controls.Add(this.lblContraseñaActual);
+            this.tbpgResetearClave.Location = new System.Drawing.Point(4, 22);
+            this.tbpgResetearClave.Name = "tbpgResetearClave";
+            this.tbpgResetearClave.Padding = new System.Windows.Forms.Padding(3);
+            this.tbpgResetearClave.Size = new System.Drawing.Size(315, 262);
+            this.tbpgResetearClave.TabIndex = 1;
+            this.tbpgResetearClave.Text = "Resetear Clave";
             // 
-            // lblContraseñaActual
+            // btnGuardar
             // 
-            this.lblContraseñaActual.AutoSize = true;
-            this.lblContraseñaActual.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblContraseñaActual.ForeColor = System.Drawing.Color.White;
-            this.lblContraseñaActual.Location = new System.Drawing.Point(66, 22);
-            this.lblContraseñaActual.Name = "lblContraseñaActual";
-            this.lblContraseñaActual.Size = new System.Drawing.Size(168, 20);
-            this.lblContraseñaActual.TabIndex = 0;
-            this.lblContraseñaActual.Text = "Contraseña Actual: ";
+            this.btnGuardar.Location = new System.Drawing.Point(119, 205);
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.Size = new System.Drawing.Size(79, 30);
+            this.btnGuardar.TabIndex = 6;
+            this.btnGuardar.Text = "Guardar";
+            this.btnGuardar.UseVisualStyleBackColor = true;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
-            // lblNuevaContraseña
+            // txtRepetirContraseña
             // 
-            this.lblNuevaContraseña.AutoSize = true;
-            this.lblNuevaContraseña.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNuevaContraseña.ForeColor = System.Drawing.Color.White;
-            this.lblNuevaContraseña.Location = new System.Drawing.Point(67, 81);
-            this.lblNuevaContraseña.Name = "lblNuevaContraseña";
-            this.lblNuevaContraseña.Size = new System.Drawing.Size(167, 20);
-            this.lblNuevaContraseña.TabIndex = 1;
-            this.lblNuevaContraseña.Text = "Nueva Contraseña: ";
+            this.txtRepetirContraseña.Location = new System.Drawing.Point(71, 164);
+            this.txtRepetirContraseña.Name = "txtRepetirContraseña";
+            this.txtRepetirContraseña.Size = new System.Drawing.Size(187, 20);
+            this.txtRepetirContraseña.TabIndex = 5;
+            // 
+            // txtNuevaContraseña
+            // 
+            this.txtNuevaContraseña.Location = new System.Drawing.Point(71, 104);
+            this.txtNuevaContraseña.Name = "txtNuevaContraseña";
+            this.txtNuevaContraseña.Size = new System.Drawing.Size(187, 20);
+            this.txtNuevaContraseña.TabIndex = 4;
+            // 
+            // txtContraseñaActual
+            // 
+            this.txtContraseñaActual.Location = new System.Drawing.Point(71, 45);
+            this.txtContraseñaActual.Name = "txtContraseñaActual";
+            this.txtContraseñaActual.Size = new System.Drawing.Size(187, 20);
+            this.txtContraseñaActual.TabIndex = 3;
             // 
             // lblRepetirContraseña
             // 
@@ -217,35 +204,27 @@
             this.lblRepetirContraseña.TabIndex = 2;
             this.lblRepetirContraseña.Text = "Repetir Contraseña: ";
             // 
-            // txtContraseñaActual
+            // lblNuevaContraseña
             // 
-            this.txtContraseñaActual.Location = new System.Drawing.Point(71, 45);
-            this.txtContraseñaActual.Name = "txtContraseñaActual";
-            this.txtContraseñaActual.Size = new System.Drawing.Size(187, 20);
-            this.txtContraseñaActual.TabIndex = 3;
+            this.lblNuevaContraseña.AutoSize = true;
+            this.lblNuevaContraseña.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNuevaContraseña.ForeColor = System.Drawing.Color.White;
+            this.lblNuevaContraseña.Location = new System.Drawing.Point(67, 81);
+            this.lblNuevaContraseña.Name = "lblNuevaContraseña";
+            this.lblNuevaContraseña.Size = new System.Drawing.Size(167, 20);
+            this.lblNuevaContraseña.TabIndex = 1;
+            this.lblNuevaContraseña.Text = "Nueva Contraseña: ";
             // 
-            // txtNuevaContraseña
+            // lblContraseñaActual
             // 
-            this.txtNuevaContraseña.Location = new System.Drawing.Point(71, 104);
-            this.txtNuevaContraseña.Name = "txtNuevaContraseña";
-            this.txtNuevaContraseña.Size = new System.Drawing.Size(187, 20);
-            this.txtNuevaContraseña.TabIndex = 4;
-            // 
-            // txtRepetirContraseña
-            // 
-            this.txtRepetirContraseña.Location = new System.Drawing.Point(71, 164);
-            this.txtRepetirContraseña.Name = "txtRepetirContraseña";
-            this.txtRepetirContraseña.Size = new System.Drawing.Size(187, 20);
-            this.txtRepetirContraseña.TabIndex = 5;
-            // 
-            // btnGuardar
-            // 
-            this.btnGuardar.Location = new System.Drawing.Point(119, 205);
-            this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(79, 30);
-            this.btnGuardar.TabIndex = 6;
-            this.btnGuardar.Text = "Guardar";
-            this.btnGuardar.UseVisualStyleBackColor = true;
+            this.lblContraseñaActual.AutoSize = true;
+            this.lblContraseñaActual.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblContraseñaActual.ForeColor = System.Drawing.Color.White;
+            this.lblContraseñaActual.Location = new System.Drawing.Point(66, 22);
+            this.lblContraseñaActual.Name = "lblContraseñaActual";
+            this.lblContraseñaActual.Size = new System.Drawing.Size(168, 20);
+            this.lblContraseñaActual.TabIndex = 0;
+            this.lblContraseñaActual.Text = "Contraseña Actual: ";
             // 
             // frmUsuario
             // 
@@ -256,6 +235,7 @@
             this.Controls.Add(this.tctrlUsuario);
             this.Name = "frmUsuario";
             this.ShowIcon = false;
+            this.Load += new System.EventHandler(this.frmUsuario_Load);
             this.tctrlUsuario.ResumeLayout(false);
             this.tbpgModificarUsuario.ResumeLayout(false);
             this.tbpgModificarUsuario.PerformLayout();
@@ -270,11 +250,9 @@
         private System.Windows.Forms.TabControl tctrlUsuario;
         private System.Windows.Forms.TabPage tbpgModificarUsuario;
         private System.Windows.Forms.TabPage tbpgResetearClave;
-        private System.Windows.Forms.ComboBox cbxGrupos;
         private System.Windows.Forms.TextBox txtUsuario;
         private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.TextBox txtApellido;
-        private System.Windows.Forms.Label lblGrupo;
         private System.Windows.Forms.Label lblUsuario;
         private System.Windows.Forms.Label lblNombre;
         private System.Windows.Forms.Label lblApellido;

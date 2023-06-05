@@ -21,6 +21,7 @@ namespace AppConsultorio
         private void frmUsuarios_Load(object sender, EventArgs e)
         {
             this.CenterToScreen();
+            rbActivos.Checked = true;
             CargarGridView();
 
         }
@@ -116,6 +117,36 @@ namespace AppConsultorio
         private void frmUsuarios_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void administradorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (this.dgvUsuarios.CurrentRow != null)
+            {
+                Usuarios.idUsuarioSelec = dgvUsuarios.CurrentRow.Cells["idUsuario"].Value.ToString();
+                Usuarios.UpdateGrupo(Usuarios.idUsuarioSelec, 1);
+                MessageBox.Show("Grupo modificado con exito!", "Operacion Realizada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void medicoaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (this.dgvUsuarios.CurrentRow != null)
+            {
+                Usuarios.idUsuarioSelec = dgvUsuarios.CurrentRow.Cells["idUsuario"].Value.ToString();
+                Usuarios.UpdateGrupo(Usuarios.idUsuarioSelec, 2);
+                MessageBox.Show("Grupo modificado con exito!", "Operacion Realizada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void secretariaoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (this.dgvUsuarios.CurrentRow != null)
+            {
+                Usuarios.idUsuarioSelec = dgvUsuarios.CurrentRow.Cells["idUsuario"].Value.ToString();
+                Usuarios.UpdateGrupo(Usuarios.idUsuarioSelec, 3);
+                MessageBox.Show("Grupo modificado con exito!", "Operacion Realizada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
     }
 }

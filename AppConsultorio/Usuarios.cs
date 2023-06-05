@@ -196,6 +196,106 @@ namespace AppConsultorio
                 MessageBox.Show(ex.ToString());
             }
         }
+        public static void RecuperarUsuarioEditar(string idUsuarioLog, ref DataTable tabla)
+        {
+            try
+            {
+                string cadenaConexion = System.Configuration.ConfigurationManager.ConnectionStrings["CadenaConexion"].ConnectionString;
+                SqlConnection Conexion = new SqlConnection();
+                Conexion.ConnectionString = cadenaConexion;
+                Conexion.Open();
+
+                SqlCommand Comando = new SqlCommand();
+                Comando.Connection = Conexion;
+                Comando.CommandType = CommandType.StoredProcedure;
+                Comando.CommandText = "RECUPERAR_USUARIO_EDITAR";
+                Comando.Parameters.Add("@idUsuario", SqlDbType.Int).Value = idUsuarioLog;
+                tabla = new DataTable();
+                tabla.Load(Comando.ExecuteReader());
+
+                Conexion.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+        public static void UpdateUsuario(string idUsuario, string apellido, string nombre, string usuario)
+        {
+            try
+            {
+                string cadenaConexion = System.Configuration.ConfigurationManager.ConnectionStrings["CadenaConexion"].ConnectionString;
+                SqlConnection Conexion = new SqlConnection();
+                Conexion.ConnectionString = cadenaConexion;
+                Conexion.Open();
+
+                SqlCommand Comando = new SqlCommand();
+                Comando.Connection = Conexion;
+                Comando.CommandType = CommandType.StoredProcedure;
+                Comando.CommandText = "UPDATE_USUARIO";
+                Comando.Parameters.Add("@idUsuario", SqlDbType.Int).Value = idUsuario;
+                Comando.Parameters.Add("@apellido", SqlDbType.NChar,30).Value = apellido;
+                Comando.Parameters.Add("@nombre", SqlDbType.NChar,30).Value = nombre;
+                Comando.Parameters.Add("@usuario", SqlDbType.NVarChar,30).Value = usuario;
+                Comando.ExecuteNonQuery();
+
+                Conexion.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+        public static void UpdateGrupo(string idUsuarioSelec, int idGrupo)
+        {
+            try
+            {
+                string cadenaConexion = System.Configuration.ConfigurationManager.ConnectionStrings["CadenaConexion"].ConnectionString;
+                SqlConnection Conexion = new SqlConnection();
+                Conexion.ConnectionString = cadenaConexion;
+                Conexion.Open();
+
+                SqlCommand Comando = new SqlCommand();
+                Comando.Connection = Conexion;
+                Comando.CommandType = CommandType.StoredProcedure;
+                Comando.CommandText = "UPDATE_GRUPO";
+                Comando.Parameters.Add("@idUsuarioSelec", SqlDbType.Int).Value = idUsuarioSelec;
+                Comando.Parameters.Add("@idGrupo", SqlDbType.Int).Value = idGrupo;
+
+                Comando.ExecuteNonQuery();
+
+                Conexion.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+        public static void VerificarUpdateUsuario(string idUsuario, string usuario, ref DataTable tabla)
+        {
+            try
+            {
+                string cadenaConexion = System.Configuration.ConfigurationManager.ConnectionStrings["CadenaConexion"].ConnectionString;
+                SqlConnection Conexion = new SqlConnection();
+                Conexion.ConnectionString = cadenaConexion;
+                Conexion.Open();
+
+                SqlCommand Comando = new SqlCommand();
+                Comando.Connection = Conexion;
+                Comando.CommandType = CommandType.StoredProcedure;
+                Comando.CommandText = "VERIFICAR_UPDATE_USUARIO";
+                Comando.Parameters.Add("@idUsuario", SqlDbType.Int).Value = idUsuario;
+                Comando.Parameters.Add("@usuario", SqlDbType.NVarChar,30).Value = usuario;
+                tabla = new DataTable();
+                tabla.Load(Comando.ExecuteReader());
+
+                Conexion.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
         public static void RecuperarUsuariosActivos(ref DataTable tabla)
         {
             try
@@ -323,6 +423,30 @@ namespace AppConsultorio
                 Comando.CommandText = "UPDATE_AUMENTAR_INTENTOS_LOGIN";
                 Comando.Parameters.Add("@idUsuario", SqlDbType.Int).Value = idUsuario;
 
+                Comando.ExecuteNonQuery();
+
+                Conexion.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        public static void CambiarContraseña(string idUsuario, string contraseña)
+        {
+            try
+            {
+                string cadenaConexion = System.Configuration.ConfigurationManager.ConnectionStrings["CadenaConexion"].ConnectionString;
+                SqlConnection Conexion = new SqlConnection();
+                Conexion.ConnectionString = cadenaConexion;
+                Conexion.Open();
+
+                SqlCommand Comando = new SqlCommand();
+                Comando.Connection = Conexion;
+                Comando.CommandType = CommandType.StoredProcedure;
+                Comando.CommandText = "CAMBIAR_CLAVE";
+                Comando.Parameters.Add("@idUsuario", SqlDbType.Int).Value = idUsuario;
+                Comando.Parameters.Add("@pass", SqlDbType.Char,64).Value = contraseña;
                 Comando.ExecuteNonQuery();
 
                 Conexion.Close();
