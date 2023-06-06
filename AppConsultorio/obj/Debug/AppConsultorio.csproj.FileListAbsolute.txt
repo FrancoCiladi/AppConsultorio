@@ -158,3 +158,4 @@ C:\Users\franc\OneDrive\Documentos\GitHub Repositorios\AppConsultorio\AppConsult
 C:\Users\franc\OneDrive\Documentos\GitHub Repositorios\AppConsultorio\AppConsultorio\obj\Debug\AppConsultorio.frmMenuPrincipal.resources
 C:\Users\franc\OneDrive\Documentos\GitHub Repositorios\AppConsultorio\AppConsultorio\obj\Debug\AppConsultorio.frmListadoUsuarios.resources
 C:\Users\franc\OneDrive\Documentos\GitHub Repositorios\AppConsultorio\AppConsultorio\obj\Debug\AppConsultorio.frmUsuario.resources
+C:\Users\franc\OneDrive\Documentos\GitHub Repositorios\AppConsultorio\AppConsultorio\obj\Debug\AppConsultorio.frmRecuperarClave.resources

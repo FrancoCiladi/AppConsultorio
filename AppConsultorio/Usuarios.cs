@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Windows.Forms;
 using System.Configuration;
-
+using System.Security.Cryptography;
 
 namespace AppConsultorio
 {
@@ -17,7 +17,7 @@ namespace AppConsultorio
         public static string idUsuarioSelec;
         public static string idUsuarioLog;
         public static int AccesoLog;
-        public static void RegistrarUsuario(string usuario,string pass,string apellido, string nombre, string idGrupo)
+        public static void RegistrarUsuario(string usuario,string pass,string apellido, string nombre, string idGrupo,string salt)
         {
             try
             {
@@ -35,6 +35,7 @@ namespace AppConsultorio
                 Comando.Parameters.Add("@apellido", SqlDbType.NChar, 30).Value = apellido;
                 Comando.Parameters.Add("@nombre", SqlDbType.NChar, 30).Value = nombre;
                 Comando.Parameters.Add("@idGrupo", SqlDbType.Int).Value = idGrupo;
+                Comando.Parameters.Add("@salt", SqlDbType.NVarChar,128).Value = salt;
 
                 Comando.ExecuteNonQuery();
 
@@ -360,6 +361,35 @@ namespace AppConsultorio
 
             return Salida;
         }
+
+
+        public class SecurityHelper
+        {
+            public static string GenerateSalt(int nSalt)
+            {
+                var saltBytes = new byte[nSalt];
+
+                using (var provider = new RNGCryptoServiceProvider())
+                {
+                    provider.GetNonZeroBytes(saltBytes);
+                }
+
+                return Convert.ToBase64String(saltBytes);
+            }
+
+            public static string HashPassword(string password, string salt, int nIterations, int nHash)
+            {
+                var saltBytes = Convert.FromBase64String(salt);
+
+                using (var rfc2898DeriveBytes = new Rfc2898DeriveBytes(password, saltBytes, nIterations))
+                {
+                    return Convert.ToBase64String(rfc2898DeriveBytes.GetBytes(nHash));
+                }
+            }
+        }
+
+
+
         public static void VerificarUsuarioNuevo(string usuario, ref DataTable Tabla)
         {
             try
@@ -432,7 +462,7 @@ namespace AppConsultorio
                 MessageBox.Show(ex.Message);
             }
         }
-        public static void CambiarContraseña(string idUsuario, string contraseña)
+        public static void CambiarContraseña(string idUsuario, string contraseña,string salt)
         {
             try
             {
@@ -446,7 +476,57 @@ namespace AppConsultorio
                 Comando.CommandType = CommandType.StoredProcedure;
                 Comando.CommandText = "CAMBIAR_CLAVE";
                 Comando.Parameters.Add("@idUsuario", SqlDbType.Int).Value = idUsuario;
-                Comando.Parameters.Add("@pass", SqlDbType.Char,64).Value = contraseña;
+                Comando.Parameters.Add("@pass", SqlDbType.NVarChar,128).Value = contraseña;
+                Comando.Parameters.Add("@salt", SqlDbType.NVarChar, 128).Value = salt;
+                Comando.ExecuteNonQuery();
+
+                Conexion.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        public static void RecuperarPreguntasSeguridad(ref DataTable tabla)
+        {
+            try
+            {
+                string cadenaConexion = System.Configuration.ConfigurationManager.ConnectionStrings["CadenaConexion"].ConnectionString;
+                SqlConnection Conexion = new SqlConnection();
+                Conexion.ConnectionString = cadenaConexion;
+                Conexion.Open();
+
+                SqlCommand Comando = new SqlCommand();
+                Comando.Connection = Conexion;
+                Comando.CommandType = CommandType.StoredProcedure;
+                Comando.CommandText = "RECUPERAR_PREGUNTAS_SEGURIDAD";
+                tabla = new DataTable();
+                tabla.Load(Comando.ExecuteReader());
+
+                Conexion.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+        public static void RegistrarPreguntaSeguridad (string idUsuario,string idPregunta,string respuesta,string salt)
+        {
+            try
+            {
+                string cadenaConexion = System.Configuration.ConfigurationManager.ConnectionStrings["CadenaConexion"].ConnectionString;
+                SqlConnection Conexion = new SqlConnection();
+                Conexion.ConnectionString = cadenaConexion;
+                Conexion.Open();
+
+                SqlCommand Comando = new SqlCommand();
+                Comando.Connection = Conexion;
+                Comando.CommandType = CommandType.StoredProcedure;
+                Comando.CommandText = "REGISTRAR_PREGUNTA_SEGURIDAD";
+                Comando.Parameters.Add("@idUsuario", SqlDbType.Int).Value = idUsuario;
+                Comando.Parameters.Add("@idPregunta", SqlDbType.Int).Value = idPregunta;
+                Comando.Parameters.Add("@respuesta", SqlDbType.NVarChar, 128).Value = respuesta;
+                Comando.Parameters.Add("@salt", SqlDbType.NVarChar, 128).Value = salt;
                 Comando.ExecuteNonQuery();
 
                 Conexion.Close();

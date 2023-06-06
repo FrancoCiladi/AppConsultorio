@@ -21,13 +21,14 @@ namespace AppConsultorio
             bool ok = false;
             DataTable tabla;
             string HashPass;
-
+            string salt; 
             if (!string.IsNullOrEmpty(txtContraseñaActual.Text))
             {
                 tabla = new DataTable();
                 Usuarios.RecuperarUsuarioLogeado(Usuarios.idUsuarioLog, ref tabla);
-                HashPass = Usuarios.GenerarHash256(txtContraseñaActual.Text.ToString().Trim());
-                HashPass.Length.ToString();
+                salt = tabla.Rows[0]["Salt"].ToString();
+                HashPass = Usuarios.SecurityHelper.HashPassword(txtContraseñaActual.Text.ToString().Trim(), salt, 10000, 32);
+
                 if (HashPass == tabla.Rows[0]["Pass"].ToString().Trim())
                 {
                     if (!string.IsNullOrEmpty(txtNuevaContraseña.Text))
@@ -73,10 +74,18 @@ namespace AppConsultorio
         {
             if (VerificarContraseña())
             {
-                string passHash = Usuarios.GenerarHash256(txtNuevaContraseña.Text.Trim());
-                Usuarios.CambiarContraseña(Usuarios.idUsuarioLog.ToString(), passHash);
-                MessageBox.Show("Contraseña modificada. Espere a ser habilitado nuevamente.", "Contraseña modificada!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                Application.Restart();
+                DialogResult dialogresult = MessageBox.Show("Al cambiar la contraseña debera ingresar nuevamente, ¿desea continuar?", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (dialogresult == DialogResult.Yes)
+                {
+                    string salt = Usuarios.SecurityHelper.GenerateSalt(32);
+                    string passHash = Usuarios.SecurityHelper.HashPassword(txtNuevaContraseña.Text.ToString().Trim(), salt, 10000, 32);
+
+                    Usuarios.CambiarContraseña(Usuarios.idUsuarioLog.ToString(), passHash, salt);
+
+                    MessageBox.Show("Contraseña modificada.", "Contraseña modificada!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Application.Restart();
+                }
+     
             }
         }
 

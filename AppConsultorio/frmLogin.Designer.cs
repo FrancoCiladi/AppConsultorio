@@ -35,6 +35,7 @@
             this.txtContraseña = new System.Windows.Forms.TextBox();
             this.lblNuevoUsuario = new System.Windows.Forms.LinkLabel();
             this.label1 = new System.Windows.Forms.Label();
+            this.lblOlvideContraseña = new System.Windows.Forms.LinkLabel();
             this.SuspendLayout();
             // 
             // lblUsuario
@@ -116,12 +117,24 @@
             this.label1.TabIndex = 9;
             this.label1.Text = "LOGO";
             // 
+            // lblOlvideContraseña
+            // 
+            this.lblOlvideContraseña.AutoSize = true;
+            this.lblOlvideContraseña.Location = new System.Drawing.Point(199, 251);
+            this.lblOlvideContraseña.Name = "lblOlvideContraseña";
+            this.lblOlvideContraseña.Size = new System.Drawing.Size(108, 13);
+            this.lblOlvideContraseña.TabIndex = 10;
+            this.lblOlvideContraseña.TabStop = true;
+            this.lblOlvideContraseña.Text = "Olvide Mi Contraseña";
+            this.lblOlvideContraseña.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblOlvideContraseña_LinkClicked);
+            // 
             // frmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSeaGreen;
             this.ClientSize = new System.Drawing.Size(419, 276);
+            this.Controls.Add(this.lblOlvideContraseña);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lblNuevoUsuario);
             this.Controls.Add(this.txtContraseña);
@@ -146,6 +159,7 @@
         private System.Windows.Forms.TextBox txtContraseña;
         private System.Windows.Forms.LinkLabel lblNuevoUsuario;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.LinkLabel lblOlvideContraseña;
     }
 }
 

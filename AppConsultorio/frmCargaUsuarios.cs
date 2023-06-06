@@ -28,6 +28,14 @@ namespace AppConsultorio
             cbxGrupos.ValueMember = "idGrupo";
             cbxGrupos.DropDownStyle = ComboBoxStyle.DropDownList;
             cbxGrupos.SelectedIndex = 0;
+
+            tabla = new DataTable();
+            Usuarios.RecuperarPreguntasSeguridad(ref tabla);
+            cbxPreguntaSeguridad.DataSource = tabla;
+            cbxPreguntaSeguridad.DisplayMember = "Descripcion";
+            cbxPreguntaSeguridad.ValueMember = "idPregunta";
+            cbxPreguntaSeguridad.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbxPreguntaSeguridad.SelectedIndex = 0;
         }
         private bool Verificar()
         {
@@ -54,16 +62,32 @@ namespace AppConsultorio
                                             {
                                                 if (txtContraseña.Text.ToString().Trim() == txtRepetirContraseña.Text.ToString().Trim())
                                                 {
-                                                    Usuarios.VerificarUsuarioNuevo(txtUsuario.Text.ToString().Trim(), ref tabla);
-                                                    if (tabla.Rows.Count == 0)
+                                                    if (!string.IsNullOrEmpty(txtRespuestaSeguridad.Text))
                                                     {
-                                                        ok = true;
+                                                        if (Modulo.ValidarFiltro(txtRespuestaSeguridad.Text.ToString()))
+                                                        {
+                                                            Usuarios.VerificarUsuarioNuevo(txtUsuario.Text.ToString().Trim(), ref tabla);
+                                                            if (tabla.Rows.Count == 0)
+                                                            {
+                                                                ok = true;
+                                                            }
+                                                            else
+                                                            {
+                                                                MessageBox.Show("Nombre de usuario no disponible.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                                                txtUsuario.Focus();
+                                                            }
+                                                        }
+                                                        else
+                                                        {
+                                                            MessageBox.Show("Ingreso un caracter no permitido.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                                            txtContraseña.Focus();
+                                                        }                                                        
                                                     }
                                                     else
                                                     {
-                                                        MessageBox.Show("Nombre de usuario no disponible.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                                                        txtUsuario.Focus();
-                                                    }
+                                                        MessageBox.Show("Complete la respuesta de seguridad.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                                        txtRespuestaSeguridad.Focus();
+                                                    }                                                  
                                                 }
                                                 else
                                                 {
@@ -134,8 +158,21 @@ namespace AppConsultorio
         {
             if (Verificar())
             {
-                string passHash = Usuarios.GenerarHash256(txtContraseña.Text.ToString().Trim());
-                Usuarios.RegistrarUsuario(txtUsuario.Text.ToString().Trim(), passHash.ToString().Trim(),txtApellido.Text.ToString().Trim(), txtNombre.Text.ToString().Trim(),cbxGrupos.SelectedValue.ToString());
+                DataTable tabla;
+
+                string salt = Usuarios.SecurityHelper.GenerateSalt(32);
+                string passHash = Usuarios.SecurityHelper.HashPassword(txtContraseña.Text.ToString().Trim(), salt, 10000, 32);
+
+                Usuarios.RegistrarUsuario(txtUsuario.Text.ToString().Trim(), passHash,txtApellido.Text.ToString().Trim(), txtNombre.Text.ToString().Trim(),cbxGrupos.SelectedValue.ToString(),salt);
+
+                //NECESARIO PARA RECUPERAR EL ID DEL USUARIO RECIEN CREADO, REUTILIZO EL PROCEDURE 'RecuperarUsuarioLogin'
+                tabla = new DataTable();
+                Usuarios.RecuperarUsuarioLogin(txtUsuario.Text.ToString().Trim(), ref tabla);
+
+                string saltRespuesta = Usuarios.SecurityHelper.GenerateSalt(32);
+                string respuestaHash = Usuarios.SecurityHelper.HashPassword(txtRespuestaSeguridad.Text.ToString().Trim(), saltRespuesta, 10000, 32);
+                string idUsuario = tabla.Rows[0]["idUsuario"].ToString();
+                Usuarios.RegistrarPreguntaSeguridad(idUsuario, cbxPreguntaSeguridad.SelectedValue.ToString(), respuestaHash, saltRespuesta);
                 this.Close();
             }
         }

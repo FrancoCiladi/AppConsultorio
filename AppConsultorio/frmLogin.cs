@@ -45,6 +45,7 @@ namespace AppConsultorio
         {
             DataTable tabla;
             string HashPass;
+            string salt;
             int LogFall;
 
             if (!string.IsNullOrEmpty(txtUsuario.Text.ToString().Trim()))
@@ -60,8 +61,8 @@ namespace AppConsultorio
                             LogFall = int.Parse(tabla.Rows[0]["LogFall"].ToString());
                             if (LogFall < 4)
                             {
-                                HashPass = Usuarios.GenerarHash256(txtContraseña.Text.ToString().Trim());
-                                HashPass.Length.ToString();
+                                salt = tabla.Rows[0]["Salt"].ToString();
+                                HashPass = Usuarios.SecurityHelper.HashPassword(txtContraseña.Text.ToString().Trim(), salt, 10000, 32);
                                 if (HashPass == tabla.Rows[0]["Pass"].ToString().Trim())
                                 {
                                     if (tabla.Rows[0]["Activo"].ToString() == "1")
@@ -114,6 +115,12 @@ namespace AppConsultorio
                 txtUsuario.Focus();
             }
 
+        }
+
+        private void lblOlvideContraseña_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            frmRecuperarClave frmRecuperarClave = new frmRecuperarClave();
+            frmRecuperarClave.ShowDialog();
         }
     }
 }

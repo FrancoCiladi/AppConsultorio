@@ -41,6 +41,10 @@
             this.btnRegistrar = new System.Windows.Forms.Button();
             this.txtRepetirContraseña = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.cbxPreguntaSeguridad = new System.Windows.Forms.ComboBox();
+            this.lblPreguntaSeguridad = new System.Windows.Forms.Label();
+            this.txtRespuestaSeguridad = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblApellido
@@ -48,7 +52,7 @@
             this.lblApellido.AutoSize = true;
             this.lblApellido.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblApellido.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lblApellido.Location = new System.Drawing.Point(43, 19);
+            this.lblApellido.Location = new System.Drawing.Point(67, 23);
             this.lblApellido.Name = "lblApellido";
             this.lblApellido.Size = new System.Drawing.Size(69, 16);
             this.lblApellido.TabIndex = 0;
@@ -59,7 +63,7 @@
             this.lblNombre.AutoSize = true;
             this.lblNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNombre.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lblNombre.Location = new System.Drawing.Point(43, 62);
+            this.lblNombre.Location = new System.Drawing.Point(67, 66);
             this.lblNombre.Name = "lblNombre";
             this.lblNombre.Size = new System.Drawing.Size(66, 16);
             this.lblNombre.TabIndex = 1;
@@ -70,7 +74,7 @@
             this.lblUsuario.AutoSize = true;
             this.lblUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUsuario.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lblUsuario.Location = new System.Drawing.Point(43, 102);
+            this.lblUsuario.Location = new System.Drawing.Point(67, 107);
             this.lblUsuario.Name = "lblUsuario";
             this.lblUsuario.Size = new System.Drawing.Size(65, 16);
             this.lblUsuario.TabIndex = 2;
@@ -81,7 +85,7 @@
             this.lblContraseña.AutoSize = true;
             this.lblContraseña.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblContraseña.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lblContraseña.Location = new System.Drawing.Point(30, 146);
+            this.lblContraseña.Location = new System.Drawing.Point(58, 148);
             this.lblContraseña.Name = "lblContraseña";
             this.lblContraseña.Size = new System.Drawing.Size(90, 16);
             this.lblContraseña.TabIndex = 3;
@@ -92,7 +96,7 @@
             this.lblGrupo.AutoSize = true;
             this.lblGrupo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblGrupo.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lblGrupo.Location = new System.Drawing.Point(43, 237);
+            this.lblGrupo.Location = new System.Drawing.Point(79, 238);
             this.lblGrupo.Name = "lblGrupo";
             this.lblGrupo.Size = new System.Drawing.Size(53, 16);
             this.lblGrupo.TabIndex = 4;
@@ -100,7 +104,7 @@
             // 
             // txtApellido
             // 
-            this.txtApellido.Location = new System.Drawing.Point(158, 18);
+            this.txtApellido.Location = new System.Drawing.Point(207, 19);
             this.txtApellido.MaxLength = 30;
             this.txtApellido.Name = "txtApellido";
             this.txtApellido.Size = new System.Drawing.Size(139, 20);
@@ -108,7 +112,7 @@
             // 
             // txtNombre
             // 
-            this.txtNombre.Location = new System.Drawing.Point(158, 61);
+            this.txtNombre.Location = new System.Drawing.Point(207, 62);
             this.txtNombre.MaxLength = 30;
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(139, 20);
@@ -116,7 +120,7 @@
             // 
             // txtUsuario
             // 
-            this.txtUsuario.Location = new System.Drawing.Point(158, 102);
+            this.txtUsuario.Location = new System.Drawing.Point(207, 103);
             this.txtUsuario.MaxLength = 30;
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.Size = new System.Drawing.Size(139, 20);
@@ -124,7 +128,7 @@
             // 
             // txtContraseña
             // 
-            this.txtContraseña.Location = new System.Drawing.Point(158, 146);
+            this.txtContraseña.Location = new System.Drawing.Point(207, 147);
             this.txtContraseña.MaxLength = 30;
             this.txtContraseña.Name = "txtContraseña";
             this.txtContraseña.Size = new System.Drawing.Size(139, 20);
@@ -133,14 +137,14 @@
             // cbxGrupos
             // 
             this.cbxGrupos.FormattingEnabled = true;
-            this.cbxGrupos.Location = new System.Drawing.Point(158, 232);
+            this.cbxGrupos.Location = new System.Drawing.Point(207, 233);
             this.cbxGrupos.Name = "cbxGrupos";
             this.cbxGrupos.Size = new System.Drawing.Size(139, 21);
             this.cbxGrupos.TabIndex = 9;
             // 
             // btnRegistrar
             // 
-            this.btnRegistrar.Location = new System.Drawing.Point(108, 294);
+            this.btnRegistrar.Location = new System.Drawing.Point(134, 386);
             this.btnRegistrar.Name = "btnRegistrar";
             this.btnRegistrar.Size = new System.Drawing.Size(105, 39);
             this.btnRegistrar.TabIndex = 10;
@@ -150,7 +154,7 @@
             // 
             // txtRepetirContraseña
             // 
-            this.txtRepetirContraseña.Location = new System.Drawing.Point(158, 191);
+            this.txtRepetirContraseña.Location = new System.Drawing.Point(207, 192);
             this.txtRepetirContraseña.MaxLength = 30;
             this.txtRepetirContraseña.Name = "txtRepetirContraseña";
             this.txtRepetirContraseña.Size = new System.Drawing.Size(139, 20);
@@ -161,18 +165,60 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label1.Location = new System.Drawing.Point(9, 192);
+            this.label1.Location = new System.Drawing.Point(24, 193);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(143, 16);
+            this.label1.Size = new System.Drawing.Size(145, 16);
             this.label1.TabIndex = 11;
-            this.label1.Text = "Repetir contraseña:";
+            this.label1.Text = "Repetir Contraseña:";
+            // 
+            // cbxPreguntaSeguridad
+            // 
+            this.cbxPreguntaSeguridad.FormattingEnabled = true;
+            this.cbxPreguntaSeguridad.Location = new System.Drawing.Point(207, 281);
+            this.cbxPreguntaSeguridad.Name = "cbxPreguntaSeguridad";
+            this.cbxPreguntaSeguridad.Size = new System.Drawing.Size(139, 21);
+            this.cbxPreguntaSeguridad.TabIndex = 14;
+            // 
+            // lblPreguntaSeguridad
+            // 
+            this.lblPreguntaSeguridad.AutoSize = true;
+            this.lblPreguntaSeguridad.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPreguntaSeguridad.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lblPreguntaSeguridad.Location = new System.Drawing.Point(15, 281);
+            this.lblPreguntaSeguridad.Name = "lblPreguntaSeguridad";
+            this.lblPreguntaSeguridad.Size = new System.Drawing.Size(171, 16);
+            this.lblPreguntaSeguridad.TabIndex = 13;
+            this.lblPreguntaSeguridad.Text = "Pregunta de Seguridad:";
+            // 
+            // txtRespuestaSeguridad
+            // 
+            this.txtRespuestaSeguridad.Location = new System.Drawing.Point(207, 322);
+            this.txtRespuestaSeguridad.MaxLength = 30;
+            this.txtRespuestaSeguridad.Name = "txtRespuestaSeguridad";
+            this.txtRespuestaSeguridad.Size = new System.Drawing.Size(139, 20);
+            this.txtRespuestaSeguridad.TabIndex = 16;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label2.Location = new System.Drawing.Point(24, 326);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(162, 16);
+            this.label2.TabIndex = 15;
+            this.label2.Text = "Respuesta Seguridad:";
             // 
             // frmCargaUsuarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSeaGreen;
-            this.ClientSize = new System.Drawing.Size(315, 351);
+            this.ClientSize = new System.Drawing.Size(372, 456);
+            this.Controls.Add(this.txtRespuestaSeguridad);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.cbxPreguntaSeguridad);
+            this.Controls.Add(this.lblPreguntaSeguridad);
             this.Controls.Add(this.txtRepetirContraseña);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnRegistrar);
@@ -209,5 +255,9 @@
         private System.Windows.Forms.Button btnRegistrar;
         private System.Windows.Forms.TextBox txtRepetirContraseña;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox cbxPreguntaSeguridad;
+        private System.Windows.Forms.Label lblPreguntaSeguridad;
+        private System.Windows.Forms.TextBox txtRespuestaSeguridad;
+        private System.Windows.Forms.Label label2;
     }
 }
