@@ -38,9 +38,9 @@
             this.lblUsuario = new System.Windows.Forms.Label();
             this.pnlSecundario = new System.Windows.Forms.Panel();
             this.btnGuardarCambios = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtRepetirContraseña = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtNuevaContraseña = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.pnlPrincipal.SuspendLayout();
             this.pnlSecundario.SuspendLayout();
@@ -131,9 +131,9 @@
             // pnlSecundario
             // 
             this.pnlSecundario.Controls.Add(this.btnGuardarCambios);
-            this.pnlSecundario.Controls.Add(this.textBox2);
+            this.pnlSecundario.Controls.Add(this.txtRepetirContraseña);
             this.pnlSecundario.Controls.Add(this.label2);
-            this.pnlSecundario.Controls.Add(this.textBox1);
+            this.pnlSecundario.Controls.Add(this.txtNuevaContraseña);
             this.pnlSecundario.Controls.Add(this.label1);
             this.pnlSecundario.Location = new System.Drawing.Point(12, 252);
             this.pnlSecundario.Name = "pnlSecundario";
@@ -152,14 +152,14 @@
             this.btnGuardarCambios.UseVisualStyleBackColor = true;
             this.btnGuardarCambios.Click += new System.EventHandler(this.btnGuardarCambios_Click);
             // 
-            // textBox2
+            // txtRepetirContraseña
             // 
-            this.textBox2.Location = new System.Drawing.Point(209, 87);
-            this.textBox2.MaxLength = 50;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.PasswordChar = '*';
-            this.textBox2.Size = new System.Drawing.Size(228, 20);
-            this.textBox2.TabIndex = 7;
+            this.txtRepetirContraseña.Location = new System.Drawing.Point(209, 87);
+            this.txtRepetirContraseña.MaxLength = 50;
+            this.txtRepetirContraseña.Name = "txtRepetirContraseña";
+            this.txtRepetirContraseña.PasswordChar = '*';
+            this.txtRepetirContraseña.Size = new System.Drawing.Size(228, 20);
+            this.txtRepetirContraseña.TabIndex = 7;
             // 
             // label2
             // 
@@ -172,14 +172,14 @@
             this.label2.TabIndex = 6;
             this.label2.Text = "Repetir Contraseña: ";
             // 
-            // textBox1
+            // txtNuevaContraseña
             // 
-            this.textBox1.Location = new System.Drawing.Point(209, 34);
-            this.textBox1.MaxLength = 50;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.PasswordChar = '*';
-            this.textBox1.Size = new System.Drawing.Size(228, 20);
-            this.textBox1.TabIndex = 5;
+            this.txtNuevaContraseña.Location = new System.Drawing.Point(209, 34);
+            this.txtNuevaContraseña.MaxLength = 50;
+            this.txtNuevaContraseña.Name = "txtNuevaContraseña";
+            this.txtNuevaContraseña.PasswordChar = '*';
+            this.txtNuevaContraseña.Size = new System.Drawing.Size(228, 20);
+            this.txtNuevaContraseña.TabIndex = 5;
             // 
             // label1
             // 
@@ -226,9 +226,9 @@
         private System.Windows.Forms.Button btnVerificar;
         private System.Windows.Forms.Panel pnlSecundario;
         private System.Windows.Forms.Button btnGuardarCambios;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtRepetirContraseña;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtNuevaContraseña;
         private System.Windows.Forms.Label label1;
     }
 }
