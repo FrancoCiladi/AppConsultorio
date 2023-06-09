@@ -61,7 +61,7 @@ namespace AppConsultorio
                 MessageBox.Show(ex.Message);
             }
         }
-        public static void RecuperarTurnosReservadosMes(ref DataTable tabla)
+        public static void RecuperarTurnosReservadosMes(int mes, ref DataTable tabla)
         {
             try
             {
@@ -73,7 +73,8 @@ namespace AppConsultorio
                 SqlCommand Comando = new SqlCommand();
                 Comando.Connection = Conexion;
                 Comando.CommandType = CommandType.StoredProcedure;
-                Comando.CommandText = "RECUPERAR_TURNOS_MES_RESERVADOS";
+                Comando.CommandText = "CREAR_FECHA_RECUPERAR_TURNOS_MES_RESERVADOS";
+                Comando.Parameters.Add("@mes", SqlDbType.Int).Value = mes;
                 tabla = new DataTable();
                 tabla.Load(Comando.ExecuteReader());
 
@@ -150,7 +151,7 @@ namespace AppConsultorio
                 Comando.Parameters.Add("@idTurnoSelec", SqlDbType.Int).Value = idTurnoSelec;
                 Comando.ExecuteNonQuery();
 
-                MessageBox.Show("El turno fue cancelado.", "Operacion Realizada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("El turno fue eliminado.", "Operacion Realizada", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Conexion.Close();
             }
             catch (Exception ex)
@@ -319,6 +320,30 @@ namespace AppConsultorio
                 Comando.CommandType = CommandType.StoredProcedure;
                 Comando.CommandText = "RECUPERAR_INFO_TURNOS";
                 Comando.Parameters.Add("@seleccion", SqlDbType.Int).Value = Seleccion;
+                tabla = new DataTable();
+                tabla.Load(Comando.ExecuteReader());
+
+                Conexion.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        public static void RecuperarMeses (int mes, ref DataTable tabla)
+        {
+            try
+            {
+                string cadenaConexion = System.Configuration.ConfigurationManager.ConnectionStrings["CadenaConexion"].ConnectionString;
+                SqlConnection Conexion = new SqlConnection();
+                Conexion.ConnectionString = cadenaConexion;
+                Conexion.Open();
+
+                SqlCommand Comando = new SqlCommand();
+                Comando.Connection = Conexion;
+                Comando.CommandType = CommandType.StoredProcedure;
+                Comando.CommandText = "RECUPERAR_MESES";
+                Comando.Parameters.Add("@mes",SqlDbType.Int).Value = mes;
                 tabla = new DataTable();
                 tabla.Load(Comando.ExecuteReader());
 

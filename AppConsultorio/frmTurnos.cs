@@ -21,7 +21,7 @@ namespace AppConsultorio
         private void frmTurnos_Load(object sender, EventArgs e)
         {
             this.CenterToScreen();
-
+            
             Turnos.CambiarEstadoTurno();
 
             cbxTurnosCategorias.Items.Add("Dia");
@@ -29,9 +29,11 @@ namespace AppConsultorio
             cbxTurnosCategorias.Items.Add("Mes");
             cbxTurnosCategorias.SelectedIndex = 0;
 
-
+            cbxMeses.DropDownStyle = ComboBoxStyle.DropDownList;
+            
             CargarGridViewTurnos();
             CargarGridViewPacientes();
+
             this.dtpFecha.MinDate = DateTime.Today;
 
             if (Usuarios.AccesoLog > 20)
@@ -39,7 +41,19 @@ namespace AppConsultorio
                 mnuTurnos.Items[2].Visible = false;
             }
         }
+        private void CargarMeses()
+        {
+            int mes = DateTime.Now.Month;
 
+            DataTable tabla = new DataTable();
+
+            Turnos.RecuperarMeses(mes, ref tabla);
+
+            cbxMeses.DataSource = tabla;
+            cbxMeses.DisplayMember = "Descripcion";
+            cbxMeses.ValueMember = "idMes";
+            cbxMeses.SelectedIndex = 0;
+        }
         private void CargarGridViewTurnos()
         {
             DataTable tabla = new DataTable();
@@ -52,8 +66,48 @@ namespace AppConsultorio
                     Turnos.RecuperarTurnosReservadosSemana(ref tabla);
                     break;
                 case 2:
-                    Turnos.RecuperarTurnosReservadosMes(ref tabla);
+                    Turnos.RecuperarTurnosReservadosMes(DateTime.Now.Month, ref tabla);
                     break;
+            }
+            switch (cbxMeses.SelectedValue)
+            {
+                case 1: 
+                    Turnos.RecuperarTurnosReservadosMes(1,ref tabla);
+                    break;
+                case 2:
+                    Turnos.RecuperarTurnosReservadosMes(2, ref tabla);
+                    break;
+                case 3:
+                    Turnos.RecuperarTurnosReservadosMes(3, ref tabla);
+                    break;
+                case 4:
+                    Turnos.RecuperarTurnosReservadosMes(4, ref tabla);
+                    break;
+                case 5:
+                    Turnos.RecuperarTurnosReservadosMes(5, ref tabla);
+                    break;
+                case 6:
+                    Turnos.RecuperarTurnosReservadosMes(6, ref tabla);
+                    break;
+                case 7:
+                    Turnos.RecuperarTurnosReservadosMes(7, ref tabla);
+                    break;
+                case 8:
+                    Turnos.RecuperarTurnosReservadosMes(8, ref tabla);
+                    break;
+                case 9:
+                    Turnos.RecuperarTurnosReservadosMes(9, ref tabla);
+                    break;
+                case 10:
+                    Turnos.RecuperarTurnosReservadosMes(10, ref tabla);
+                    break;
+                case 11:
+                    Turnos.RecuperarTurnosReservadosMes(11, ref tabla);
+                    break;
+                case 12:
+                    Turnos.RecuperarTurnosReservadosMes(12, ref tabla);
+                    break;
+
             }
             this.dgvTurnos.DataSource = tabla;
 
@@ -67,7 +121,7 @@ namespace AppConsultorio
             this.dgvTurnos.Columns["observaciones"].Visible = false;
             this.dgvTurnos.Columns["idPaciente"].Visible = false;
             this.dgvTurnos.Columns["fecha_cancelacion"].Visible = false;
-            
+
 
         }
 
@@ -245,11 +299,28 @@ namespace AppConsultorio
         private void cbxTurnosCategorias_SelectedIndexChanged_1(object sender, EventArgs e)
         {
             CargarGridViewTurnos();
+            if (cbxTurnosCategorias.SelectedIndex == 2)
+            {
+                cbxMeses.Enabled = true;
+                CargarMeses();                
+            }
+            else
+            {
+                cbxMeses.Enabled = false;
+            }
         }
 
         private void dgvPacientes_RowHeaderMouseClick_1(object sender, DataGridViewCellMouseEventArgs e)
         {
             Pacientes.idPacienteSelec = this.dgvPacientes.CurrentRow.Cells["idPaciente"].Value.ToString();
+        }
+
+        private void cbxMeses_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbxMeses.SelectedIndex > 0)
+            {
+                CargarGridViewTurnos();
+            }
         }
     }
     

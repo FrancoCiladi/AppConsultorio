@@ -46,6 +46,7 @@
             this.txtFiltrar = new System.Windows.Forms.TextBox();
             this.lblFecha = new System.Windows.Forms.Label();
             this.dgvTurnos = new System.Windows.Forms.DataGridView();
+            this.cbxMeses = new System.Windows.Forms.ComboBox();
             this.mnuTurnos.SuspendLayout();
             this.mnuPacientes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPacientes)).BeginInit();
@@ -219,6 +220,15 @@
             this.dgvTurnos.Size = new System.Drawing.Size(757, 257);
             this.dgvTurnos.TabIndex = 24;
             // 
+            // cbxMeses
+            // 
+            this.cbxMeses.FormattingEnabled = true;
+            this.cbxMeses.Location = new System.Drawing.Point(150, 12);
+            this.cbxMeses.Name = "cbxMeses";
+            this.cbxMeses.Size = new System.Drawing.Size(155, 21);
+            this.cbxMeses.TabIndex = 34;
+            this.cbxMeses.SelectedIndexChanged += new System.EventHandler(this.cbxMeses_SelectedIndexChanged);
+            // 
             // frmTurnos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -226,6 +236,7 @@
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.LightSeaGreen;
             this.ClientSize = new System.Drawing.Size(789, 586);
+            this.Controls.Add(this.cbxMeses);
             this.Controls.Add(this.dgvTurnos);
             this.Controls.Add(this.dgvPacientes);
             this.Controls.Add(this.cbxTurnosCategorias);
@@ -268,5 +279,6 @@
         private System.Windows.Forms.TextBox txtFiltrar;
         private System.Windows.Forms.Label lblFecha;
         private System.Windows.Forms.DataGridView dgvTurnos;
+        private System.Windows.Forms.ComboBox cbxMeses;
     }
 }

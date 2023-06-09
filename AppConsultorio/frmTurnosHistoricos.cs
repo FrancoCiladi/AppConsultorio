@@ -100,5 +100,15 @@ namespace AppConsultorio
                 dgvTurnosHistoricos.DataSource = null;
             }
         }
+
+        private void eliminarTurnoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (dgvTurnosHistoricos.CurrentRow != null)
+            {
+                Turnos.idTurnoSelec = this.dgvTurnosHistoricos.CurrentRow.Cells["idTurno"].Value.ToString();
+                Turnos.EliminarTurno(Turnos.idTurnoSelec);
+                
+            }
+        }
     }
 }
