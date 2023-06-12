@@ -20,7 +20,7 @@ namespace AppConsultorio
         private void frmCargaUsuarios_Load(object sender, EventArgs e)
         {
             this.CenterToScreen();
-
+            //CARGA DE COMBOBOX GRUPOS
             DataTable tabla = new DataTable();
             Usuarios.RecuperarGrupos(ref tabla);
             cbxGrupos.DataSource = tabla;
@@ -29,6 +29,7 @@ namespace AppConsultorio
             cbxGrupos.DropDownStyle = ComboBoxStyle.DropDownList;
             cbxGrupos.SelectedIndex = 0;
 
+            //CARGA DE COMBOBOX DE PREGUNTAS DE SEGURIDAD
             tabla = new DataTable();
             Usuarios.RecuperarPreguntasSeguridad(ref tabla);
             cbxPreguntaSeguridad.DataSource = tabla;
@@ -39,6 +40,7 @@ namespace AppConsultorio
         }
         private bool Verificar()
         {
+           //VERIFICACION DE CONTROLES
             bool ok = false;
             DataTable tabla = new DataTable();
 
@@ -158,9 +160,12 @@ namespace AppConsultorio
         {
             if (Verificar())
             {
+                
                 DataTable tabla;
 
+                //GENERACION DE SALT
                 string salt = Usuarios.SecurityHelper.GenerateSalt(32);
+                //SE COMBINA LA SALT GENERADA JUNTO A LA CONTRASEÑA INGRESADA
                 string passHash = Usuarios.SecurityHelper.HashPassword(txtContraseña.Text.ToString().Trim(), salt, 10000, 32);
 
                 Usuarios.RegistrarUsuario(txtUsuario.Text.ToString().Trim(), passHash,txtApellido.Text.ToString().Trim(), txtNombre.Text.ToString().Trim(),cbxGrupos.SelectedValue.ToString(),salt);
@@ -169,7 +174,9 @@ namespace AppConsultorio
                 tabla = new DataTable();
                 Usuarios.RecuperarUsuarioLogin(txtUsuario.Text.ToString().Trim(), ref tabla);
 
+                //GENERO NUEVAMENTE OTRA SALT
                 string saltRespuesta = Usuarios.SecurityHelper.GenerateSalt(32);
+                //COMBINO SALT CON RESPUESTA DE SEGURIDAD INGRESADA
                 string respuestaHash = Usuarios.SecurityHelper.HashPassword(txtRespuestaSeguridad.Text.ToString().Trim(), saltRespuesta, 10000, 32);
                 string idUsuario = tabla.Rows[0]["idUsuario"].ToString();
                 Usuarios.RegistrarPreguntaSeguridad(idUsuario, cbxPreguntaSeguridad.SelectedValue.ToString(), respuestaHash, saltRespuesta);

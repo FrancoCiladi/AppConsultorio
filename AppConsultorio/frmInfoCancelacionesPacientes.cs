@@ -19,6 +19,7 @@ namespace AppConsultorio
 
         private void frmCancelacionesPacientes_Load(object sender, EventArgs e)
         {
+            //RECUPERO CANCELACIONES POR PACIENTES Y CARGO EL GRIDVIEW
             this.CenterToScreen();
             DataTable tabla = new DataTable();
             Reportes.RecuperarPacientesCancelaciones(ref tabla);

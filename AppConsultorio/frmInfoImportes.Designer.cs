@@ -79,7 +79,7 @@
             this.Controls.Add(this.chartRecaudado);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmInfoImportes";
-            this.Text = "frmInfoImportes";
+            this.Text = "Total Importes";
             this.Load += new System.EventHandler(this.frmInfoImportes_Load);
             ((System.ComponentModel.ISupportInitialize)(this.chartRecaudado)).EndInit();
             this.ResumeLayout(false);

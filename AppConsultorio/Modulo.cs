@@ -13,8 +13,10 @@ namespace AppConsultorio
 {
     internal class Modulo 
     {
+        //STRING PARA PODER VERIFICAR QUE TIPO DE OPERACION REALIZAR SI UNA MODIFICACION O UN ALTA
         public static string Operacion;
 
+        //FUNCION PARA PODER VALIDAR LOS FILTROS DE DIVERSOS FORMS
         public static bool ValidarFiltro(string cadena)
         {
             string[] caracteres = new string[] {"\'","%","\"","*"};

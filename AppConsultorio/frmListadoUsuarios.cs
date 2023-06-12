@@ -23,11 +23,12 @@ namespace AppConsultorio
             this.CenterToScreen();
             rbActivos.Checked = true;
             CargarGridView();
-
+            //POR DEFAULT CARGO LOS USUARIOS ACTIVOS
         }
 
         private void rbActivos_CheckedChanged(object sender, EventArgs e)
         {
+            //CAMBIO DE PACIENTES AL CHECKEAR RADIOBUTTON
             if (rbActivos.Checked)
             {
                 CargarGridView();
@@ -43,6 +44,7 @@ namespace AppConsultorio
 
         private void rbInactivos_CheckedChanged(object sender, EventArgs e)
         {
+            //CAMBIO DE PACIENTES AL CHEQUEAR RADIOBUTTON
             if (rbInactivos.Checked)
             {
                 CargarGridView();
@@ -58,6 +60,7 @@ namespace AppConsultorio
         private void CargarGridView()
         {
             DataTable tabla = new DataTable();
+            //DEPENDIENDO DEL RADIOBUTTON CHEQUEADO LLAMO AL PROCEDURE CORRESPONDIENTE
             if (rbActivos.Checked == true)
             {
                 Usuarios.RecuperarUsuariosActivos(ref tabla);
@@ -79,6 +82,7 @@ namespace AppConsultorio
         {
             if (this.dgvUsuarios.CurrentRow != null)
             {
+                //DESHABILITO USUARIO Y PASA A ESTAR INACTIVO
                 Usuarios.idUsuarioSelec = dgvUsuarios.CurrentRow.Cells["idUsuario"].Value.ToString();
                 Usuarios.DeshabilitarUsuario(Usuarios.idUsuarioSelec);
                 CargarGridView();
@@ -89,6 +93,7 @@ namespace AppConsultorio
         {
             if (this.dgvUsuarios.CurrentRow != null)
             {
+                //ELIMINO EL USUARIO DE LA BD LLAMANDO AL PROCEDURE
                 Usuarios.idUsuarioSelec = dgvUsuarios.CurrentRow.Cells["idUsuario"].Value.ToString();
                 Usuarios.EliminarUsuario(Usuarios.idUsuarioSelec);
                 CargarGridView();
@@ -99,6 +104,7 @@ namespace AppConsultorio
         {
             if (this.dgvUsuarios.CurrentRow != null)
             {
+                //RESETEO LA CANTIDAD DE INTENTOS DE LOGIN DEL USUARIO
                 Usuarios.idUsuarioSelec = dgvUsuarios.CurrentRow.Cells["idUsuario"].Value.ToString();
                 Usuarios.ResetearIntentosLogin(Usuarios.idUsuarioSelec);
             }
@@ -108,6 +114,7 @@ namespace AppConsultorio
         {
             if (this.dgvUsuarios.CurrentRow != null)
             {
+                //HABILITO USUARIOS INACTIVOS
                 Usuarios.idUsuarioSelec = dgvUsuarios.CurrentRow.Cells["idUsuario"].Value.ToString();
                 Usuarios.HabilitarUsuario(Usuarios.idUsuarioSelec);
                 CargarGridView();
@@ -123,6 +130,7 @@ namespace AppConsultorio
         {
             if (this.dgvUsuarios.CurrentRow != null)
             {
+                //CONVIERTO GRUPO DE USUARIO A ADMIN
                 Usuarios.idUsuarioSelec = dgvUsuarios.CurrentRow.Cells["idUsuario"].Value.ToString();
                 Usuarios.UpdateGrupo(Usuarios.idUsuarioSelec, 1);
                 MessageBox.Show("Grupo modificado con exito!", "Operacion Realizada", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -133,6 +141,7 @@ namespace AppConsultorio
         {
             if (this.dgvUsuarios.CurrentRow != null)
             {
+                //CONVIERTO GRUPO DE USUARIO A MEDICO/A
                 Usuarios.idUsuarioSelec = dgvUsuarios.CurrentRow.Cells["idUsuario"].Value.ToString();
                 Usuarios.UpdateGrupo(Usuarios.idUsuarioSelec, 2);
                 MessageBox.Show("Grupo modificado con exito!", "Operacion Realizada", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -143,6 +152,7 @@ namespace AppConsultorio
         {
             if (this.dgvUsuarios.CurrentRow != null)
             {
+                //CONVIERTO GRUPO DE USUARIO A SECRETARIA
                 Usuarios.idUsuarioSelec = dgvUsuarios.CurrentRow.Cells["idUsuario"].Value.ToString();
                 Usuarios.UpdateGrupo(Usuarios.idUsuarioSelec, 3);
                 MessageBox.Show("Grupo modificado con exito!", "Operacion Realizada", MessageBoxButtons.OK, MessageBoxIcon.Information);

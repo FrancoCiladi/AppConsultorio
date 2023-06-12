@@ -21,6 +21,7 @@ namespace AppConsultorio
         {
             if (dgvTurnosPaciente.CurrentRow != null)
             {
+                //CARGO FORMS DE OBSERVACIONES PARA EL TURNO SELECCIONADO DEL PACIENTE
                 Turnos.idTurnoSelec = this.dgvTurnosPaciente.CurrentRow.Cells["idTurno"].Value.ToString();
                 frmObservaciones frmObservaciones = new frmObservaciones();
                 frmObservaciones.ShowDialog();
@@ -30,7 +31,7 @@ namespace AppConsultorio
         private void frmTurnosPaciente_Load(object sender, EventArgs e)
         {
             this.CenterToScreen();
-
+            //RECUPERO TODOS LOS TURNOS DEL PACIENTE SELECCIONADA
             DataTable Tabla = new DataTable();
             Pacientes.RecuperarTurnosPaciente(Pacientes.idPacienteSelec.ToString(), ref Tabla);
             dgvTurnosPaciente.DataSource = Tabla;

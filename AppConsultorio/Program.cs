@@ -16,8 +16,8 @@ namespace AppConsultorio
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new frmLogin());
 
+            //POR DEFAULT ABRO EL FORM DE LOGIN Y SI EL LOGIN ES CORRECTO SE PROCEDE CON EL RESTO DEL PROCESO DE INICIO DE LA APLICACION
             frmLogin frmLogin = new frmLogin();
             if(frmLogin.ShowDialog() == DialogResult.OK)
             {

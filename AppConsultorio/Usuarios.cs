@@ -343,25 +343,6 @@ namespace AppConsultorio
                 MessageBox.Show(ex.ToString());
             }
         }
-        public static string GenerarHash256(string cadena)
-        {
-            System.Security.Cryptography.SHA256CryptoServiceProvider AlgoritmoHash = new System.Security.Cryptography.SHA256CryptoServiceProvider();
-            byte[] inputBytes;
-            byte[] hashBytes;
-            string Salida;
-
-            inputBytes = System.Text.Encoding.UTF8.GetBytes(cadena);
-            hashBytes = AlgoritmoHash.ComputeHash(inputBytes);
-
-            Salida = "";
-            foreach (byte b in hashBytes)
-            {
-                Salida = Salida + b.ToString("x2");
-            }
-
-            return Salida;
-        }
-
 
         public class SecurityHelper
         {
@@ -438,6 +419,30 @@ namespace AppConsultorio
                 MessageBox.Show(ex.Message);
             }
         }
+        public static void ResetearIntentosResetearClave(string idUsuario)
+        {
+            try
+            {
+                string cadenaConexion = System.Configuration.ConfigurationManager.ConnectionStrings["CadenaConexion"].ConnectionString;
+                SqlConnection Conexion = new SqlConnection();
+                Conexion.ConnectionString = cadenaConexion;
+                Conexion.Open();
+
+                SqlCommand Comando = new SqlCommand();
+                Comando.Connection = Conexion;
+                Comando.CommandType = CommandType.StoredProcedure;
+                Comando.CommandText = "UPDATE_RESET_INTENTOS_RESETEAR_CLAVE";
+                Comando.Parameters.Add("@idUsuario", SqlDbType.Int).Value = idUsuario;
+
+                Comando.ExecuteNonQuery();
+
+                Conexion.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
         public static void AumentarIntentosLogin(string idUsuario)
         {
             try
@@ -451,6 +456,30 @@ namespace AppConsultorio
                 Comando.Connection = Conexion;
                 Comando.CommandType = CommandType.StoredProcedure;
                 Comando.CommandText = "UPDATE_AUMENTAR_INTENTOS_LOGIN";
+                Comando.Parameters.Add("@idUsuario", SqlDbType.Int).Value = idUsuario;
+
+                Comando.ExecuteNonQuery();
+
+                Conexion.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        public static void AumentarIntentosResetearClave(string idUsuario)
+        {
+            try
+            {
+                string cadenaConexion = System.Configuration.ConfigurationManager.ConnectionStrings["CadenaConexion"].ConnectionString;
+                SqlConnection Conexion = new SqlConnection();
+                Conexion.ConnectionString = cadenaConexion;
+                Conexion.Open();
+
+                SqlCommand Comando = new SqlCommand();
+                Comando.Connection = Conexion;
+                Comando.CommandType = CommandType.StoredProcedure;
+                Comando.CommandText = "UPDATE_AUMENTAR_INTENTOS_RESETEAR_CLAVE";
                 Comando.Parameters.Add("@idUsuario", SqlDbType.Int).Value = idUsuario;
 
                 Comando.ExecuteNonQuery();

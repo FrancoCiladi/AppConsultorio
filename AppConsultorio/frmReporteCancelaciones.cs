@@ -21,7 +21,7 @@ namespace AppConsultorio
         {
             this.CenterToScreen();
 
-
+            //RECUPERO LAS CANCELACIONES POR PACIENTE
             DataTable tabla = new DataTable();
             Reportes.RecuperarPacientesCancelaciones(ref tabla);
 

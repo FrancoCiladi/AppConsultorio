@@ -23,6 +23,7 @@ namespace AppConsultorio
         {
             this.CenterToScreen();
             DataTable tabla = new DataTable();
+            //CARGO EL COMBOBOX CON OBRAS SOCIALES
             Pacientes.RecuperarObrasSociales(ref tabla);
             cbxObrasSociales.DataSource = tabla;
             cbxObrasSociales.DisplayMember = "descripcion";
@@ -32,6 +33,7 @@ namespace AppConsultorio
 
             if (Pacientes.Operacion == "MODIFICAR")
             {
+                //SI SE MODIFICA PACIENTE SE CARGAN LOS DATOS DEL PACIENTE EN LOS CONTROLES RESPECTIVOS
                 Pacientes.RecuperarPacienteUpdate(Pacientes.idPacienteSelec.ToString(), ref tabla);
 
                 txtApellido.Text = tabla.Rows[0]["apellido"].ToString().Trim();
@@ -46,6 +48,7 @@ namespace AppConsultorio
             }
             else
             {
+                //PACIENTES NUEVOS = CONTROLES VACIOS
                 Pacientes.Operacion = "ALTA";
 
                 txtApellido.Text = string.Empty;
@@ -61,61 +64,86 @@ namespace AppConsultorio
         }
         private bool Verificar()
         {
+            //VERIFICACION DE CONTROLES
             DataTable tabla = new DataTable();
             bool ok = false;
             int nrodoc;
 
-            if (!string.IsNullOrEmpty(txtApellido.Text))
+            if (!string.IsNullOrEmpty(txtApellido.Text.ToString().Trim()))
             {
-                if (!string.IsNullOrEmpty(txtNombre.Text))
+                if (Modulo.ValidarFiltro(txtApellido.Text.ToString().Trim()))
                 {
-                    if ((!string.IsNullOrEmpty(txtNroDoc.Text)) && (int.TryParse(txtNroDoc.Text, out nrodoc)))
+                    if (!string.IsNullOrEmpty(txtNombre.Text.ToString().Trim()))
                     {
-                        if (!string.IsNullOrEmpty(txtTelefono.Text))
+                        if (Modulo.ValidarFiltro(txtNombre.Text.ToString().Trim()))
                         {
-                            if (VerificarTelefono(txtTelefono.Text))
+                            if ((!string.IsNullOrEmpty(txtNroDoc.Text.ToString().Trim())) && (int.TryParse(txtNroDoc.Text.ToString().Trim(), out nrodoc)))
                             {
-                                if (Pacientes.Operacion.Equals("ALTA"))
+                                if (Modulo.ValidarFiltro(txtNroDoc.Text.ToString().Trim()))
                                 {
-                                    Pacientes.VerificarInsertPaciente(txtNroDoc.Text, ref tabla);
+                                    if (!string.IsNullOrEmpty(txtTelefono.Text.ToString().Trim()))
+                                    {
+                                        if (VerificarTelefono(txtTelefono.Text.ToString().Trim()))
+                                        {
+                                            if (Pacientes.Operacion.Equals("ALTA"))
+                                            {
+                                                Pacientes.VerificarInsertPaciente(txtNroDoc.Text.ToString().Trim(), ref tabla);
+                                            }
+                                            else
+                                            {
+                                                Pacientes.VerificarUpdatePaciente(txtNroDoc.Text.ToString().Trim(), Pacientes.idPacienteSelec.ToString(), ref tabla);
+                                            }
+                                            if (tabla.Rows.Count == 0)
+                                            {
+                                                ok = true;
+                                            }
+                                            else
+                                            {
+                                                MessageBox.Show("Ya se encuentra un paciente con el mismo DNI.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                                txtNroDoc.Focus();
+                                            }
+                                        }
+                                        else
+                                        {
+                                            MessageBox.Show("Debe ingresar un nro. de telefono valido.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                            txtTelefono.Focus();
+                                        }
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("Debe ingresar un nro. de telefono.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                        txtTelefono.Focus();
+                                    }
                                 }
                                 else
                                 {
-                                    Pacientes.VerificarUpdatePaciente(txtNroDoc.Text, Pacientes.idPacienteSelec.ToString(), ref tabla);
-                                }
-                                if (tabla.Rows.Count == 0)
-                                {
-                                    ok = true;
-                                }
-                                else
-                                {
-                                    MessageBox.Show("Ya se encuentra un paciente con el mismo DNI.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    MessageBox.Show("Ingreso un caracter no permitido.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                     txtNroDoc.Focus();
-                                }
+                                }   
                             }
                             else
                             {
-                                MessageBox.Show("Debe ingresar un nro. de telefono valido.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                                txtTelefono.Focus();
+                                MessageBox.Show("Debe completar el nro. de documento del paciente.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                txtNroDoc.Focus();
                             }
                         }
                         else
                         {
-                            MessageBox.Show("Debe ingresar un nro. de telefono.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            txtTelefono.Focus();
-                        }
+                            MessageBox.Show("Ingreso un caracter no permitido.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            txtNombre.Focus();
+                        }    
                     }
                     else
                     {
-                        MessageBox.Show("Debe completar el nro. de documento del paciente.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        txtNroDoc.Focus();
+                        MessageBox.Show("Debe completar el nombre del paciente.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        txtNombre.Focus();
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Debe completar el nombre del paciente.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    txtNombre.Focus();
-                }
+                    MessageBox.Show("Ingreso un caracter no permitido.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtApellido.Focus();
+                }                
             }
             else
             {
@@ -127,6 +155,7 @@ namespace AppConsultorio
 
         private void btnAgregarPaciente_Click(object sender, EventArgs e)
         {
+            //DEPENDIENDO DE LA OPERACION SE LLAMARA AL PROCEDURE CORRESPONDIENTE
             if (Verificar())
             {
                 if (Pacientes.Operacion.Equals("ALTA"))
@@ -145,6 +174,7 @@ namespace AppConsultorio
 
         private bool VerificarTelefono(string telefono)
         {
+            //VERIFICACION DE NUMERO DE TELEFONO VALIDO
             bool ok = false;
 
             if (telefono.All(char.IsDigit))

@@ -26,6 +26,7 @@ namespace AppConsultorio
         {
             if (VerificarImporte(txtImporte.Text))
             {
+                //VERIFICACION CORRECTA, LLAMO A PROCEDURE CORRESPONDIENTE
                 Turnos.IngresarImporte(txtImporte.Text, Turnos.idTurnoSelec);
                 this.Close();
             }
@@ -38,6 +39,7 @@ namespace AppConsultorio
         }
         private bool VerificarImporte(string importe)
         {
+            //VERIFICO QUE EL IMPORTE INGRESADO SEAN NUMEROS
             bool ok = false;
 
             if (importe.All(char.IsDigit))

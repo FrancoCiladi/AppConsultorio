@@ -20,7 +20,7 @@ namespace AppConsultorio
         private void frmDetalleTurno_Load(object sender, EventArgs e)
         {
             this.CenterToScreen();
-
+            //RECUPERO LAS OBSERVACIONES DEL TURNO SELECCIONADO Y LLENO EL RICHTEXTBOX 
             DataTable tabla = new DataTable();
             Turnos.RecuperarObservacion(Turnos.idTurnoSelec, ref tabla);
             rchObervaciones.Text = tabla.Rows[0]["observaciones"].ToString();
@@ -31,6 +31,7 @@ namespace AppConsultorio
         {
             if (!string.IsNullOrEmpty(rchObervaciones.Text)) 
             {
+                //GUARDO LAS OBSERVACIONES LLAMANDO AL PROCEDURE CORRESPONDIENTE
                 Turnos.GuardarObservaciones(rchObervaciones.Text, Turnos.idTurnoSelec);
             }
             else

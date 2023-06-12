@@ -18,8 +18,10 @@ namespace AppConsultorio
         }
         private void fillChart()
         {
+            //PROCESO DE CARGA DEL CHART
             int TotalRecaudado;
             TotalRecaudado = 0;
+            //NECESARIO PARA LLEVAR CUENTA TOTAL DE LOS IMPORTES 
             int aux = 0;
             //Necesario para que no oculte meses en el chart
             chartRecaudado.ChartAreas.FirstOrDefault().AxisX.Interval = 1;
@@ -33,6 +35,7 @@ namespace AppConsultorio
 
             for (int i = 1; i <= 12; i++)
             {
+                //POR CADA ITERACION DE I GENERO UNA STRING FECHA UTILIZADA PARA EL PROCEDURE Y RECUPERAR INFO DE CADA MES
                 string fecha;
                 DataTable tabla = new DataTable();
                 switch (i)

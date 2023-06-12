@@ -25,6 +25,7 @@ namespace AppConsultorio
             this.CenterToScreen();
             if (Usuarios.AccesoLog > 20)
             {
+                //DESHABILITO OPCIONES EN EL CASO DE NIVEL DE ACCESO >20 == SECRETARIA
                 mnuPacientes.Items[3].Visible = false;
             }
         }
@@ -32,6 +33,7 @@ namespace AppConsultorio
         private void editarPacienteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (this.dgvPacientes.CurrentRow != null){
+                //SELECCIONO PACIENTE EN GRIDVIEW Y GUARDO SU ID PARA CARGAR SUS DATOS EN EL FORM DE CARGA
                 Modulo.Operacion = "MODIFICAR";
                 Pacientes.idPacienteSelec = this.dgvPacientes.CurrentRow.Cells["idPaciente"].Value.ToString();
                 frmAgregarPacientes frmCargaPacientes = new frmAgregarPacientes();
@@ -50,6 +52,7 @@ namespace AppConsultorio
         {
             if (this.dgvPacientes.CurrentRow != null)
             {
+                //VEO TURNOS DE PACIENTES SELECCIONADOS GUARDANDO SU ID
                 Pacientes.idPacienteSelec = this.dgvPacientes.CurrentRow.Cells["idPaciente"].Value.ToString();
                 frmTurnosPaciente frmTurnosPaciente = new frmTurnosPaciente();
                 frmTurnosPaciente.ShowDialog();
@@ -62,7 +65,7 @@ namespace AppConsultorio
         {
             if (string.IsNullOrEmpty(txtFiltroApellido.Text) == false && txtFiltroApellido.Text.Trim().Length >=3)
             {
-                
+                //CARGO EL GRIDVIEW SOLO SI EL TEXTBOX DE APELLIDO TIENE 3 O MAS CARACTERES
                     DataTable Tabla = new DataTable();
                     DataGridViewLinkColumn col;
                     col = new DataGridViewLinkColumn();
@@ -78,9 +81,7 @@ namespace AppConsultorio
                     col.DataPropertyName = "Telefono";
                     col.Name = "Telefono";
                     col.DisplayIndex = 3;
-                    this.dgvPacientes.Columns.Add(col);
-             
-                
+                    this.dgvPacientes.Columns.Add(col);      
             }
             else
             {
@@ -89,6 +90,7 @@ namespace AppConsultorio
         }
         private void txtFiltroApellido_TextChanged(object sender, EventArgs e)
         {
+           //VERIFICO QUE EL USUARIO NO INGRESE CARACTERES NO PERMITIDOS
             if (Modulo.ValidarFiltro(txtFiltroApellido.Text.ToString()) == true)
             {
                 CargarGridView();
@@ -103,6 +105,7 @@ namespace AppConsultorio
 
         private void dgvPacientes_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            //AL HACER CLICK EN NUM DE TELEFONO DE PACIENTES SE ABRIRA WHATSAPP WEB Y UN CHAT AL NUMERO DEL PACIENTE
             if (this.dgvPacientes.Columns[this.dgvPacientes.CurrentCell.ColumnIndex].HeaderText == "Telefono")
             {
                 Process.Start("https://wa.me/+54" + this.dgvPacientes.CurrentCell.EditedFormattedValue);
@@ -118,6 +121,7 @@ namespace AppConsultorio
         {
             if (dgvPacientes.CurrentRow != null)
             {
+                //VERIFICO QUE EL PACIENTE A ELIMINAR NO TENGA TURNOS ASIGNADOS, EN CASO DE QUE SI SE IMPOSIBILITA LA ELIMINACION, CASO CONTRARIO SE PROCEDE A ELIMINARLO DE LA BD
                 DataTable tabla = new DataTable();
                 Pacientes.idPacienteSelec = this.dgvPacientes.CurrentRow.Cells["idPaciente"].Value.ToString();
                 Pacientes.RecuperarTurnosPaciente(Pacientes.idPacienteSelec, ref tabla);

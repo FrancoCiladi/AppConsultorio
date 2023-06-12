@@ -20,19 +20,12 @@ namespace AppConsultorio
         private void frmTurnosHistoricos_Load(object sender, EventArgs e)
         {
             this.CenterToScreen();
-
-            cbxMeses.Items.Add("Seleccione mes...");
-            cbxMeses.Items.Add("Enero");
-            cbxMeses.Items.Add("Febrero");
-            cbxMeses.Items.Add("Marzo");
-            cbxMeses.Items.Add("Abril");
-            cbxMeses.Items.Add("Mayo");
-            cbxMeses.Items.Add("Junio");
-            cbxMeses.Items.Add("Julio");
-            cbxMeses.Items.Add("Agosto");
-            cbxMeses.Items.Add("Octubre");
-            cbxMeses.Items.Add("Noviembre");
-            cbxMeses.Items.Add("Diciembre");
+            DataTable tabla = new DataTable();
+            //CARGO COMBOBOX CON TODOS LOS MESES
+            Turnos.RecuperarMeses(0, ref tabla);
+            cbxMeses.DataSource = tabla;
+            cbxMeses.DisplayMember = "Descripcion";
+            cbxMeses.ValueMember = "idMes";
             cbxMeses.SelectedIndex = 0;
             cbxMeses.DropDownStyle = ComboBoxStyle.DropDownList;
 
@@ -45,6 +38,7 @@ namespace AppConsultorio
         {
             DataTable tabla = new DataTable();
 
+
             Turnos.RecuperarTurnosHistoricos(cbxMeses.SelectedIndex, ref tabla);
             this.dgvTurnosHistoricos.DataSource = tabla;
             this.dgvTurnosHistoricos.AllowUserToAddRows = false;
@@ -55,8 +49,6 @@ namespace AppConsultorio
             this.dgvTurnosHistoricos.Columns["fecha_creacion"].Visible = false;
             this.dgvTurnosHistoricos.Columns["idPaciente"].Visible = false;
             this.dgvTurnosHistoricos.Columns["observaciones"].Visible = false;
-
-
         }
 
         private void ingresarImporteToolStripMenuItem_Click(object sender, EventArgs e)
@@ -91,7 +83,7 @@ namespace AppConsultorio
 
         private void cbxMeses_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cbxMeses.SelectedIndex != 0)
+            if (cbxMeses.SelectedIndex > 0)
             {
                 CargarGridView();
             }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AppConsultorio.ConsultorioDataSetTableAdapters;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -21,6 +22,7 @@ namespace AppConsultorio
         {
             this.CenterToScreen();
 
+            //RECUPERO INFORMACION DE TURNOS
             DataTable tabla = new DataTable();
             Turnos.RecuperarInfoTurnos(Turnos.Seleccion,ref tabla);
 
