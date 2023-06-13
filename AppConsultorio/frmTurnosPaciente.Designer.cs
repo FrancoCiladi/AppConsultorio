@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmTurnosPaciente));
             this.dgvTurnosPaciente = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTurnosPaciente)).BeginInit();
             this.SuspendLayout();
@@ -36,6 +37,9 @@
             // 
             this.dgvTurnosPaciente.AllowUserToAddRows = false;
             this.dgvTurnosPaciente.AllowUserToDeleteRows = false;
+            this.dgvTurnosPaciente.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvTurnosPaciente.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvTurnosPaciente.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvTurnosPaciente.Location = new System.Drawing.Point(13, 13);
@@ -51,6 +55,7 @@
             this.BackColor = System.Drawing.Color.LightSeaGreen;
             this.ClientSize = new System.Drawing.Size(586, 306);
             this.Controls.Add(this.dgvTurnosPaciente);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmTurnosPaciente";
             this.Text = "Turnos Paciente";
             this.Load += new System.EventHandler(this.frmTurnosPaciente_Load);

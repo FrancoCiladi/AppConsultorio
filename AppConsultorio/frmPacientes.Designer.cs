@@ -29,14 +29,15 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPacientes));
             this.lblFiltrarApellido = new System.Windows.Forms.Label();
             this.txtFiltroApellido = new System.Windows.Forms.TextBox();
             this.dgvPacientes = new System.Windows.Forms.DataGridView();
             this.mnuPacientes = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.cargarPacienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editarPacienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.verTurnosPacienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.eliminarPacienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.verTurnosPacienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPacientes)).BeginInit();
             this.mnuPacientes.SuspendLayout();
             this.SuspendLayout();
@@ -84,7 +85,7 @@
             this.eliminarPacienteToolStripMenuItem,
             this.verTurnosPacienteToolStripMenuItem});
             this.mnuPacientes.Name = "mnuPacientes";
-            this.mnuPacientes.Size = new System.Drawing.Size(181, 114);
+            this.mnuPacientes.Size = new System.Drawing.Size(178, 92);
             // 
             // cargarPacienteToolStripMenuItem
             // 
@@ -100,19 +101,19 @@
             this.editarPacienteToolStripMenuItem.Text = "Editar Paciente";
             this.editarPacienteToolStripMenuItem.Click += new System.EventHandler(this.editarPacienteToolStripMenuItem_Click);
             // 
+            // eliminarPacienteToolStripMenuItem
+            // 
+            this.eliminarPacienteToolStripMenuItem.Name = "eliminarPacienteToolStripMenuItem";
+            this.eliminarPacienteToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+            this.eliminarPacienteToolStripMenuItem.Text = "Eliminar Paciente";
+            this.eliminarPacienteToolStripMenuItem.Click += new System.EventHandler(this.eliminarPacienteToolStripMenuItem_Click);
+            // 
             // verTurnosPacienteToolStripMenuItem
             // 
             this.verTurnosPacienteToolStripMenuItem.Name = "verTurnosPacienteToolStripMenuItem";
             this.verTurnosPacienteToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
             this.verTurnosPacienteToolStripMenuItem.Text = "Ver Turnos Paciente";
             this.verTurnosPacienteToolStripMenuItem.Click += new System.EventHandler(this.verTurnosPacienteToolStripMenuItem_Click);
-            // 
-            // eliminarPacienteToolStripMenuItem
-            // 
-            this.eliminarPacienteToolStripMenuItem.Name = "eliminarPacienteToolStripMenuItem";
-            this.eliminarPacienteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.eliminarPacienteToolStripMenuItem.Text = "Eliminar Paciente";
-            this.eliminarPacienteToolStripMenuItem.Click += new System.EventHandler(this.eliminarPacienteToolStripMenuItem_Click);
             // 
             // frmPacientes
             // 
@@ -123,6 +124,7 @@
             this.Controls.Add(this.dgvPacientes);
             this.Controls.Add(this.txtFiltroApellido);
             this.Controls.Add(this.lblFiltrarApellido);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmPacientes";
             this.Text = "Pacientes";
             this.Activated += new System.EventHandler(this.frmPacientes_Activated);

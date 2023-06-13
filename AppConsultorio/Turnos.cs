@@ -14,7 +14,10 @@ namespace AppConsultorio
     internal class Turnos 
     {
         public static string idTurnoSelec;
+        //VARIABLES NECESARIAS PARA RECUPERAR INFO DE REPORTES
         public static int Seleccion;
+        public static int mes;
+        //VARIABLES NECESARIAS PARA RECUPERAR INFO DE REPORTES
         public static void RecuperarTurnosReservadosDia(ref DataTable tabla)
         {
             try
@@ -306,7 +309,7 @@ namespace AppConsultorio
                 MessageBox.Show(ex.Message);
             }
         }
-        public static void RecuperarInfoTurnos (int Seleccion, ref DataTable tabla)
+        public static void RecuperarInfoTurnos (int Seleccion,int mes, ref DataTable tabla)
         {
             try
             {
@@ -320,6 +323,7 @@ namespace AppConsultorio
                 Comando.CommandType = CommandType.StoredProcedure;
                 Comando.CommandText = "RECUPERAR_INFO_TURNOS";
                 Comando.Parameters.Add("@seleccion", SqlDbType.Int).Value = Seleccion;
+                Comando.Parameters.Add("@mes", SqlDbType.Int).Value = mes;
                 tabla = new DataTable();
                 tabla.Load(Comando.ExecuteReader());
 

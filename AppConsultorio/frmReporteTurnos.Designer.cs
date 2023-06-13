@@ -28,11 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmReporteTurnos));
             this.rpvTurnos = new Microsoft.Reporting.WinForms.ReportViewer();
             this.SuspendLayout();
             // 
             // rpvTurnos
             // 
+            this.rpvTurnos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.rpvTurnos.Location = new System.Drawing.Point(12, 12);
             this.rpvTurnos.Name = "rpvTurnos";
             this.rpvTurnos.ServerReport.BearerToken = null;
@@ -46,6 +50,7 @@
             this.BackColor = System.Drawing.Color.LightSeaGreen;
             this.ClientSize = new System.Drawing.Size(1279, 602);
             this.Controls.Add(this.rpvTurnos);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmReporteTurnos";
             this.Text = "Reporte Turnos";
             this.Load += new System.EventHandler(this.frmReporteTurnos_Load);

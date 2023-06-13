@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCargaUsuarios));
             this.lblApellido = new System.Windows.Forms.Label();
             this.lblNombre = new System.Windows.Forms.Label();
             this.lblUsuario = new System.Windows.Forms.Label();
@@ -232,6 +233,7 @@
             this.Controls.Add(this.lblUsuario);
             this.Controls.Add(this.lblNombre);
             this.Controls.Add(this.lblApellido);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmCargaUsuarios";
             this.Text = "Carga Usuarios";
             this.Load += new System.EventHandler(this.frmCargaUsuarios_Load);

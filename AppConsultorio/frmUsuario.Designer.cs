@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmUsuario));
             this.tctrlUsuario = new System.Windows.Forms.TabControl();
             this.tbpgModificarUsuario = new System.Windows.Forms.TabPage();
             this.button1 = new System.Windows.Forms.Button();
@@ -233,8 +234,8 @@
             this.BackColor = System.Drawing.Color.LightSeaGreen;
             this.ClientSize = new System.Drawing.Size(348, 309);
             this.Controls.Add(this.tctrlUsuario);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmUsuario";
-            this.ShowIcon = false;
             this.Load += new System.EventHandler(this.frmUsuario_Load);
             this.tctrlUsuario.ResumeLayout(false);
             this.tbpgModificarUsuario.ResumeLayout(false);

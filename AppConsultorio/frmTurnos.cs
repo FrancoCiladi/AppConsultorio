@@ -65,42 +65,54 @@ namespace AppConsultorio
             if (cbxMeses.SelectedIndex > 0)
             {
                 switch (cbxMeses.SelectedValue)
-                {
+                {                   
                     case 1:
                         Turnos.RecuperarTurnosReservadosMes(1, ref tabla);
+                        Turnos.mes = 1;
                         break;
                     case 2:
                         Turnos.RecuperarTurnosReservadosMes(2, ref tabla);
+                        Turnos.mes = 2;
                         break;
                     case 3:
                         Turnos.RecuperarTurnosReservadosMes(3, ref tabla);
+                        Turnos.mes = 3;
                         break;
                     case 4:
                         Turnos.RecuperarTurnosReservadosMes(4, ref tabla);
+                        Turnos.mes = 4;
                         break;
                     case 5:
                         Turnos.RecuperarTurnosReservadosMes(5, ref tabla);
+                        Turnos.mes = 5;
                         break;
                     case 6:
                         Turnos.RecuperarTurnosReservadosMes(6, ref tabla);
+                        Turnos.mes = 6;
                         break;
                     case 7:
                         Turnos.RecuperarTurnosReservadosMes(7, ref tabla);
+                        Turnos.mes = 7;
                         break;
                     case 8:
                         Turnos.RecuperarTurnosReservadosMes(8, ref tabla);
+                        Turnos.mes = 8;
                         break;
                     case 9:
                         Turnos.RecuperarTurnosReservadosMes(9, ref tabla);
+                        Turnos.mes = 9;
                         break;
                     case 10:
                         Turnos.RecuperarTurnosReservadosMes(10, ref tabla);
+                        Turnos.mes = 10;
                         break;
                     case 11:
                         Turnos.RecuperarTurnosReservadosMes(11, ref tabla);
+                        Turnos.mes = 11;
                         break;
                     case 12:
                         Turnos.RecuperarTurnosReservadosMes(12, ref tabla);
+                        Turnos.mes = 12;
                         break;
                 }
             }
@@ -238,7 +250,7 @@ namespace AppConsultorio
         private void btnAsignarTurno_Click_1(object sender, EventArgs e)
         {
             //VERIFICO QUE SE HAYA SELECCIONADO UN PACIENTE PARA ASIGNAR TURNO
-            if (this.dgvPacientes.CurrentRow != null)
+            if (this.dgvPacientes.SelectedRows.Count != 0)
             {
                 //VERIFICO LA DISPONIBILIDAD DEL TURNO
                 if (VerificarTurno())
@@ -331,6 +343,7 @@ namespace AppConsultorio
             }
             
         }
+    
 
         private void nuevoPacienteToolStripMenuItem_Click(object sender, EventArgs e)
         { 
@@ -345,7 +358,8 @@ namespace AppConsultorio
             if (cbxTurnosCategorias.SelectedIndex == 2)
             {
                 cbxMeses.Enabled = true;
-                CargarMeses();                
+                CargarMeses();
+                cbxMeses.SelectedValue = DateTime.Now.Month;
             }
             else
             {

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmObservaciones));
             this.rchObervaciones = new System.Windows.Forms.RichTextBox();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -58,6 +59,7 @@
             this.ClientSize = new System.Drawing.Size(644, 564);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.rchObervaciones);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmObservaciones";
             this.Text = "Observaciones Turno";
             this.Load += new System.EventHandler(this.frmDetalleTurno_Load);

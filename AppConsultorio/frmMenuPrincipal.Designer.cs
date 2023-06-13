@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMenuPrincipal));
             this.pnlMenuPrincipal = new System.Windows.Forms.Panel();
             this.pnlBotonesInfo = new System.Windows.Forms.Panel();
             this.btnCancelacionesPacientes = new System.Windows.Forms.Button();
@@ -294,8 +295,8 @@
             this.ClientSize = new System.Drawing.Size(1107, 664);
             this.Controls.Add(this.pnlChildForms);
             this.Controls.Add(this.pnlMenuPrincipal);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmMenuPrincipal";
-            this.ShowIcon = false;
             this.Load += new System.EventHandler(this.frmMenuPrincipal_Load);
             this.pnlMenuPrincipal.ResumeLayout(false);
             this.pnlBotonesInfo.ResumeLayout(false);

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AppConsultorio.DataSetCancelacionesPacientesTableAdapters;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -25,7 +26,7 @@ namespace AppConsultorio
             DataTable tabla = new DataTable();
             Reportes.RecuperarPacientesCancelaciones(ref tabla);
 
-            rpvCancelaciones.LocalReport.ReportPath = "C:\\Users\\franc\\OneDrive\\Documentos\\GitHub Repositorios\\AppConsultorio\\AppConsultorio\\ReporteCancelacionesPacientes.rdlc";
+            rpvCancelaciones.LocalReport.ReportPath = Application.StartupPath + "\\ReporteCancelacionesPacientes.rdlc";
             rpvCancelaciones.LocalReport.DataSources.Clear();
             rpvCancelaciones.LocalReport.DataSources.Add(new Microsoft.Reporting.WinForms.ReportDataSource("DataSetCancelacionesPacientes", tabla));
 

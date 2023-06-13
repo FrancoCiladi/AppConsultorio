@@ -1,4 +1,4 @@
-﻿using AppConsultorio.ConsultorioDataSetTableAdapters;
+﻿//using AppConsultorio.ConsultorioDataSetTableAdapters;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

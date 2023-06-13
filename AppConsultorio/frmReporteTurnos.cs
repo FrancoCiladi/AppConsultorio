@@ -1,4 +1,4 @@
-﻿using AppConsultorio.ConsultorioDataSetTableAdapters;
+﻿using AppConsultorio.DataSetInfoTurnosTableAdapters;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -24,11 +24,11 @@ namespace AppConsultorio
 
             //RECUPERO INFORMACION DE TURNOS
             DataTable tabla = new DataTable();
-            Turnos.RecuperarInfoTurnos(Turnos.Seleccion,ref tabla);
+            Turnos.RecuperarInfoTurnos(Turnos.Seleccion,Turnos.mes,ref tabla);
 
-            rpvTurnos.LocalReport.ReportPath = "C:\\Users\\franc\\OneDrive\\Documentos\\GitHub Repositorios\\AppConsultorio\\AppConsultorio\\ReporteTurnos.rdlc";
+            rpvTurnos.LocalReport.ReportPath = Application.StartupPath + "\\ReporteTurnos.rdlc";
             rpvTurnos.LocalReport.DataSources.Clear();
-            rpvTurnos.LocalReport.DataSources.Add(new Microsoft.Reporting.WinForms.ReportDataSource("DataSetInfoTurnos2", tabla));
+            rpvTurnos.LocalReport.DataSources.Add(new Microsoft.Reporting.WinForms.ReportDataSource("DataSetInfoTurnos", tabla));
             this.rpvTurnos.RefreshReport();
         }
     }

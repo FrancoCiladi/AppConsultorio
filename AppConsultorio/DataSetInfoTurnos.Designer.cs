@@ -24,7 +24,7 @@ namespace AppConsultorio {
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
     public partial class DataSetInfoTurnos : global::System.Data.DataSet {
         
-        private RECUPERAR_INFO_TURNOSDataTable tableRECUPERAR_INFO_TURNOS;
+        private RECUPERAR_INFO_TURNOS_DIADataTable tableRECUPERAR_INFO_TURNOS_DIA;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
@@ -54,8 +54,8 @@ namespace AppConsultorio {
             if ((this.DetermineSchemaSerializationMode(info, context) == global::System.Data.SchemaSerializationMode.IncludeSchema)) {
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXmlSchema(new global::System.Xml.XmlTextReader(new global::System.IO.StringReader(strSchema)));
-                if ((ds.Tables["RECUPERAR_INFO_TURNOS"] != null)) {
-                    base.Tables.Add(new RECUPERAR_INFO_TURNOSDataTable(ds.Tables["RECUPERAR_INFO_TURNOS"]));
+                if ((ds.Tables["RECUPERAR_INFO_TURNOS_DIA"] != null)) {
+                    base.Tables.Add(new RECUPERAR_INFO_TURNOS_DIADataTable(ds.Tables["RECUPERAR_INFO_TURNOS_DIA"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -79,9 +79,9 @@ namespace AppConsultorio {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public RECUPERAR_INFO_TURNOSDataTable RECUPERAR_INFO_TURNOS {
+        public RECUPERAR_INFO_TURNOS_DIADataTable RECUPERAR_INFO_TURNOS_DIA {
             get {
-                return this.tableRECUPERAR_INFO_TURNOS;
+                return this.tableRECUPERAR_INFO_TURNOS_DIA;
             }
         }
         
@@ -152,8 +152,8 @@ namespace AppConsultorio {
                 this.Reset();
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXml(reader);
-                if ((ds.Tables["RECUPERAR_INFO_TURNOS"] != null)) {
-                    base.Tables.Add(new RECUPERAR_INFO_TURNOSDataTable(ds.Tables["RECUPERAR_INFO_TURNOS"]));
+                if ((ds.Tables["RECUPERAR_INFO_TURNOS_DIA"] != null)) {
+                    base.Tables.Add(new RECUPERAR_INFO_TURNOS_DIADataTable(ds.Tables["RECUPERAR_INFO_TURNOS_DIA"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -188,10 +188,10 @@ namespace AppConsultorio {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         internal void InitVars(bool initTable) {
-            this.tableRECUPERAR_INFO_TURNOS = ((RECUPERAR_INFO_TURNOSDataTable)(base.Tables["RECUPERAR_INFO_TURNOS"]));
+            this.tableRECUPERAR_INFO_TURNOS_DIA = ((RECUPERAR_INFO_TURNOS_DIADataTable)(base.Tables["RECUPERAR_INFO_TURNOS_DIA"]));
             if ((initTable == true)) {
-                if ((this.tableRECUPERAR_INFO_TURNOS != null)) {
-                    this.tableRECUPERAR_INFO_TURNOS.InitVars();
+                if ((this.tableRECUPERAR_INFO_TURNOS_DIA != null)) {
+                    this.tableRECUPERAR_INFO_TURNOS_DIA.InitVars();
                 }
             }
         }
@@ -204,13 +204,13 @@ namespace AppConsultorio {
             this.Namespace = "http://tempuri.org/DataSetInfoTurnos.xsd";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
-            this.tableRECUPERAR_INFO_TURNOS = new RECUPERAR_INFO_TURNOSDataTable();
-            base.Tables.Add(this.tableRECUPERAR_INFO_TURNOS);
+            this.tableRECUPERAR_INFO_TURNOS_DIA = new RECUPERAR_INFO_TURNOS_DIADataTable();
+            base.Tables.Add(this.tableRECUPERAR_INFO_TURNOS_DIA);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private bool ShouldSerializeRECUPERAR_INFO_TURNOS() {
+        private bool ShouldSerializeRECUPERAR_INFO_TURNOS_DIA() {
             return false;
         }
         
@@ -270,16 +270,14 @@ namespace AppConsultorio {
         }
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public delegate void RECUPERAR_INFO_TURNOSRowChangeEventHandler(object sender, RECUPERAR_INFO_TURNOSRowChangeEvent e);
+        public delegate void RECUPERAR_INFO_TURNOS_DIARowChangeEventHandler(object sender, RECUPERAR_INFO_TURNOS_DIARowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class RECUPERAR_INFO_TURNOSDataTable : global::System.Data.TypedTableBase<RECUPERAR_INFO_TURNOSRow> {
-            
-            private global::System.Data.DataColumn columnidTurno;
+        public partial class RECUPERAR_INFO_TURNOS_DIADataTable : global::System.Data.TypedTableBase<RECUPERAR_INFO_TURNOS_DIARow> {
             
             private global::System.Data.DataColumn columnFecha;
             
@@ -289,24 +287,12 @@ namespace AppConsultorio {
             
             private global::System.Data.DataColumn columnTelefono;
             
-            private global::System.Data.DataColumn columnObra_Social;
-            
-            private global::System.Data.DataColumn columnimporte;
-            
-            private global::System.Data.DataColumn columnEstado;
-            
-            private global::System.Data.DataColumn columnfecha_creacion;
-            
-            private global::System.Data.DataColumn columnidPaciente;
-            
-            private global::System.Data.DataColumn columnobservaciones;
-            
-            private global::System.Data.DataColumn columnfecha_cancelacion;
+            private global::System.Data.DataColumn columndescripcion;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public RECUPERAR_INFO_TURNOSDataTable() {
-                this.TableName = "RECUPERAR_INFO_TURNOS";
+            public RECUPERAR_INFO_TURNOS_DIADataTable() {
+                this.TableName = "RECUPERAR_INFO_TURNOS_DIA";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -314,7 +300,7 @@ namespace AppConsultorio {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            internal RECUPERAR_INFO_TURNOSDataTable(global::System.Data.DataTable table) {
+            internal RECUPERAR_INFO_TURNOS_DIADataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -331,17 +317,9 @@ namespace AppConsultorio {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected RECUPERAR_INFO_TURNOSDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected RECUPERAR_INFO_TURNOS_DIADataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn idTurnoColumn {
-                get {
-                    return this.columnidTurno;
-                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -378,57 +356,9 @@ namespace AppConsultorio {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn Obra_SocialColumn {
+            public global::System.Data.DataColumn descripcionColumn {
                 get {
-                    return this.columnObra_Social;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn importeColumn {
-                get {
-                    return this.columnimporte;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn EstadoColumn {
-                get {
-                    return this.columnEstado;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn fecha_creacionColumn {
-                get {
-                    return this.columnfecha_creacion;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn idPacienteColumn {
-                get {
-                    return this.columnidPaciente;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn observacionesColumn {
-                get {
-                    return this.columnobservaciones;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn fecha_cancelacionColumn {
-                get {
-                    return this.columnfecha_cancelacion;
+                    return this.columndescripcion;
                 }
             }
             
@@ -443,64 +373,49 @@ namespace AppConsultorio {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public RECUPERAR_INFO_TURNOSRow this[int index] {
+            public RECUPERAR_INFO_TURNOS_DIARow this[int index] {
                 get {
-                    return ((RECUPERAR_INFO_TURNOSRow)(this.Rows[index]));
+                    return ((RECUPERAR_INFO_TURNOS_DIARow)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event RECUPERAR_INFO_TURNOSRowChangeEventHandler RECUPERAR_INFO_TURNOSRowChanging;
+            public event RECUPERAR_INFO_TURNOS_DIARowChangeEventHandler RECUPERAR_INFO_TURNOS_DIARowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event RECUPERAR_INFO_TURNOSRowChangeEventHandler RECUPERAR_INFO_TURNOSRowChanged;
+            public event RECUPERAR_INFO_TURNOS_DIARowChangeEventHandler RECUPERAR_INFO_TURNOS_DIARowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event RECUPERAR_INFO_TURNOSRowChangeEventHandler RECUPERAR_INFO_TURNOSRowDeleting;
+            public event RECUPERAR_INFO_TURNOS_DIARowChangeEventHandler RECUPERAR_INFO_TURNOS_DIARowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event RECUPERAR_INFO_TURNOSRowChangeEventHandler RECUPERAR_INFO_TURNOSRowDeleted;
+            public event RECUPERAR_INFO_TURNOS_DIARowChangeEventHandler RECUPERAR_INFO_TURNOS_DIARowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void AddRECUPERAR_INFO_TURNOSRow(RECUPERAR_INFO_TURNOSRow row) {
+            public void AddRECUPERAR_INFO_TURNOS_DIARow(RECUPERAR_INFO_TURNOS_DIARow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public RECUPERAR_INFO_TURNOSRow AddRECUPERAR_INFO_TURNOSRow(System.DateTime Fecha, string Hora, string Paciente, string Telefono, string Obra_Social, short importe, string Estado, System.DateTime fecha_creacion, int idPaciente, string observaciones, System.DateTime fecha_cancelacion) {
-                RECUPERAR_INFO_TURNOSRow rowRECUPERAR_INFO_TURNOSRow = ((RECUPERAR_INFO_TURNOSRow)(this.NewRow()));
+            public RECUPERAR_INFO_TURNOS_DIARow AddRECUPERAR_INFO_TURNOS_DIARow(System.DateTime Fecha, string Hora, string Paciente, string Telefono, string descripcion) {
+                RECUPERAR_INFO_TURNOS_DIARow rowRECUPERAR_INFO_TURNOS_DIARow = ((RECUPERAR_INFO_TURNOS_DIARow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        null,
                         Fecha,
                         Hora,
                         Paciente,
                         Telefono,
-                        Obra_Social,
-                        importe,
-                        Estado,
-                        fecha_creacion,
-                        idPaciente,
-                        observaciones,
-                        fecha_cancelacion};
-                rowRECUPERAR_INFO_TURNOSRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowRECUPERAR_INFO_TURNOSRow);
-                return rowRECUPERAR_INFO_TURNOSRow;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public RECUPERAR_INFO_TURNOSRow FindByidTurnoidPaciente(int idTurno, int idPaciente) {
-                return ((RECUPERAR_INFO_TURNOSRow)(this.Rows.Find(new object[] {
-                            idTurno,
-                            idPaciente})));
+                        descripcion};
+                rowRECUPERAR_INFO_TURNOS_DIARow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowRECUPERAR_INFO_TURNOS_DIARow);
+                return rowRECUPERAR_INFO_TURNOS_DIARow;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                RECUPERAR_INFO_TURNOSDataTable cln = ((RECUPERAR_INFO_TURNOSDataTable)(base.Clone()));
+                RECUPERAR_INFO_TURNOS_DIADataTable cln = ((RECUPERAR_INFO_TURNOS_DIADataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -508,31 +423,22 @@ namespace AppConsultorio {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new RECUPERAR_INFO_TURNOSDataTable();
+                return new RECUPERAR_INFO_TURNOS_DIADataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             internal void InitVars() {
-                this.columnidTurno = base.Columns["idTurno"];
                 this.columnFecha = base.Columns["Fecha"];
                 this.columnHora = base.Columns["Hora"];
                 this.columnPaciente = base.Columns["Paciente"];
                 this.columnTelefono = base.Columns["Telefono"];
-                this.columnObra_Social = base.Columns["Obra Social"];
-                this.columnimporte = base.Columns["importe"];
-                this.columnEstado = base.Columns["Estado"];
-                this.columnfecha_creacion = base.Columns["fecha_creacion"];
-                this.columnidPaciente = base.Columns["idPaciente"];
-                this.columnobservaciones = base.Columns["observaciones"];
-                this.columnfecha_cancelacion = base.Columns["fecha_cancelacion"];
+                this.columndescripcion = base.Columns["descripcion"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             private void InitClass() {
-                this.columnidTurno = new global::System.Data.DataColumn("idTurno", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnidTurno);
                 this.columnFecha = new global::System.Data.DataColumn("Fecha", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnFecha);
                 this.columnHora = new global::System.Data.DataColumn("Hora", typeof(string), null, global::System.Data.MappingType.Element);
@@ -541,66 +447,42 @@ namespace AppConsultorio {
                 base.Columns.Add(this.columnPaciente);
                 this.columnTelefono = new global::System.Data.DataColumn("Telefono", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTelefono);
-                this.columnObra_Social = new global::System.Data.DataColumn("Obra Social", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnObra_Social);
-                this.columnimporte = new global::System.Data.DataColumn("importe", typeof(short), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnimporte);
-                this.columnEstado = new global::System.Data.DataColumn("Estado", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnEstado);
-                this.columnfecha_creacion = new global::System.Data.DataColumn("fecha_creacion", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnfecha_creacion);
-                this.columnidPaciente = new global::System.Data.DataColumn("idPaciente", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnidPaciente);
-                this.columnobservaciones = new global::System.Data.DataColumn("observaciones", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnobservaciones);
-                this.columnfecha_cancelacion = new global::System.Data.DataColumn("fecha_cancelacion", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnfecha_cancelacion);
-                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnidTurno,
-                                this.columnidPaciente}, true));
-                this.columnidTurno.AutoIncrement = true;
-                this.columnidTurno.AllowDBNull = false;
-                this.columnidTurno.ReadOnly = true;
+                this.columndescripcion = new global::System.Data.DataColumn("descripcion", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columndescripcion);
                 this.columnFecha.AllowDBNull = false;
                 this.columnHora.ReadOnly = true;
                 this.columnHora.MaxLength = 5;
                 this.columnPaciente.ReadOnly = true;
                 this.columnPaciente.MaxLength = 81;
-                this.columnTelefono.ReadOnly = true;
                 this.columnTelefono.MaxLength = 20;
-                this.columnObra_Social.AllowDBNull = false;
-                this.columnObra_Social.MaxLength = 50;
-                this.columnEstado.AllowDBNull = false;
-                this.columnEstado.MaxLength = 20;
-                this.columnfecha_creacion.AllowDBNull = false;
-                this.columnidPaciente.AllowDBNull = false;
-                this.columnobservaciones.MaxLength = 1500;
+                this.columndescripcion.AllowDBNull = false;
+                this.columndescripcion.MaxLength = 50;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public RECUPERAR_INFO_TURNOSRow NewRECUPERAR_INFO_TURNOSRow() {
-                return ((RECUPERAR_INFO_TURNOSRow)(this.NewRow()));
+            public RECUPERAR_INFO_TURNOS_DIARow NewRECUPERAR_INFO_TURNOS_DIARow() {
+                return ((RECUPERAR_INFO_TURNOS_DIARow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new RECUPERAR_INFO_TURNOSRow(builder);
+                return new RECUPERAR_INFO_TURNOS_DIARow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(RECUPERAR_INFO_TURNOSRow);
+                return typeof(RECUPERAR_INFO_TURNOS_DIARow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.RECUPERAR_INFO_TURNOSRowChanged != null)) {
-                    this.RECUPERAR_INFO_TURNOSRowChanged(this, new RECUPERAR_INFO_TURNOSRowChangeEvent(((RECUPERAR_INFO_TURNOSRow)(e.Row)), e.Action));
+                if ((this.RECUPERAR_INFO_TURNOS_DIARowChanged != null)) {
+                    this.RECUPERAR_INFO_TURNOS_DIARowChanged(this, new RECUPERAR_INFO_TURNOS_DIARowChangeEvent(((RECUPERAR_INFO_TURNOS_DIARow)(e.Row)), e.Action));
                 }
             }
             
@@ -608,8 +490,8 @@ namespace AppConsultorio {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.RECUPERAR_INFO_TURNOSRowChanging != null)) {
-                    this.RECUPERAR_INFO_TURNOSRowChanging(this, new RECUPERAR_INFO_TURNOSRowChangeEvent(((RECUPERAR_INFO_TURNOSRow)(e.Row)), e.Action));
+                if ((this.RECUPERAR_INFO_TURNOS_DIARowChanging != null)) {
+                    this.RECUPERAR_INFO_TURNOS_DIARowChanging(this, new RECUPERAR_INFO_TURNOS_DIARowChangeEvent(((RECUPERAR_INFO_TURNOS_DIARow)(e.Row)), e.Action));
                 }
             }
             
@@ -617,8 +499,8 @@ namespace AppConsultorio {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.RECUPERAR_INFO_TURNOSRowDeleted != null)) {
-                    this.RECUPERAR_INFO_TURNOSRowDeleted(this, new RECUPERAR_INFO_TURNOSRowChangeEvent(((RECUPERAR_INFO_TURNOSRow)(e.Row)), e.Action));
+                if ((this.RECUPERAR_INFO_TURNOS_DIARowDeleted != null)) {
+                    this.RECUPERAR_INFO_TURNOS_DIARowDeleted(this, new RECUPERAR_INFO_TURNOS_DIARowChangeEvent(((RECUPERAR_INFO_TURNOS_DIARow)(e.Row)), e.Action));
                 }
             }
             
@@ -626,14 +508,14 @@ namespace AppConsultorio {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.RECUPERAR_INFO_TURNOSRowDeleting != null)) {
-                    this.RECUPERAR_INFO_TURNOSRowDeleting(this, new RECUPERAR_INFO_TURNOSRowChangeEvent(((RECUPERAR_INFO_TURNOSRow)(e.Row)), e.Action));
+                if ((this.RECUPERAR_INFO_TURNOS_DIARowDeleting != null)) {
+                    this.RECUPERAR_INFO_TURNOS_DIARowDeleting(this, new RECUPERAR_INFO_TURNOS_DIARowChangeEvent(((RECUPERAR_INFO_TURNOS_DIARow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void RemoveRECUPERAR_INFO_TURNOSRow(RECUPERAR_INFO_TURNOSRow row) {
+            public void RemoveRECUPERAR_INFO_TURNOS_DIARow(RECUPERAR_INFO_TURNOS_DIARow row) {
                 this.Rows.Remove(row);
             }
             
@@ -660,7 +542,7 @@ namespace AppConsultorio {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "RECUPERAR_INFO_TURNOSDataTable";
+                attribute2.FixedValue = "RECUPERAR_INFO_TURNOS_DIADataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -704,36 +586,25 @@ namespace AppConsultorio {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class RECUPERAR_INFO_TURNOSRow : global::System.Data.DataRow {
+        public partial class RECUPERAR_INFO_TURNOS_DIARow : global::System.Data.DataRow {
             
-            private RECUPERAR_INFO_TURNOSDataTable tableRECUPERAR_INFO_TURNOS;
+            private RECUPERAR_INFO_TURNOS_DIADataTable tableRECUPERAR_INFO_TURNOS_DIA;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            internal RECUPERAR_INFO_TURNOSRow(global::System.Data.DataRowBuilder rb) : 
+            internal RECUPERAR_INFO_TURNOS_DIARow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tableRECUPERAR_INFO_TURNOS = ((RECUPERAR_INFO_TURNOSDataTable)(this.Table));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public int idTurno {
-                get {
-                    return ((int)(this[this.tableRECUPERAR_INFO_TURNOS.idTurnoColumn]));
-                }
-                set {
-                    this[this.tableRECUPERAR_INFO_TURNOS.idTurnoColumn] = value;
-                }
+                this.tableRECUPERAR_INFO_TURNOS_DIA = ((RECUPERAR_INFO_TURNOS_DIADataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public System.DateTime Fecha {
                 get {
-                    return ((global::System.DateTime)(this[this.tableRECUPERAR_INFO_TURNOS.FechaColumn]));
+                    return ((global::System.DateTime)(this[this.tableRECUPERAR_INFO_TURNOS_DIA.FechaColumn]));
                 }
                 set {
-                    this[this.tableRECUPERAR_INFO_TURNOS.FechaColumn] = value;
+                    this[this.tableRECUPERAR_INFO_TURNOS_DIA.FechaColumn] = value;
                 }
             }
             
@@ -742,14 +613,14 @@ namespace AppConsultorio {
             public string Hora {
                 get {
                     try {
-                        return ((string)(this[this.tableRECUPERAR_INFO_TURNOS.HoraColumn]));
+                        return ((string)(this[this.tableRECUPERAR_INFO_TURNOS_DIA.HoraColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Hora\' de la tabla \'RECUPERAR_INFO_TURNOS\' es DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Hora\' de la tabla \'RECUPERAR_INFO_TURNOS_DIA\' es DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableRECUPERAR_INFO_TURNOS.HoraColumn] = value;
+                    this[this.tableRECUPERAR_INFO_TURNOS_DIA.HoraColumn] = value;
                 }
             }
             
@@ -758,14 +629,15 @@ namespace AppConsultorio {
             public string Paciente {
                 get {
                     try {
-                        return ((string)(this[this.tableRECUPERAR_INFO_TURNOS.PacienteColumn]));
+                        return ((string)(this[this.tableRECUPERAR_INFO_TURNOS_DIA.PacienteColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Paciente\' de la tabla \'RECUPERAR_INFO_TURNOS\' es DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Paciente\' de la tabla \'RECUPERAR_INFO_TURNOS_DIA\' es DBNu" +
+                                "ll.", e);
                     }
                 }
                 set {
-                    this[this.tableRECUPERAR_INFO_TURNOS.PacienteColumn] = value;
+                    this[this.tableRECUPERAR_INFO_TURNOS_DIA.PacienteColumn] = value;
                 }
             }
             
@@ -774,181 +646,63 @@ namespace AppConsultorio {
             public string Telefono {
                 get {
                     try {
-                        return ((string)(this[this.tableRECUPERAR_INFO_TURNOS.TelefonoColumn]));
+                        return ((string)(this[this.tableRECUPERAR_INFO_TURNOS_DIA.TelefonoColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Telefono\' de la tabla \'RECUPERAR_INFO_TURNOS\' es DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Telefono\' de la tabla \'RECUPERAR_INFO_TURNOS_DIA\' es DBNu" +
+                                "ll.", e);
                     }
                 }
                 set {
-                    this[this.tableRECUPERAR_INFO_TURNOS.TelefonoColumn] = value;
+                    this[this.tableRECUPERAR_INFO_TURNOS_DIA.TelefonoColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string Obra_Social {
+            public string descripcion {
                 get {
-                    return ((string)(this[this.tableRECUPERAR_INFO_TURNOS.Obra_SocialColumn]));
+                    return ((string)(this[this.tableRECUPERAR_INFO_TURNOS_DIA.descripcionColumn]));
                 }
                 set {
-                    this[this.tableRECUPERAR_INFO_TURNOS.Obra_SocialColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public short importe {
-                get {
-                    try {
-                        return ((short)(this[this.tableRECUPERAR_INFO_TURNOS.importeColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'importe\' de la tabla \'RECUPERAR_INFO_TURNOS\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableRECUPERAR_INFO_TURNOS.importeColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string Estado {
-                get {
-                    return ((string)(this[this.tableRECUPERAR_INFO_TURNOS.EstadoColumn]));
-                }
-                set {
-                    this[this.tableRECUPERAR_INFO_TURNOS.EstadoColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public System.DateTime fecha_creacion {
-                get {
-                    return ((global::System.DateTime)(this[this.tableRECUPERAR_INFO_TURNOS.fecha_creacionColumn]));
-                }
-                set {
-                    this[this.tableRECUPERAR_INFO_TURNOS.fecha_creacionColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public int idPaciente {
-                get {
-                    return ((int)(this[this.tableRECUPERAR_INFO_TURNOS.idPacienteColumn]));
-                }
-                set {
-                    this[this.tableRECUPERAR_INFO_TURNOS.idPacienteColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string observaciones {
-                get {
-                    try {
-                        return ((string)(this[this.tableRECUPERAR_INFO_TURNOS.observacionesColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'observaciones\' de la tabla \'RECUPERAR_INFO_TURNOS\' es DBN" +
-                                "ull.", e);
-                    }
-                }
-                set {
-                    this[this.tableRECUPERAR_INFO_TURNOS.observacionesColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public System.DateTime fecha_cancelacion {
-                get {
-                    try {
-                        return ((global::System.DateTime)(this[this.tableRECUPERAR_INFO_TURNOS.fecha_cancelacionColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'fecha_cancelacion\' de la tabla \'RECUPERAR_INFO_TURNOS\' es" +
-                                " DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableRECUPERAR_INFO_TURNOS.fecha_cancelacionColumn] = value;
+                    this[this.tableRECUPERAR_INFO_TURNOS_DIA.descripcionColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsHoraNull() {
-                return this.IsNull(this.tableRECUPERAR_INFO_TURNOS.HoraColumn);
+                return this.IsNull(this.tableRECUPERAR_INFO_TURNOS_DIA.HoraColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetHoraNull() {
-                this[this.tableRECUPERAR_INFO_TURNOS.HoraColumn] = global::System.Convert.DBNull;
+                this[this.tableRECUPERAR_INFO_TURNOS_DIA.HoraColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsPacienteNull() {
-                return this.IsNull(this.tableRECUPERAR_INFO_TURNOS.PacienteColumn);
+                return this.IsNull(this.tableRECUPERAR_INFO_TURNOS_DIA.PacienteColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetPacienteNull() {
-                this[this.tableRECUPERAR_INFO_TURNOS.PacienteColumn] = global::System.Convert.DBNull;
+                this[this.tableRECUPERAR_INFO_TURNOS_DIA.PacienteColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsTelefonoNull() {
-                return this.IsNull(this.tableRECUPERAR_INFO_TURNOS.TelefonoColumn);
+                return this.IsNull(this.tableRECUPERAR_INFO_TURNOS_DIA.TelefonoColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetTelefonoNull() {
-                this[this.tableRECUPERAR_INFO_TURNOS.TelefonoColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsimporteNull() {
-                return this.IsNull(this.tableRECUPERAR_INFO_TURNOS.importeColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetimporteNull() {
-                this[this.tableRECUPERAR_INFO_TURNOS.importeColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsobservacionesNull() {
-                return this.IsNull(this.tableRECUPERAR_INFO_TURNOS.observacionesColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetobservacionesNull() {
-                this[this.tableRECUPERAR_INFO_TURNOS.observacionesColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool Isfecha_cancelacionNull() {
-                return this.IsNull(this.tableRECUPERAR_INFO_TURNOS.fecha_cancelacionColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void Setfecha_cancelacionNull() {
-                this[this.tableRECUPERAR_INFO_TURNOS.fecha_cancelacionColumn] = global::System.Convert.DBNull;
+                this[this.tableRECUPERAR_INFO_TURNOS_DIA.TelefonoColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -956,22 +710,22 @@ namespace AppConsultorio {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public class RECUPERAR_INFO_TURNOSRowChangeEvent : global::System.EventArgs {
+        public class RECUPERAR_INFO_TURNOS_DIARowChangeEvent : global::System.EventArgs {
             
-            private RECUPERAR_INFO_TURNOSRow eventRow;
+            private RECUPERAR_INFO_TURNOS_DIARow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public RECUPERAR_INFO_TURNOSRowChangeEvent(RECUPERAR_INFO_TURNOSRow row, global::System.Data.DataRowAction action) {
+            public RECUPERAR_INFO_TURNOS_DIARowChangeEvent(RECUPERAR_INFO_TURNOS_DIARow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public RECUPERAR_INFO_TURNOSRow Row {
+            public RECUPERAR_INFO_TURNOS_DIARow Row {
                 get {
                     return this.eventRow;
                 }
@@ -999,7 +753,7 @@ namespace AppConsultorio.DataSetInfoTurnosTableAdapters {
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class RECUPERAR_INFO_TURNOSTableAdapter : global::System.ComponentModel.Component {
+    public partial class RECUPERAR_INFO_TURNOS_DIATableAdapter : global::System.ComponentModel.Component {
         
         private global::System.Data.SqlClient.SqlDataAdapter _adapter;
         
@@ -1013,7 +767,7 @@ namespace AppConsultorio.DataSetInfoTurnosTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public RECUPERAR_INFO_TURNOSTableAdapter() {
+        public RECUPERAR_INFO_TURNOS_DIATableAdapter() {
             this.ClearBeforeFill = true;
         }
         
@@ -1110,19 +864,12 @@ namespace AppConsultorio.DataSetInfoTurnosTableAdapters {
             this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "RECUPERAR_INFO_TURNOS";
-            tableMapping.ColumnMappings.Add("idTurno", "idTurno");
+            tableMapping.DataSetTable = "RECUPERAR_INFO_TURNOS_DIA";
             tableMapping.ColumnMappings.Add("Fecha", "Fecha");
             tableMapping.ColumnMappings.Add("Hora", "Hora");
             tableMapping.ColumnMappings.Add("Paciente", "Paciente");
             tableMapping.ColumnMappings.Add("Telefono", "Telefono");
-            tableMapping.ColumnMappings.Add("Obra Social", "Obra Social");
-            tableMapping.ColumnMappings.Add("importe", "importe");
-            tableMapping.ColumnMappings.Add("Estado", "Estado");
-            tableMapping.ColumnMappings.Add("fecha_creacion", "fecha_creacion");
-            tableMapping.ColumnMappings.Add("idPaciente", "idPaciente");
-            tableMapping.ColumnMappings.Add("observaciones", "observaciones");
-            tableMapping.ColumnMappings.Add("fecha_cancelacion", "fecha_cancelacion");
+            tableMapping.ColumnMappings.Add("descripcion", "descripcion");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -1139,24 +886,17 @@ namespace AppConsultorio.DataSetInfoTurnosTableAdapters {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "dbo.RECUPERAR_INFO_TURNOS";
+            this._commandCollection[0].CommandText = "dbo.RECUPERAR_INFO_TURNOS_DIA";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.StoredProcedure;
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RETURN_VALUE", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.ReturnValue, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@seleccion", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(DataSetInfoTurnos.RECUPERAR_INFO_TURNOSDataTable dataTable, global::System.Nullable<int> seleccion) {
+        public virtual int Fill(DataSetInfoTurnos.RECUPERAR_INFO_TURNOS_DIADataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            if ((seleccion.HasValue == true)) {
-                this.Adapter.SelectCommand.Parameters[1].Value = ((int)(seleccion.Value));
-            }
-            else {
-                this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
-            }
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
             }
@@ -1168,15 +908,9 @@ namespace AppConsultorio.DataSetInfoTurnosTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual DataSetInfoTurnos.RECUPERAR_INFO_TURNOSDataTable GetData(global::System.Nullable<int> seleccion) {
+        public virtual DataSetInfoTurnos.RECUPERAR_INFO_TURNOS_DIADataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            if ((seleccion.HasValue == true)) {
-                this.Adapter.SelectCommand.Parameters[1].Value = ((int)(seleccion.Value));
-            }
-            else {
-                this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
-            }
-            DataSetInfoTurnos.RECUPERAR_INFO_TURNOSDataTable dataTable = new DataSetInfoTurnos.RECUPERAR_INFO_TURNOSDataTable();
+            DataSetInfoTurnos.RECUPERAR_INFO_TURNOS_DIADataTable dataTable = new DataSetInfoTurnos.RECUPERAR_INFO_TURNOS_DIADataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }

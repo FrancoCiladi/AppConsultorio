@@ -70,33 +70,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ConsultorioDataSet.cs">
-      <DependentUpon>ConsultorioDataSet.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="ConsultorioDataSet.Designer.cs">
+    <Compile Include="DataSetCancelacionesPacientes.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ConsultorioDataSet.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="ConsultorioDataSet2.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ConsultorioDataSet2.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="ConsultorioDataSet3.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ConsultorioDataSet3.xsd</DependentUpon>
+      <DependentUpon>DataSetCancelacionesPacientes.xsd</DependentUpon>
     </Compile>
     <Compile Include="DataSetInfoTurnos.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSetInfoTurnos.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="DataSetInfoTurnos2.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DataSetInfoTurnos2.xsd</DependentUpon>
     </Compile>
     <Compile Include="frmInfoCancelacionesPacientes.cs">
       <SubType>Form</SubType>
@@ -288,38 +270,16 @@
     </Compile>
     <EmbeddedResource Include="ReporteCancelacionesPacientes.rdlc" />
     <EmbeddedResource Include="ReporteTurnos.rdlc" />
-    <None Include="ConsultorioDataSet.xsc">
-      <DependentUpon>ConsultorioDataSet.xsd</DependentUpon>
+    <None Include="DataSetCancelacionesPacientes.xsc">
+      <DependentUpon>DataSetCancelacionesPacientes.xsd</DependentUpon>
     </None>
-    <None Include="ConsultorioDataSet.xsd">
+    <None Include="DataSetCancelacionesPacientes.xsd">
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>ConsultorioDataSet.Designer.cs</LastGenOutput>
+      <LastGenOutput>DataSetCancelacionesPacientes.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="ConsultorioDataSet.xss">
-      <DependentUpon>ConsultorioDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="ConsultorioDataSet2.xsc">
-      <DependentUpon>ConsultorioDataSet2.xsd</DependentUpon>
-    </None>
-    <None Include="ConsultorioDataSet2.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>ConsultorioDataSet2.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="ConsultorioDataSet2.xss">
-      <DependentUpon>ConsultorioDataSet2.xsd</DependentUpon>
-    </None>
-    <None Include="ConsultorioDataSet3.xsc">
-      <DependentUpon>ConsultorioDataSet3.xsd</DependentUpon>
-    </None>
-    <None Include="ConsultorioDataSet3.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>ConsultorioDataSet3.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="ConsultorioDataSet3.xss">
-      <DependentUpon>ConsultorioDataSet3.xsd</DependentUpon>
+    <None Include="DataSetCancelacionesPacientes.xss">
+      <DependentUpon>DataSetCancelacionesPacientes.xsd</DependentUpon>
     </None>
     <None Include="DataSetInfoTurnos.xsc">
       <DependentUpon>DataSetInfoTurnos.xsd</DependentUpon>
@@ -331,17 +291,6 @@
     </None>
     <None Include="DataSetInfoTurnos.xss">
       <DependentUpon>DataSetInfoTurnos.xsd</DependentUpon>
-    </None>
-    <None Include="DataSetInfoTurnos2.xsc">
-      <DependentUpon>DataSetInfoTurnos2.xsd</DependentUpon>
-    </None>
-    <None Include="DataSetInfoTurnos2.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DataSetInfoTurnos2.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="DataSetInfoTurnos2.xss">
-      <DependentUpon>DataSetInfoTurnos2.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

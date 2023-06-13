@@ -28,11 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmReporteCancelaciones));
             this.rpvCancelaciones = new Microsoft.Reporting.WinForms.ReportViewer();
             this.SuspendLayout();
             // 
             // rpvCancelaciones
             // 
+            this.rpvCancelaciones.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.rpvCancelaciones.Location = new System.Drawing.Point(12, 12);
             this.rpvCancelaciones.Name = "rpvCancelaciones";
             this.rpvCancelaciones.ServerReport.BearerToken = null;
@@ -46,6 +50,7 @@
             this.BackColor = System.Drawing.Color.LightSeaGreen;
             this.ClientSize = new System.Drawing.Size(1437, 601);
             this.Controls.Add(this.rpvCancelaciones);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmReporteCancelaciones";
             this.Text = "Reporte Cancelaciones";
             this.Load += new System.EventHandler(this.frmReporteCancelaciones_Load);

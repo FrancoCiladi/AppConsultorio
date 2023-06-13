@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmImporte));
             this.txtImporte = new System.Windows.Forms.TextBox();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -57,6 +58,7 @@
             this.ClientSize = new System.Drawing.Size(249, 72);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.txtImporte);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmImporte";
             this.Text = "Ingrese Importe";
             this.Load += new System.EventHandler(this.frmImporte_Load);

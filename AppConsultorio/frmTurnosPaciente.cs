@@ -41,6 +41,8 @@ namespace AppConsultorio
                 this.Close();
             }
             this.dgvTurnosPaciente.Columns["idTurno"].Visible = false;
+            this.dgvTurnosPaciente.Columns["fecha"].HeaderText = "Fecha";
+            this.dgvTurnosPaciente.Columns["estado"].HeaderText = "Estado";
         }
     }
 }
