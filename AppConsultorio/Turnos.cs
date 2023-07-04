@@ -187,6 +187,31 @@ namespace AppConsultorio
                 MessageBox.Show(ex.Message);
             }
         }
+        public static void VerificarTurnoPaciente(string fecha, string idPacienteSelec, ref DataTable tabla)
+        {
+            try
+            {
+                string cadenaConexion = System.Configuration.ConfigurationManager.ConnectionStrings["CadenaConexion"].ConnectionString;
+                SqlConnection Conexion = new SqlConnection();
+                Conexion.ConnectionString = cadenaConexion;
+                Conexion.Open();
+
+                SqlCommand Comando = new SqlCommand();
+                Comando.Connection = Conexion;
+                Comando.CommandType = CommandType.StoredProcedure;
+                Comando.CommandText = "VERIFICAR_TURNO_DIA_PACIENTE";
+                Comando.Parameters.Add("@fecha", SqlDbType.Date).Value = fecha;
+                Comando.Parameters.Add("@idPacienteSelec", SqlDbType.Int).Value = idPacienteSelec;
+                tabla = new DataTable();
+                tabla.Load(Comando.ExecuteReader());
+
+                Conexion.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
         public static void AgregarTurno(string fecha, string hora, string idPacienteSelec)
         {
             try

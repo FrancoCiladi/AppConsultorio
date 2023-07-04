@@ -276,14 +276,24 @@ namespace AppConsultorio
             DataTable tabla = new DataTable();
             string fecha = dtpFecha.Value.ToShortDateString();
             string hora = dtpHora.Value.ToShortTimeString();
-            Turnos.VerificarDisponibilidadTurno(fecha, hora, ref tabla);
+            //VERIFICO PRIMERO SI EL PACIENTE TIENE TURNOS ASIGNADOS EN EL DIA SELECCIONADO
+            Turnos.VerificarTurnoPaciente(fecha, Pacientes.idPacienteSelec, ref tabla);
             if (tabla.Rows.Count == 0)
             {
-                ok = true;
+                //VERIFICO QUE EL TURNO ESTE DISPONIBLE
+                Turnos.VerificarDisponibilidadTurno(fecha, hora, ref tabla);
+                if (tabla.Rows.Count == 0)
+                {
+                    ok = true;
+                }
+                else
+                {
+                    MessageBox.Show("Turno no disponible.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
             else
             {
-                MessageBox.Show("Turno no disponible.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("No se puede asignar mas de un turno por dia al paciente.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             return ok;
         }
