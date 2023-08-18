@@ -42,6 +42,7 @@
             this.administradorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.medicoaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.secretariaoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.resetearIntentosRecClaveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsuarios)).BeginInit();
             this.mnuUsuarios.SuspendLayout();
             this.SuspendLayout();
@@ -92,36 +93,37 @@
             this.habilitarUsuarioToolStripMenuItem,
             this.eliminarUsuarioToolStripMenuItem,
             this.resetearIntentosToolStripMenuItem,
+            this.resetearIntentosRecClaveToolStripMenuItem,
             this.cambiarGrupoToolStripMenuItem});
             this.mnuUsuarios.Name = "mnuUsuarios";
-            this.mnuUsuarios.Size = new System.Drawing.Size(180, 114);
+            this.mnuUsuarios.Size = new System.Drawing.Size(222, 158);
             // 
             // deshabilitarUsuarioToolStripMenuItem
             // 
             this.deshabilitarUsuarioToolStripMenuItem.Name = "deshabilitarUsuarioToolStripMenuItem";
-            this.deshabilitarUsuarioToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
+            this.deshabilitarUsuarioToolStripMenuItem.Size = new System.Drawing.Size(221, 22);
             this.deshabilitarUsuarioToolStripMenuItem.Text = "Deshabilitar Usuario";
             this.deshabilitarUsuarioToolStripMenuItem.Click += new System.EventHandler(this.deshabilitarUsuarioToolStripMenuItem_Click);
             // 
             // habilitarUsuarioToolStripMenuItem
             // 
             this.habilitarUsuarioToolStripMenuItem.Name = "habilitarUsuarioToolStripMenuItem";
-            this.habilitarUsuarioToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
+            this.habilitarUsuarioToolStripMenuItem.Size = new System.Drawing.Size(221, 22);
             this.habilitarUsuarioToolStripMenuItem.Text = "Habilitar Usuario";
             this.habilitarUsuarioToolStripMenuItem.Click += new System.EventHandler(this.habilitarUsuarioToolStripMenuItem_Click);
             // 
             // eliminarUsuarioToolStripMenuItem
             // 
             this.eliminarUsuarioToolStripMenuItem.Name = "eliminarUsuarioToolStripMenuItem";
-            this.eliminarUsuarioToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
+            this.eliminarUsuarioToolStripMenuItem.Size = new System.Drawing.Size(221, 22);
             this.eliminarUsuarioToolStripMenuItem.Text = "Eliminar Usuario";
             this.eliminarUsuarioToolStripMenuItem.Click += new System.EventHandler(this.eliminarUsuarioToolStripMenuItem_Click);
             // 
             // resetearIntentosToolStripMenuItem
             // 
             this.resetearIntentosToolStripMenuItem.Name = "resetearIntentosToolStripMenuItem";
-            this.resetearIntentosToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
-            this.resetearIntentosToolStripMenuItem.Text = "Resetear Intentos";
+            this.resetearIntentosToolStripMenuItem.Size = new System.Drawing.Size(221, 22);
+            this.resetearIntentosToolStripMenuItem.Text = "Resetear Intentos Login";
             this.resetearIntentosToolStripMenuItem.Click += new System.EventHandler(this.resetearIntentosToolStripMenuItem_Click);
             // 
             // cambiarGrupoToolStripMenuItem
@@ -131,29 +133,36 @@
             this.medicoaToolStripMenuItem,
             this.secretariaoToolStripMenuItem});
             this.cambiarGrupoToolStripMenuItem.Name = "cambiarGrupoToolStripMenuItem";
-            this.cambiarGrupoToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
+            this.cambiarGrupoToolStripMenuItem.Size = new System.Drawing.Size(221, 22);
             this.cambiarGrupoToolStripMenuItem.Text = "Cambiar Grupo";
             // 
             // administradorToolStripMenuItem
             // 
             this.administradorToolStripMenuItem.Name = "administradorToolStripMenuItem";
-            this.administradorToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.administradorToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.administradorToolStripMenuItem.Text = "Administrador";
             this.administradorToolStripMenuItem.Click += new System.EventHandler(this.administradorToolStripMenuItem_Click);
             // 
             // medicoaToolStripMenuItem
             // 
             this.medicoaToolStripMenuItem.Name = "medicoaToolStripMenuItem";
-            this.medicoaToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.medicoaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.medicoaToolStripMenuItem.Text = "Medico/a";
             this.medicoaToolStripMenuItem.Click += new System.EventHandler(this.medicoaToolStripMenuItem_Click);
             // 
             // secretariaoToolStripMenuItem
             // 
             this.secretariaoToolStripMenuItem.Name = "secretariaoToolStripMenuItem";
-            this.secretariaoToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.secretariaoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.secretariaoToolStripMenuItem.Text = "Secretaria/o";
             this.secretariaoToolStripMenuItem.Click += new System.EventHandler(this.secretariaoToolStripMenuItem_Click);
+            // 
+            // resetearIntentosRecClaveToolStripMenuItem
+            // 
+            this.resetearIntentosRecClaveToolStripMenuItem.Name = "resetearIntentosRecClaveToolStripMenuItem";
+            this.resetearIntentosRecClaveToolStripMenuItem.Size = new System.Drawing.Size(221, 22);
+            this.resetearIntentosRecClaveToolStripMenuItem.Text = "Resetear Intentos Rec. Clave";
+            this.resetearIntentosRecClaveToolStripMenuItem.Click += new System.EventHandler(this.resetearIntentosRecClaveToolStripMenuItem_Click);
             // 
             // frmListadoUsuarios
             // 
@@ -191,5 +200,6 @@
         private System.Windows.Forms.ToolStripMenuItem administradorToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem medicoaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem secretariaoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem resetearIntentosRecClaveToolStripMenuItem;
     }
 }

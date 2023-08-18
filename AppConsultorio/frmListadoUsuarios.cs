@@ -158,5 +158,15 @@ namespace AppConsultorio
                 MessageBox.Show("Grupo modificado con exito!", "Operacion Realizada", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+
+        private void resetearIntentosRecClaveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (this.dgvUsuarios.CurrentRow != null)
+            {
+                //RESETEO LA CANTIDAD DE INTENTOS DE RECUPERACION DE CLAVE DEL USUARIO
+                Usuarios.idUsuarioSelec = dgvUsuarios.CurrentRow.Cells["idUsuario"].Value.ToString();
+                Usuarios.ResetearIntentosResetearClave(Usuarios.idUsuarioSelec);
+            }
+        }
     }
 }

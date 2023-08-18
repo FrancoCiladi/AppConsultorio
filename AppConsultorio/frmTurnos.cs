@@ -129,6 +129,7 @@ namespace AppConsultorio
             this.dgvTurnos.Columns["observaciones"].Visible = false;
             this.dgvTurnos.Columns["idPaciente"].Visible = false;
             this.dgvTurnos.Columns["fecha_cancelacion"].Visible = false;
+            this.dgvTurnos.Columns["Descripcion"].HeaderText = "Obra Social";
         }
         private void CargarGridViewTurnos()
         {
@@ -159,6 +160,7 @@ namespace AppConsultorio
             this.dgvTurnos.Columns["observaciones"].Visible = false;
             this.dgvTurnos.Columns["idPaciente"].Visible = false;
             this.dgvTurnos.Columns["fecha_cancelacion"].Visible = false;
+            this.dgvTurnos.Columns["Descripcion"].HeaderText = "Obra Social";
 
         }
 
