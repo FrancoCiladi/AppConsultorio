@@ -22,10 +22,7 @@ namespace AppConsultorio
             this.CenterToScreen();
             DataTable tabla = new DataTable();
             //CARGO COMBOBOX CON TODOS LOS MESES
-            Turnos.RecuperarMeses(0, ref tabla);
-            cbxMeses.DataSource = tabla;
-            cbxMeses.DisplayMember = "Descripcion";
-            cbxMeses.ValueMember = "idMes";
+            CargarComboBoxMeses();
             cbxMeses.SelectedIndex = 0;
             cbxMeses.DropDownStyle = ComboBoxStyle.DropDownList;
 
@@ -38,8 +35,7 @@ namespace AppConsultorio
         {
             DataTable tabla = new DataTable();
 
-
-            Turnos.RecuperarTurnosHistoricos(cbxMeses.SelectedIndex, ref tabla);
+            Turnos.RecuperarTurnosHistoricos(Turnos.mes, ref tabla);
             this.dgvTurnosHistoricos.DataSource = tabla;
             this.dgvTurnosHistoricos.AllowUserToAddRows = false;
             this.dgvTurnosHistoricos.AllowUserToDeleteRows = false;
@@ -49,6 +45,29 @@ namespace AppConsultorio
             this.dgvTurnosHistoricos.Columns["fecha_creacion"].Visible = false;
             this.dgvTurnosHistoricos.Columns["idPaciente"].Visible = false;
             this.dgvTurnosHistoricos.Columns["observaciones"].Visible = false;
+        }
+        private void CargarComboBoxMeses()
+        {
+            string[] meses = new string[13];
+
+            meses[0] = "Seleccione...";
+            meses[1] = "Enero";
+            meses[2] = "Febrero";
+            meses[3] = "Marzo";
+            meses[4] = "Abril";
+            meses[5] = "Mayo";
+            meses[6] = "Junio";
+            meses[7] = "Julio";
+            meses[8] = "Agosto";
+            meses[9] = "Septiembre";
+            meses[10] = "Octubre";
+            meses[11] = "Noviembre";
+            meses[12] = "Diciembre";
+
+            for (int i = 0; i < 13; i++)
+            {      
+                cbxMeses.Items.Add(meses[i]);
+            }
         }
 
         private void ingresarImporteToolStripMenuItem_Click(object sender, EventArgs e)
@@ -85,6 +104,7 @@ namespace AppConsultorio
         {
             if (cbxMeses.SelectedIndex > 0)
             {
+                Turnos.mes = cbxMeses.SelectedIndex;
                 CargarGridView();
             }
             else

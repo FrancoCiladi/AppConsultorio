@@ -35,6 +35,9 @@ namespace AppConsultorio
             
             CargarGridViewTurnos();
             CargarGridViewPacientes();
+            CargarComboBoxMeses();
+
+            cbxMeses.SelectedIndex = 0;
 
             //NO PERMITO LA SELECCION DE DIAS ANTERIORES AL ACTUAL PARA ASIGNACION DE TURNOS
             this.dtpFecha.MinDate = DateTime.Today;
@@ -44,92 +47,6 @@ namespace AppConsultorio
                 //OCULTO CONTROL EN CASO DE SECRETARIA
                 mnuTurnos.Items[2].Visible = false;
             }
-        }
-        private void CargarMeses()
-        {
-            //CARGO COMBOBOX DE MESES, UNICAMENTE SE CARGARA EL MES ACTUAL Y TODOS LOS FUTUROS
-            int mes = DateTime.Now.Month;
-
-            DataTable tabla = new DataTable();
-
-            Turnos.RecuperarMeses(mes, ref tabla);
-
-            cbxMeses.DataSource = tabla;
-            cbxMeses.DisplayMember = "Descripcion";
-            cbxMeses.ValueMember = "idMes";
-            cbxMeses.SelectedIndex = 0;
-        }
-        private void CargarGridViewTurnosSecundario()
-        {
-            DataTable tabla = new DataTable();
-            if (cbxMeses.SelectedIndex > 0)
-            {
-                switch (cbxMeses.SelectedValue)
-                {                   
-                    case 1:
-                        Turnos.RecuperarTurnosReservadosMes(1, ref tabla);
-                        Turnos.mes = 1;
-                        break;
-                    case 2:
-                        Turnos.RecuperarTurnosReservadosMes(2, ref tabla);
-                        Turnos.mes = 2;
-                        break;
-                    case 3:
-                        Turnos.RecuperarTurnosReservadosMes(3, ref tabla);
-                        Turnos.mes = 3;
-                        break;
-                    case 4:
-                        Turnos.RecuperarTurnosReservadosMes(4, ref tabla);
-                        Turnos.mes = 4;
-                        break;
-                    case 5:
-                        Turnos.RecuperarTurnosReservadosMes(5, ref tabla);
-                        Turnos.mes = 5;
-                        break;
-                    case 6:
-                        Turnos.RecuperarTurnosReservadosMes(6, ref tabla);
-                        Turnos.mes = 6;
-                        break;
-                    case 7:
-                        Turnos.RecuperarTurnosReservadosMes(7, ref tabla);
-                        Turnos.mes = 7;
-                        break;
-                    case 8:
-                        Turnos.RecuperarTurnosReservadosMes(8, ref tabla);
-                        Turnos.mes = 8;
-                        break;
-                    case 9:
-                        Turnos.RecuperarTurnosReservadosMes(9, ref tabla);
-                        Turnos.mes = 9;
-                        break;
-                    case 10:
-                        Turnos.RecuperarTurnosReservadosMes(10, ref tabla);
-                        Turnos.mes = 10;
-                        break;
-                    case 11:
-                        Turnos.RecuperarTurnosReservadosMes(11, ref tabla);
-                        Turnos.mes = 11;
-                        break;
-                    case 12:
-                        Turnos.RecuperarTurnosReservadosMes(12, ref tabla);
-                        Turnos.mes = 12;
-                        break;
-                }
-            }
-
-            this.dgvTurnos.DataSource = tabla;
-
-            this.dgvTurnos.AllowUserToAddRows = false;
-            this.dgvTurnos.AllowUserToDeleteRows = false;
-
-            this.dgvTurnos.Columns["idTurno"].Visible = false;
-            this.dgvTurnos.Columns["importe"].Visible = false;
-            this.dgvTurnos.Columns["Estado"].Visible = false;
-            this.dgvTurnos.Columns["fecha_creacion"].Visible = false;
-            this.dgvTurnos.Columns["observaciones"].Visible = false;
-            this.dgvTurnos.Columns["idPaciente"].Visible = false;
-            this.dgvTurnos.Columns["fecha_cancelacion"].Visible = false;
-            this.dgvTurnos.Columns["Descripcion"].HeaderText = "Obra Social";
         }
         private void CargarGridViewTurnos()
         {
@@ -145,6 +62,49 @@ namespace AppConsultorio
                     break;
                 case 2:
                     Turnos.RecuperarTurnosReservadosMes(DateTime.Now.Month, ref tabla);
+                    if (cbxMeses.SelectedIndex > 0)
+                    {
+                        switch(cbxMeses.Text)
+                        {
+                            case "Enero":
+                                Turnos.mes = 1;
+                                break;
+                            case "Febrero":
+                                Turnos.mes = 2;
+                                break;
+                            case "Marzo":
+                                Turnos.mes = 3;
+                                break;
+                            case "Abril":
+                                Turnos.mes = 4;
+                                break;
+                            case "Mayo":
+                                Turnos.mes = 5;
+                                break;
+                            case "Junio":
+                                Turnos.mes = 6;
+                                break;
+                            case "Julio":
+                                Turnos.mes = 7;
+                                break;
+                            case "Agosto":
+                                Turnos.mes = 8;
+                                break;
+                            case "Septiembre":
+                                Turnos.mes = 9;
+                                break;
+                            case "Octubre":
+                                Turnos.mes = 10;
+                                break;
+                            case "Noviembre":
+                                Turnos.mes = 11;
+                                break;
+                            case "Diciembre":
+                                Turnos.mes = 12;
+                                break;
+                        }
+                        Turnos.RecuperarTurnosReservadosMes(Turnos.mes, ref tabla);
+                    }
                     break;
             }
         
@@ -370,15 +330,42 @@ namespace AppConsultorio
             if (cbxTurnosCategorias.SelectedIndex == 2)
             {
                 cbxMeses.Enabled = true;
-                CargarMeses();
-                cbxMeses.SelectedValue = DateTime.Now.Month;
             }
             else
             {
                 cbxMeses.Enabled = false;
             }
         }
+        private void CargarComboBoxMeses()
+        {
+            //CREO UN ARRAY CON TODOS LOS MESES
+            string[] meses = new string[13];
 
+            meses[0] = "Seleccione...";
+            meses[1] = "Enero";
+            meses[2] = "Febrero";
+            meses[3] = "Marzo";
+            meses[4] = "Abril";
+            meses[5] = "Mayo";
+            meses[6] = "Junio";
+            meses[7] = "Julio";
+            meses[8] = "Agosto";
+            meses[9] = "Septiembre";
+            meses[10] = "Octubre";
+            meses[11] = "Noviembre";
+            meses[12] = "Diciembre";
+
+            cbxMeses.Items.Add(meses[0]);
+
+            //DEPENDIENDO DEL MES, CARGO UNICAMENTE EL ACTUAL Y LOS FUTUROS
+            for (int i = 1; i < 13; i++)
+            {
+                if (i >= DateTime.Now.Month)
+                {
+                    cbxMeses.Items.Add(meses[i]);
+                }
+            }
+        }
         private void dgvPacientes_RowHeaderMouseClick_1(object sender, DataGridViewCellMouseEventArgs e)
         {
             //ASIGNO EL ID DE PACIENTE A UNA VARIABLE GLOBAL PARA LUEGO SER USADA DURANTE LA ASIGNACION DE TURNOS
@@ -389,7 +376,7 @@ namespace AppConsultorio
         {
             if (cbxMeses.SelectedIndex > 0)
             {
-                CargarGridViewTurnosSecundario();
+                CargarGridViewTurnos();
             }
         }
     }

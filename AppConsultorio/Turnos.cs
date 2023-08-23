@@ -76,7 +76,7 @@ namespace AppConsultorio
                 SqlCommand Comando = new SqlCommand();
                 Comando.Connection = Conexion;
                 Comando.CommandType = CommandType.StoredProcedure;
-                Comando.CommandText = "CREAR_FECHA_RECUPERAR_TURNOS_MES_RESERVADOS";
+                Comando.CommandText = "RECUPERAR_TURNOS_MES_RESERVADOS";
                 Comando.Parameters.Add("@mes", SqlDbType.Int).Value = mes;
                 tabla = new DataTable();
                 tabla.Load(Comando.ExecuteReader());
@@ -100,7 +100,7 @@ namespace AppConsultorio
                 SqlCommand Comando = new SqlCommand();
                 Comando.Connection = Conexion;
                 Comando.CommandType = CommandType.StoredProcedure;
-                Comando.CommandText = "CREAR_FECHA_RECUPERAR_TURNOS_HISTORICOS";
+                Comando.CommandText = "RECUPERAR_TURNOS_MES_REALIZADOS";
                 Comando.Parameters.Add("@mes", SqlDbType.Int).Value = mes;
                 tabla = new DataTable();
                 tabla.Load(Comando.ExecuteReader());
@@ -359,29 +359,6 @@ namespace AppConsultorio
                 MessageBox.Show(ex.Message);
             }
         }
-        public static void RecuperarMeses (int mes, ref DataTable tabla)
-        {
-            try
-            {
-                string cadenaConexion = System.Configuration.ConfigurationManager.ConnectionStrings["CadenaConexion"].ConnectionString;
-                SqlConnection Conexion = new SqlConnection();
-                Conexion.ConnectionString = cadenaConexion;
-                Conexion.Open();
-
-                SqlCommand Comando = new SqlCommand();
-                Comando.Connection = Conexion;
-                Comando.CommandType = CommandType.StoredProcedure;
-                Comando.CommandText = "RECUPERAR_MESES";
-                Comando.Parameters.Add("@mes",SqlDbType.Int).Value = mes;
-                tabla = new DataTable();
-                tabla.Load(Comando.ExecuteReader());
-
-                Conexion.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
+        
     }
 }
