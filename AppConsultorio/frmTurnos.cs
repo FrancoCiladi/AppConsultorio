@@ -379,6 +379,39 @@ namespace AppConsultorio
                 CargarGridViewTurnos();
             }
         }
+
+        private void modificarPacienteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (this.dgvPacientes.CurrentRow != null)
+            {
+                //SELECCIONO PACIENTE EN GRIDVIEW Y GUARDO SU ID PARA CARGAR SUS DATOS EN EL FORM DE CARGA
+                Modulo.Operacion = "MODIFICAR";
+                Pacientes.idPacienteSelec = this.dgvPacientes.CurrentRow.Cells["idPaciente"].Value.ToString();
+                frmAgregarPacientes frmCargaPacientes = new frmAgregarPacientes();
+                frmCargaPacientes.ShowDialog();
+            }
+            CargarGridViewPacientes();
+        }
+
+        private void eliminarPacienteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (dgvPacientes.CurrentRow != null)
+            {
+                //VERIFICO QUE EL PACIENTE A ELIMINAR NO TENGA TURNOS ASIGNADOS, EN CASO DE QUE SI SE IMPOSIBILITA LA ELIMINACION, CASO CONTRARIO SE PROCEDE A ELIMINARLO DE LA BD
+                DataTable tabla = new DataTable();
+                Pacientes.idPacienteSelec = this.dgvPacientes.CurrentRow.Cells["idPaciente"].Value.ToString();
+                Pacientes.RecuperarTurnosPaciente(Pacientes.idPacienteSelec, ref tabla);
+                if (tabla.Rows.Count == 0)
+                {
+                    Pacientes.EliminarPaciente(Pacientes.idPacienteSelec);
+                }
+                else
+                {
+                    MessageBox.Show("No se pueden eliminar pacientes con turnos asignados.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                CargarGridViewPacientes();
+            }
+        }
     }
     
 }
