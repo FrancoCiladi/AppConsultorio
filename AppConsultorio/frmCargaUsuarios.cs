@@ -22,7 +22,7 @@ namespace AppConsultorio
             this.CenterToScreen();
             //CARGA DE COMBOBOX GRUPOS
             DataTable tabla = new DataTable();
-            Usuarios.RecuperarGrupos(ref tabla);
+            Grupos.RecuperarGrupos(ref tabla);
             cbxGrupos.DataSource = tabla;
             cbxGrupos.DisplayMember = "Grupo";
             cbxGrupos.ValueMember = "idGrupo";

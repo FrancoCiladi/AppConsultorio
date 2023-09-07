@@ -24,7 +24,7 @@ namespace AppConsultorio
             this.CenterToScreen();
             DataTable tabla = new DataTable();
             //CARGO EL COMBOBOX CON OBRAS SOCIALES
-            Pacientes.RecuperarObrasSociales(ref tabla);
+            ObrasSociales.RecuperarObrasSociales(ref tabla);
             cbxObrasSociales.DataSource = tabla;
             cbxObrasSociales.DisplayMember = "descripcion";
             cbxObrasSociales.ValueMember = "idObraSocial";

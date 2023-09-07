@@ -132,7 +132,7 @@ namespace AppConsultorio
             {
                 //CONVIERTO GRUPO DE USUARIO A ADMIN
                 Usuarios.idUsuarioSelec = dgvUsuarios.CurrentRow.Cells["idUsuario"].Value.ToString();
-                Usuarios.UpdateGrupo(Usuarios.idUsuarioSelec, 1);
+                Grupos.UpdateGrupo(Usuarios.idUsuarioSelec, 1);
                 MessageBox.Show("Grupo modificado con exito!", "Operacion Realizada", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
@@ -143,7 +143,7 @@ namespace AppConsultorio
             {
                 //CONVIERTO GRUPO DE USUARIO A MEDICO/A
                 Usuarios.idUsuarioSelec = dgvUsuarios.CurrentRow.Cells["idUsuario"].Value.ToString();
-                Usuarios.UpdateGrupo(Usuarios.idUsuarioSelec, 2);
+                Grupos.UpdateGrupo(Usuarios.idUsuarioSelec, 2);
                 MessageBox.Show("Grupo modificado con exito!", "Operacion Realizada", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
@@ -154,7 +154,7 @@ namespace AppConsultorio
             {
                 //CONVIERTO GRUPO DE USUARIO A SECRETARIA
                 Usuarios.idUsuarioSelec = dgvUsuarios.CurrentRow.Cells["idUsuario"].Value.ToString();
-                Usuarios.UpdateGrupo(Usuarios.idUsuarioSelec, 3);
+                Grupos.UpdateGrupo(Usuarios.idUsuarioSelec, 3);
                 MessageBox.Show("Grupo modificado con exito!", "Operacion Realizada", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }

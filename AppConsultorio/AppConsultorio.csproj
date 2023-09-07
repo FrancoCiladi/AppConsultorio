@@ -194,7 +194,9 @@
     <Compile Include="frmUsuario.Designer.cs">
       <DependentUpon>frmUsuario.cs</DependentUpon>
     </Compile>
+    <Compile Include="Grupos.cs" />
     <Compile Include="Modulo.cs" />
+    <Compile Include="ObrasSociales.cs" />
     <Compile Include="Pacientes.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
