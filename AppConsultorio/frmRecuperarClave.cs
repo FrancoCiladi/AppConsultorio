@@ -59,7 +59,7 @@ namespace AppConsultorio
                     //SI TIENE INTENTOS RESTANTES VERIFICO SU PREGUNTA Y RESPUESTA DE SEGURIDAD
                     Usuarios.idUsuarioSelec = tabla.Rows[0]["idUsuario"].ToString();
 
-                    Usuarios.VerificarPreguntaSeguridad(Usuarios.idUsuarioSelec, ref tabla);
+                    PreguntasSeguridad.VerificarPreguntaSeguridad(Usuarios.idUsuarioSelec, ref tabla);
 
                     //GENERO SALT Y HASH DE RESPUESTA DE SEGURIDAD Y COMPARO LA GENERADA CON LA PASS EN LA BD
                     salt = tabla.Rows[0]["Salt"].ToString();
@@ -127,7 +127,7 @@ namespace AppConsultorio
             this.CenterToScreen();
 
             DataTable tabla = new DataTable();
-            Usuarios.RecuperarPreguntasSeguridad(ref tabla);
+            PreguntasSeguridad.RecuperarPreguntasSeguridad(ref tabla);
             cbxPreguntasSeguridad.DataSource = tabla;
             cbxPreguntasSeguridad.DisplayMember = "Descripcion";
             cbxPreguntasSeguridad.ValueMember = "idPregunta";

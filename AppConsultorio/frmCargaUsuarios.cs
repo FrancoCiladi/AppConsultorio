@@ -31,7 +31,7 @@ namespace AppConsultorio
 
             //CARGA DE COMBOBOX DE PREGUNTAS DE SEGURIDAD
             tabla = new DataTable();
-            Usuarios.RecuperarPreguntasSeguridad(ref tabla);
+            PreguntasSeguridad.RecuperarPreguntasSeguridad(ref tabla);
             cbxPreguntaSeguridad.DataSource = tabla;
             cbxPreguntaSeguridad.DisplayMember = "Descripcion";
             cbxPreguntaSeguridad.ValueMember = "idPregunta";
@@ -179,7 +179,7 @@ namespace AppConsultorio
                 //COMBINO SALT CON RESPUESTA DE SEGURIDAD INGRESADA
                 string respuestaHash = Usuarios.SecurityHelper.HashPassword(txtRespuestaSeguridad.Text.ToString().Trim(), saltRespuesta, 10000, 32);
                 string idUsuario = tabla.Rows[0]["idUsuario"].ToString();
-                Usuarios.RegistrarPreguntaSeguridad(idUsuario, cbxPreguntaSeguridad.SelectedValue.ToString(), respuestaHash, saltRespuesta);
+                PreguntasSeguridad.RegistrarPreguntaSeguridad(idUsuario, cbxPreguntaSeguridad.SelectedValue.ToString(), respuestaHash, saltRespuesta);
                 this.Close();
             }
         }
