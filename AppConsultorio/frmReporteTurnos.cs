@@ -26,7 +26,8 @@ namespace AppConsultorio
             DataTable tabla = new DataTable();
             Turnos.RecuperarInfoTurnos(Turnos.Seleccion,Turnos.mes,ref tabla);
 
-            rpvTurnos.LocalReport.ReportPath = Application.StartupPath + "\\ReporteTurnos.rdlc";
+            //rpvTurnos.LocalReport.ReportPath = Application.StartupPath + "\\ReporteTurnos.rdlc";
+            rpvTurnos.LocalReport.ReportPath = "C:\\Users\\franc\\Documents\\GitHub Repositorios\\AppConsultorio\\AppConsultorio\\ReporteTurnos.rdlc";
             rpvTurnos.LocalReport.DataSources.Clear();
             rpvTurnos.LocalReport.DataSources.Add(new Microsoft.Reporting.WinForms.ReportDataSource("DataSetInfoTurnos", tabla));
             this.rpvTurnos.RefreshReport();

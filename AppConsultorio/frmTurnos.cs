@@ -48,6 +48,7 @@ namespace AppConsultorio
                 mnuTurnos.Items[2].Visible = false;
             }
         }
+
         private void CargarGridViewTurnos()
         {
             DataTable tabla = new DataTable();
@@ -64,45 +65,6 @@ namespace AppConsultorio
                     Turnos.RecuperarTurnosReservadosMes(DateTime.Now.Month, ref tabla);
                     if (cbxMeses.SelectedIndex > 0)
                     {
-                        switch(cbxMeses.Text)
-                        {
-                            case "Enero":
-                                Turnos.mes = 1;
-                                break;
-                            case "Febrero":
-                                Turnos.mes = 2;
-                                break;
-                            case "Marzo":
-                                Turnos.mes = 3;
-                                break;
-                            case "Abril":
-                                Turnos.mes = 4;
-                                break;
-                            case "Mayo":
-                                Turnos.mes = 5;
-                                break;
-                            case "Junio":
-                                Turnos.mes = 6;
-                                break;
-                            case "Julio":
-                                Turnos.mes = 7;
-                                break;
-                            case "Agosto":
-                                Turnos.mes = 8;
-                                break;
-                            case "Septiembre":
-                                Turnos.mes = 9;
-                                break;
-                            case "Octubre":
-                                Turnos.mes = 10;
-                                break;
-                            case "Noviembre":
-                                Turnos.mes = 11;
-                                break;
-                            case "Diciembre":
-                                Turnos.mes = 12;
-                                break;
-                        }
                         Turnos.RecuperarTurnosReservadosMes(Turnos.mes, ref tabla);
                     }
                     break;
@@ -330,6 +292,7 @@ namespace AppConsultorio
             if (cbxTurnosCategorias.SelectedIndex == 2)
             {
                 cbxMeses.Enabled = true;
+                cbxMeses.SelectedIndex = 1;
             }
             else
             {
@@ -374,6 +337,53 @@ namespace AppConsultorio
 
         private void cbxMeses_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (cbxMeses.SelectedIndex > 0)
+            {
+                switch (cbxMeses.Text)
+                {
+                    case "Enero":
+                        Turnos.mes = 1;
+                        break;
+                    case "Febrero":
+                        Turnos.mes = 2;
+                        break;
+                    case "Marzo":
+                        Turnos.mes = 3;
+                        break;
+                    case "Abril":
+                        Turnos.mes = 4;
+                        break;
+                    case "Mayo":
+                        Turnos.mes = 5;
+                        break;
+                    case "Junio":
+                        Turnos.mes = 6;
+                        break;
+                    case "Julio":
+                        Turnos.mes = 7;
+                        break;
+                    case "Agosto":
+                        Turnos.mes = 8;
+                        break;
+                    case "Septiembre":
+                        Turnos.mes = 9;
+                        break;
+                    case "Octubre":
+                        Turnos.mes = 10;
+                        break;
+                    case "Noviembre":
+                        Turnos.mes = 11;
+                        break;
+                    case "Diciembre":
+                        Turnos.mes = 12;
+                        break;
+                }
+            }
+            else
+            {
+                Turnos.mes = 0;
+            }
+
             if (cbxMeses.SelectedIndex > 0)
             {
                 CargarGridViewTurnos();
