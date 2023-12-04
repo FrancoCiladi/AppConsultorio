@@ -105,10 +105,11 @@ namespace AppConsultorio
             txtApellido.Text = tabla.Rows[0]["Apellido"].ToString();
             txtNombre.Text = tabla.Rows[0]["Nombre"].ToString();
             txtUsuario.Text = tabla.Rows[0]["Usuario"].ToString();
+            txtCorreo.Text = tabla.Rows[0]["Correo"].ToString();
         }
         private bool VerificarUpdateUsuario()
         {
-            //VERIFICACION DE MODIFICACION DE DATOS DEL USUARIO : NOMBRE,APELLIDO,NOMBRE DE USUARIO
+            //VERIFICACION DE MODIFICACION DE DATOS DEL USUARIO : NOMBRE,APELLIDO,NOMBRE DE USUARIO,CORREO
             bool ok = false;
             DataTable tabla = new DataTable();
             if (!string.IsNullOrEmpty(txtApellido.Text))
@@ -117,32 +118,40 @@ namespace AppConsultorio
                 {
                     if (!string.IsNullOrEmpty(txtUsuario.Text))
                     {
-                        Usuarios.VerificarUpdateUsuario(Usuarios.idUsuarioLog, txtUsuario.Text.Trim(), ref tabla);
-                        if (tabla.Rows.Count == 0)
+                        if(!string.IsNullOrEmpty(txtCorreo.Text))
                         {
-                            ok = true;
+                            Usuarios.VerificarUpdateUsuario(Usuarios.idUsuarioLog, txtUsuario.Text.Trim(), ref tabla);
+                            if (tabla.Rows.Count == 0)
+                            {
+                                ok = true;
+                            }
+                            else
+                            {
+                                MessageBox.Show("Nombre de usuario no disponible.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                txtUsuario.Focus();
+                            }
                         }
                         else
                         {
-                            MessageBox.Show("Nombre de usuario no disponible", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            MessageBox.Show("Ingrese un correo electronico.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                             txtUsuario.Focus();
-                        }
+                        }                      
                     }
                     else
                     {
-                        MessageBox.Show("Complete el usuario", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show("Complete el usuario.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         txtUsuario.Focus();
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Complete el nombre", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Complete el nombre.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     txtNombre.Focus();
                 }
             }
             else
             {
-                MessageBox.Show("Complete el apellido", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Complete el apellido.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtApellido.Focus();
             }
             return ok;

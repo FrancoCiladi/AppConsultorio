@@ -46,6 +46,8 @@
             this.lblRepetirContraseña = new System.Windows.Forms.Label();
             this.lblNuevaContraseña = new System.Windows.Forms.Label();
             this.lblContraseñaActual = new System.Windows.Forms.Label();
+            this.txtCorreo = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.tctrlUsuario.SuspendLayout();
             this.tbpgModificarUsuario.SuspendLayout();
             this.tbpgResetearClave.SuspendLayout();
@@ -65,6 +67,8 @@
             // tbpgModificarUsuario
             // 
             this.tbpgModificarUsuario.BackColor = System.Drawing.Color.Teal;
+            this.tbpgModificarUsuario.Controls.Add(this.txtCorreo);
+            this.tbpgModificarUsuario.Controls.Add(this.label1);
             this.tbpgModificarUsuario.Controls.Add(this.button1);
             this.tbpgModificarUsuario.Controls.Add(this.txtUsuario);
             this.tbpgModificarUsuario.Controls.Add(this.txtNombre);
@@ -81,7 +85,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(111, 168);
+            this.button1.Location = new System.Drawing.Point(121, 190);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(87, 50);
             this.button1.TabIndex = 18;
@@ -227,6 +231,25 @@
             this.lblContraseñaActual.TabIndex = 0;
             this.lblContraseñaActual.Text = "Contraseña Actual: ";
             // 
+            // txtCorreo
+            // 
+            this.txtCorreo.Location = new System.Drawing.Point(146, 148);
+            this.txtCorreo.MaxLength = 30;
+            this.txtCorreo.Name = "txtCorreo";
+            this.txtCorreo.Size = new System.Drawing.Size(139, 20);
+            this.txtCorreo.TabIndex = 20;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(31, 148);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(58, 16);
+            this.label1.TabIndex = 19;
+            this.label1.Text = "Correo:";
+            // 
             // frmUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -265,5 +288,7 @@
         private System.Windows.Forms.Label lblRepetirContraseña;
         private System.Windows.Forms.Label lblNuevaContraseña;
         private System.Windows.Forms.Label lblContraseñaActual;
+        private System.Windows.Forms.TextBox txtCorreo;
+        private System.Windows.Forms.Label label1;
     }
 }

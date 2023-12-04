@@ -46,6 +46,8 @@
             this.lblPreguntaSeguridad = new System.Windows.Forms.Label();
             this.txtRespuestaSeguridad = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.txtCorreo = new System.Windows.Forms.TextBox();
+            this.lblCorreo = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblApellido
@@ -97,7 +99,7 @@
             this.lblGrupo.AutoSize = true;
             this.lblGrupo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblGrupo.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lblGrupo.Location = new System.Drawing.Point(79, 238);
+            this.lblGrupo.Location = new System.Drawing.Point(67, 275);
             this.lblGrupo.Name = "lblGrupo";
             this.lblGrupo.Size = new System.Drawing.Size(53, 16);
             this.lblGrupo.TabIndex = 4;
@@ -138,14 +140,14 @@
             // cbxGrupos
             // 
             this.cbxGrupos.FormattingEnabled = true;
-            this.cbxGrupos.Location = new System.Drawing.Point(207, 233);
+            this.cbxGrupos.Location = new System.Drawing.Point(207, 270);
             this.cbxGrupos.Name = "cbxGrupos";
             this.cbxGrupos.Size = new System.Drawing.Size(139, 21);
             this.cbxGrupos.TabIndex = 9;
             // 
             // btnRegistrar
             // 
-            this.btnRegistrar.Location = new System.Drawing.Point(134, 386);
+            this.btnRegistrar.Location = new System.Drawing.Point(129, 416);
             this.btnRegistrar.Name = "btnRegistrar";
             this.btnRegistrar.Size = new System.Drawing.Size(105, 39);
             this.btnRegistrar.TabIndex = 10;
@@ -175,7 +177,7 @@
             // cbxPreguntaSeguridad
             // 
             this.cbxPreguntaSeguridad.FormattingEnabled = true;
-            this.cbxPreguntaSeguridad.Location = new System.Drawing.Point(207, 281);
+            this.cbxPreguntaSeguridad.Location = new System.Drawing.Point(207, 318);
             this.cbxPreguntaSeguridad.Name = "cbxPreguntaSeguridad";
             this.cbxPreguntaSeguridad.Size = new System.Drawing.Size(139, 21);
             this.cbxPreguntaSeguridad.TabIndex = 14;
@@ -185,7 +187,7 @@
             this.lblPreguntaSeguridad.AutoSize = true;
             this.lblPreguntaSeguridad.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPreguntaSeguridad.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lblPreguntaSeguridad.Location = new System.Drawing.Point(15, 281);
+            this.lblPreguntaSeguridad.Location = new System.Drawing.Point(15, 318);
             this.lblPreguntaSeguridad.Name = "lblPreguntaSeguridad";
             this.lblPreguntaSeguridad.Size = new System.Drawing.Size(171, 16);
             this.lblPreguntaSeguridad.TabIndex = 13;
@@ -193,7 +195,7 @@
             // 
             // txtRespuestaSeguridad
             // 
-            this.txtRespuestaSeguridad.Location = new System.Drawing.Point(207, 322);
+            this.txtRespuestaSeguridad.Location = new System.Drawing.Point(207, 359);
             this.txtRespuestaSeguridad.MaxLength = 30;
             this.txtRespuestaSeguridad.Name = "txtRespuestaSeguridad";
             this.txtRespuestaSeguridad.Size = new System.Drawing.Size(139, 20);
@@ -204,18 +206,39 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label2.Location = new System.Drawing.Point(24, 326);
+            this.label2.Location = new System.Drawing.Point(24, 363);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(162, 16);
             this.label2.TabIndex = 15;
             this.label2.Text = "Respuesta Seguridad:";
+            // 
+            // txtCorreo
+            // 
+            this.txtCorreo.Location = new System.Drawing.Point(207, 231);
+            this.txtCorreo.MaxLength = 30;
+            this.txtCorreo.Name = "txtCorreo";
+            this.txtCorreo.Size = new System.Drawing.Size(139, 20);
+            this.txtCorreo.TabIndex = 18;
+            // 
+            // lblCorreo
+            // 
+            this.lblCorreo.AutoSize = true;
+            this.lblCorreo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCorreo.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lblCorreo.Location = new System.Drawing.Point(67, 235);
+            this.lblCorreo.Name = "lblCorreo";
+            this.lblCorreo.Size = new System.Drawing.Size(62, 16);
+            this.lblCorreo.TabIndex = 17;
+            this.lblCorreo.Text = "Correo: ";
             // 
             // frmCargaUsuarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSeaGreen;
-            this.ClientSize = new System.Drawing.Size(372, 456);
+            this.ClientSize = new System.Drawing.Size(372, 477);
+            this.Controls.Add(this.txtCorreo);
+            this.Controls.Add(this.lblCorreo);
             this.Controls.Add(this.txtRespuestaSeguridad);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.cbxPreguntaSeguridad);
@@ -261,5 +284,7 @@
         private System.Windows.Forms.Label lblPreguntaSeguridad;
         private System.Windows.Forms.TextBox txtRespuestaSeguridad;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txtCorreo;
+        private System.Windows.Forms.Label lblCorreo;
     }
 }

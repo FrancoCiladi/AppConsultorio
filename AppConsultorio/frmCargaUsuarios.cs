@@ -64,32 +64,40 @@ namespace AppConsultorio
                                             {
                                                 if (txtContraseña.Text.ToString().Trim() == txtRepetirContraseña.Text.ToString().Trim())
                                                 {
-                                                    if (!string.IsNullOrEmpty(txtRespuestaSeguridad.Text))
+                                                    if (!string.IsNullOrEmpty(txtCorreo.Text.ToString()))
                                                     {
-                                                        if (Modulo.ValidarFiltro(txtRespuestaSeguridad.Text.ToString()))
+                                                        if (!string.IsNullOrEmpty(txtRespuestaSeguridad.Text))
                                                         {
-                                                            Usuarios.VerificarUsuarioNuevo(txtUsuario.Text.ToString().Trim(), ref tabla);
-                                                            if (tabla.Rows.Count == 0)
+                                                            if (Modulo.ValidarFiltro(txtRespuestaSeguridad.Text.ToString()))
                                                             {
-                                                                ok = true;
+                                                                Usuarios.VerificarUsuarioNuevo(txtUsuario.Text.ToString().Trim(), ref tabla);
+                                                                if (tabla.Rows.Count == 0)
+                                                                {
+                                                                    ok = true;
+                                                                }
+                                                                else
+                                                                {
+                                                                    MessageBox.Show("Nombre de usuario no disponible.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                                                    txtUsuario.Focus();
+                                                                }
                                                             }
                                                             else
                                                             {
-                                                                MessageBox.Show("Nombre de usuario no disponible.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                                                                txtUsuario.Focus();
+                                                                MessageBox.Show("Ingreso un caracter no permitido.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                                                txtContraseña.Focus();
                                                             }
                                                         }
                                                         else
                                                         {
-                                                            MessageBox.Show("Ingreso un caracter no permitido.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                                                            txtContraseña.Focus();
-                                                        }                                                        
+                                                            MessageBox.Show("Complete la respuesta de seguridad.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                                            txtRespuestaSeguridad.Focus();
+                                                        }
                                                     }
                                                     else
                                                     {
-                                                        MessageBox.Show("Complete la respuesta de seguridad.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                                                        txtRespuestaSeguridad.Focus();
-                                                    }                                                  
+                                                        MessageBox.Show("Ingrese un correo electronico.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                                        txtCorreo.Focus();
+                                                    }                                                                                       
                                                 }
                                                 else
                                                 {
