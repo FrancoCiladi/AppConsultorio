@@ -111,7 +111,7 @@
             this.txtApellido.MaxLength = 30;
             this.txtApellido.Name = "txtApellido";
             this.txtApellido.Size = new System.Drawing.Size(139, 20);
-            this.txtApellido.TabIndex = 5;
+            this.txtApellido.TabIndex = 1;
             // 
             // txtNombre
             // 
@@ -119,7 +119,7 @@
             this.txtNombre.MaxLength = 30;
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(139, 20);
-            this.txtNombre.TabIndex = 6;
+            this.txtNombre.TabIndex = 2;
             // 
             // txtUsuario
             // 
@@ -127,15 +127,16 @@
             this.txtUsuario.MaxLength = 30;
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.Size = new System.Drawing.Size(139, 20);
-            this.txtUsuario.TabIndex = 7;
+            this.txtUsuario.TabIndex = 3;
             // 
             // txtContraseña
             // 
             this.txtContraseña.Location = new System.Drawing.Point(207, 147);
             this.txtContraseña.MaxLength = 30;
             this.txtContraseña.Name = "txtContraseña";
+            this.txtContraseña.PasswordChar = '*';
             this.txtContraseña.Size = new System.Drawing.Size(139, 20);
-            this.txtContraseña.TabIndex = 8;
+            this.txtContraseña.TabIndex = 4;
             // 
             // cbxGrupos
             // 
@@ -143,7 +144,7 @@
             this.cbxGrupos.Location = new System.Drawing.Point(207, 270);
             this.cbxGrupos.Name = "cbxGrupos";
             this.cbxGrupos.Size = new System.Drawing.Size(139, 21);
-            this.cbxGrupos.TabIndex = 9;
+            this.cbxGrupos.TabIndex = 7;
             // 
             // btnRegistrar
             // 
@@ -160,8 +161,9 @@
             this.txtRepetirContraseña.Location = new System.Drawing.Point(207, 192);
             this.txtRepetirContraseña.MaxLength = 30;
             this.txtRepetirContraseña.Name = "txtRepetirContraseña";
+            this.txtRepetirContraseña.PasswordChar = '*';
             this.txtRepetirContraseña.Size = new System.Drawing.Size(139, 20);
-            this.txtRepetirContraseña.TabIndex = 12;
+            this.txtRepetirContraseña.TabIndex = 5;
             // 
             // label1
             // 
@@ -180,7 +182,7 @@
             this.cbxPreguntaSeguridad.Location = new System.Drawing.Point(207, 318);
             this.cbxPreguntaSeguridad.Name = "cbxPreguntaSeguridad";
             this.cbxPreguntaSeguridad.Size = new System.Drawing.Size(139, 21);
-            this.cbxPreguntaSeguridad.TabIndex = 14;
+            this.cbxPreguntaSeguridad.TabIndex = 8;
             // 
             // lblPreguntaSeguridad
             // 
@@ -199,7 +201,7 @@
             this.txtRespuestaSeguridad.MaxLength = 30;
             this.txtRespuestaSeguridad.Name = "txtRespuestaSeguridad";
             this.txtRespuestaSeguridad.Size = new System.Drawing.Size(139, 20);
-            this.txtRespuestaSeguridad.TabIndex = 16;
+            this.txtRespuestaSeguridad.TabIndex = 9;
             // 
             // label2
             // 
@@ -218,7 +220,7 @@
             this.txtCorreo.MaxLength = 30;
             this.txtCorreo.Name = "txtCorreo";
             this.txtCorreo.Size = new System.Drawing.Size(139, 20);
-            this.txtCorreo.TabIndex = 18;
+            this.txtCorreo.TabIndex = 6;
             // 
             // lblCorreo
             // 

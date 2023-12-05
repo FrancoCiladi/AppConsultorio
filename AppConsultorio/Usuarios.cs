@@ -17,7 +17,7 @@ namespace AppConsultorio
         public static string idUsuarioSelec;
         public static string idUsuarioLog;
         public static int AccesoLog;
-        public static void RegistrarUsuario(string usuario,string pass,string apellido, string nombre, string idGrupo,string salt)
+        public static void RegistrarUsuario(string usuario,string pass,string apellido, string nombre, string idGrupo,string salt,string correo)
         {
             try
             {
@@ -36,10 +36,11 @@ namespace AppConsultorio
                 Comando.Parameters.Add("@nombre", SqlDbType.NChar, 30).Value = nombre;
                 Comando.Parameters.Add("@idGrupo", SqlDbType.Int).Value = idGrupo;
                 Comando.Parameters.Add("@salt", SqlDbType.NVarChar,128).Value = salt;
+                Comando.Parameters.Add("@correo", SqlDbType.NChar, 50).Value = correo;
 
                 Comando.ExecuteNonQuery();
 
-                MessageBox.Show("Usuario Registrado! Espere a ser habilitado.", "Operacion Realizada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Registro exitoso.", "Usuario Registrado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 Conexion.Close();
             }
@@ -496,5 +497,74 @@ namespace AppConsultorio
             }
         }
         
+        public static void RecuperarUsuarioSeguridad(string idUsuario, ref DataTable tabla)
+        {
+            try
+            {
+                string cadenaConexion = System.Configuration.ConfigurationManager.ConnectionStrings["CadenaConexion"].ConnectionString;
+                SqlConnection Conexion = new SqlConnection();
+                Conexion.ConnectionString = cadenaConexion;
+                Conexion.Open();
+
+                SqlCommand Comando = new SqlCommand();
+                Comando.Connection = Conexion;
+                Comando.CommandType = CommandType.StoredProcedure;
+                Comando.CommandText = "RECUPERAR_USUARIO_SEGURIDAD";
+                Comando.Parameters.Add("idUsuario", SqlDbType.Int).Value = idUsuario;
+                tabla = new DataTable();
+                tabla.Load(Comando.ExecuteReader());
+
+                Conexion.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        public static string GenerarCodigoVerificacion()
+        {
+            Random ran = new Random();
+
+            String cadena = "abcdefghijklmnopqrstuvwxyz0123456789";
+
+            int length = 6;
+
+            String random = "";
+
+            for (int i = 0; i < length; i++)
+            {
+                int a = ran.Next(cadena.Length);
+                random = random + cadena.ElementAt(a);
+            }
+
+            return (random.ToUpper());
+
+        }
+
+        public static void GenerarNuevoCodigoVerificacion(string idUsuario, string codigo)
+        {
+            try
+            {
+                string cadenaConexion = System.Configuration.ConfigurationManager.ConnectionStrings["CadenaConexion"].ConnectionString;
+                SqlConnection Conexion = new SqlConnection();
+                Conexion.ConnectionString = cadenaConexion;
+                Conexion.Open();
+
+                SqlCommand Comando = new SqlCommand();
+                Comando.Connection = Conexion;
+                Comando.CommandType = CommandType.StoredProcedure;
+                Comando.CommandText = "GENERAR_NUEVO_CODIGO_VERIFICACION";
+                Comando.Parameters.Add("@idUsuario", SqlDbType.Int).Value = idUsuario;
+                Comando.Parameters.Add("@codigo", SqlDbType.NVarChar, 6).Value = codigo;
+                Comando.ExecuteNonQuery();
+
+                Conexion.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
 }

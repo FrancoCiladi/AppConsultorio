@@ -58,7 +58,7 @@ namespace AppConsultorio
                 MessageBox.Show(ex.ToString());
             }
         }
-        public static void RegistrarPreguntaSeguridad(string idUsuario, string idPregunta, string respuesta, string salt)
+        public static void RegistrarPreguntaSeguridad(string idUsuario, string idPregunta, string respuesta, string salt, string codigo)
         {
             try
             {
@@ -75,6 +75,7 @@ namespace AppConsultorio
                 Comando.Parameters.Add("@idPregunta", SqlDbType.Int).Value = idPregunta;
                 Comando.Parameters.Add("@respuesta", SqlDbType.NVarChar, 128).Value = respuesta;
                 Comando.Parameters.Add("@salt", SqlDbType.NVarChar, 128).Value = salt;
+                Comando.Parameters.Add("@codigo", SqlDbType.NVarChar, 6).Value = codigo;
                 Comando.ExecuteNonQuery();
 
                 Conexion.Close();
