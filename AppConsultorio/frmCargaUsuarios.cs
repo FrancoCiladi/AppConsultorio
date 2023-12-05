@@ -227,7 +227,7 @@ namespace AppConsultorio
                 smtp.Disconnect(true);
             }
 
-            MessageBox.Show("Se ha enviado un codigo de verificacion a su correo que debera ser ingresado en su proximo logeo. El codigo expira pasados los 10 min.", "Codigo Generado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Se ha enviado un codigo de verificacion a su correo que debera ser ingresado en su proximo logeo.", "Codigo Generado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
         }
 
