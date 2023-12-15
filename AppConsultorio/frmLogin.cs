@@ -145,6 +145,8 @@ namespace AppConsultorio
                             else
                             {
                                 MessageBox.Show("El usuario se encuentra bloqueado.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                //GENERO UN CORREO PARA NOTIFICARLE QUE SU USUARIO ESTA BLOQUEADO EN CASO DE QUE ALGUIEN INTENTE ENTRAR A SU CUENTA
+                                GenerarCorreoLoginFallido(tabla);
                             }
                         }
                         else
@@ -179,6 +181,31 @@ namespace AppConsultorio
             frmRecuperarClave.ShowDialog();
         }
 
+        private void GenerarCorreoLoginFallido(DataTable tabla)
+        {
+            var email = new MimeMessage();
+
+            email.From.Add(new MailboxAddress("Consultorio", "franco.ciladi@gmail.com"));
+            email.To.Add(new MailboxAddress(tabla.Rows[0]["NombreCompleto"].ToString(), tabla.Rows[0]["Correo"].ToString()));
+
+            email.Subject = "Usuario Bloqueado";
+            email.Body = new TextPart(MimeKit.Text.TextFormat.Html)
+            {
+                Text = "Se le envia un correo electronico informandole que su usario se encuentra bloqueado. Si usted no intento ingresar sugerimos que modifique la contraseña."
+            };
+
+            using (var smtp = new SmtpClient())
+            {
+                smtp.Connect("smtp.gmail.com", 587, false);
+
+                smtp.Authenticate("franco.ciladi@gmail.com", "qzfo oahs wpgi pxoa");
+
+                smtp.Send(email);
+                smtp.Disconnect(true);
+            }
+
+            MessageBox.Show("Se ha enviado correo notificando el bloqueo de usuario.", "Operacion Realizada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
         private void lnkNuevoCodigo_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             if (!string.IsNullOrEmpty(txtUsuario.Text))

@@ -29,6 +29,7 @@ namespace AppConsultorio
                 Usuarios.ResetearContraseña(Usuarios.idUsuarioSelec, passHash, salt);
                 //UNA VEZ RESETEADA LA CONTRASEÑA POR SEGURIDAD SERA INHABILITADO Y DEBERA SER HABILITADO POR EL ADMIN
                 MessageBox.Show("Contraseña guardada. Espere a ser habilitado por el admin.", "Modificacion Realizada!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                this.Close();
             }
         }
 
@@ -37,6 +38,7 @@ namespace AppConsultorio
             //SI RESPONDE BIEN A LA PREGUNTA DE SEGURIDAD SE HABILITA EL PANEL CON LOS CONTROLES PARA RESETAR CLAVE
             if (VerificarUsuario())
             {
+                pnlPrincipal.Visible = false;
                 pnlSecundario.Visible = true;
             }
         }

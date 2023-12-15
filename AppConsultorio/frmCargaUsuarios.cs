@@ -24,17 +24,9 @@ namespace AppConsultorio
         private void frmCargaUsuarios_Load(object sender, EventArgs e)
         {
             this.CenterToScreen();
-            //CARGA DE COMBOBOX GRUPOS
-            DataTable tabla = new DataTable();
-            Grupos.RecuperarGrupos(ref tabla);
-            cbxGrupos.DataSource = tabla;
-            cbxGrupos.DisplayMember = "Grupo";
-            cbxGrupos.ValueMember = "idGrupo";
-            cbxGrupos.DropDownStyle = ComboBoxStyle.DropDownList;
-            cbxGrupos.SelectedIndex = 0;
 
             //CARGA DE COMBOBOX DE PREGUNTAS DE SEGURIDAD
-            tabla = new DataTable();
+            DataTable tabla = new DataTable();
             PreguntasSeguridad.RecuperarPreguntasSeguridad(ref tabla);
             cbxPreguntaSeguridad.DataSource = tabla;
             cbxPreguntaSeguridad.DisplayMember = "Descripcion";
@@ -180,7 +172,7 @@ namespace AppConsultorio
                 //SE COMBINA LA SALT GENERADA JUNTO A LA CONTRASEÑA INGRESADA
                 string passHash = Usuarios.SecurityHelper.HashPassword(txtContraseña.Text.ToString().Trim(), salt, 10000, 32);
 
-                Usuarios.RegistrarUsuario(txtUsuario.Text.ToString().Trim(), passHash,txtApellido.Text.ToString().Trim(), txtNombre.Text.ToString().Trim(),cbxGrupos.SelectedValue.ToString(),salt,txtCorreo.Text.ToString().Trim());
+                Usuarios.RegistrarUsuario(txtUsuario.Text.ToString().Trim(), passHash,txtApellido.Text.ToString().Trim(), txtNombre.Text.ToString().Trim(),salt,txtCorreo.Text.ToString().Trim());
 
                 //NECESARIO PARA RECUPERAR EL ID DEL USUARIO RECIEN CREADO, REUTILIZO EL PROCEDURE 'RecuperarUsuarioLogin'
                 tabla = new DataTable();
@@ -227,7 +219,7 @@ namespace AppConsultorio
                 smtp.Disconnect(true);
             }
 
-            MessageBox.Show("Se ha enviado un codigo de verificacion a su correo que debera ser ingresado en su proximo logeo.", "Codigo Generado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Correo Enviado!.", "Operacion Realizada", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
         }
 

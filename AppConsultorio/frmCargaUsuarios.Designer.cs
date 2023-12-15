@@ -33,12 +33,10 @@
             this.lblNombre = new System.Windows.Forms.Label();
             this.lblUsuario = new System.Windows.Forms.Label();
             this.lblContraseña = new System.Windows.Forms.Label();
-            this.lblGrupo = new System.Windows.Forms.Label();
             this.txtApellido = new System.Windows.Forms.TextBox();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.txtUsuario = new System.Windows.Forms.TextBox();
             this.txtContraseña = new System.Windows.Forms.TextBox();
-            this.cbxGrupos = new System.Windows.Forms.ComboBox();
             this.btnRegistrar = new System.Windows.Forms.Button();
             this.txtRepetirContraseña = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -94,17 +92,6 @@
             this.lblContraseña.TabIndex = 3;
             this.lblContraseña.Text = "Contraseña:";
             // 
-            // lblGrupo
-            // 
-            this.lblGrupo.AutoSize = true;
-            this.lblGrupo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblGrupo.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lblGrupo.Location = new System.Drawing.Point(67, 275);
-            this.lblGrupo.Name = "lblGrupo";
-            this.lblGrupo.Size = new System.Drawing.Size(53, 16);
-            this.lblGrupo.TabIndex = 4;
-            this.lblGrupo.Text = "Grupo:";
-            // 
             // txtApellido
             // 
             this.txtApellido.Location = new System.Drawing.Point(207, 19);
@@ -138,17 +125,9 @@
             this.txtContraseña.Size = new System.Drawing.Size(139, 20);
             this.txtContraseña.TabIndex = 4;
             // 
-            // cbxGrupos
-            // 
-            this.cbxGrupos.FormattingEnabled = true;
-            this.cbxGrupos.Location = new System.Drawing.Point(207, 270);
-            this.cbxGrupos.Name = "cbxGrupos";
-            this.cbxGrupos.Size = new System.Drawing.Size(139, 21);
-            this.cbxGrupos.TabIndex = 7;
-            // 
             // btnRegistrar
             // 
-            this.btnRegistrar.Location = new System.Drawing.Point(129, 416);
+            this.btnRegistrar.Location = new System.Drawing.Point(131, 376);
             this.btnRegistrar.Name = "btnRegistrar";
             this.btnRegistrar.Size = new System.Drawing.Size(105, 39);
             this.btnRegistrar.TabIndex = 10;
@@ -179,7 +158,7 @@
             // cbxPreguntaSeguridad
             // 
             this.cbxPreguntaSeguridad.FormattingEnabled = true;
-            this.cbxPreguntaSeguridad.Location = new System.Drawing.Point(207, 318);
+            this.cbxPreguntaSeguridad.Location = new System.Drawing.Point(207, 279);
             this.cbxPreguntaSeguridad.Name = "cbxPreguntaSeguridad";
             this.cbxPreguntaSeguridad.Size = new System.Drawing.Size(139, 21);
             this.cbxPreguntaSeguridad.TabIndex = 8;
@@ -189,7 +168,7 @@
             this.lblPreguntaSeguridad.AutoSize = true;
             this.lblPreguntaSeguridad.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPreguntaSeguridad.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lblPreguntaSeguridad.Location = new System.Drawing.Point(15, 318);
+            this.lblPreguntaSeguridad.Location = new System.Drawing.Point(15, 279);
             this.lblPreguntaSeguridad.Name = "lblPreguntaSeguridad";
             this.lblPreguntaSeguridad.Size = new System.Drawing.Size(171, 16);
             this.lblPreguntaSeguridad.TabIndex = 13;
@@ -197,7 +176,7 @@
             // 
             // txtRespuestaSeguridad
             // 
-            this.txtRespuestaSeguridad.Location = new System.Drawing.Point(207, 359);
+            this.txtRespuestaSeguridad.Location = new System.Drawing.Point(207, 320);
             this.txtRespuestaSeguridad.MaxLength = 30;
             this.txtRespuestaSeguridad.Name = "txtRespuestaSeguridad";
             this.txtRespuestaSeguridad.Size = new System.Drawing.Size(139, 20);
@@ -208,7 +187,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label2.Location = new System.Drawing.Point(24, 363);
+            this.label2.Location = new System.Drawing.Point(24, 324);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(162, 16);
             this.label2.TabIndex = 15;
@@ -238,7 +217,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSeaGreen;
-            this.ClientSize = new System.Drawing.Size(372, 477);
+            this.ClientSize = new System.Drawing.Size(372, 431);
             this.Controls.Add(this.txtCorreo);
             this.Controls.Add(this.lblCorreo);
             this.Controls.Add(this.txtRespuestaSeguridad);
@@ -248,12 +227,10 @@
             this.Controls.Add(this.txtRepetirContraseña);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnRegistrar);
-            this.Controls.Add(this.cbxGrupos);
             this.Controls.Add(this.txtContraseña);
             this.Controls.Add(this.txtUsuario);
             this.Controls.Add(this.txtNombre);
             this.Controls.Add(this.txtApellido);
-            this.Controls.Add(this.lblGrupo);
             this.Controls.Add(this.lblContraseña);
             this.Controls.Add(this.lblUsuario);
             this.Controls.Add(this.lblNombre);
@@ -273,12 +250,10 @@
         private System.Windows.Forms.Label lblNombre;
         private System.Windows.Forms.Label lblUsuario;
         private System.Windows.Forms.Label lblContraseña;
-        private System.Windows.Forms.Label lblGrupo;
         private System.Windows.Forms.TextBox txtApellido;
         private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.TextBox txtUsuario;
         private System.Windows.Forms.TextBox txtContraseña;
-        private System.Windows.Forms.ComboBox cbxGrupos;
         private System.Windows.Forms.Button btnRegistrar;
         private System.Windows.Forms.TextBox txtRepetirContraseña;
         private System.Windows.Forms.Label label1;

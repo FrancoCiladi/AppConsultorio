@@ -22,57 +22,85 @@ namespace AppConsultorio
         {
             this.CenterToScreen();
             rbActivos.Checked = true;
-            CargarGridView();
-            //POR DEFAULT CARGO LOS USUARIOS ACTIVOS
+            cbxFiltrado.Items.Add("Apellido");
+            cbxFiltrado.Items.Add("Nombre");
+            cbxFiltrado.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbxFiltrado.SelectedIndex = 0;
         }
 
         private void rbActivos_CheckedChanged(object sender, EventArgs e)
         {
-            //CAMBIO DE PACIENTES AL CHECKEAR RADIOBUTTON
-            if (rbActivos.Checked)
+            if (txtFiltrado.Text.Length >= 3)
             {
-                CargarGridView();
-                rbActivos.Checked = true;
-                rbInactivos.Checked = false;
+                if (rbActivos.Checked)
+                {
+                    CargarGridView();
+                    rbActivos.Checked = true;
+                    rbInactivos.Checked = false;
+                }
+                else
+                {
+                    rbActivos.Checked = false;
+                    rbInactivos.Checked = true;
+                }
             }
-            else
-            {
-                rbActivos.Checked = false;
-                rbInactivos.Checked = true;
-            }
+            //CAMBIO DE PACIENTES AL CHECKEAR RADIOBUTTON           
         }
 
         private void rbInactivos_CheckedChanged(object sender, EventArgs e)
         {
-            //CAMBIO DE PACIENTES AL CHEQUEAR RADIOBUTTON
-            if (rbInactivos.Checked)
+            if (txtFiltrado.Text.Length >= 3)
             {
-                CargarGridView();
-                rbActivos.Checked = false;
-                rbInactivos.Checked = true;
+                if (rbInactivos.Checked)
+                {
+                    CargarGridView();
+                    rbActivos.Checked = false;
+                    rbInactivos.Checked = true;
+                }
+                else
+                {
+                    rbActivos.Checked = true;
+                    rbInactivos.Checked = false;
+                }
             }
-            else
-            {
-                rbActivos.Checked = true;
-                rbInactivos.Checked = false;
-            }
+            //CAMBIO DE PACIENTES AL CHEQUEAR RADIOBUTTON            
         }
         private void CargarGridView()
         {
+            int cantUsuarios = 0;
             DataTable tabla = new DataTable();
-            //DEPENDIENDO DEL RADIOBUTTON CHEQUEADO LLAMO AL PROCEDURE CORRESPONDIENTE
+
             if (rbActivos.Checked == true)
             {
-                Usuarios.RecuperarUsuariosActivos(ref tabla);
+                if (cbxFiltrado.SelectedIndex == 0)
+                {
+                    Usuarios.RecuperarUsuariosListado(1, 0, txtFiltrado.Text.ToString().Trim(), ref tabla);
+                }
+                else
+                {
+                    Usuarios.RecuperarUsuariosListado(1, 1, txtFiltrado.Text.ToString().Trim(), ref tabla);
+                }
             }
             else
             {
-                Usuarios.RecuperarUsuariosInactivos(ref tabla);
+                if (cbxFiltrado.SelectedIndex == 0)
+                {
+                    Usuarios.RecuperarUsuariosListado(0, 0, txtFiltrado.Text.ToString().Trim(), ref tabla);
+                }
+                else
+                {
+                    Usuarios.RecuperarUsuariosListado(0, 1, txtFiltrado.Text.ToString().Trim(), ref tabla);
+                }
             }
+
             dgvUsuarios.DataSource = tabla;
             dgvUsuarios.Columns["idUsuario"].Visible = false;
             dgvUsuarios.AllowUserToAddRows = false;
             dgvUsuarios.AllowUserToDeleteRows = false;
+            cantUsuarios = tabla.Rows.Count;
+
+            lblCantUsuarios.Text = "Cant. de Usuarios: " + cantUsuarios;
+
         }
         private void frmUsuarios_Activated(object sender, EventArgs e)
         {
@@ -107,6 +135,7 @@ namespace AppConsultorio
                 //RESETEO LA CANTIDAD DE INTENTOS DE LOGIN DEL USUARIO
                 Usuarios.idUsuarioSelec = dgvUsuarios.CurrentRow.Cells["idUsuario"].Value.ToString();
                 Usuarios.ResetearIntentosLogin(Usuarios.idUsuarioSelec);
+                CargarGridView();
             }
         }
 
@@ -134,6 +163,7 @@ namespace AppConsultorio
                 Usuarios.idUsuarioSelec = dgvUsuarios.CurrentRow.Cells["idUsuario"].Value.ToString();
                 Grupos.UpdateGrupo(Usuarios.idUsuarioSelec, 1);
                 MessageBox.Show("Grupo modificado con exito!", "Operacion Realizada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                CargarGridView();
             }
         }
 
@@ -145,6 +175,7 @@ namespace AppConsultorio
                 Usuarios.idUsuarioSelec = dgvUsuarios.CurrentRow.Cells["idUsuario"].Value.ToString();
                 Grupos.UpdateGrupo(Usuarios.idUsuarioSelec, 2);
                 MessageBox.Show("Grupo modificado con exito!", "Operacion Realizada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                CargarGridView();
             }
         }
 
@@ -156,6 +187,7 @@ namespace AppConsultorio
                 Usuarios.idUsuarioSelec = dgvUsuarios.CurrentRow.Cells["idUsuario"].Value.ToString();
                 Grupos.UpdateGrupo(Usuarios.idUsuarioSelec, 3);
                 MessageBox.Show("Grupo modificado con exito!", "Operacion Realizada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                CargarGridView();
             }
         }
 
@@ -166,6 +198,19 @@ namespace AppConsultorio
                 //RESETEO LA CANTIDAD DE INTENTOS DE RECUPERACION DE CLAVE DEL USUARIO
                 Usuarios.idUsuarioSelec = dgvUsuarios.CurrentRow.Cells["idUsuario"].Value.ToString();
                 Usuarios.ResetearIntentosResetearClave(Usuarios.idUsuarioSelec);
+                CargarGridView();
+            }
+        }
+
+        private void txtFiltrado_TextChanged(object sender, EventArgs e)
+        {
+            if (txtFiltrado.Text.Length >= 3)
+            {
+                CargarGridView();
+            }
+            else
+            {
+                dgvUsuarios.DataSource = null;
             }
         }
     }

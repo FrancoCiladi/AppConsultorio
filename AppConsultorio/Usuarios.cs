@@ -17,7 +17,7 @@ namespace AppConsultorio
         public static string idUsuarioSelec;
         public static string idUsuarioLog;
         public static int AccesoLog;
-        public static void RegistrarUsuario(string usuario,string pass,string apellido, string nombre, string idGrupo,string salt,string correo)
+        public static void RegistrarUsuario(string usuario,string pass,string apellido, string nombre,string salt,string correo)
         {
             try
             {
@@ -34,13 +34,12 @@ namespace AppConsultorio
                 Comando.Parameters.Add("@pass", SqlDbType.Char, 64).Value = pass;
                 Comando.Parameters.Add("@apellido", SqlDbType.NChar, 30).Value = apellido;
                 Comando.Parameters.Add("@nombre", SqlDbType.NChar, 30).Value = nombre;
-                Comando.Parameters.Add("@idGrupo", SqlDbType.Int).Value = idGrupo;
                 Comando.Parameters.Add("@salt", SqlDbType.NVarChar,128).Value = salt;
                 Comando.Parameters.Add("@correo", SqlDbType.NChar, 50).Value = correo;
 
                 Comando.ExecuteNonQuery();
 
-                MessageBox.Show("Registro exitoso.", "Usuario Registrado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Registro exitoso. Se le enviara un correo electronico con un codigo de verificacion. Aguarde mientras se genera.", "Usuario Registrado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 Conexion.Close();
             }
@@ -252,7 +251,7 @@ namespace AppConsultorio
                 MessageBox.Show(ex.ToString());
             }
         }
-        public static void RecuperarUsuariosActivos(ref DataTable tabla)
+        public static void RecuperarUsuariosListado(int estado,int opcion_filtrado,string texto,ref DataTable tabla)
         {
             try
             {
@@ -264,7 +263,10 @@ namespace AppConsultorio
                 SqlCommand Comando = new SqlCommand();
                 Comando.Connection = Conexion;
                 Comando.CommandType = CommandType.StoredProcedure;
-                Comando.CommandText = "RECUPERAR_USUARIOS_ACTIVOS";
+                Comando.CommandText = "RECUPERAR_USUARIOS_LISTADO";
+                Comando.Parameters.Add("@estado", SqlDbType.Int).Value = estado;
+                Comando.Parameters.Add("@opcion_filtrado", SqlDbType.Int).Value = opcion_filtrado;
+                Comando.Parameters.Add("@texto", SqlDbType.NVarChar,30).Value = texto;
                 tabla = new DataTable();
                 tabla.Load(Comando.ExecuteReader());
 
@@ -275,30 +277,7 @@ namespace AppConsultorio
                 MessageBox.Show(ex.ToString());
             }
         }
-        public static void RecuperarUsuariosInactivos(ref DataTable tabla)
-        {
-            try
-            {
-                string cadenaConexion = System.Configuration.ConfigurationManager.ConnectionStrings["CadenaConexion"].ConnectionString;
-                SqlConnection Conexion = new SqlConnection();
-                Conexion.ConnectionString = cadenaConexion;
-                Conexion.Open();
-
-                SqlCommand Comando = new SqlCommand();
-                Comando.Connection = Conexion;
-                Comando.CommandType = CommandType.StoredProcedure;
-                Comando.CommandText = "RECUPERAR_USUARIOS_INACTIVOS";
-                tabla = new DataTable();
-                tabla.Load(Comando.ExecuteReader());
-
-                Conexion.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
-        }
-
+        
         public class SecurityHelper
         {
             public static string GenerateSalt(int nSalt)

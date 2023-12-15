@@ -38,11 +38,14 @@
             this.habilitarUsuarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.eliminarUsuarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.resetearIntentosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.resetearIntentosRecClaveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cambiarGrupoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.administradorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.medicoaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.secretariaoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.resetearIntentosRecClaveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lblCantUsuarios = new System.Windows.Forms.Label();
+            this.cbxFiltrado = new System.Windows.Forms.ComboBox();
+            this.txtFiltrado = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsuarios)).BeginInit();
             this.mnuUsuarios.SuspendLayout();
             this.SuspendLayout();
@@ -51,7 +54,7 @@
             // 
             this.rbActivos.AutoSize = true;
             this.rbActivos.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.rbActivos.Location = new System.Drawing.Point(13, 27);
+            this.rbActivos.Location = new System.Drawing.Point(329, 21);
             this.rbActivos.Name = "rbActivos";
             this.rbActivos.Size = new System.Drawing.Size(60, 17);
             this.rbActivos.TabIndex = 0;
@@ -64,7 +67,7 @@
             // 
             this.rbInactivos.AutoSize = true;
             this.rbInactivos.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.rbInactivos.Location = new System.Drawing.Point(94, 27);
+            this.rbInactivos.Location = new System.Drawing.Point(395, 21);
             this.rbInactivos.Name = "rbInactivos";
             this.rbInactivos.Size = new System.Drawing.Size(68, 17);
             this.rbInactivos.TabIndex = 1;
@@ -83,7 +86,7 @@
             this.dgvUsuarios.ContextMenuStrip = this.mnuUsuarios;
             this.dgvUsuarios.Location = new System.Drawing.Point(13, 65);
             this.dgvUsuarios.Name = "dgvUsuarios";
-            this.dgvUsuarios.Size = new System.Drawing.Size(431, 373);
+            this.dgvUsuarios.Size = new System.Drawing.Size(450, 396);
             this.dgvUsuarios.TabIndex = 2;
             // 
             // mnuUsuarios
@@ -96,7 +99,7 @@
             this.resetearIntentosRecClaveToolStripMenuItem,
             this.cambiarGrupoToolStripMenuItem});
             this.mnuUsuarios.Name = "mnuUsuarios";
-            this.mnuUsuarios.Size = new System.Drawing.Size(222, 158);
+            this.mnuUsuarios.Size = new System.Drawing.Size(222, 136);
             // 
             // deshabilitarUsuarioToolStripMenuItem
             // 
@@ -126,6 +129,13 @@
             this.resetearIntentosToolStripMenuItem.Text = "Resetear Intentos Login";
             this.resetearIntentosToolStripMenuItem.Click += new System.EventHandler(this.resetearIntentosToolStripMenuItem_Click);
             // 
+            // resetearIntentosRecClaveToolStripMenuItem
+            // 
+            this.resetearIntentosRecClaveToolStripMenuItem.Name = "resetearIntentosRecClaveToolStripMenuItem";
+            this.resetearIntentosRecClaveToolStripMenuItem.Size = new System.Drawing.Size(221, 22);
+            this.resetearIntentosRecClaveToolStripMenuItem.Text = "Resetear Intentos Rec. Clave";
+            this.resetearIntentosRecClaveToolStripMenuItem.Click += new System.EventHandler(this.resetearIntentosRecClaveToolStripMenuItem_Click);
+            // 
             // cambiarGrupoToolStripMenuItem
             // 
             this.cambiarGrupoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -139,37 +149,62 @@
             // administradorToolStripMenuItem
             // 
             this.administradorToolStripMenuItem.Name = "administradorToolStripMenuItem";
-            this.administradorToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.administradorToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
             this.administradorToolStripMenuItem.Text = "Administrador";
             this.administradorToolStripMenuItem.Click += new System.EventHandler(this.administradorToolStripMenuItem_Click);
             // 
             // medicoaToolStripMenuItem
             // 
             this.medicoaToolStripMenuItem.Name = "medicoaToolStripMenuItem";
-            this.medicoaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.medicoaToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
             this.medicoaToolStripMenuItem.Text = "Medico/a";
             this.medicoaToolStripMenuItem.Click += new System.EventHandler(this.medicoaToolStripMenuItem_Click);
             // 
             // secretariaoToolStripMenuItem
             // 
             this.secretariaoToolStripMenuItem.Name = "secretariaoToolStripMenuItem";
-            this.secretariaoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.secretariaoToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
             this.secretariaoToolStripMenuItem.Text = "Secretaria/o";
             this.secretariaoToolStripMenuItem.Click += new System.EventHandler(this.secretariaoToolStripMenuItem_Click);
             // 
-            // resetearIntentosRecClaveToolStripMenuItem
+            // lblCantUsuarios
             // 
-            this.resetearIntentosRecClaveToolStripMenuItem.Name = "resetearIntentosRecClaveToolStripMenuItem";
-            this.resetearIntentosRecClaveToolStripMenuItem.Size = new System.Drawing.Size(221, 22);
-            this.resetearIntentosRecClaveToolStripMenuItem.Text = "Resetear Intentos Rec. Clave";
-            this.resetearIntentosRecClaveToolStripMenuItem.Click += new System.EventHandler(this.resetearIntentosRecClaveToolStripMenuItem_Click);
+            this.lblCantUsuarios.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblCantUsuarios.AutoSize = true;
+            this.lblCantUsuarios.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCantUsuarios.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lblCantUsuarios.Location = new System.Drawing.Point(12, 481);
+            this.lblCantUsuarios.Name = "lblCantUsuarios";
+            this.lblCantUsuarios.Size = new System.Drawing.Size(163, 20);
+            this.lblCantUsuarios.TabIndex = 3;
+            this.lblCantUsuarios.Text = "Cant. de Usuarios: ";
+            // 
+            // cbxFiltrado
+            // 
+            this.cbxFiltrado.FormattingEnabled = true;
+            this.cbxFiltrado.Location = new System.Drawing.Point(16, 21);
+            this.cbxFiltrado.Name = "cbxFiltrado";
+            this.cbxFiltrado.Size = new System.Drawing.Size(91, 21);
+            this.cbxFiltrado.TabIndex = 4;
+            // 
+            // txtFiltrado
+            // 
+            this.txtFiltrado.Location = new System.Drawing.Point(113, 21);
+            this.txtFiltrado.MaxLength = 30;
+            this.txtFiltrado.Name = "txtFiltrado";
+            this.txtFiltrado.Size = new System.Drawing.Size(143, 20);
+            this.txtFiltrado.TabIndex = 5;
+            this.txtFiltrado.TextChanged += new System.EventHandler(this.txtFiltrado_TextChanged);
             // 
             // frmListadoUsuarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSeaGreen;
-            this.ClientSize = new System.Drawing.Size(456, 450);
+            this.ClientSize = new System.Drawing.Size(475, 510);
+            this.Controls.Add(this.txtFiltrado);
+            this.Controls.Add(this.cbxFiltrado);
+            this.Controls.Add(this.lblCantUsuarios);
             this.Controls.Add(this.dgvUsuarios);
             this.Controls.Add(this.rbInactivos);
             this.Controls.Add(this.rbActivos);
@@ -201,5 +236,8 @@
         private System.Windows.Forms.ToolStripMenuItem medicoaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem secretariaoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem resetearIntentosRecClaveToolStripMenuItem;
+        private System.Windows.Forms.Label lblCantUsuarios;
+        private System.Windows.Forms.ComboBox cbxFiltrado;
+        private System.Windows.Forms.TextBox txtFiltrado;
     }
 }

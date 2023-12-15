@@ -136,7 +136,7 @@
             this.pnlSecundario.Controls.Add(this.label2);
             this.pnlSecundario.Controls.Add(this.txtNuevaContraseña);
             this.pnlSecundario.Controls.Add(this.label1);
-            this.pnlSecundario.Location = new System.Drawing.Point(12, 252);
+            this.pnlSecundario.Location = new System.Drawing.Point(12, 15);
             this.pnlSecundario.Name = "pnlSecundario";
             this.pnlSecundario.Size = new System.Drawing.Size(465, 194);
             this.pnlSecundario.TabIndex = 1;
@@ -200,9 +200,9 @@
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.LightSeaGreen;
-            this.ClientSize = new System.Drawing.Size(488, 459);
-            this.Controls.Add(this.pnlSecundario);
+            this.ClientSize = new System.Drawing.Size(488, 257);
             this.Controls.Add(this.pnlPrincipal);
+            this.Controls.Add(this.pnlSecundario);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmRecuperarClave";
             this.Text = "Recuperar Clave";

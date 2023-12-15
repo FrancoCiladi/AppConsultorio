@@ -31,7 +31,7 @@ namespace AppConsultorio
             {
                 btnInfo.Visible = false;
             }
-            else if (Usuarios.AccesoLog == 10)
+            if (Usuarios.AccesoLog == 10)
             {
                 //SI EL USUARIO ES ADMIN SOLO PUEDE VER EL LISTADO DE USUARIOS Y TODO LO RELEVANTE A USUARIOS
                 OpenChildForm(new frmListadoUsuarios(), sender);
@@ -39,6 +39,12 @@ namespace AppConsultorio
                 btnPacientes.Enabled = false;
                 btnInfo.Enabled = false;
                 btnTurnosHistoricos.Enabled = false;
+            }
+            if(Usuarios.AccesoLog == 0)
+            {
+                //SI EL USUARIO NO TIENE NINGUN GRUPO HABILITADO SE LE IMPEDIRA EL USO DE LA APLICACION HASTA QUE SE LE ASIGNE UNO
+                MessageBox.Show("No tiene ningun grupo asignado. Espere a que el administrador le asigne uno.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                Application.Restart();
             }
             Usuarios.RecuperarUsuarioLogeado(Usuarios.idUsuarioLog, ref tabla);
             
