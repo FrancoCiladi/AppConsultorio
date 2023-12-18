@@ -36,10 +36,11 @@
             this.exportarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuPacientes = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.nuevoPacienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.modificarPacienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.eliminarPacienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cbxTurnosCategorias = new System.Windows.Forms.ComboBox();
             this.dgvPacientes = new System.Windows.Forms.DataGridView();
             this.btnAsignarTurno = new System.Windows.Forms.Button();
-            this.lblFiltrar = new System.Windows.Forms.Label();
             this.dtpFecha = new System.Windows.Forms.DateTimePicker();
             this.dtpHora = new System.Windows.Forms.DateTimePicker();
             this.lblHora = new System.Windows.Forms.Label();
@@ -47,8 +48,8 @@
             this.lblFecha = new System.Windows.Forms.Label();
             this.dgvTurnos = new System.Windows.Forms.DataGridView();
             this.cbxMeses = new System.Windows.Forms.ComboBox();
-            this.modificarPacienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.eliminarPacienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cbxFiltrar = new System.Windows.Forms.ComboBox();
+            this.cbxObrasSociales = new System.Windows.Forms.ComboBox();
             this.mnuTurnos.SuspendLayout();
             this.mnuPacientes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPacientes)).BeginInit();
@@ -100,14 +101,28 @@
             this.modificarPacienteToolStripMenuItem,
             this.eliminarPacienteToolStripMenuItem});
             this.mnuPacientes.Name = "mnuPacientes";
-            this.mnuPacientes.Size = new System.Drawing.Size(181, 92);
+            this.mnuPacientes.Size = new System.Drawing.Size(166, 70);
             // 
             // nuevoPacienteToolStripMenuItem
             // 
             this.nuevoPacienteToolStripMenuItem.Name = "nuevoPacienteToolStripMenuItem";
-            this.nuevoPacienteToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.nuevoPacienteToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
             this.nuevoPacienteToolStripMenuItem.Text = "Nuevo Paciente";
             this.nuevoPacienteToolStripMenuItem.Click += new System.EventHandler(this.nuevoPacienteToolStripMenuItem_Click);
+            // 
+            // modificarPacienteToolStripMenuItem
+            // 
+            this.modificarPacienteToolStripMenuItem.Name = "modificarPacienteToolStripMenuItem";
+            this.modificarPacienteToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
+            this.modificarPacienteToolStripMenuItem.Text = "Editar Paciente";
+            this.modificarPacienteToolStripMenuItem.Click += new System.EventHandler(this.modificarPacienteToolStripMenuItem_Click);
+            // 
+            // eliminarPacienteToolStripMenuItem
+            // 
+            this.eliminarPacienteToolStripMenuItem.Name = "eliminarPacienteToolStripMenuItem";
+            this.eliminarPacienteToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
+            this.eliminarPacienteToolStripMenuItem.Text = "Eliminar Paciente";
+            this.eliminarPacienteToolStripMenuItem.Click += new System.EventHandler(this.eliminarPacienteToolStripMenuItem_Click);
             // 
             // cbxTurnosCategorias
             // 
@@ -121,6 +136,7 @@
             // 
             // dgvPacientes
             // 
+            this.dgvPacientes.AllowUserToAddRows = false;
             this.dgvPacientes.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvPacientes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
@@ -143,18 +159,6 @@
             this.btnAsignarTurno.Text = "Asignar Turno";
             this.btnAsignarTurno.UseVisualStyleBackColor = true;
             this.btnAsignarTurno.Click += new System.EventHandler(this.btnAsignarTurno_Click_1);
-            // 
-            // lblFiltrar
-            // 
-            this.lblFiltrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lblFiltrar.AutoSize = true;
-            this.lblFiltrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFiltrar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lblFiltrar.Location = new System.Drawing.Point(12, 322);
-            this.lblFiltrar.Name = "lblFiltrar";
-            this.lblFiltrar.Size = new System.Drawing.Size(69, 16);
-            this.lblFiltrar.TabIndex = 33;
-            this.lblFiltrar.Text = "Apellido:";
             // 
             // dtpFecha
             // 
@@ -191,10 +195,10 @@
             // txtFiltrar
             // 
             this.txtFiltrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.txtFiltrar.Location = new System.Drawing.Point(14, 347);
+            this.txtFiltrar.Location = new System.Drawing.Point(12, 386);
             this.txtFiltrar.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
             this.txtFiltrar.Name = "txtFiltrar";
-            this.txtFiltrar.Size = new System.Drawing.Size(158, 20);
+            this.txtFiltrar.Size = new System.Drawing.Size(98, 20);
             this.txtFiltrar.TabIndex = 32;
             this.txtFiltrar.TextChanged += new System.EventHandler(this.txtFiltrar_TextChanged_1);
             // 
@@ -233,19 +237,25 @@
             this.cbxMeses.TabIndex = 34;
             this.cbxMeses.SelectedIndexChanged += new System.EventHandler(this.cbxMeses_SelectedIndexChanged);
             // 
-            // modificarPacienteToolStripMenuItem
+            // cbxFiltrar
             // 
-            this.modificarPacienteToolStripMenuItem.Name = "modificarPacienteToolStripMenuItem";
-            this.modificarPacienteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.modificarPacienteToolStripMenuItem.Text = "Editar Paciente";
-            this.modificarPacienteToolStripMenuItem.Click += new System.EventHandler(this.modificarPacienteToolStripMenuItem_Click);
+            this.cbxFiltrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.cbxFiltrar.FormattingEnabled = true;
+            this.cbxFiltrar.Location = new System.Drawing.Point(12, 342);
+            this.cbxFiltrar.Name = "cbxFiltrar";
+            this.cbxFiltrar.Size = new System.Drawing.Size(121, 21);
+            this.cbxFiltrar.TabIndex = 35;
+            this.cbxFiltrar.SelectedIndexChanged += new System.EventHandler(this.cbxFiltrar_SelectedIndexChanged);
             // 
-            // eliminarPacienteToolStripMenuItem
+            // cbxObrasSociales
             // 
-            this.eliminarPacienteToolStripMenuItem.Name = "eliminarPacienteToolStripMenuItem";
-            this.eliminarPacienteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.eliminarPacienteToolStripMenuItem.Text = "Eliminar Paciente";
-            this.eliminarPacienteToolStripMenuItem.Click += new System.EventHandler(this.eliminarPacienteToolStripMenuItem_Click);
+            this.cbxObrasSociales.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.cbxObrasSociales.FormattingEnabled = true;
+            this.cbxObrasSociales.Location = new System.Drawing.Point(12, 386);
+            this.cbxObrasSociales.Name = "cbxObrasSociales";
+            this.cbxObrasSociales.Size = new System.Drawing.Size(161, 21);
+            this.cbxObrasSociales.TabIndex = 36;
+            this.cbxObrasSociales.SelectedIndexChanged += new System.EventHandler(this.cbxObrasSociales_SelectedIndexChanged);
             // 
             // frmTurnos
             // 
@@ -254,11 +264,12 @@
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.LightSeaGreen;
             this.ClientSize = new System.Drawing.Size(789, 586);
+            this.Controls.Add(this.cbxObrasSociales);
+            this.Controls.Add(this.cbxFiltrar);
             this.Controls.Add(this.cbxMeses);
             this.Controls.Add(this.dgvTurnos);
             this.Controls.Add(this.dgvPacientes);
             this.Controls.Add(this.cbxTurnosCategorias);
-            this.Controls.Add(this.lblFiltrar);
             this.Controls.Add(this.txtFiltrar);
             this.Controls.Add(this.lblHora);
             this.Controls.Add(this.btnAsignarTurno);
@@ -290,7 +301,6 @@
         private System.Windows.Forms.ComboBox cbxTurnosCategorias;
         private System.Windows.Forms.DataGridView dgvPacientes;
         private System.Windows.Forms.Button btnAsignarTurno;
-        private System.Windows.Forms.Label lblFiltrar;
         private System.Windows.Forms.DateTimePicker dtpFecha;
         private System.Windows.Forms.DateTimePicker dtpHora;
         private System.Windows.Forms.Label lblHora;
@@ -300,5 +310,7 @@
         private System.Windows.Forms.ComboBox cbxMeses;
         private System.Windows.Forms.ToolStripMenuItem modificarPacienteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem eliminarPacienteToolStripMenuItem;
+        private System.Windows.Forms.ComboBox cbxFiltrar;
+        private System.Windows.Forms.ComboBox cbxObrasSociales;
     }
 }

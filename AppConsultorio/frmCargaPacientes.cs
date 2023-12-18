@@ -85,6 +85,15 @@ namespace AppConsultorio
                                     {
                                         if (VerificarTelefono(txtTelefono.Text.ToString().Trim()))
                                         {
+                                            if (!string.IsNullOrEmpty(txtCorreo.Text.ToString().Trim()))
+                                            {
+                                                if (!Modulo.ValidarEmail(txtCorreo.Text.ToString().Trim()))
+                                                {
+                                                    MessageBox.Show("Ingreso un correo invalido.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                                    txtCorreo.Focus();
+                                                    return false;
+                                                }
+                                            }
                                             if (Pacientes.Operacion.Equals("ALTA"))
                                             {
                                                 Pacientes.VerificarInsertPaciente(txtNroDoc.Text.ToString().Trim(), ref tabla);

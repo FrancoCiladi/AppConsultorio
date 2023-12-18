@@ -47,6 +47,23 @@ namespace AppConsultorio
                 //OCULTO CONTROL EN CASO DE SECRETARIA
                 mnuTurnos.Items[2].Visible = false;
             }
+
+            cbxObrasSociales.Visible = false;
+
+            cbxFiltrar.Items.Add("Apellido");
+            cbxFiltrar.Items.Add("Nombre");
+            cbxFiltrar.Items.Add("Obra Social");
+            cbxFiltrar.SelectedIndex = 0;
+            cbxFiltrar.DropDownStyle = ComboBoxStyle.DropDownList;
+
+            DataTable tabla = new DataTable();
+            //CARGO EL COMBOBOX CON OBRAS SOCIALES
+            ObrasSociales.RecuperarObrasSociales(ref tabla);
+            cbxObrasSociales.DataSource = tabla;
+            cbxObrasSociales.DisplayMember = "descripcion";
+            cbxObrasSociales.ValueMember = "idObraSocial";
+            cbxObrasSociales.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbxObrasSociales.SelectedIndex = 0;
         }
 
         private void CargarGridViewTurnos()
@@ -125,34 +142,56 @@ namespace AppConsultorio
 
         private void CargarGridViewPacientes()
         {
-            if (string.IsNullOrEmpty(txtFiltrar.Text) == false && txtFiltrar.Text.Trim().Length >= 3)
+            if (cbxFiltrar.SelectedIndex <= 1)
             {
-                //CARGO GRIDVIEW UNICAMENTE CUANDO HAY 3 O MAS CARACTERES EN EL TEXTBOX DE FILTRO POR APELLIDO 
+                if (string.IsNullOrEmpty(txtFiltrar.Text) == false && txtFiltrar.Text.Trim().Length >= 3)
+                {
+                    //CARGO EL GRIDVIEW SOLO SI EL TEXTBOX DE APELLIDO TIENE 3 O MAS CARACTERES
+                    DataTable Tabla = new DataTable();
+                    DataGridViewLinkColumn col;
+                    col = new DataGridViewLinkColumn();
+
+                    Pacientes.RecuperarPacientes(cbxFiltrar.SelectedIndex, 0, txtFiltrar.Text, ref Tabla);
+                    this.dgvPacientes.DataSource = Tabla;
+                    this.dgvPacientes.Columns["idPaciente"].Visible = false;
+                    this.dgvPacientes.Columns["estado"].Visible = false;
+                    this.dgvPacientes.Columns["fecha_registro"].Visible = false;
+                    this.dgvPacientes.Columns["idObra_Social"].Visible = false;
+                    this.dgvPacientes.Columns["Telefono"].Visible = false;
+
+                    col.DataPropertyName = "Telefono";
+                    col.Name = "Telefono";
+                    col.DisplayIndex = 3;
+                    this.dgvPacientes.Columns.Add(col);
+                }
+                else
+                {
+                    dgvPacientes.DataSource = null;
+                }
+            }
+            else
+            {
+
                 DataTable Tabla = new DataTable();
                 DataGridViewLinkColumn col;
                 col = new DataGridViewLinkColumn();
 
-                Pacientes.RecuperarPacientesActivos(txtFiltrar.Text, ref Tabla);
+                Pacientes.RecuperarPacientes(cbxFiltrar.SelectedIndex, int.Parse(cbxObrasSociales.SelectedValue.ToString()), txtFiltrar.Text, ref Tabla);
                 this.dgvPacientes.DataSource = Tabla;
                 this.dgvPacientes.Columns["idPaciente"].Visible = false;
                 this.dgvPacientes.Columns["estado"].Visible = false;
                 this.dgvPacientes.Columns["fecha_registro"].Visible = false;
                 this.dgvPacientes.Columns["idObra_Social"].Visible = false;
                 this.dgvPacientes.Columns["Telefono"].Visible = false;
-                this.dgvPacientes.AllowUserToAddRows = false;
-                this.dgvPacientes.AllowUserToDeleteRows = false;
 
-                //AGREGO COLUMNA ESPECIAL CON EL NUMERO DE TELEFONO DEL PACIENTE
                 col.DataPropertyName = "Telefono";
                 col.Name = "Telefono";
                 col.DisplayIndex = 3;
                 this.dgvPacientes.Columns.Add(col);
+
+
             }
-            else
-            {
-                //VACIO EL GRIDVIEW SIEMPRE QUE NO HAYA 3 O MAS CARACTERES EN EL TEXTBOX DE FILTRO
-                dgvPacientes.DataSource = null;
-            }
+
         }
 
         private void txtFiltrar_TextChanged_1(object sender, EventArgs e)
@@ -410,7 +449,7 @@ namespace AppConsultorio
                 //VERIFICO QUE EL PACIENTE A ELIMINAR NO TENGA TURNOS ASIGNADOS, EN CASO DE QUE SI SE IMPOSIBILITA LA ELIMINACION, CASO CONTRARIO SE PROCEDE A ELIMINARLO DE LA BD
                 DataTable tabla = new DataTable();
                 Pacientes.idPacienteSelec = this.dgvPacientes.CurrentRow.Cells["idPaciente"].Value.ToString();
-                Pacientes.RecuperarTurnosPaciente(Pacientes.idPacienteSelec, ref tabla);
+                Pacientes.RecuperarTurnosPacienteRealizados(Pacientes.idPacienteSelec, ref tabla);
                 if (tabla.Rows.Count == 0)
                 {
                     Pacientes.EliminarPaciente(Pacientes.idPacienteSelec);
@@ -421,6 +460,26 @@ namespace AppConsultorio
                 }
                 CargarGridViewPacientes();
             }
+        }
+
+        private void cbxFiltrar_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbxFiltrar.SelectedIndex == 2)
+            {
+                cbxObrasSociales.Visible = true;
+                txtFiltrar.Visible = false;
+                txtFiltrar.Text = null;
+            }
+            else
+            {
+                cbxObrasSociales.Visible = false;
+                txtFiltrar.Visible = true;
+            }
+        }
+
+        private void cbxObrasSociales_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            CargarGridViewPacientes();
         }
     }
     

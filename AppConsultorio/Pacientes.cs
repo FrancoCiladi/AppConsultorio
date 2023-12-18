@@ -38,7 +38,33 @@ namespace AppConsultorio
                 MessageBox.Show(ex.ToString());
             }
         }
-        
+        public static void RecuperarPacientes(int opcion_filtrado,int seleccion_OS,string texto, ref DataTable Tabla)
+        {
+            try
+            {
+                string cadenaConexion = System.Configuration.ConfigurationManager.ConnectionStrings["CadenaConexion"].ConnectionString;
+                SqlConnection Conexion = new SqlConnection();
+                Conexion.ConnectionString = cadenaConexion;
+                Conexion.Open();
+
+                SqlCommand Comando = new SqlCommand();
+                Comando.Connection = Conexion;
+                Comando.CommandType = CommandType.StoredProcedure;
+                Comando.CommandText = "RECUPERAR_PACIENTES";
+                Comando.Parameters.Add("@opcion_filtrado", SqlDbType.Int).Value = opcion_filtrado;
+                Comando.Parameters.Add("@seleccion_OS", SqlDbType.Int).Value = seleccion_OS;
+                Comando.Parameters.Add("@texto", SqlDbType.VarChar,30).Value = texto;
+                Tabla = new DataTable();
+                Tabla.Load(Comando.ExecuteReader());
+
+                Conexion.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
         public static void RecuperarPacienteUpdate(string idPacienteSelec, ref DataTable tabla)
         {
             try
@@ -176,7 +202,7 @@ namespace AppConsultorio
                 MessageBox.Show(ex.Message);
             }
         }
-        public static void RecuperarTurnosPaciente(string idPacienteSelec, ref DataTable tabla)
+        public static void RecuperarTurnosPacienteRealizados(string idPacienteSelec, ref DataTable tabla)
         {
             try
             {
@@ -188,7 +214,7 @@ namespace AppConsultorio
                 SqlCommand Comando = new SqlCommand();
                 Comando.Connection = Conexion;
                 Comando.CommandType = CommandType.StoredProcedure;
-                Comando.CommandText = "RECUPERAR_TURNOS_PACIENTE";
+                Comando.CommandText = "RECUPERAR_TURNOS_PACIENTE_REALIZADOS";
                 Comando.Parameters.Add("@idPacienteSelec", SqlDbType.Int).Value = idPacienteSelec;
                 tabla = new DataTable();
                 tabla.Load(Comando.ExecuteReader());
@@ -200,7 +226,30 @@ namespace AppConsultorio
                 MessageBox.Show(ex.ToString());
             }
         }
-        
+        public static void RecuperarTurnosPacienteReservados(string idPacienteSelec, ref DataTable tabla)
+        {
+            try
+            {
+                string cadenaConexion = System.Configuration.ConfigurationManager.ConnectionStrings["CadenaConexion"].ConnectionString;
+                SqlConnection Conexion = new SqlConnection();
+                Conexion.ConnectionString = cadenaConexion;
+                Conexion.Open();
+
+                SqlCommand Comando = new SqlCommand();
+                Comando.Connection = Conexion;
+                Comando.CommandType = CommandType.StoredProcedure;
+                Comando.CommandText = "RECUPERAR_TURNOS_PACIENTE_RESERVADOS";
+                Comando.Parameters.Add("@idPacienteSelec", SqlDbType.Int).Value = idPacienteSelec;
+                tabla = new DataTable();
+                tabla.Load(Comando.ExecuteReader());
+
+                Conexion.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
         public static void EliminarPaciente(string idPacienteSelec)
         {
             try

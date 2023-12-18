@@ -19,10 +19,10 @@ namespace AppConsultorio
 
         private void dgvTurnosPaciente_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dgvTurnosPaciente.CurrentRow != null)
+            if (dgvTurnosRealizados.CurrentRow != null)
             {
                 //CARGO FORMS DE OBSERVACIONES PARA EL TURNO SELECCIONADO DEL PACIENTE
-                Turnos.idTurnoSelec = this.dgvTurnosPaciente.CurrentRow.Cells["idTurno"].Value.ToString();
+                Turnos.idTurnoSelec = this.dgvTurnosRealizados.CurrentRow.Cells["idTurno"].Value.ToString();
                 frmObservaciones frmObservaciones = new frmObservaciones();
                 frmObservaciones.ShowDialog();
             }
@@ -33,16 +33,49 @@ namespace AppConsultorio
             this.CenterToScreen();
             //RECUPERO TODOS LOS TURNOS DEL PACIENTE SELECCIONADA
             DataTable Tabla = new DataTable();
-            Pacientes.RecuperarTurnosPaciente(Pacientes.idPacienteSelec.ToString(), ref Tabla);
-            dgvTurnosPaciente.DataSource = Tabla;
+            Pacientes.RecuperarTurnosPacienteRealizados(Pacientes.idPacienteSelec.ToString(), ref Tabla);
+            dgvTurnosRealizados.DataSource = Tabla;
             if(Tabla.Rows.Count == 0)
             {
                 MessageBox.Show("El paciente seleccionado no tiene turnos asignados.", "",MessageBoxButtons.OK);
                 this.Close();
             }
-            this.dgvTurnosPaciente.Columns["idTurno"].Visible = false;
-            this.dgvTurnosPaciente.Columns["fecha"].HeaderText = "Fecha";
-            this.dgvTurnosPaciente.Columns["estado"].HeaderText = "Estado";
+            this.dgvTurnosRealizados.Columns["idTurno"].Visible = false;
+            this.dgvTurnosRealizados.Columns["estado"].Visible = false;
+            this.dgvTurnosRealizados.Columns["fecha"].HeaderText = "Fecha";
+        }
+
+        private void tabTurnosPaciente_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(tabTurnosPaciente.SelectedIndex == 0)
+            {
+                DataTable Tabla = new DataTable();
+                Pacientes.RecuperarTurnosPacienteRealizados(Pacientes.idPacienteSelec.ToString(), ref Tabla);
+                dgvTurnosRealizados.DataSource = Tabla;
+                if (Tabla.Rows.Count == 0)
+                {
+                    MessageBox.Show("El paciente seleccionado no tiene turnos asignados.", "", MessageBoxButtons.OK);
+                    this.Close();
+                }
+                this.dgvTurnosRealizados.Columns["idTurno"].Visible = false;
+                this.dgvTurnosRealizados.Columns["estado"].Visible = false;
+                this.dgvTurnosRealizados.Columns["fecha"].HeaderText = "Fecha";
+            }
+            else
+            {
+                DataTable Tabla = new DataTable();
+                Pacientes.RecuperarTurnosPacienteReservados(Pacientes.idPacienteSelec.ToString(), ref Tabla);
+                dgvTurnosPendientes.DataSource = Tabla;
+                this.dgvTurnosPendientes.Columns["idTurno"].Visible = false;
+                this.dgvTurnosPendientes.Columns["estado"].Visible = false;
+                this.dgvTurnosPendientes.Columns["fecha"].HeaderText = "Fecha";
+                if (Tabla.Rows.Count == 0)
+                {
+                    MessageBox.Show("El paciente seleccionado no tiene turnos pendientes.", "", MessageBoxButtons.OK);
+                    tabTurnosPaciente.SelectedIndex = 0;
+                }
+                
+            }
         }
     }
 }
