@@ -23,9 +23,6 @@ namespace AppConsultorio
         {
             this.CenterToScreen();
             
-            //AL CARGAR EL FORMS DE TURNOS SE HACE UN UPDATE DE TODOS AQUELLOS TURNOS CUYA FECHA ES ANTERIOR AL DIA ACTUAL
-            Turnos.CambiarEstadoTurno();
-
             cbxTurnosCategorias.Items.Add("Dia");
             cbxTurnosCategorias.Items.Add("Semana");
             cbxTurnosCategorias.Items.Add("Mes");
@@ -154,7 +151,6 @@ namespace AppConsultorio
                     Pacientes.RecuperarPacientes(cbxFiltrar.SelectedIndex, 0, txtFiltrar.Text, ref Tabla);
                     this.dgvPacientes.DataSource = Tabla;
                     this.dgvPacientes.Columns["idPaciente"].Visible = false;
-                    this.dgvPacientes.Columns["estado"].Visible = false;
                     this.dgvPacientes.Columns["fecha_registro"].Visible = false;
                     this.dgvPacientes.Columns["idObra_Social"].Visible = false;
                     this.dgvPacientes.Columns["Telefono"].Visible = false;

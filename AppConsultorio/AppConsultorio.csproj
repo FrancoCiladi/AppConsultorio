@@ -112,12 +112,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSetInfoTurnos.xsd</DependentUpon>
     </Compile>
-    <Compile Include="frmInfoCancelacionesPacientes.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmInfoCancelacionesPacientes.Designer.cs">
-      <DependentUpon>frmInfoCancelacionesPacientes.cs</DependentUpon>
-    </Compile>
     <Compile Include="frmCargaUsuarios.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -184,12 +178,6 @@
     <Compile Include="frmRecuperarClave.Designer.cs">
       <DependentUpon>frmRecuperarClave.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmReporteCancelaciones.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmReporteCancelaciones.Designer.cs">
-      <DependentUpon>frmReporteCancelaciones.cs</DependentUpon>
-    </Compile>
     <Compile Include="frmReporteTurnos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -237,9 +225,6 @@
     <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="Turnos.cs" />
     <Compile Include="Usuarios.cs" />
-    <EmbeddedResource Include="frmInfoCancelacionesPacientes.resx">
-      <DependentUpon>frmInfoCancelacionesPacientes.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="frmCargaUsuarios.resx">
       <DependentUpon>frmCargaUsuarios.cs</DependentUpon>
     </EmbeddedResource>
@@ -272,9 +257,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmRecuperarClave.resx">
       <DependentUpon>frmRecuperarClave.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmReporteCancelaciones.resx">
-      <DependentUpon>frmReporteCancelaciones.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmReporteTurnos.resx">
       <DependentUpon>frmReporteTurnos.cs</DependentUpon>

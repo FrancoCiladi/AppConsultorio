@@ -44,7 +44,6 @@ namespace AppConsultorio
             this.dgvTurnosHistoricos.Columns["estado"].Visible = false;
             this.dgvTurnosHistoricos.Columns["fecha_creacion"].Visible = false;
             this.dgvTurnosHistoricos.Columns["idPaciente"].Visible = false;
-            this.dgvTurnosHistoricos.Columns["observaciones"].Visible = false;
         }
         private void CargarComboBoxMeses()
         {
@@ -85,16 +84,6 @@ namespace AppConsultorio
             }
         }
 
-        private void observacionesToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (dgvTurnosHistoricos.CurrentRow != null)
-            {
-                Turnos.idTurnoSelec = this.dgvTurnosHistoricos.CurrentRow.Cells["idTurno"].Value.ToString();
-                frmObservaciones frmObservaciones = new frmObservaciones();
-                frmObservaciones.ShowDialog();
-            }
-        }
-
         private void frmTurnosHistoricos_Activated(object sender, EventArgs e)
         {
             CargarGridView();
@@ -118,8 +107,7 @@ namespace AppConsultorio
             if (dgvTurnosHistoricos.CurrentRow != null)
             {
                 Turnos.idTurnoSelec = this.dgvTurnosHistoricos.CurrentRow.Cells["idTurno"].Value.ToString();
-                Turnos.EliminarTurno(Turnos.idTurnoSelec);
-                
+                Turnos.EliminarTurno(Turnos.idTurnoSelec);               
             }
         }
     }

@@ -32,9 +32,8 @@
             this.dgvTurnosHistoricos = new System.Windows.Forms.DataGridView();
             this.mnuTurnosHistoricos = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.ingresarImporteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.observacionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.cbxMeses = new System.Windows.Forms.ComboBox();
             this.eliminarTurnoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cbxMeses = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTurnosHistoricos)).BeginInit();
             this.mnuTurnosHistoricos.SuspendLayout();
             this.SuspendLayout();
@@ -56,10 +55,9 @@
             // 
             this.mnuTurnosHistoricos.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ingresarImporteToolStripMenuItem,
-            this.observacionesToolStripMenuItem,
             this.eliminarTurnoToolStripMenuItem});
             this.mnuTurnosHistoricos.Name = "mnuTurnosHistoricos";
-            this.mnuTurnosHistoricos.Size = new System.Drawing.Size(181, 92);
+            this.mnuTurnosHistoricos.Size = new System.Drawing.Size(181, 70);
             // 
             // ingresarImporteToolStripMenuItem
             // 
@@ -68,12 +66,12 @@
             this.ingresarImporteToolStripMenuItem.Text = "Ingresar Importe";
             this.ingresarImporteToolStripMenuItem.Click += new System.EventHandler(this.ingresarImporteToolStripMenuItem_Click);
             // 
-            // observacionesToolStripMenuItem
+            // eliminarTurnoToolStripMenuItem
             // 
-            this.observacionesToolStripMenuItem.Name = "observacionesToolStripMenuItem";
-            this.observacionesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.observacionesToolStripMenuItem.Text = "Observaciones";
-            this.observacionesToolStripMenuItem.Click += new System.EventHandler(this.observacionesToolStripMenuItem_Click);
+            this.eliminarTurnoToolStripMenuItem.Name = "eliminarTurnoToolStripMenuItem";
+            this.eliminarTurnoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.eliminarTurnoToolStripMenuItem.Text = "Eliminar Turno";
+            this.eliminarTurnoToolStripMenuItem.Click += new System.EventHandler(this.eliminarTurnoToolStripMenuItem_Click);
             // 
             // cbxMeses
             // 
@@ -83,13 +81,6 @@
             this.cbxMeses.Size = new System.Drawing.Size(121, 21);
             this.cbxMeses.TabIndex = 3;
             this.cbxMeses.SelectedIndexChanged += new System.EventHandler(this.cbxMeses_SelectedIndexChanged);
-            // 
-            // eliminarTurnoToolStripMenuItem
-            // 
-            this.eliminarTurnoToolStripMenuItem.Name = "eliminarTurnoToolStripMenuItem";
-            this.eliminarTurnoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.eliminarTurnoToolStripMenuItem.Text = "Eliminar Turno";
-            this.eliminarTurnoToolStripMenuItem.Click += new System.EventHandler(this.eliminarTurnoToolStripMenuItem_Click);
             // 
             // frmTurnosHistoricos
             // 
@@ -114,7 +105,6 @@
         private System.Windows.Forms.DataGridView dgvTurnosHistoricos;
         private System.Windows.Forms.ContextMenuStrip mnuTurnosHistoricos;
         private System.Windows.Forms.ToolStripMenuItem ingresarImporteToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem observacionesToolStripMenuItem;
         private System.Windows.Forms.ComboBox cbxMeses;
         private System.Windows.Forms.ToolStripMenuItem eliminarTurnoToolStripMenuItem;
     }

@@ -92,7 +92,6 @@ namespace AppConsultorio
                     Pacientes.RecuperarPacientes(cbxFiltrado.SelectedIndex,0,txtFiltro.Text, ref Tabla);
                     this.dgvPacientes.DataSource = Tabla;
                     this.dgvPacientes.Columns["idPaciente"].Visible = false;
-                    this.dgvPacientes.Columns["estado"].Visible = false;
                     this.dgvPacientes.Columns["fecha_registro"].Visible = false;
                     this.dgvPacientes.Columns["idObra_Social"].Visible = false;
                     this.dgvPacientes.Columns["Telefono"].Visible = false;
@@ -161,18 +160,11 @@ namespace AppConsultorio
         {
             if (dgvPacientes.CurrentRow != null)
             {
-                //VERIFICO QUE EL PACIENTE A ELIMINAR NO TENGA TURNOS ASIGNADOS, EN CASO DE QUE SI SE IMPOSIBILITA LA ELIMINACION, CASO CONTRARIO SE PROCEDE A ELIMINARLO DE LA BD
-                DataTable tabla = new DataTable();
+
                 Pacientes.idPacienteSelec = this.dgvPacientes.CurrentRow.Cells["idPaciente"].Value.ToString();
-                Pacientes.RecuperarTurnosPacienteRealizados(Pacientes.idPacienteSelec, ref tabla);
-                if (tabla.Rows.Count == 0)
-                {
-                    Pacientes.EliminarPaciente(Pacientes.idPacienteSelec);
-                }
-                else
-                {
-                    MessageBox.Show("No se pueden eliminar pacientes con turnos asignados.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+
+                Pacientes.EliminarPaciente(Pacientes.idPacienteSelec);
+
                 CargarGridView();
             }
         }

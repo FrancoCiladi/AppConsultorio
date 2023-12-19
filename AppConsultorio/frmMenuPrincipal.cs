@@ -26,6 +26,8 @@ namespace AppConsultorio
         {
             DataTable tabla = new DataTable();
             this.CenterToScreen();
+            //AL INICIAR LA APLICACION SE HACE UN UPDATE DE TODOS AQUELLOS TURNOS CUYA FECHA ES ANTERIOR AL DIA ACTUAL
+            Turnos.CambiarEstadoTurno();
             //HABILITO/DESHABILITO FUNCIONES DE LA APP EN BASE A SU NIVEL DE ACCESO
             if (Usuarios.AccesoLog == 30)
             {
@@ -147,13 +149,6 @@ namespace AppConsultorio
             //MUESTRO FORMS CON INFO DE IMPORTES
             ActivarBoton(sender);
             OpenChildForm(new frmInfoImportes(), sender);
-        }
-
-        private void btnCancelacionesPacientes_Click(object sender, EventArgs e)
-        {
-            //MUESTRO FORMS CON INFO CANTIDAD DE CANCELACIONES POR PACIENTES
-            ActivarBoton(sender);
-            OpenChildForm(new frmInfoCancelacionesPacientes(), sender);
         }
 
         private void btnCerrarSesion_Click(object sender, EventArgs e)

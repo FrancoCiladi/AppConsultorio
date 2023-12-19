@@ -100,7 +100,7 @@ namespace AppConsultorio
                 SqlCommand Comando = new SqlCommand();
                 Comando.Connection = Conexion;
                 Comando.CommandType = CommandType.StoredProcedure;
-                Comando.CommandText = "RECUPERAR_TURNOS_MES_REALIZADOS";
+                Comando.CommandText = "RECUPERAR_TURNOS_HISTORICOS";
                 Comando.Parameters.Add("@mes", SqlDbType.Int).Value = mes;
                 tabla = new DataTable();
                 tabla.Load(Comando.ExecuteReader());

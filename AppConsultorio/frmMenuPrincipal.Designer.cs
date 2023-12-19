@@ -31,7 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMenuPrincipal));
             this.pnlMenuPrincipal = new System.Windows.Forms.Panel();
             this.pnlBotonesInfo = new System.Windows.Forms.Panel();
-            this.btnCancelacionesPacientes = new System.Windows.Forms.Button();
             this.btnTotalImportes = new System.Windows.Forms.Button();
             this.btnInfoTurnosCancelados = new System.Windows.Forms.Button();
             this.btnInfoTurnosRealizados = new System.Windows.Forms.Button();
@@ -69,32 +68,14 @@
             // 
             // pnlBotonesInfo
             // 
-            this.pnlBotonesInfo.Controls.Add(this.btnCancelacionesPacientes);
             this.pnlBotonesInfo.Controls.Add(this.btnTotalImportes);
             this.pnlBotonesInfo.Controls.Add(this.btnInfoTurnosCancelados);
             this.pnlBotonesInfo.Controls.Add(this.btnInfoTurnosRealizados);
             this.pnlBotonesInfo.Location = new System.Drawing.Point(0, 366);
             this.pnlBotonesInfo.Name = "pnlBotonesInfo";
-            this.pnlBotonesInfo.Size = new System.Drawing.Size(170, 237);
+            this.pnlBotonesInfo.Size = new System.Drawing.Size(170, 181);
             this.pnlBotonesInfo.TabIndex = 0;
             this.pnlBotonesInfo.Visible = false;
-            // 
-            // btnCancelacionesPacientes
-            // 
-            this.btnCancelacionesPacientes.BackColor = System.Drawing.Color.CadetBlue;
-            this.btnCancelacionesPacientes.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnCancelacionesPacientes.FlatAppearance.BorderSize = 0;
-            this.btnCancelacionesPacientes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancelacionesPacientes.Font = new System.Drawing.Font("Liberation Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelacionesPacientes.ForeColor = System.Drawing.Color.White;
-            this.btnCancelacionesPacientes.Location = new System.Drawing.Point(0, 180);
-            this.btnCancelacionesPacientes.Name = "btnCancelacionesPacientes";
-            this.btnCancelacionesPacientes.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
-            this.btnCancelacionesPacientes.Size = new System.Drawing.Size(170, 60);
-            this.btnCancelacionesPacientes.TabIndex = 11;
-            this.btnCancelacionesPacientes.Text = "Cancelaciones Pacientes";
-            this.btnCancelacionesPacientes.UseVisualStyleBackColor = false;
-            this.btnCancelacionesPacientes.Click += new System.EventHandler(this.btnCancelacionesPacientes_Click);
             // 
             // btnTotalImportes
             // 
@@ -324,7 +305,6 @@
         private System.Windows.Forms.Panel pnlTitulo;
         private System.Windows.Forms.Label lblTitulo;
         private System.Windows.Forms.Button btnTotalImportes;
-        private System.Windows.Forms.Button btnCancelacionesPacientes;
         private System.Windows.Forms.Button btnCerrarSesion;
         private System.Windows.Forms.Button btnUsuario;
     }

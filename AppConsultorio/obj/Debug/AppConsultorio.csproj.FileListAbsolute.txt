@@ -295,7 +295,6 @@ C:\Users\franc\Documents\GitHub Repositorios\AppConsultorio\AppConsultorio\bin\D
 C:\Users\franc\Documents\GitHub Repositorios\AppConsultorio\AppConsultorio\bin\Debug\zh-CHS\Microsoft.ReportViewer.WinForms.resources.dll
 C:\Users\franc\Documents\GitHub Repositorios\AppConsultorio\AppConsultorio\bin\Debug\zh-CHT\Microsoft.ReportViewer.WinForms.resources.dll
 C:\Users\franc\Documents\GitHub Repositorios\AppConsultorio\AppConsultorio\obj\Debug\AppConsultorio.csproj.AssemblyReference.cache
-C:\Users\franc\Documents\GitHub Repositorios\AppConsultorio\AppConsultorio\obj\Debug\AppConsultorio.frmInfoCancelacionesPacientes.resources
 C:\Users\franc\Documents\GitHub Repositorios\AppConsultorio\AppConsultorio\obj\Debug\AppConsultorio.frmCargaUsuarios.resources
 C:\Users\franc\Documents\GitHub Repositorios\AppConsultorio\AppConsultorio\obj\Debug\AppConsultorio.frmInfoImportes.resources
 C:\Users\franc\Documents\GitHub Repositorios\AppConsultorio\AppConsultorio\obj\Debug\AppConsultorio.frmInfoTurnosCancelados.resources
@@ -307,7 +306,6 @@ C:\Users\franc\Documents\GitHub Repositorios\AppConsultorio\AppConsultorio\obj\D
 C:\Users\franc\Documents\GitHub Repositorios\AppConsultorio\AppConsultorio\obj\Debug\AppConsultorio.frmImporte.resources
 C:\Users\franc\Documents\GitHub Repositorios\AppConsultorio\AppConsultorio\obj\Debug\AppConsultorio.frmPacientes.resources
 C:\Users\franc\Documents\GitHub Repositorios\AppConsultorio\AppConsultorio\obj\Debug\AppConsultorio.frmRecuperarClave.resources
-C:\Users\franc\Documents\GitHub Repositorios\AppConsultorio\AppConsultorio\obj\Debug\AppConsultorio.frmReporteCancelaciones.resources
 C:\Users\franc\Documents\GitHub Repositorios\AppConsultorio\AppConsultorio\obj\Debug\AppConsultorio.frmReporteTurnos.resources
 C:\Users\franc\Documents\GitHub Repositorios\AppConsultorio\AppConsultorio\obj\Debug\AppConsultorio.frmTurnos.resources
 C:\Users\franc\Documents\GitHub Repositorios\AppConsultorio\AppConsultorio\obj\Debug\AppConsultorio.frmTurnosHistoricos.resources
