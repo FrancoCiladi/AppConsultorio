@@ -32,6 +32,8 @@ namespace AppConsultorio
             return ok;
         }
 
+        //FUNCION ENCARGADA DE VALIDAR LOS CORREOS ELECTRONICOS INGRESADOS
+
         public static bool ValidarEmail(string email)
         {
             var trimmedEmail = email.Trim();

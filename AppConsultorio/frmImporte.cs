@@ -20,6 +20,10 @@ namespace AppConsultorio
         private void frmImporte_Load(object sender, EventArgs e)
         {
             this.CenterToScreen();
+
+            DataTable tabla = new DataTable();
+            Turnos.RecuperarImporte(Turnos.idTurnoSelec, ref tabla);
+            txtImporte.Text = tabla.Rows[0]["importe"].ToString();
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)

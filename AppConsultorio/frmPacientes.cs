@@ -22,6 +22,14 @@ namespace AppConsultorio
 
         private void frmPacientes_Load(object sender, EventArgs e)
         {
+            if (Modulo.Operacion == "Asignar Turno")
+            {
+                btnAsignarTurno.Visible = true;                
+            }
+            else
+            {
+                btnAsignarTurno.Visible = false;
+            }
             this.CenterToScreen();
             if (Usuarios.AccesoLog > 20)
             {
@@ -116,7 +124,6 @@ namespace AppConsultorio
                 Pacientes.RecuperarPacientes(cbxFiltrado.SelectedIndex,int.Parse(cbxObrasSociales.SelectedValue.ToString()), txtFiltro.Text, ref Tabla);
                 this.dgvPacientes.DataSource = Tabla;
                 this.dgvPacientes.Columns["idPaciente"].Visible = false;
-                this.dgvPacientes.Columns["estado"].Visible = false;
                 this.dgvPacientes.Columns["fecha_registro"].Visible = false;
                 this.dgvPacientes.Columns["idObra_Social"].Visible = false;
                 this.dgvPacientes.Columns["Telefono"].Visible = false;
@@ -196,5 +203,20 @@ namespace AppConsultorio
         {
             CargarGridView();
         }
+
+        private void btnAsignarTurno_Click(object sender, EventArgs e)
+        {
+            
+            if (this.dgvPacientes.SelectedRows.Count != 0)
+            {
+                Pacientes.idPacienteSelec = this.dgvPacientes.CurrentRow.Cells["idPaciente"].Value.ToString();
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Debe seleccionar un paciente.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
     }
 }

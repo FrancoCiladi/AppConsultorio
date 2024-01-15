@@ -39,6 +39,7 @@
             this.verTurnosPacienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cbxFiltrado = new System.Windows.Forms.ComboBox();
             this.cbxObrasSociales = new System.Windows.Forms.ComboBox();
+            this.btnAsignarTurno = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPacientes)).BeginInit();
             this.mnuPacientes.SuspendLayout();
             this.SuspendLayout();
@@ -123,12 +124,23 @@
             this.cbxObrasSociales.TabIndex = 4;
             this.cbxObrasSociales.SelectedIndexChanged += new System.EventHandler(this.cbxObrasSociales_SelectedIndexChanged);
             // 
+            // btnAsignarTurno
+            // 
+            this.btnAsignarTurno.Location = new System.Drawing.Point(674, 9);
+            this.btnAsignarTurno.Name = "btnAsignarTurno";
+            this.btnAsignarTurno.Size = new System.Drawing.Size(114, 43);
+            this.btnAsignarTurno.TabIndex = 5;
+            this.btnAsignarTurno.Text = "Asignar Turno";
+            this.btnAsignarTurno.UseVisualStyleBackColor = true;
+            this.btnAsignarTurno.Click += new System.EventHandler(this.btnAsignarTurno_Click);
+            // 
             // frmPacientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSeaGreen;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnAsignarTurno);
             this.Controls.Add(this.cbxObrasSociales);
             this.Controls.Add(this.cbxFiltrado);
             this.Controls.Add(this.dgvPacientes);
@@ -155,5 +167,6 @@
         private System.Windows.Forms.ToolStripMenuItem eliminarPacienteToolStripMenuItem;
         private System.Windows.Forms.ComboBox cbxFiltrado;
         private System.Windows.Forms.ComboBox cbxObrasSociales;
+        private System.Windows.Forms.Button btnAsignarTurno;
     }
 }

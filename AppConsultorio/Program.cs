@@ -18,11 +18,12 @@ namespace AppConsultorio
             Application.SetCompatibleTextRenderingDefault(false);
 
             //POR DEFAULT ABRO EL FORM DE LOGIN Y SI EL LOGIN ES CORRECTO SE PROCEDE CON EL RESTO DEL PROCESO DE INICIO DE LA APLICACION
-            frmLogin frmLogin = new frmLogin();
-            if (frmLogin.ShowDialog() == DialogResult.OK)
-            {
-                Application.Run(new frmMenuPrincipal());
-            }
+            //frmLogin frmLogin = new frmLogin();
+            pruebaCalendario prueba = new pruebaCalendario();
+            //if (frmLogin.ShowDialog() == DialogResult.OK)
+            //{
+                Application.Run(new pruebaCalendario());
+            //}
 
         }
     }

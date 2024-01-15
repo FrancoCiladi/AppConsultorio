@@ -342,3 +342,7 @@ C:\Users\franc\Documents\GitHub Repositorios\AppConsultorio\AppConsultorio\bin\D
 C:\Users\franc\Documents\GitHub Repositorios\AppConsultorio\AppConsultorio\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 C:\Users\franc\Documents\GitHub Repositorios\AppConsultorio\AppConsultorio\bin\Debug\System.Threading.Tasks.Extensions.xml
 C:\Users\franc\Documents\GitHub Repositorios\AppConsultorio\AppConsultorio\bin\Debug\System.ValueTuple.xml
+C:\Users\franc\Documents\GitHub Repositorios\AppConsultorio\AppConsultorio\obj\Debug\AppConsultorio.pruebaCalendario.resources
+C:\Users\franc\Documents\GitHub Repositorios\AppConsultorio\AppConsultorio\bin\Debug\WindowsFormsCalendar.dll
+C:\Users\franc\Documents\GitHub Repositorios\AppConsultorio\AppConsultorio\bin\Debug\WindowsFormsCalendar.pdb
+C:\Users\franc\Documents\GitHub Repositorios\AppConsultorio\AppConsultorio\obj\Debug\AppConsultorio.frmInfoTurno.resources

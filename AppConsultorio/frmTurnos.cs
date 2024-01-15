@@ -217,8 +217,7 @@ namespace AppConsultorio
                     //AGREGO EL TURNO A LA BD
                     string fecha = dtpFecha.Value.ToShortDateString();
                     string hora = dtpHora.Value.ToShortTimeString();
-                    Turnos.AgregarTurno(fecha, hora, Pacientes.idPacienteSelec);
-
+                    //Turnos.AgregarTurno(fecha, hora, Pacientes.idPacienteSelec);
                 }
             }
             else
@@ -236,11 +235,11 @@ namespace AppConsultorio
             string fecha = dtpFecha.Value.ToShortDateString();
             string hora = dtpHora.Value.ToShortTimeString();
             //VERIFICO PRIMERO SI EL PACIENTE TIENE TURNOS ASIGNADOS EN EL DIA SELECCIONADO
-            Turnos.VerificarTurnoPaciente(fecha, Pacientes.idPacienteSelec, ref tabla);
+            //Turnos.VerificarTurnoPaciente(fecha, Pacientes.idPacienteSelec, ref tabla);
             if (tabla.Rows.Count == 0)
             {
                 //VERIFICO QUE EL TURNO ESTE DISPONIBLE
-                Turnos.VerificarDisponibilidadTurno(fecha, hora, ref tabla);
+                //Turnos.VerificarDisponibilidadTurno(fecha, hora, ref tabla);
                 if (tabla.Rows.Count == 0)
                 {
                     ok = true;
