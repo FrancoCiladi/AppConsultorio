@@ -19,6 +19,31 @@ namespace AppConsultorio
         public static int mes;
         //VARIABLES NECESARIAS PARA RECUPERAR INFO DE REPORTES
         public static DateTime fecha;
+        public static void RecuperarTurnosReservados(DateTime fechaDesde,DateTime fechaHasta,ref DataTable tabla)
+        {
+            try
+            {
+                string cadenaConexion = System.Configuration.ConfigurationManager.ConnectionStrings["CadenaConexion"].ConnectionString;
+                SqlConnection Conexion = new SqlConnection();
+                Conexion.ConnectionString = cadenaConexion;
+                Conexion.Open();
+
+                SqlCommand Comando = new SqlCommand();
+                Comando.Connection = Conexion;
+                Comando.CommandType = CommandType.StoredProcedure;
+                Comando.CommandText = "RECUPERAR_TURNOS_RESERVADOS";
+                Comando.Parameters.Add("@fechaDesde", SqlDbType.DateTime).Value = fechaDesde;
+                Comando.Parameters.Add("@fechaHasta", SqlDbType.DateTime).Value = fechaHasta;
+                tabla = new DataTable();
+                tabla.Load(Comando.ExecuteReader());
+
+                Conexion.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
         public static void RecuperarTurnosReservadosDia(ref DataTable tabla)
         {
             try
@@ -188,6 +213,32 @@ namespace AppConsultorio
                 MessageBox.Show(ex.Message);
             }
         }
+        public static void VerificarTurnoUpdate(string idTurnoSelec,DateTime fechaDesde, DateTime fechaHasta, ref DataTable tabla)
+        {
+            try
+            {
+                string cadenaConexion = System.Configuration.ConfigurationManager.ConnectionStrings["CadenaConexion"].ConnectionString;
+                SqlConnection Conexion = new SqlConnection();
+                Conexion.ConnectionString = cadenaConexion;
+                Conexion.Open();
+
+                SqlCommand Comando = new SqlCommand();
+                Comando.Connection = Conexion;
+                Comando.CommandType = CommandType.StoredProcedure;
+                Comando.CommandText = "VERIFICAR_TURNO_UPDATE";
+                Comando.Parameters.Add("@idTurnoSelec", SqlDbType.Int).Value = idTurnoSelec;
+                Comando.Parameters.Add("@fechaDesde", SqlDbType.DateTime).Value = fechaDesde;
+                Comando.Parameters.Add("@fechaHasta", SqlDbType.DateTime).Value = fechaHasta;
+                tabla = new DataTable();
+                tabla.Load(Comando.ExecuteReader());
+
+                Conexion.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
         public static void VerificarTurnoPaciente(DateTime fecha, string idPacienteSelec, ref DataTable tabla)
         {
             try
@@ -201,6 +252,32 @@ namespace AppConsultorio
                 Comando.Connection = Conexion;
                 Comando.CommandType = CommandType.StoredProcedure;
                 Comando.CommandText = "VERIFICAR_TURNO_DIA_PACIENTE";
+                Comando.Parameters.Add("@fecha", SqlDbType.DateTime).Value = fecha;
+                Comando.Parameters.Add("@idPacienteSelec", SqlDbType.Int).Value = idPacienteSelec;
+                tabla = new DataTable();
+                tabla.Load(Comando.ExecuteReader());
+
+                Conexion.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        public static void VerificarTurnoPacienteUpdate(string idTurnoSelec,DateTime fecha, string idPacienteSelec, ref DataTable tabla)
+        {
+            try
+            {
+                string cadenaConexion = System.Configuration.ConfigurationManager.ConnectionStrings["CadenaConexion"].ConnectionString;
+                SqlConnection Conexion = new SqlConnection();
+                Conexion.ConnectionString = cadenaConexion;
+                Conexion.Open();
+
+                SqlCommand Comando = new SqlCommand();
+                Comando.Connection = Conexion;
+                Comando.CommandType = CommandType.StoredProcedure;
+                Comando.CommandText = "VERIFICAR_TURNO_DIA_PACIENTE_UPDATE";
+                Comando.Parameters.Add("@idTurnoSelec", SqlDbType.Int).Value = idTurnoSelec;
                 Comando.Parameters.Add("@fecha", SqlDbType.DateTime).Value = fecha;
                 Comando.Parameters.Add("@idPacienteSelec", SqlDbType.Int).Value = idPacienteSelec;
                 tabla = new DataTable();
@@ -254,6 +331,32 @@ namespace AppConsultorio
                 Comando.CommandText = "CAMBIAR_ESTADO_TURNO";
                 Comando.ExecuteNonQuery();
 
+                Conexion.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        public static void ActualizarFechaTurno(string idTurnoSelec,DateTime fechaDesde,DateTime fechaHasta)
+        {
+            try
+            {
+                string cadenaConexion = System.Configuration.ConfigurationManager.ConnectionStrings["CadenaConexion"].ConnectionString;
+                SqlConnection Conexion = new SqlConnection();
+                Conexion.ConnectionString = cadenaConexion;
+                Conexion.Open();
+
+                SqlCommand Comando = new SqlCommand();
+                Comando.Connection = Conexion;
+                Comando.CommandType = CommandType.StoredProcedure;
+                Comando.CommandText = "ACTUALIZAR_FECHA_TURNO";
+                Comando.Parameters.Add("@idTurnoSelec", SqlDbType.Int).Value = idTurnoSelec;
+                Comando.Parameters.Add("@fechaDesde", SqlDbType.DateTime).Value = fechaDesde;
+                Comando.Parameters.Add("@fechaHasta", SqlDbType.DateTime).Value = fechaHasta;
+                Comando.ExecuteNonQuery();
+
+                MessageBox.Show("Turno Modificado!", "Operacion Realizada", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Conexion.Close();
             }
             catch (Exception ex)

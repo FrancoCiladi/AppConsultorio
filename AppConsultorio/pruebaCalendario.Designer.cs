@@ -30,7 +30,7 @@
         {
             this.panelCalendarioGrande = new System.Windows.Forms.Panel();
             this.calendarioGrande = new WindowsFormsCalendar.Calendar();
-            this.monthView1 = new WindowsFormsCalendar.MonthView();
+            this.calendarioMes = new WindowsFormsCalendar.MonthView();
             this.panelCalendarioGrande.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -59,39 +59,43 @@
             this.calendarioGrande.Size = new System.Drawing.Size(909, 623);
             this.calendarioGrande.TabIndex = 0;
             this.calendarioGrande.LoadItems += new WindowsFormsCalendar.Calendar.CalendarLoadEventHandler(this.calendarioGrande_LoadItems_1);
+            this.calendarioGrande.DayHeaderClick += new WindowsFormsCalendar.Calendar.CalendarDayEventHandler(this.calendarioGrande_DayHeaderClick);
             this.calendarioGrande.ItemCreating += new WindowsFormsCalendar.Calendar.CalendarItemCancelEventHandler(this.calendarioGrande_ItemCreating);
             this.calendarioGrande.ItemCreated += new WindowsFormsCalendar.Calendar.CalendarItemCancelEventHandler(this.calendarioGrande_ItemCreated);
+            this.calendarioGrande.ItemDatesChanged += new WindowsFormsCalendar.Calendar.CalendarItemEventHandler(this.calendarioGrande_ItemDatesChanged);
             this.calendarioGrande.ItemDoubleClick += new WindowsFormsCalendar.Calendar.CalendarItemEventHandler(this.calendarioGrande_ItemDoubleClick);
             // 
-            // monthView1
+            // calendarioMes
             // 
-            this.monthView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.calendarioMes.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.monthView1.ArrowsColor = System.Drawing.SystemColors.Window;
-            this.monthView1.ArrowsSelectedColor = System.Drawing.Color.Gold;
-            this.monthView1.DayBackgroundColor = System.Drawing.Color.Empty;
-            this.monthView1.DayGrayedText = System.Drawing.SystemColors.GrayText;
-            this.monthView1.DaySelectedBackgroundColor = System.Drawing.SystemColors.Highlight;
-            this.monthView1.DaySelectedColor = System.Drawing.SystemColors.WindowText;
-            this.monthView1.DaySelectedTextColor = System.Drawing.SystemColors.HighlightText;
-            this.monthView1.ItemPadding = new System.Windows.Forms.Padding(2);
-            this.monthView1.Location = new System.Drawing.Point(1, 1);
-            this.monthView1.MonthTitleColor = System.Drawing.SystemColors.ActiveCaption;
-            this.monthView1.MonthTitleColorInactive = System.Drawing.SystemColors.InactiveCaption;
-            this.monthView1.MonthTitleTextColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.monthView1.MonthTitleTextColorInactive = System.Drawing.SystemColors.InactiveCaptionText;
-            this.monthView1.Name = "monthView1";
-            this.monthView1.Size = new System.Drawing.Size(243, 623);
-            this.monthView1.TabIndex = 2;
-            this.monthView1.Text = "monthView1";
-            this.monthView1.TodayBorderColor = System.Drawing.Color.Maroon;
+            this.calendarioMes.ArrowsColor = System.Drawing.SystemColors.Highlight;
+            this.calendarioMes.ArrowsSelectedColor = System.Drawing.Color.Gold;
+            this.calendarioMes.DayBackgroundColor = System.Drawing.Color.White;
+            this.calendarioMes.DayGrayedText = System.Drawing.SystemColors.ControlDark;
+            this.calendarioMes.DaySelectedBackgroundColor = System.Drawing.SystemColors.Highlight;
+            this.calendarioMes.DaySelectedColor = System.Drawing.SystemColors.WindowText;
+            this.calendarioMes.DaySelectedTextColor = System.Drawing.SystemColors.HighlightText;
+            this.calendarioMes.FirstDayOfWeek = System.DayOfWeek.Monday;
+            this.calendarioMes.ItemPadding = new System.Windows.Forms.Padding(2);
+            this.calendarioMes.Location = new System.Drawing.Point(1, 1);
+            this.calendarioMes.MonthTitleColor = System.Drawing.SystemColors.ActiveCaption;
+            this.calendarioMes.MonthTitleColorInactive = System.Drawing.SystemColors.InactiveCaption;
+            this.calendarioMes.MonthTitleTextColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.calendarioMes.MonthTitleTextColorInactive = System.Drawing.SystemColors.InactiveCaptionText;
+            this.calendarioMes.Name = "calendarioMes";
+            this.calendarioMes.SelectionMode = WindowsFormsCalendar.MonthViewSelection.WorkWeek;
+            this.calendarioMes.Size = new System.Drawing.Size(243, 623);
+            this.calendarioMes.TabIndex = 2;
+            this.calendarioMes.TodayBorderColor = System.Drawing.Color.Maroon;
+            this.calendarioMes.SelectionChanged += new System.EventHandler(this.calendarioMes_SelectionChanged);
             // 
             // pruebaCalendario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1158, 624);
-            this.Controls.Add(this.monthView1);
+            this.Controls.Add(this.calendarioMes);
             this.Controls.Add(this.panelCalendarioGrande);
             this.Name = "pruebaCalendario";
             this.Text = "pruebaCalendario";
@@ -104,6 +108,6 @@
         #endregion
         private System.Windows.Forms.Panel panelCalendarioGrande;
         private WindowsFormsCalendar.Calendar calendarioGrande;
-        private WindowsFormsCalendar.MonthView monthView1;
+        private WindowsFormsCalendar.MonthView calendarioMes;
     }
 }
