@@ -19,10 +19,22 @@ namespace AppConsultorio
 
         private void frmInfoTurnosRealizados_Load(object sender, EventArgs e)
         {
-            fillChart();
+            //CREO LISTA DE AÑOS EMPEZANDO POR EL PRIMERO HASTA EL ACTUAL
+            List<int> años = Enumerable.Range(2023, (DateTime.Now.Year - 2023 + 1)).Reverse().ToList();
+            //CARGO EL COMBOBOX CON TODOS LOS AÑOS GENERADOS HASTA LA ACTUALIDAD
+            foreach (int año in años)
+            {
+                cbxAño.Items.Add(año);
+            }
+            cbxAño.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbxAño.SelectedIndex = 0;
+
+            //LIMPIO EL CHART PARA PREVENIR QUE SE GENERE DE MANERA ERRONEA 
+            chartTurnosRealizados.Series["Turnos Realizados"].Points.Clear();
+            fillChart();         
         }
         private void fillChart()
-        {
+        {           
             int TotalTurnosRealizados;
 
             TotalTurnosRealizados = 0;
@@ -44,12 +56,12 @@ namespace AppConsultorio
             for (int i = 1; i <= 12; i++)
             {
                 DataTable tabla = new DataTable();
-                Reportes.RecuperarInfoReportesMensual(i,ref tabla);
+                Reportes.RecuperarInfoReportesMensual(i,int.Parse(cbxAño.Text.Trim()), ref tabla);
                 TotalTurnosRealizados = TotalTurnosRealizados + int.Parse(tabla.Rows[0]["Realizados"].ToString());
                 switch (i)
                 {
                     case 1:
-                        this.chartTurnosRealizados.Series["Turnos Realizados"].Points.AddXY("Enero", tabla.Rows[0]["Realizados"].ToString());                       
+                        this.chartTurnosRealizados.Series["Turnos Realizados"].Points.AddXY("Enero", tabla.Rows[0]["Realizados"].ToString());
                         break;
                     case 2:
                         this.chartTurnosRealizados.Series["Turnos Realizados"].Points.AddXY("Febrero", tabla.Rows[0]["Realizados"].ToString());
@@ -88,6 +100,12 @@ namespace AppConsultorio
 
             }
             lblTotalTurnosRealizados.Text = "Total Turnos Realizados: " + TotalTurnosRealizados.ToString();
+        }
+
+        private void cbxAño_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            chartTurnosRealizados.Series["Turnos Realizados"].Points.Clear();
+            fillChart();
         }
     }
 }

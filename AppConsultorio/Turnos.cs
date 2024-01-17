@@ -14,10 +14,6 @@ namespace AppConsultorio
     internal class Turnos 
     {
         public static string idTurnoSelec;
-        //VARIABLES NECESARIAS PARA RECUPERAR INFO DE REPORTES
-        public static int Seleccion;
-        public static int mes;
-        //VARIABLES NECESARIAS PARA RECUPERAR INFO DE REPORTES
         public static DateTime fecha;
         public static void RecuperarTurnosReservados(DateTime fechaDesde,DateTime fechaHasta,ref DataTable tabla)
         {
@@ -31,7 +27,7 @@ namespace AppConsultorio
                 SqlCommand Comando = new SqlCommand();
                 Comando.Connection = Conexion;
                 Comando.CommandType = CommandType.StoredProcedure;
-                Comando.CommandText = "RECUPERAR_TURNOS_RESERVADOS";
+                Comando.CommandText = "RECUPERAR_TURNOS";
                 Comando.Parameters.Add("@fechaDesde", SqlDbType.DateTime).Value = fechaDesde;
                 Comando.Parameters.Add("@fechaHasta", SqlDbType.DateTime).Value = fechaHasta;
                 tabla = new DataTable();
@@ -44,102 +40,8 @@ namespace AppConsultorio
                 MessageBox.Show(ex.Message);
             }
         }
-        public static void RecuperarTurnosReservadosDia(ref DataTable tabla)
-        {
-            try
-            {
-                string cadenaConexion = System.Configuration.ConfigurationManager.ConnectionStrings["CadenaConexion"].ConnectionString;
-                SqlConnection Conexion = new SqlConnection();
-                Conexion.ConnectionString = cadenaConexion;
-                Conexion.Open();
-
-                SqlCommand Comando = new SqlCommand();
-                Comando.Connection = Conexion;
-                Comando.CommandType = CommandType.StoredProcedure;
-                Comando.CommandText = "RECUPERAR_TURNOS_DIA_RESERVADOS";
-                tabla = new DataTable();
-                tabla.Load(Comando.ExecuteReader());
-
-                Conexion.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
-        public static void RecuperarTurnosReservadosSemana(ref DataTable tabla)
-        {
-            try
-            {
-                string cadenaConexion = System.Configuration.ConfigurationManager.ConnectionStrings["CadenaConexion"].ConnectionString;
-                SqlConnection Conexion = new SqlConnection();
-                Conexion.ConnectionString = cadenaConexion;
-                Conexion.Open();
-
-                SqlCommand Comando = new SqlCommand();
-                Comando.Connection = Conexion;
-                Comando.CommandType = CommandType.StoredProcedure;
-                Comando.CommandText = "RECUPERAR_TURNOS_SEMANA_RESERVADOS";
-                tabla = new DataTable();
-                tabla.Load(Comando.ExecuteReader());
-
-                Conexion.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
-        public static void RecuperarTurnosReservadosMes(int mes, ref DataTable tabla)
-        {
-            try
-            {
-                string cadenaConexion = System.Configuration.ConfigurationManager.ConnectionStrings["CadenaConexion"].ConnectionString;
-                SqlConnection Conexion = new SqlConnection();
-                Conexion.ConnectionString = cadenaConexion;
-                Conexion.Open();
-
-                SqlCommand Comando = new SqlCommand();
-                Comando.Connection = Conexion;
-                Comando.CommandType = CommandType.StoredProcedure;
-                Comando.CommandText = "RECUPERAR_TURNOS_MES_RESERVADOS";
-                Comando.Parameters.Add("@mes", SqlDbType.Int).Value = mes;
-                tabla = new DataTable();
-                tabla.Load(Comando.ExecuteReader());
-
-                Conexion.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
-        public static void RecuperarTurnosHistoricos(int mes, ref DataTable tabla)
-        {
-            try
-            {
-                string cadenaConexion = System.Configuration.ConfigurationManager.ConnectionStrings["CadenaConexion"].ConnectionString;
-                SqlConnection Conexion = new SqlConnection();
-                Conexion.ConnectionString = cadenaConexion;
-                Conexion.Open();
-
-                SqlCommand Comando = new SqlCommand();
-                Comando.Connection = Conexion;
-                Comando.CommandType = CommandType.StoredProcedure;
-                Comando.CommandText = "RECUPERAR_TURNOS_HISTORICOS";
-                Comando.Parameters.Add("@mes", SqlDbType.Int).Value = mes;
-                tabla = new DataTable();
-                tabla.Load(Comando.ExecuteReader());
-
-                Conexion.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
         
-
+        
         public static void CancelarTurno(string idTurnoSelec)
         {
             try

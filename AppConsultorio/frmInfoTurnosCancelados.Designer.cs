@@ -28,11 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.lblTotalTurnosCancelados = new System.Windows.Forms.Label();
             this.chartTurnosCancelados = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.cbxAño = new System.Windows.Forms.ComboBox();
+            this.lblAño = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.chartTurnosCancelados)).BeginInit();
             this.SuspendLayout();
             // 
@@ -42,7 +44,7 @@
             this.lblTotalTurnosCancelados.AutoSize = true;
             this.lblTotalTurnosCancelados.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTotalTurnosCancelados.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lblTotalTurnosCancelados.Location = new System.Drawing.Point(12, 433);
+            this.lblTotalTurnosCancelados.Location = new System.Drawing.Point(12, 483);
             this.lblTotalTurnosCancelados.Name = "lblTotalTurnosCancelados";
             this.lblTotalTurnosCancelados.Size = new System.Drawing.Size(190, 16);
             this.lblTotalTurnosCancelados.TabIndex = 6;
@@ -55,28 +57,50 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.chartTurnosCancelados.BorderlineColor = System.Drawing.Color.Black;
             this.chartTurnosCancelados.BorderlineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Solid;
-            chartArea1.Name = "ChartArea1";
-            this.chartTurnosCancelados.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chartTurnosCancelados.Legends.Add(legend1);
-            this.chartTurnosCancelados.Location = new System.Drawing.Point(12, 15);
+            chartArea2.Name = "ChartArea1";
+            this.chartTurnosCancelados.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chartTurnosCancelados.Legends.Add(legend2);
+            this.chartTurnosCancelados.Location = new System.Drawing.Point(12, 38);
             this.chartTurnosCancelados.Name = "chartTurnosCancelados";
             this.chartTurnosCancelados.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
             this.chartTurnosCancelados.PaletteCustomColors = new System.Drawing.Color[] {
         System.Drawing.Color.Red};
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Turnos Cancelados";
-            this.chartTurnosCancelados.Series.Add(series1);
-            this.chartTurnosCancelados.Size = new System.Drawing.Size(776, 404);
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Turnos Cancelados";
+            this.chartTurnosCancelados.Series.Add(series2);
+            this.chartTurnosCancelados.Size = new System.Drawing.Size(776, 431);
             this.chartTurnosCancelados.TabIndex = 5;
+            // 
+            // cbxAño
+            // 
+            this.cbxAño.FormattingEnabled = true;
+            this.cbxAño.Location = new System.Drawing.Point(58, 11);
+            this.cbxAño.Name = "cbxAño";
+            this.cbxAño.Size = new System.Drawing.Size(78, 21);
+            this.cbxAño.TabIndex = 9;
+            this.cbxAño.SelectedIndexChanged += new System.EventHandler(this.cbxAño_SelectedIndexChanged);
+            // 
+            // lblAño
+            // 
+            this.lblAño.AutoSize = true;
+            this.lblAño.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAño.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lblAño.Location = new System.Drawing.Point(12, 9);
+            this.lblAño.Name = "lblAño";
+            this.lblAño.Size = new System.Drawing.Size(51, 20);
+            this.lblAño.TabIndex = 8;
+            this.lblAño.Text = "Año: ";
             // 
             // frmInfoTurnosCancelados
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSeaGreen;
-            this.ClientSize = new System.Drawing.Size(800, 467);
+            this.ClientSize = new System.Drawing.Size(800, 517);
+            this.Controls.Add(this.cbxAño);
+            this.Controls.Add(this.lblAño);
             this.Controls.Add(this.lblTotalTurnosCancelados);
             this.Controls.Add(this.chartTurnosCancelados);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -93,5 +117,7 @@
 
         private System.Windows.Forms.Label lblTotalTurnosCancelados;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartTurnosCancelados;
+        private System.Windows.Forms.ComboBox cbxAño;
+        private System.Windows.Forms.Label lblAño;
     }
 }

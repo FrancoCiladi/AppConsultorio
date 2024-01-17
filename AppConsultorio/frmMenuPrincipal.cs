@@ -40,7 +40,6 @@ namespace AppConsultorio
                 btnTurnos.Enabled = false;
                 btnPacientes.Enabled = false;
                 btnInfo.Enabled = false;
-                btnTurnosHistoricos.Enabled = false;
             }
             if(Usuarios.AccesoLog == 0)
             {
@@ -114,13 +113,6 @@ namespace AppConsultorio
             pnlBotonesInfo.Visible = false;
         }
 
-        private void btnTurnosHistoricos_Click(object sender, EventArgs e)
-        {
-            //MUESTRO FORMS TURNOS HISTORICOS
-            ActivarBoton(sender);
-            OpenChildForm(new frmTurnosHistoricos(), sender);
-            pnlBotonesInfo.Visible = false;
-        }
 
         private void btnInfo_Click(object sender, EventArgs e)
         {

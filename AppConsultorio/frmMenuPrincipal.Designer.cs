@@ -35,7 +35,6 @@
             this.btnInfoTurnosCancelados = new System.Windows.Forms.Button();
             this.btnInfoTurnosRealizados = new System.Windows.Forms.Button();
             this.btnInfo = new System.Windows.Forms.Button();
-            this.btnTurnosHistoricos = new System.Windows.Forms.Button();
             this.btnPacientes = new System.Windows.Forms.Button();
             this.btnTurnos = new System.Windows.Forms.Button();
             this.pnlUsuario = new System.Windows.Forms.Panel();
@@ -56,7 +55,6 @@
             this.pnlMenuPrincipal.BackColor = System.Drawing.Color.Teal;
             this.pnlMenuPrincipal.Controls.Add(this.pnlBotonesInfo);
             this.pnlMenuPrincipal.Controls.Add(this.btnInfo);
-            this.pnlMenuPrincipal.Controls.Add(this.btnTurnosHistoricos);
             this.pnlMenuPrincipal.Controls.Add(this.btnPacientes);
             this.pnlMenuPrincipal.Controls.Add(this.btnTurnos);
             this.pnlMenuPrincipal.Controls.Add(this.pnlUsuario);
@@ -71,7 +69,7 @@
             this.pnlBotonesInfo.Controls.Add(this.btnTotalImportes);
             this.pnlBotonesInfo.Controls.Add(this.btnInfoTurnosCancelados);
             this.pnlBotonesInfo.Controls.Add(this.btnInfoTurnosRealizados);
-            this.pnlBotonesInfo.Location = new System.Drawing.Point(0, 366);
+            this.pnlBotonesInfo.Location = new System.Drawing.Point(0, 306);
             this.pnlBotonesInfo.Name = "pnlBotonesInfo";
             this.pnlBotonesInfo.Size = new System.Drawing.Size(170, 181);
             this.pnlBotonesInfo.TabIndex = 0;
@@ -135,7 +133,7 @@
             this.btnInfo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnInfo.Font = new System.Drawing.Font("Liberation Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnInfo.ForeColor = System.Drawing.Color.White;
-            this.btnInfo.Location = new System.Drawing.Point(0, 300);
+            this.btnInfo.Location = new System.Drawing.Point(0, 240);
             this.btnInfo.Name = "btnInfo";
             this.btnInfo.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
             this.btnInfo.Size = new System.Drawing.Size(170, 60);
@@ -143,22 +141,6 @@
             this.btnInfo.Text = "Info";
             this.btnInfo.UseVisualStyleBackColor = true;
             this.btnInfo.Click += new System.EventHandler(this.btnInfo_Click);
-            // 
-            // btnTurnosHistoricos
-            // 
-            this.btnTurnosHistoricos.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnTurnosHistoricos.FlatAppearance.BorderSize = 0;
-            this.btnTurnosHistoricos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnTurnosHistoricos.Font = new System.Drawing.Font("Liberation Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTurnosHistoricos.ForeColor = System.Drawing.Color.White;
-            this.btnTurnosHistoricos.Location = new System.Drawing.Point(0, 240);
-            this.btnTurnosHistoricos.Name = "btnTurnosHistoricos";
-            this.btnTurnosHistoricos.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
-            this.btnTurnosHistoricos.Size = new System.Drawing.Size(170, 60);
-            this.btnTurnosHistoricos.TabIndex = 3;
-            this.btnTurnosHistoricos.Text = "Turnos Historicos";
-            this.btnTurnosHistoricos.UseVisualStyleBackColor = true;
-            this.btnTurnosHistoricos.Click += new System.EventHandler(this.btnTurnosHistoricos_Click);
             // 
             // btnPacientes
             // 
@@ -294,7 +276,6 @@
 
         private System.Windows.Forms.Panel pnlMenuPrincipal;
         private System.Windows.Forms.Button btnInfo;
-        private System.Windows.Forms.Button btnTurnosHistoricos;
         private System.Windows.Forms.Button btnPacientes;
         private System.Windows.Forms.Button btnTurnos;
         private System.Windows.Forms.Panel pnlUsuario;

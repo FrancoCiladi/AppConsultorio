@@ -12,7 +12,7 @@ namespace AppConsultorio
 {
     internal class Reportes 
     {
-        public static void RecuperarInfoReportesMensual(int mes, ref DataTable tabla)
+        public static void RecuperarInfoReportesMensual(int mes,int año, ref DataTable tabla)
         {
             try
             {
@@ -26,6 +26,7 @@ namespace AppConsultorio
                 Comando.CommandType = CommandType.StoredProcedure;
                 Comando.CommandText = "RECUPERAR_INFO_REPORTES_MENSUAL";
                 Comando.Parameters.Add("@mes", SqlDbType.Int).Value = mes;
+                Comando.Parameters.Add("@año", SqlDbType.Int).Value = año;
                 tabla = new DataTable();
                 tabla.Load(Comando.ExecuteReader());
 

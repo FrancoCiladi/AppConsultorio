@@ -14,30 +14,7 @@ namespace AppConsultorio
     internal class Pacientes : Modulo
     {
         public static string idPacienteSelec;
-        public static void RecuperarPacientesActivos(string apellido, ref DataTable Tabla)
-        {
-            try
-            {
-                string cadenaConexion = System.Configuration.ConfigurationManager.ConnectionStrings["CadenaConexion"].ConnectionString;
-                SqlConnection Conexion = new SqlConnection();
-                Conexion.ConnectionString = cadenaConexion;
-                Conexion.Open();
 
-                SqlCommand Comando = new SqlCommand();
-                Comando.Connection = Conexion;
-                Comando.CommandType = CommandType.StoredProcedure;
-                Comando.CommandText = "RECUPERAR_PACIENTES_ACTIVOS";
-                Comando.Parameters.Add("@apellido", SqlDbType.NChar, 40).Value = apellido;
-                Tabla = new DataTable();
-                Tabla.Load(Comando.ExecuteReader());
-
-                Conexion.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
-        }
         public static void RecuperarPacientes(int opcion_filtrado,int seleccion_OS,string texto, ref DataTable Tabla)
         {
             try

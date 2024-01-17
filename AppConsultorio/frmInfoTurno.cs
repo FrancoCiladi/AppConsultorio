@@ -25,6 +25,11 @@ namespace AppConsultorio
         private void frmInfoTurno_Load(object sender, EventArgs e)
         {
             this.CenterToScreen();
+
+            if(Usuarios.AccesoLog == 30)
+            {
+                btnObservaciones.Enabled = false; 
+            }
         }
 
         private void btnCancelarTurno_Click(object sender, EventArgs e)

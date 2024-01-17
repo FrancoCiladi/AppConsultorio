@@ -31,15 +31,10 @@ namespace AppConsultorio
         private void frmTurnosPaciente_Load(object sender, EventArgs e)
         {
             this.CenterToScreen();
-            //RECUPERO TODOS LOS TURNOS DEL PACIENTE SELECCIONADA
+            //RECUPERO TODOS LOS TURNOS DEL PACIENTE SELECCIONADO
             DataTable Tabla = new DataTable();
             Pacientes.RecuperarTurnosPacienteRealizados(Pacientes.idPacienteSelec.ToString(), ref Tabla);
             dgvTurnosRealizados.DataSource = Tabla;
-            if(Tabla.Rows.Count == 0)
-            {
-                MessageBox.Show("El paciente seleccionado no tiene turnos asignados.", "",MessageBoxButtons.OK);
-                this.Close();
-            }
             this.dgvTurnosRealizados.Columns["idTurno"].Visible = false;
             this.dgvTurnosRealizados.Columns["estado"].Visible = false;
             this.dgvTurnosRealizados.Columns["fecha"].HeaderText = "Fecha";
@@ -55,7 +50,6 @@ namespace AppConsultorio
                 if (Tabla.Rows.Count == 0)
                 {
                     MessageBox.Show("El paciente seleccionado no tiene turnos asignados.", "", MessageBoxButtons.OK);
-                    this.Close();
                 }
                 this.dgvTurnosRealizados.Columns["idTurno"].Visible = false;
                 this.dgvTurnosRealizados.Columns["estado"].Visible = false;

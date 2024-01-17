@@ -1,481 +1,281 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Diagnostics;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using WindowsFormsCalendar;
 
 namespace AppConsultorio
 {
     public partial class frmTurnos : Form
     {
+        List<CalendarItem> _items = new List<CalendarItem>();
+        //CalendarItem contextItem = null;
         public frmTurnos()
         {
             InitializeComponent();
-        }
-
-        private void frmTurnos_Load(object sender, EventArgs e)
-        {
-            this.CenterToScreen();
+            calendarioMes.MonthTitleColor = calendarioMes.MonthTitleColorInactive = CalendarColorTable.FromHex("#C2DAFC");
+            calendarioMes.ArrowsColor = CalendarColorTable.FromHex("#77A1D3");
+            calendarioMes.DaySelectedBackgroundColor = CalendarColorTable.FromHex("#F4CC52");
+            calendarioMes.DaySelectedTextColor = calendarioMes.ForeColor;
             
-            cbxTurnosCategorias.Items.Add("Dia");
-            cbxTurnosCategorias.Items.Add("Semana");
-            cbxTurnosCategorias.Items.Add("Mes");
-            cbxTurnosCategorias.SelectedIndex = 0;
+        }
 
-            cbxMeses.DropDownStyle = ComboBoxStyle.DropDownList;
-            
-            CargarGridViewTurnos();
-            CargarGridViewPacientes();
-            CargarComboBoxMeses();
-
-            cbxMeses.SelectedIndex = 0;
-
-            //NO PERMITO LA SELECCION DE DIAS ANTERIORES AL ACTUAL PARA ASIGNACION DE TURNOS
-            this.dtpFecha.MinDate = DateTime.Today;
-
-            if (Usuarios.AccesoLog > 20)
-            {
-                //OCULTO CONTROL EN CASO DE SECRETARIA
-                mnuTurnos.Items[2].Visible = false;
-            }
-
-            cbxObrasSociales.Visible = false;
-
-            cbxFiltrar.Items.Add("Apellido");
-            cbxFiltrar.Items.Add("Nombre");
-            cbxFiltrar.Items.Add("Obra Social");
-            cbxFiltrar.SelectedIndex = 0;
-            cbxFiltrar.DropDownStyle = ComboBoxStyle.DropDownList;
-
+        private void RecuperarTurnos(DateTime fechaDesde, DateTime fechaHasta)
+        {
+            calendarioGrande.Visible = true;
+            //LIMPIO EL CALENDARIO Y VACIO LA LISTA DE ITEMS PARA NO GENERAR DUPLICADOS
+            calendarioGrande.Items.Clear();
+            _items.Clear();
+            //RECUPERO TODOS LOS DATOS RELEVANTES DE LOS TURNOS
             DataTable tabla = new DataTable();
-            //CARGO EL COMBOBOX CON OBRAS SOCIALES
-            ObrasSociales.RecuperarObrasSociales(ref tabla);
-            cbxObrasSociales.DataSource = tabla;
-            cbxObrasSociales.DisplayMember = "descripcion";
-            cbxObrasSociales.ValueMember = "idObraSocial";
-            cbxObrasSociales.DropDownStyle = ComboBoxStyle.DropDownList;
-            cbxObrasSociales.SelectedIndex = 0;
-        }
+            Turnos.RecuperarTurnosReservados(fechaDesde,fechaHasta,ref tabla);
+            //PROPIEDADES DE LOS TURNOS
+            DateTime desde;
+            DateTime hasta;
+            string paciente;
+            string idTurno;
+            string idPaciente;
+            string telefono;
+            string estado;
+            string importe;
+            string obraSocial;
+            DateTime fechaCreacion;
+            DateTime fechaCancelacion;
+            string observaciones;
 
-        private void CargarGridViewTurnos()
-        {
-            DataTable tabla = new DataTable();
-            //EN BASE AL COMBOBOX DE CATEGORIA DE TURNOS SE CARGARAN LOS CORRESPONDIENTES AL DIA,SEMANA O MES           
-            switch (cbxTurnosCategorias.SelectedIndex)
-            {
-                case 0:
-                    Turnos.RecuperarTurnosReservadosDia(ref tabla);
-                    break;
-                case 1:
-                    Turnos.RecuperarTurnosReservadosSemana(ref tabla);
-                    break;
-                case 2:
-                    Turnos.RecuperarTurnosReservadosMes(DateTime.Now.Month, ref tabla);
-                    if (cbxMeses.SelectedIndex > 0)
-                    {
-                        Turnos.RecuperarTurnosReservadosMes(Turnos.mes, ref tabla);
-                    }
-                    break;
+
+            for (int i = 0; i < tabla.Rows.Count; i++)
+            {                   
+                //ASIGNO A LAS PROPIEDADES LOS VALORES DEVUELTOS POR CADA ROW RECUPERADA DE LA BD
+                desde = DateTime.Parse(tabla.Rows[i]["fechaDesde"].ToString());
+                hasta = DateTime.Parse(tabla.Rows[i]["fechaHasta"].ToString());
+                paciente = tabla.Rows[i]["Paciente"].ToString();
+                idTurno = tabla.Rows[i]["idTurno"].ToString();
+                idPaciente = tabla.Rows[i]["idPaciente"].ToString();
+                telefono = tabla.Rows[i]["Telefono"].ToString();
+                estado = tabla.Rows[i]["Estado"].ToString();
+                obraSocial = tabla.Rows[i]["Descripcion"].ToString();
+                fechaCreacion = DateTime.Parse(tabla.Rows[i]["fecha_creacion"].ToString());
+                DateTime.TryParse(tabla.Rows[i]["fecha_cancelacion"].ToString(), out fechaCancelacion);
+                observaciones = tabla.Rows[i]["observaciones"].ToString();
+                importe = tabla.Rows[i]["importe"].ToString();
+
+                //CREO UN OBJ CALENDARITEM Y LO AGREGO AL LISTADO DE ITEMS PARA LUEGO LLAMAR AL PROCEDIMIENTO QUE LOS CARGA EN LA VISTA DEL CALENDARIO
+                CalendarItem cal = new CalendarItem(calendarioGrande, desde, hasta, paciente, idTurno, idPaciente, telefono, obraSocial, importe, estado, fechaCreacion, fechaCancelacion);
+
+                _items.Add(cal);
             }
-        
-            this.dgvTurnos.DataSource = tabla;
-
-            this.dgvTurnos.AllowUserToAddRows = false;
-            this.dgvTurnos.AllowUserToDeleteRows = false;
-
-            this.dgvTurnos.Columns["idTurno"].Visible = false;
-            this.dgvTurnos.Columns["importe"].Visible = false;
-            this.dgvTurnos.Columns["Estado"].Visible = false;
-            this.dgvTurnos.Columns["fecha_creacion"].Visible = false;
-            this.dgvTurnos.Columns["observaciones"].Visible = false;
-            this.dgvTurnos.Columns["idPaciente"].Visible = false;
-            this.dgvTurnos.Columns["fecha_cancelacion"].Visible = false;
-            this.dgvTurnos.Columns["Descripcion"].HeaderText = "Obra Social";
-
+            CargarCalendario();
         }
 
-
-        private void frmTurnos_Activated(object sender, EventArgs e)
-        {
-            CargarGridViewTurnos();
-        }
-
-        private void cancelarTurnoToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (this.dgvTurnos.CurrentRow != null)
+        private void CargarCalendario()
+        {           
+            foreach (CalendarItem item in _items)
             {
-                Turnos.idTurnoSelec = this.dgvTurnos.CurrentRow.Cells["idTurno"].Value.ToString();
-                Pacientes.idPacienteSelec = this.dgvTurnos.CurrentRow.Cells["idPaciente"].Value.ToString();
-                DialogResult dialogresult = MessageBox.Show("¿Desea cancelar el turno?", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                //PREGUNTO SI REALMENTE DESEA CANCELAR EL TURNO
-                if (dialogresult == DialogResult.Yes)
+                if (calendarioGrande.ViewIntersects(item))
                 {
-                    dialogresult = MessageBox.Show("¿Desea notificar al paciente?","",MessageBoxButtons.YesNo);
-                    //PREGUNTO SI DESEA NOTIFICAR AL PACIENTE DE LA CANCELACION
-                    if (dialogresult == DialogResult.Yes)
+                    calendarioGrande.Items.Add(item);
+                    //SI LOS TURNOS RECUPERADOS SON PASADOS Y REALIZADOS CAMBIO EL COLOR DEL ITEM PARA REFLEJARLO
+                    if (item.Estado.Trim() == "Realizado")
                     {
-                        //EN CASO AFIRMATIVO LA CANCELACION PROVIENE DEL MEDICO/A Y SE RECUPERARA EL NUMERO DEL PACIENTE Y ABRIRA UNA INSTANCIA DE WHATSAPP WEB
-                        DataTable tabla = new DataTable();
-                        Pacientes.RecuperarTelefonoPaciente(Pacientes.idPacienteSelec, ref tabla);
-                        Process.Start("https://wa.me/+54" + tabla.Rows[0]["telefono"].ToString().Trim());
-                        //AL HABERLO CANCELADO EL MEDICO AL TURNO ES IRRELEVANTE LA INFORMACION DEL TURNO POR LO TANTO SE PROCEDE A ELIMINARLO DE LA BD
-                        Turnos.EliminarTurno(Turnos.idTurnoSelec);
+                        item.ApplyColor(Color.Green);
+                        calendarioGrande.Invalidate(item);
+                    }
+                }
+            }
+        }
+
+        private void calendarioGrande_ItemCreated(object sender, CalendarItemCancelEventArgs e)
+        {
+            RecuperarTurnos(calendarioMes.SelectionStart, calendarioMes.SelectionEnd);
+        }
+
+        private void calendarioGrande_ItemCreating(object sender, CalendarItemCancelEventArgs e)
+        {
+            string fechaDesde;
+            string fechaHasta;
+
+            fechaDesde = e.Item.StartDate.ToShortDateString();
+            fechaHasta = e.Item.EndDate.ToShortDateString();
+            //VERIFICO QUE EL TURNO SEA UN DIA UNICO
+            if (fechaDesde == fechaHasta)
+            {
+                //VERIFICO QUE EL DIA DEL TURNO NO SEA PASADO
+                if (e.Item.StartDate >= DateTime.Today)
+                {
+                    //VERIFICO QUE EL HORARIO ESTE DISPONIBLE
+                    DataTable tabla = new DataTable();
+                    Turnos.VerificarDisponibilidadTurno(e.Item.StartDate, e.Item.EndDate, ref tabla);
+                    if (tabla.Rows.Count == 0)
+                    {
+                        //ABRO UN FORMULARIO CON TODOS LOS PACIENTES PARA QUE SEA SELECCIONADO Y ASIGNADO UN TURNO
+                        Modulo.Operacion = "Asignar Turno";
+                        frmPacientes frmPacientes = new frmPacientes();
+                        frmPacientes.ShowDialog();
+                        //VERIFICO QUE EL PACIENTE SELECCIONADO NO TENGA NINGUN TURNO ASIGNADO EN EL DIA ELEGIDO
+                        Turnos.VerificarTurnoPaciente(e.Item.Date, Pacientes.idPacienteSelec, ref tabla);
+                        if (tabla.Rows.Count == 0)
+                        {
+                            Turnos.AgregarTurno(e.Item.Date, e.Item.EndDate, Pacientes.idPacienteSelec);
+                            RecuperarTurnos(calendarioMes.SelectionStart, calendarioMes.SelectionEnd);
+                        }
+                        else
+                        {
+                            MessageBox.Show("El paciente ya tiene un turno asignado en el dia.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
                     }
                     else
                     {
-                        //EN CASO DE NO HABER NOTIFICADO AL PACIENTE SIGNIFICA QUE ESTE LO CANCELO Y SE CAMBIA UNICAMENTE EL ESTADO DEL TURNO A CANCELADO
-                        //SIRVE PARA LA INFO DE CANCELACIONES POR PACIENTE
-                        Turnos.CancelarTurno(Turnos.idTurnoSelec);
-                    }   
-                }       
-            }
-        }
-
-        private void CargarGridViewPacientes()
-        {
-            if (cbxFiltrar.SelectedIndex <= 1)
-            {
-                if (string.IsNullOrEmpty(txtFiltrar.Text) == false && txtFiltrar.Text.Trim().Length >= 3)
-                {
-                    //CARGO EL GRIDVIEW SOLO SI EL TEXTBOX DE APELLIDO TIENE 3 O MAS CARACTERES
-                    DataTable Tabla = new DataTable();
-                    DataGridViewLinkColumn col;
-                    col = new DataGridViewLinkColumn();
-
-                    Pacientes.RecuperarPacientes(cbxFiltrar.SelectedIndex, 0, txtFiltrar.Text, ref Tabla);
-                    this.dgvPacientes.DataSource = Tabla;
-                    this.dgvPacientes.Columns["idPaciente"].Visible = false;
-                    this.dgvPacientes.Columns["fecha_registro"].Visible = false;
-                    this.dgvPacientes.Columns["idObra_Social"].Visible = false;
-                    this.dgvPacientes.Columns["Telefono"].Visible = false;
-
-                    col.DataPropertyName = "Telefono";
-                    col.Name = "Telefono";
-                    col.DisplayIndex = 3;
-                    this.dgvPacientes.Columns.Add(col);
+                        MessageBox.Show("Horario no disponible.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
                 }
                 else
                 {
-                    dgvPacientes.DataSource = null;
-                }
+                    MessageBox.Show("Fecha invalida.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }               
             }
             else
             {
-
-                DataTable Tabla = new DataTable();
-                DataGridViewLinkColumn col;
-                col = new DataGridViewLinkColumn();
-
-                Pacientes.RecuperarPacientes(cbxFiltrar.SelectedIndex, int.Parse(cbxObrasSociales.SelectedValue.ToString()), txtFiltrar.Text, ref Tabla);
-                this.dgvPacientes.DataSource = Tabla;
-                this.dgvPacientes.Columns["idPaciente"].Visible = false;
-                this.dgvPacientes.Columns["estado"].Visible = false;
-                this.dgvPacientes.Columns["fecha_registro"].Visible = false;
-                this.dgvPacientes.Columns["idObra_Social"].Visible = false;
-                this.dgvPacientes.Columns["Telefono"].Visible = false;
-
-                col.DataPropertyName = "Telefono";
-                col.Name = "Telefono";
-                col.DisplayIndex = 3;
-                this.dgvPacientes.Columns.Add(col);
-
-
-            }
-
-        }
-
-        private void txtFiltrar_TextChanged_1(object sender, EventArgs e)
-        {
-            //VERIFICO EL TEXTBOX DE FILTRADO DE PACIENTES POR APELLIDO
-            if (Modulo.ValidarFiltro(txtFiltrar.Text.ToString()) == true)
-            {
-                CargarGridViewPacientes();
-            }
-            else
-            {
-                MessageBox.Show("Ingreso caracter no permitido.", "Atencion!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtFiltrar.Focus();
-            }
-        }
-
-
-
-        private void btnAsignarTurno_Click_1(object sender, EventArgs e)
-        {
-            //VERIFICO QUE SE HAYA SELECCIONADO UN PACIENTE PARA ASIGNAR TURNO
-            if (this.dgvPacientes.SelectedRows.Count != 0)
-            {
-                //VERIFICO LA DISPONIBILIDAD DEL TURNO
-                if (VerificarTurno())
-                {
-                    //AGREGO EL TURNO A LA BD
-                    string fecha = dtpFecha.Value.ToShortDateString();
-                    string hora = dtpHora.Value.ToShortTimeString();
-                    //Turnos.AgregarTurno(fecha, hora, Pacientes.idPacienteSelec);
-                }
-            }
-            else
-            {
-                MessageBox.Show("Debe asignar el turno a un paciente.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-        }
-        private bool VerificarTurno()
-        {
-            //VERIFICACION DE DISPONIBILIDAD DE TURNO 
-            bool ok;
-            ok = false;
-
-            DataTable tabla = new DataTable();
-            string fecha = dtpFecha.Value.ToShortDateString();
-            string hora = dtpHora.Value.ToShortTimeString();
-            //VERIFICO PRIMERO SI EL PACIENTE TIENE TURNOS ASIGNADOS EN EL DIA SELECCIONADO
-            //Turnos.VerificarTurnoPaciente(fecha, Pacientes.idPacienteSelec, ref tabla);
-            if (tabla.Rows.Count == 0)
-            {
-                //VERIFICO QUE EL TURNO ESTE DISPONIBLE
-                //Turnos.VerificarDisponibilidadTurno(fecha, hora, ref tabla);
-                if (tabla.Rows.Count == 0)
-                {
-                    ok = true;
-                }
-                else
-                {
-                    MessageBox.Show("Turno no disponible.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-            }
-            else
-            {
-                MessageBox.Show("No se puede asignar mas de un turno por dia al paciente.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            return ok;
-        }
-
-
-
-        private void ingresarImporteToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (this.dgvTurnos.CurrentRow != null)
-            {
-                //CAMBIO EL IMPORTE DEL TURNO SELECCIONADO
-                Turnos.idTurnoSelec = this.dgvTurnos.CurrentRow.Cells["idTurno"].Value.ToString();
-                frmImporte frmImporte = new frmImporte();
-                frmImporte.ShowDialog();
-            }
-            else
-            {
-                MessageBox.Show("Debe seleccionar un turno.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-        }
-
-        private void observacionesToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (dgvTurnos.CurrentRow != null)
-            {
-                //ACCEDO A LAS OBSERVACIONES DEL TURNO SELECCIONADO
-                Turnos.idTurnoSelec = this.dgvTurnos.CurrentRow.Cells["idTurno"].Value.ToString();
-                frmObservaciones frmObservaciones = new frmObservaciones();
-                frmObservaciones.ShowDialog();
-            }
-        }
-
-        private void exportarToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            //EXPORTE LOS TURNOS DEL GRIDVIEW PARA HACER UN REPORTE
-            if (dgvTurnos.Rows.Count  > 0)
-            {
-                DataTable tabla = new DataTable();
-                switch (cbxTurnosCategorias.SelectedIndex)
-                {
-                    case 0:
-                        Turnos.Seleccion = 0;
-                        break;
-                    case 1:
-                        Turnos.Seleccion = 1;
-                        break;
-                    case 2:
-                        Turnos.Seleccion = 2;
-                        break;
-                }
-                frmReporteTurnos frmReporteTurnos = new frmReporteTurnos();
-                frmReporteTurnos.ShowDialog();
-            }
-            else
-            {
-                MessageBox.Show("No hay nada para exportar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("El turno no puede abarcar mas de un dia.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
             
-        }
-    
-
-        private void nuevoPacienteToolStripMenuItem_Click(object sender, EventArgs e)
-        { 
-            //ABRO FORMS PARA CARGAR NUEVO PACIENTE
-            frmAgregarPacientes frmAgregarPacientes = new frmAgregarPacientes();
-            frmAgregarPacientes.ShowDialog();
+                            
         }
 
-        private void cbxTurnosCategorias_SelectedIndexChanged_1(object sender, EventArgs e)
+        private void pruebaCalendario_Load(object sender, EventArgs e)
         {
-            CargarGridViewTurnos();
-            if (cbxTurnosCategorias.SelectedIndex == 2)
-            {
-                cbxMeses.Enabled = true;
-                cbxMeses.SelectedIndex = 1;
-            }
-            else
-            {
-                cbxMeses.Enabled = false;
-            }
+            calendarioGrande.Visible = false;
+            this.CenterToScreen();
         }
-        private void CargarComboBoxMeses()
+
+        private void calendarioGrande_LoadItems_1(object sender, CalendarLoadEventArgs e)
         {
-            //CREO UN ARRAY CON TODOS LOS MESES
-            string[] meses = new string[13];
+            CargarCalendario();
+        }
 
-            meses[0] = "Seleccione...";
-            meses[1] = "Enero";
-            meses[2] = "Febrero";
-            meses[3] = "Marzo";
-            meses[4] = "Abril";
-            meses[5] = "Mayo";
-            meses[6] = "Junio";
-            meses[7] = "Julio";
-            meses[8] = "Agosto";
-            meses[9] = "Septiembre";
-            meses[10] = "Octubre";
-            meses[11] = "Noviembre";
-            meses[12] = "Diciembre";
+        private void calendarioGrande_ItemDoubleClick(object sender, CalendarItemEventArgs e)
+        {
+            //AL HACER DOBLE CLICK EN UN ITEM DEL CALENDARIO ABRO UN FORMULARIO CON LA INFORMACION DE DICHO TURNO
+            Turnos.idTurnoSelec = e.Item.IdTurno;
+            Pacientes.idPacienteSelec = e.Item.IdPaciente;
+            Turnos.fecha = e.Item.StartDate;
+            frmInfoTurno frmInfoTurno = new frmInfoTurno(e.Item.Text, e.Item.Telefono, e.Item.ObraSocial, e.Item.IdTurno, e.Item.IdPaciente);
+            frmInfoTurno.ShowDialog();
+            calendarioGrande.Items.Clear();
+            RecuperarTurnos(calendarioMes.SelectionStart, calendarioMes.SelectionEnd);
+        }
 
-            cbxMeses.Items.Add(meses[0]);
-
-            //DEPENDIENDO DEL MES, CARGO UNICAMENTE EL ACTUAL Y LOS FUTUROS
-            for (int i = 1; i < 13; i++)
+        private void calendarioGrande_ItemDatesChanged(object sender, CalendarItemEventArgs e)
+        {
+            //VERIFICO PRIMERO QUE NO SE QUIERA HACER UN UPDATE DE UN TURNO YA REALIZADO
+            if(e.Item.Estado.Trim() != "Realizado")
             {
-                if (i >= DateTime.Now.Month)
+                //AL MODIFICAR UN TURNO YA REGISTRADO EN LA BD SE REALIZA UN UPDATE A LA HORA EN BASE A LA SELECCION DEL USUARIO
+                DialogResult dialogresult = MessageBox.Show("¿Desea modificar la fecha/hora del turno?", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (dialogresult == DialogResult.Yes)
                 {
-                    cbxMeses.Items.Add(meses[i]);
-                }
-            }
-        }
-        private void dgvPacientes_RowHeaderMouseClick_1(object sender, DataGridViewCellMouseEventArgs e)
-        {
-            //ASIGNO EL ID DE PACIENTE A UNA VARIABLE GLOBAL PARA LUEGO SER USADA DURANTE LA ASIGNACION DE TURNOS
-            Pacientes.idPacienteSelec = this.dgvPacientes.CurrentRow.Cells["idPaciente"].Value.ToString();
-        }
+                    string fechaDesde;
+                    string fechaHasta;
 
-        private void cbxMeses_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (cbxMeses.SelectedIndex > 0)
-            {
-                switch (cbxMeses.Text)
-                {
-                    case "Enero":
-                        Turnos.mes = 1;
-                        break;
-                    case "Febrero":
-                        Turnos.mes = 2;
-                        break;
-                    case "Marzo":
-                        Turnos.mes = 3;
-                        break;
-                    case "Abril":
-                        Turnos.mes = 4;
-                        break;
-                    case "Mayo":
-                        Turnos.mes = 5;
-                        break;
-                    case "Junio":
-                        Turnos.mes = 6;
-                        break;
-                    case "Julio":
-                        Turnos.mes = 7;
-                        break;
-                    case "Agosto":
-                        Turnos.mes = 8;
-                        break;
-                    case "Septiembre":
-                        Turnos.mes = 9;
-                        break;
-                    case "Octubre":
-                        Turnos.mes = 10;
-                        break;
-                    case "Noviembre":
-                        Turnos.mes = 11;
-                        break;
-                    case "Diciembre":
-                        Turnos.mes = 12;
-                        break;
-                }
-            }
-            else
-            {
-                Turnos.mes = 0;
-            }
-
-            if (cbxMeses.SelectedIndex > 0)
-            {
-                CargarGridViewTurnos();
-            }
-        }
-
-        private void modificarPacienteToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (this.dgvPacientes.CurrentRow != null)
-            {
-                //SELECCIONO PACIENTE EN GRIDVIEW Y GUARDO SU ID PARA CARGAR SUS DATOS EN EL FORM DE CARGA
-                Modulo.Operacion = "MODIFICAR";
-                Pacientes.idPacienteSelec = this.dgvPacientes.CurrentRow.Cells["idPaciente"].Value.ToString();
-                frmAgregarPacientes frmCargaPacientes = new frmAgregarPacientes();
-                frmCargaPacientes.ShowDialog();
-            }
-            CargarGridViewPacientes();
-        }
-
-        private void eliminarPacienteToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (dgvPacientes.CurrentRow != null)
-            {
-                //VERIFICO QUE EL PACIENTE A ELIMINAR NO TENGA TURNOS ASIGNADOS, EN CASO DE QUE SI SE IMPOSIBILITA LA ELIMINACION, CASO CONTRARIO SE PROCEDE A ELIMINARLO DE LA BD
-                DataTable tabla = new DataTable();
-                Pacientes.idPacienteSelec = this.dgvPacientes.CurrentRow.Cells["idPaciente"].Value.ToString();
-                Pacientes.RecuperarTurnosPacienteRealizados(Pacientes.idPacienteSelec, ref tabla);
-                if (tabla.Rows.Count == 0)
-                {
-                    Pacientes.EliminarPaciente(Pacientes.idPacienteSelec);
+                    fechaDesde = e.Item.StartDate.ToShortDateString();
+                    fechaHasta = e.Item.EndDate.ToShortDateString();
+                    //VERIFICO QUE EL TURNO ABARQUE UN UNICO DIA
+                    if (fechaDesde == fechaHasta)
+                    {
+                        //VERIFICO QUE EL TURNO NO SEA ASIGNADO A UN DIA YA PASADO
+                        if (e.Item.StartDate >= DateTime.Today)
+                        {
+                            //VERIFICO QUE NO HAYA OTRO TURNO ASIGNADO EN EL HORARIO SELECCIONADO
+                            DataTable tabla = new DataTable();
+                            Turnos.VerificarTurnoUpdate(e.Item.IdTurno, e.Item.StartDate, e.Item.EndDate, ref tabla);
+                            if (tabla.Rows.Count == 0)
+                            {
+                                //VERIFICO QUE EL PACIENTE NO TENGA OTRO TURNO ASIGNADO EL MISMO DIA
+                                Turnos.VerificarTurnoPacienteUpdate(e.Item.IdTurno, e.Item.Date, e.Item.IdPaciente, ref tabla);
+                                if (tabla.Rows.Count == 0)
+                                {
+                                    Turnos.ActualizarFechaTurno(e.Item.IdTurno, e.Item.StartDate, e.Item.EndDate);
+                                    RecuperarTurnos(calendarioMes.SelectionStart, calendarioMes.SelectionEnd);
+                                }
+                                else
+                                {
+                                    MessageBox.Show("El paciente ya tiene un turno asignado en el dia.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    RecuperarTurnos(calendarioMes.SelectionStart, calendarioMes.SelectionEnd);
+                                    return;
+                                }
+                            }
+                            else
+                            {
+                                MessageBox.Show("Horario no disponible.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                RecuperarTurnos(calendarioMes.SelectionStart, calendarioMes.SelectionEnd);
+                                return;
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Fecha Invalida.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            RecuperarTurnos(calendarioMes.SelectionStart, calendarioMes.SelectionEnd);
+                            return;
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("El turno no puede abarcar mas de un dia.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        RecuperarTurnos(calendarioMes.SelectionStart, calendarioMes.SelectionEnd);
+                        return;
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("No se pueden eliminar pacientes con turnos asignados.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    RecuperarTurnos(calendarioMes.SelectionStart, calendarioMes.SelectionEnd);
                 }
-                CargarGridViewPacientes();
-            }
-        }
-
-        private void cbxFiltrar_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (cbxFiltrar.SelectedIndex == 2)
-            {
-                cbxObrasSociales.Visible = true;
-                txtFiltrar.Visible = false;
-                txtFiltrar.Text = null;
             }
             else
             {
-                cbxObrasSociales.Visible = false;
-                txtFiltrar.Visible = true;
+                MessageBox.Show("No puede modificar el horario de un turno ya realizado.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                RecuperarTurnos(calendarioMes.SelectionStart, calendarioMes.SelectionEnd);
+                return;
             }
         }
 
-        private void cbxObrasSociales_SelectedIndexChanged(object sender, EventArgs e)
+        private void calendarioMes_SelectionChanged(object sender, EventArgs e)
         {
-            CargarGridViewPacientes();
+            //AL CAMBIAR LOS DIAS SELECCIONADOS DEL CALENDARIO MENSUAL RECUPERO LOS TURNOS ENTRE LAS DOS FECHAS
+            DataTable tabla = new DataTable();
+
+            calendarioGrande.SetViewRange(calendarioMes.SelectionStart, calendarioMes.SelectionEnd);
+
+            RecuperarTurnos(calendarioMes.SelectionStart, calendarioMes.SelectionEnd);            
+        }
+
+        private void calendarioGrande_DayHeaderClick(object sender, CalendarDayEventArgs e)
+        {
+            // CUANDO HAGO CLICK EN EL NOMBRE DEL DIA RECUPERO SOLAMENTE LOS TURNOS DEL DIA SELECCIONADO
+            DateTime fechaDesde;
+            DateTime fechaHasta;
+
+            fechaDesde = DateTime.Parse(e.CalendarDay.Date.ToShortDateString());
+            fechaHasta = DateTime.Parse(e.CalendarDay.Date.ToShortDateString()).AddHours(23).AddMinutes(59).AddSeconds(59);
+
+            
+
+            DataTable tabla = new DataTable();
+
+            calendarioGrande.SetViewRange(e.CalendarDay.Date, e.CalendarDay.Date);
+
+            RecuperarTurnos(fechaDesde,fechaHasta);
         }
     }
-    
 }

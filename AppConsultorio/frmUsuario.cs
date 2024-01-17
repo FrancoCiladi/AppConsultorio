@@ -161,7 +161,7 @@ namespace AppConsultorio
             if (VerificarUpdateUsuario())
             {
                 //VERIFICACION EXITOSA -> UPDATE DE DATOS EN LA BD
-                Usuarios.UpdateUsuario(Usuarios.idUsuarioLog, txtApellido.Text.Trim(), txtNombre.Text.Trim(), txtUsuario.Text.Trim());
+                Usuarios.UpdateUsuario(Usuarios.idUsuarioLog, txtApellido.Text.Trim(), txtNombre.Text.Trim(), txtUsuario.Text.Trim().ToUpper());
                 MessageBox.Show("Modificacion realizada con exito!", "Modificacion realizada", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }

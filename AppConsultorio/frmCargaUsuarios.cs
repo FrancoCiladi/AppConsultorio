@@ -180,7 +180,7 @@ namespace AppConsultorio
                 //SE COMBINA LA SALT GENERADA JUNTO A LA CONTRASEÑA INGRESADA
                 string passHash = Usuarios.SecurityHelper.HashPassword(txtContraseña.Text.ToString().Trim(), salt, 10000, 32);
 
-                Usuarios.RegistrarUsuario(txtUsuario.Text.ToString().Trim(), passHash,txtApellido.Text.ToString().Trim(), txtNombre.Text.ToString().Trim(),salt,txtCorreo.Text.ToString().Trim());
+                Usuarios.RegistrarUsuario(txtUsuario.Text.ToString().Trim().ToUpper(), passHash,txtApellido.Text.ToString().Trim(), txtNombre.Text.ToString().Trim(),salt,txtCorreo.Text.ToString().Trim());
 
                 //NECESARIO PARA RECUPERAR EL ID DEL USUARIO RECIEN CREADO, REUTILIZO EL PROCEDURE 'RecuperarUsuarioLogin'
                 tabla = new DataTable();

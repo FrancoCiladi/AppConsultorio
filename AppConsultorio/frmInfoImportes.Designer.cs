@@ -33,6 +33,8 @@
             System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.lblTotalRecaudado = new System.Windows.Forms.Label();
             this.chartRecaudado = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.cbxAño = new System.Windows.Forms.ComboBox();
+            this.lblAño = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.chartRecaudado)).BeginInit();
             this.SuspendLayout();
             // 
@@ -59,15 +61,35 @@
             this.chartRecaudado.ChartAreas.Add(chartArea2);
             legend2.Name = "Legend1";
             this.chartRecaudado.Legends.Add(legend2);
-            this.chartRecaudado.Location = new System.Drawing.Point(10, 12);
+            this.chartRecaudado.Location = new System.Drawing.Point(10, 38);
             this.chartRecaudado.Name = "chartRecaudado";
             this.chartRecaudado.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Fire;
             series2.ChartArea = "ChartArea1";
             series2.Legend = "Legend1";
             series2.Name = "Total Recaudado";
             this.chartRecaudado.Series.Add(series2);
-            this.chartRecaudado.Size = new System.Drawing.Size(778, 404);
+            this.chartRecaudado.Size = new System.Drawing.Size(778, 378);
             this.chartRecaudado.TabIndex = 6;
+            // 
+            // cbxAño
+            // 
+            this.cbxAño.FormattingEnabled = true;
+            this.cbxAño.Location = new System.Drawing.Point(58, 11);
+            this.cbxAño.Name = "cbxAño";
+            this.cbxAño.Size = new System.Drawing.Size(78, 21);
+            this.cbxAño.TabIndex = 11;
+            this.cbxAño.SelectedIndexChanged += new System.EventHandler(this.cbxAño_SelectedIndexChanged);
+            // 
+            // lblAño
+            // 
+            this.lblAño.AutoSize = true;
+            this.lblAño.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAño.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lblAño.Location = new System.Drawing.Point(12, 9);
+            this.lblAño.Name = "lblAño";
+            this.lblAño.Size = new System.Drawing.Size(51, 20);
+            this.lblAño.TabIndex = 10;
+            this.lblAño.Text = "Año: ";
             // 
             // frmInfoImportes
             // 
@@ -75,6 +97,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSeaGreen;
             this.ClientSize = new System.Drawing.Size(800, 467);
+            this.Controls.Add(this.cbxAño);
+            this.Controls.Add(this.lblAño);
             this.Controls.Add(this.lblTotalRecaudado);
             this.Controls.Add(this.chartRecaudado);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -91,5 +115,7 @@
 
         private System.Windows.Forms.Label lblTotalRecaudado;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartRecaudado;
+        private System.Windows.Forms.ComboBox cbxAño;
+        private System.Windows.Forms.Label lblAño;
     }
 }
