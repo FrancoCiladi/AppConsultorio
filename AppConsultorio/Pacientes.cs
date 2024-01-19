@@ -14,7 +14,9 @@ namespace AppConsultorio
     internal class Pacientes : Modulo
     {
         public static string idPacienteSelec;
-
+        public static int opcionFiltrado;
+        public static int seleccion_OS;
+        public static string textoFiltrar;
         public static void RecuperarPacientes(int opcion_filtrado,int seleccion_OS,string texto, ref DataTable Tabla)
         {
             try
@@ -31,6 +33,32 @@ namespace AppConsultorio
                 Comando.Parameters.Add("@opcion_filtrado", SqlDbType.Int).Value = opcion_filtrado;
                 Comando.Parameters.Add("@seleccion_OS", SqlDbType.Int).Value = seleccion_OS;
                 Comando.Parameters.Add("@texto", SqlDbType.VarChar,30).Value = texto;
+                Tabla = new DataTable();
+                Tabla.Load(Comando.ExecuteReader());
+
+                Conexion.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+        public static void RecuperarPacientesListado(int opcion_filtrado, int seleccion_OS, string texto, ref DataTable Tabla)
+        {
+            try
+            {
+                string cadenaConexion = System.Configuration.ConfigurationManager.ConnectionStrings["CadenaConexion"].ConnectionString;
+                SqlConnection Conexion = new SqlConnection();
+                Conexion.ConnectionString = cadenaConexion;
+                Conexion.Open();
+
+                SqlCommand Comando = new SqlCommand();
+                Comando.Connection = Conexion;
+                Comando.CommandType = CommandType.StoredProcedure;
+                Comando.CommandText = "RECUPERAR_PACIENTES_LISTADO";
+                Comando.Parameters.Add("@opcion_filtrado", SqlDbType.Int).Value = opcion_filtrado;
+                Comando.Parameters.Add("@seleccion_OS", SqlDbType.Int).Value = seleccion_OS;
+                Comando.Parameters.Add("@texto", SqlDbType.VarChar, 30).Value = texto;
                 Tabla = new DataTable();
                 Tabla.Load(Comando.ExecuteReader());
 

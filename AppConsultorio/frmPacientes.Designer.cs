@@ -37,6 +37,7 @@
             this.editarPacienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.eliminarPacienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.verTurnosPacienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exportarListadoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cbxFiltrado = new System.Windows.Forms.ComboBox();
             this.cbxObrasSociales = new System.Windows.Forms.ComboBox();
             this.btnAsignarTurno = new System.Windows.Forms.Button();
@@ -74,37 +75,45 @@
             this.cargarPacienteToolStripMenuItem,
             this.editarPacienteToolStripMenuItem,
             this.eliminarPacienteToolStripMenuItem,
-            this.verTurnosPacienteToolStripMenuItem});
+            this.verTurnosPacienteToolStripMenuItem,
+            this.exportarListadoToolStripMenuItem});
             this.mnuPacientes.Name = "mnuPacientes";
-            this.mnuPacientes.Size = new System.Drawing.Size(178, 92);
+            this.mnuPacientes.Size = new System.Drawing.Size(181, 136);
             // 
             // cargarPacienteToolStripMenuItem
             // 
             this.cargarPacienteToolStripMenuItem.Name = "cargarPacienteToolStripMenuItem";
-            this.cargarPacienteToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+            this.cargarPacienteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.cargarPacienteToolStripMenuItem.Text = "Cargar Paciente";
             this.cargarPacienteToolStripMenuItem.Click += new System.EventHandler(this.cargarPacienteToolStripMenuItem_Click);
             // 
             // editarPacienteToolStripMenuItem
             // 
             this.editarPacienteToolStripMenuItem.Name = "editarPacienteToolStripMenuItem";
-            this.editarPacienteToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+            this.editarPacienteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.editarPacienteToolStripMenuItem.Text = "Editar Paciente";
             this.editarPacienteToolStripMenuItem.Click += new System.EventHandler(this.editarPacienteToolStripMenuItem_Click);
             // 
             // eliminarPacienteToolStripMenuItem
             // 
             this.eliminarPacienteToolStripMenuItem.Name = "eliminarPacienteToolStripMenuItem";
-            this.eliminarPacienteToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+            this.eliminarPacienteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.eliminarPacienteToolStripMenuItem.Text = "Eliminar Paciente";
             this.eliminarPacienteToolStripMenuItem.Click += new System.EventHandler(this.eliminarPacienteToolStripMenuItem_Click);
             // 
             // verTurnosPacienteToolStripMenuItem
             // 
             this.verTurnosPacienteToolStripMenuItem.Name = "verTurnosPacienteToolStripMenuItem";
-            this.verTurnosPacienteToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+            this.verTurnosPacienteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.verTurnosPacienteToolStripMenuItem.Text = "Ver Turnos Paciente";
             this.verTurnosPacienteToolStripMenuItem.Click += new System.EventHandler(this.verTurnosPacienteToolStripMenuItem_Click);
+            // 
+            // exportarListadoToolStripMenuItem
+            // 
+            this.exportarListadoToolStripMenuItem.Name = "exportarListadoToolStripMenuItem";
+            this.exportarListadoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exportarListadoToolStripMenuItem.Text = "Exportar Listado";
+            this.exportarListadoToolStripMenuItem.Click += new System.EventHandler(this.exportarListadoToolStripMenuItem_Click);
             // 
             // cbxFiltrado
             // 
@@ -168,5 +177,6 @@
         private System.Windows.Forms.ComboBox cbxFiltrado;
         private System.Windows.Forms.ComboBox cbxObrasSociales;
         private System.Windows.Forms.Button btnAsignarTurno;
+        private System.Windows.Forms.ToolStripMenuItem exportarListadoToolStripMenuItem;
     }
 }

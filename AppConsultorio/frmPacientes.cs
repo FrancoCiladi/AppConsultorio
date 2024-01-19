@@ -103,6 +103,8 @@ namespace AppConsultorio
                     this.dgvPacientes.Columns["fecha_registro"].Visible = false;
                     this.dgvPacientes.Columns["idObra_Social"].Visible = false;
                     this.dgvPacientes.Columns["Telefono"].Visible = false;
+                    //this.dgvPacientes.Columns["nro_doc"].Visible = false;
+                    //this.dgvPacientes.Columns["descripcion"].Visible = false;
 
                     col.DataPropertyName = "Telefono";
                     col.Name = "Telefono";
@@ -127,6 +129,8 @@ namespace AppConsultorio
                 this.dgvPacientes.Columns["fecha_registro"].Visible = false;
                 this.dgvPacientes.Columns["idObra_Social"].Visible = false;
                 this.dgvPacientes.Columns["Telefono"].Visible = false;
+                this.dgvPacientes.Columns["nro_doc"].Visible = false;
+                this.dgvPacientes.Columns["descripcion"].Visible = false;
 
                 col.DataPropertyName = "Telefono";
                 col.Name = "Telefono";
@@ -218,5 +222,22 @@ namespace AppConsultorio
             }
         }
 
+        private void exportarListadoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (this.dgvPacientes.Rows.Count != 0)
+            {
+                Pacientes.seleccion_OS = cbxObrasSociales.SelectedIndex;
+                Pacientes.opcionFiltrado = cbxFiltrado.SelectedIndex;
+                Pacientes.textoFiltrar = txtFiltro.Text.Trim();
+
+                frmReportePacientes frmReportePacientes = new frmReportePacientes();
+                frmReportePacientes.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("No hay pacientes para exportar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+            }
+        }
     }
 }
