@@ -15,7 +15,8 @@ namespace AppConsultorio
     {
         public static string idTurnoSelec;
         public static DateTime fecha;
-        public static void RecuperarTurnosReservados(DateTime fechaDesde,DateTime fechaHasta,ref DataTable tabla)
+        public static string idMedicoSelec;
+        public static void RecuperarTurnosReservados(DateTime fechaDesde,DateTime fechaHasta,string idMedicoSelec,ref DataTable tabla)
         {
             try
             {
@@ -30,6 +31,7 @@ namespace AppConsultorio
                 Comando.CommandText = "RECUPERAR_TURNOS";
                 Comando.Parameters.Add("@fechaDesde", SqlDbType.DateTime).Value = fechaDesde;
                 Comando.Parameters.Add("@fechaHasta", SqlDbType.DateTime).Value = fechaHasta;
+                Comando.Parameters.Add("@idMedico", SqlDbType.Int).Value = idMedicoSelec;
                 tabla = new DataTable();
                 tabla.Load(Comando.ExecuteReader());
 
@@ -90,7 +92,7 @@ namespace AppConsultorio
                 MessageBox.Show(ex.Message);
             }
         }
-        public static void VerificarDisponibilidadTurno(DateTime fechaDesde, DateTime fechaHasta, ref DataTable tabla)
+        public static void VerificarDisponibilidadTurno(DateTime fechaDesde, DateTime fechaHasta,string idMedico, ref DataTable tabla)
         {
             try
             {
@@ -105,6 +107,7 @@ namespace AppConsultorio
                 Comando.CommandText = "VERIFICAR_TURNO";
                 Comando.Parameters.Add("@fechaDesde", SqlDbType.DateTime).Value = fechaDesde;
                 Comando.Parameters.Add("@fechaHasta", SqlDbType.DateTime).Value = fechaHasta;
+                Comando.Parameters.Add("@idMedico", SqlDbType.Int).Value = idMedico;
                 tabla = new DataTable();
                 tabla.Load(Comando.ExecuteReader());
 
@@ -115,7 +118,7 @@ namespace AppConsultorio
                 MessageBox.Show(ex.Message);
             }
         }
-        public static void VerificarTurnoUpdate(string idTurnoSelec,DateTime fechaDesde, DateTime fechaHasta, ref DataTable tabla)
+        public static void VerificarTurnoUpdate(string idTurnoSelec,DateTime fechaDesde, DateTime fechaHasta,string idMedicoSelec, ref DataTable tabla)
         {
             try
             {
@@ -131,6 +134,7 @@ namespace AppConsultorio
                 Comando.Parameters.Add("@idTurnoSelec", SqlDbType.Int).Value = idTurnoSelec;
                 Comando.Parameters.Add("@fechaDesde", SqlDbType.DateTime).Value = fechaDesde;
                 Comando.Parameters.Add("@fechaHasta", SqlDbType.DateTime).Value = fechaHasta;
+                Comando.Parameters.Add("@idMedico", SqlDbType.Int).Value = idMedicoSelec;
                 tabla = new DataTable();
                 tabla.Load(Comando.ExecuteReader());
 
@@ -141,31 +145,7 @@ namespace AppConsultorio
                 MessageBox.Show(ex.Message);
             }
         }
-        public static void VerificarTurnoPaciente(DateTime fecha, string idPacienteSelec, ref DataTable tabla)
-        {
-            try
-            {
-                string cadenaConexion = System.Configuration.ConfigurationManager.ConnectionStrings["CadenaConexion"].ConnectionString;
-                SqlConnection Conexion = new SqlConnection();
-                Conexion.ConnectionString = cadenaConexion;
-                Conexion.Open();
-
-                SqlCommand Comando = new SqlCommand();
-                Comando.Connection = Conexion;
-                Comando.CommandType = CommandType.StoredProcedure;
-                Comando.CommandText = "VERIFICAR_TURNO_DIA_PACIENTE";
-                Comando.Parameters.Add("@fecha", SqlDbType.DateTime).Value = fecha;
-                Comando.Parameters.Add("@idPacienteSelec", SqlDbType.Int).Value = idPacienteSelec;
-                tabla = new DataTable();
-                tabla.Load(Comando.ExecuteReader());
-
-                Conexion.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
+        
         public static void VerificarTurnoPacienteUpdate(string idTurnoSelec,DateTime fecha, string idPacienteSelec, ref DataTable tabla)
         {
             try
@@ -192,7 +172,7 @@ namespace AppConsultorio
                 MessageBox.Show(ex.Message);
             }
         }
-        public static void AgregarTurno(DateTime fechaDesde, DateTime fechaHasta, string idPacienteSelec)
+        public static void AgregarTurno(DateTime fechaDesde, DateTime fechaHasta, string idPacienteSelec,string idMedico)
         {
             try
             {
@@ -208,6 +188,7 @@ namespace AppConsultorio
                 Comando.Parameters.Add("fechaDesde", SqlDbType.DateTime).Value = fechaDesde;
                 Comando.Parameters.Add("fechaHasta", SqlDbType.DateTime).Value = fechaHasta;
                 Comando.Parameters.Add("@idPacienteSelec", SqlDbType.Int).Value = idPacienteSelec;
+                Comando.Parameters.Add("@idMedico", SqlDbType.Int).Value = idMedico;
                 Comando.ExecuteNonQuery();
 
                 MessageBox.Show("Turno asignado!", "Operacion Realizada", MessageBoxButtons.OK, MessageBoxIcon.Information);

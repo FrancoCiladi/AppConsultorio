@@ -21,7 +21,7 @@ namespace AppConsultorio
         }
 
         private void frmPacientes_Load(object sender, EventArgs e)
-        {
+        {          
             if (Modulo.Operacion == "Asignar Turno")
             {
                 btnAsignarTurno.Visible = true;                
@@ -239,5 +239,6 @@ namespace AppConsultorio
 
             }
         }
+
     }
 }

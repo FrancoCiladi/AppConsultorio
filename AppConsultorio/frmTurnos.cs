@@ -17,7 +17,8 @@ namespace AppConsultorio
     public partial class frmTurnos : Form
     {
         List<CalendarItem> _items = new List<CalendarItem>();
-        //CalendarItem contextItem = null;
+        //CREO UNA FLAG PARA EVITAR CARGAR TURNOS EN EL LOAD Y QUE SOLAMENTE SE CARGUE UNA VEZ SELECCIONADA UNA FECHA
+        bool flag = false;
         public frmTurnos()
         {
             InitializeComponent();
@@ -36,7 +37,15 @@ namespace AppConsultorio
             _items.Clear();
             //RECUPERO TODOS LOS DATOS RELEVANTES DE LOS TURNOS
             DataTable tabla = new DataTable();
-            Turnos.RecuperarTurnosReservados(fechaDesde,fechaHasta,ref tabla);
+            if (Usuarios.AccesoLog == 20)
+            {
+                Turnos.RecuperarTurnosReservados(fechaDesde, fechaHasta, Usuarios.idUsuarioLog.ToString(), ref tabla) ;
+            }
+            else
+            {
+                Turnos.RecuperarTurnosReservados(fechaDesde, fechaHasta,Turnos.idMedicoSelec.ToString(), ref tabla); 
+            }
+
             //PROPIEDADES DE LOS TURNOS
             DateTime desde;
             DateTime hasta;
@@ -113,25 +122,30 @@ namespace AppConsultorio
                 {
                     //VERIFICO QUE EL HORARIO ESTE DISPONIBLE
                     DataTable tabla = new DataTable();
-                    Turnos.VerificarDisponibilidadTurno(e.Item.StartDate, e.Item.EndDate, ref tabla);
+                    if (Usuarios.AccesoLog == 20)
+                    {
+                        Turnos.VerificarDisponibilidadTurno(e.Item.StartDate, e.Item.EndDate,Usuarios.idUsuarioLog.ToString(), ref tabla);
+                    }
+                    else
+                    {
+                        Turnos.VerificarDisponibilidadTurno(e.Item.StartDate, e.Item.EndDate,Turnos.idMedicoSelec.ToString(), ref tabla);
+                    }                  
                     if (tabla.Rows.Count == 0)
                     {
                         //ABRO UN FORMULARIO CON TODOS LOS PACIENTES PARA QUE SEA SELECCIONADO Y ASIGNADO UN TURNO
                         Modulo.Operacion = "Asignar Turno";
                         frmPacientes frmPacientes = new frmPacientes();
                         frmPacientes.ShowDialog();
-                        //VERIFICO QUE EL PACIENTE SELECCIONADO NO TENGA NINGUN TURNO ASIGNADO EN EL DIA ELEGIDO
-                        Turnos.VerificarTurnoPaciente(e.Item.Date, Pacientes.idPacienteSelec, ref tabla);
-                        if (tabla.Rows.Count == 0)
+
+                        if (Usuarios.AccesoLog == 20)
                         {
-                            Turnos.AgregarTurno(e.Item.Date, e.Item.EndDate, Pacientes.idPacienteSelec);
-                            RecuperarTurnos(calendarioMes.SelectionStart, calendarioMes.SelectionEnd);
+                            Turnos.AgregarTurno(e.Item.Date, e.Item.EndDate, Pacientes.idPacienteSelec, Usuarios.idUsuarioLog);
                         }
                         else
                         {
-                            MessageBox.Show("El paciente ya tiene un turno asignado en el dia.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            return;
+                            Turnos.AgregarTurno(e.Item.Date, e.Item.EndDate, Pacientes.idPacienteSelec, Turnos.idMedicoSelec.ToString());
                         }
+
                     }
                     else
                     {
@@ -158,6 +172,27 @@ namespace AppConsultorio
         {
             calendarioGrande.Visible = false;
             this.CenterToScreen();
+
+            if (Usuarios.AccesoLog == 30)
+            {
+                this.panelCalendarioGrande.Location = new Point(250, 45);
+                lblMedico.Visible = true;
+                cbxProfesional.Visible = true;
+
+                DataTable tabla = new DataTable();
+                Grupos.RecuperarProfesionales(ref tabla);
+                cbxProfesional.DataSource = tabla;
+                cbxProfesional.DisplayMember = "Profesional";
+                cbxProfesional.ValueMember = "idUsuario";
+                cbxProfesional.DropDownStyle = ComboBoxStyle.DropDownList;
+                cbxProfesional.SelectedIndex = 0;
+            }
+            else
+            {
+                this.panelCalendarioGrande.Location = new Point(250, 1);
+                lblMedico.Visible = false;
+                cbxProfesional.Visible = false;
+            }
         }
 
         private void calendarioGrande_LoadItems_1(object sender, CalendarLoadEventArgs e)
@@ -199,22 +234,21 @@ namespace AppConsultorio
                         {
                             //VERIFICO QUE NO HAYA OTRO TURNO ASIGNADO EN EL HORARIO SELECCIONADO
                             DataTable tabla = new DataTable();
-                            Turnos.VerificarTurnoUpdate(e.Item.IdTurno, e.Item.StartDate, e.Item.EndDate, ref tabla);
+                            if (Usuarios.AccesoLog == 20)
+                            {
+                                Turnos.VerificarTurnoUpdate(e.Item.IdTurno, e.Item.StartDate, e.Item.EndDate,Usuarios.idUsuarioLog.ToString(), ref tabla);
+                            }
+                            else
+                            {
+                                Turnos.VerificarTurnoUpdate(e.Item.IdTurno, e.Item.StartDate, e.Item.EndDate,Turnos.idMedicoSelec.ToString(), ref tabla);
+                            }
+
                             if (tabla.Rows.Count == 0)
                             {
-                                //VERIFICO QUE EL PACIENTE NO TENGA OTRO TURNO ASIGNADO EL MISMO DIA
-                                Turnos.VerificarTurnoPacienteUpdate(e.Item.IdTurno, e.Item.Date, e.Item.IdPaciente, ref tabla);
-                                if (tabla.Rows.Count == 0)
-                                {
+
                                     Turnos.ActualizarFechaTurno(e.Item.IdTurno, e.Item.StartDate, e.Item.EndDate);
                                     RecuperarTurnos(calendarioMes.SelectionStart, calendarioMes.SelectionEnd);
-                                }
-                                else
-                                {
-                                    MessageBox.Show("El paciente ya tiene un turno asignado en el dia.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                    RecuperarTurnos(calendarioMes.SelectionStart, calendarioMes.SelectionEnd);
-                                    return;
-                                }
+                               
                             }
                             else
                             {
@@ -253,10 +287,8 @@ namespace AppConsultorio
         private void calendarioMes_SelectionChanged(object sender, EventArgs e)
         {
             //AL CAMBIAR LOS DIAS SELECCIONADOS DEL CALENDARIO MENSUAL RECUPERO LOS TURNOS ENTRE LAS DOS FECHAS
-            DataTable tabla = new DataTable();
-
             calendarioGrande.SetViewRange(calendarioMes.SelectionStart, calendarioMes.SelectionEnd);
-
+            flag = true;
             RecuperarTurnos(calendarioMes.SelectionStart, calendarioMes.SelectionEnd);            
         }
 
@@ -269,13 +301,19 @@ namespace AppConsultorio
             fechaDesde = DateTime.Parse(e.CalendarDay.Date.ToShortDateString());
             fechaHasta = DateTime.Parse(e.CalendarDay.Date.ToShortDateString()).AddHours(23).AddMinutes(59).AddSeconds(59);
 
-            
-
-            DataTable tabla = new DataTable();
-
             calendarioGrande.SetViewRange(e.CalendarDay.Date, e.CalendarDay.Date);
 
             RecuperarTurnos(fechaDesde,fechaHasta);
+        }
+
+
+        private void cbxProfesional_SelectedValueChanged(object sender, EventArgs e)
+        {
+            Turnos.idMedicoSelec = cbxProfesional.SelectedValue.ToString().Trim();
+            if (flag == true)
+            {
+                RecuperarTurnos(calendarioMes.SelectionStart, calendarioMes.SelectionEnd);
+            }          
         }
     }
 }

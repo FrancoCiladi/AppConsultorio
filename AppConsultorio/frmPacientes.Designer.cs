@@ -78,40 +78,40 @@
             this.verTurnosPacienteToolStripMenuItem,
             this.exportarListadoToolStripMenuItem});
             this.mnuPacientes.Name = "mnuPacientes";
-            this.mnuPacientes.Size = new System.Drawing.Size(181, 136);
+            this.mnuPacientes.Size = new System.Drawing.Size(178, 114);
             // 
             // cargarPacienteToolStripMenuItem
             // 
             this.cargarPacienteToolStripMenuItem.Name = "cargarPacienteToolStripMenuItem";
-            this.cargarPacienteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.cargarPacienteToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
             this.cargarPacienteToolStripMenuItem.Text = "Cargar Paciente";
             this.cargarPacienteToolStripMenuItem.Click += new System.EventHandler(this.cargarPacienteToolStripMenuItem_Click);
             // 
             // editarPacienteToolStripMenuItem
             // 
             this.editarPacienteToolStripMenuItem.Name = "editarPacienteToolStripMenuItem";
-            this.editarPacienteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.editarPacienteToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
             this.editarPacienteToolStripMenuItem.Text = "Editar Paciente";
             this.editarPacienteToolStripMenuItem.Click += new System.EventHandler(this.editarPacienteToolStripMenuItem_Click);
             // 
             // eliminarPacienteToolStripMenuItem
             // 
             this.eliminarPacienteToolStripMenuItem.Name = "eliminarPacienteToolStripMenuItem";
-            this.eliminarPacienteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.eliminarPacienteToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
             this.eliminarPacienteToolStripMenuItem.Text = "Eliminar Paciente";
             this.eliminarPacienteToolStripMenuItem.Click += new System.EventHandler(this.eliminarPacienteToolStripMenuItem_Click);
             // 
             // verTurnosPacienteToolStripMenuItem
             // 
             this.verTurnosPacienteToolStripMenuItem.Name = "verTurnosPacienteToolStripMenuItem";
-            this.verTurnosPacienteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.verTurnosPacienteToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
             this.verTurnosPacienteToolStripMenuItem.Text = "Ver Turnos Paciente";
             this.verTurnosPacienteToolStripMenuItem.Click += new System.EventHandler(this.verTurnosPacienteToolStripMenuItem_Click);
             // 
             // exportarListadoToolStripMenuItem
             // 
             this.exportarListadoToolStripMenuItem.Name = "exportarListadoToolStripMenuItem";
-            this.exportarListadoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exportarListadoToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
             this.exportarListadoToolStripMenuItem.Text = "Exportar Listado";
             this.exportarListadoToolStripMenuItem.Click += new System.EventHandler(this.exportarListadoToolStripMenuItem_Click);
             // 
