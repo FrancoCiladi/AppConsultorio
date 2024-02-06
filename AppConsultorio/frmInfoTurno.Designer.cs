@@ -153,7 +153,7 @@
             this.Controls.Add(this.btnImporte);
             this.Controls.Add(this.btnObservaciones);
             this.Controls.Add(this.btnCancelarTurno);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "frmInfoTurno";
             this.Load += new System.EventHandler(this.frmInfoTurno_Load);
             this.ResumeLayout(false);

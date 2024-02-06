@@ -95,6 +95,7 @@ namespace AppConsultorio
 
             dgvUsuarios.DataSource = tabla;
             dgvUsuarios.Columns["idUsuario"].Visible = false;
+            dgvUsuarios.Columns["idGrupo"].Visible = false;
             dgvUsuarios.AllowUserToAddRows = false;
             dgvUsuarios.AllowUserToDeleteRows = false;
             cantUsuarios = tabla.Rows.Count;
@@ -121,9 +122,11 @@ namespace AppConsultorio
         {
             if (this.dgvUsuarios.CurrentRow != null)
             {
+                string idGrupo;
                 //ELIMINO EL USUARIO DE LA BD LLAMANDO AL PROCEDURE
                 Usuarios.idUsuarioSelec = dgvUsuarios.CurrentRow.Cells["idUsuario"].Value.ToString();
-                Usuarios.EliminarUsuario(Usuarios.idUsuarioSelec);
+                idGrupo = dgvUsuarios.CurrentRow.Cells["idGrupo"].Value.ToString().Trim();
+                Usuarios.EliminarUsuario(Usuarios.idUsuarioSelec,idGrupo);
                 CargarGridView();
             }
         }

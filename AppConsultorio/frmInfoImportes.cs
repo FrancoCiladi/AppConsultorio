@@ -41,7 +41,7 @@ namespace AppConsultorio
             for (int i = 1; i <= 12; i++)
             {
                 DataTable tabla = new DataTable();
-                Reportes.RecuperarInfoReportesMensual(i, int.Parse(cbxAño.Text.Trim()), ref tabla);
+                Reportes.RecuperarInfoReportesMensual(i, int.Parse(cbxAño.Text.Trim()),Usuarios.idUsuarioLog, ref tabla);
                 int.TryParse(tabla.Rows[0]["Recaudado"].ToString(), out aux);
                 TotalRecaudado = TotalRecaudado + aux;
                 switch (i)

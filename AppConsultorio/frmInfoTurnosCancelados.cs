@@ -56,7 +56,7 @@ namespace AppConsultorio
             for (int i = 1; i <= 12; i++)
             {
                 DataTable tabla = new DataTable();
-                Reportes.RecuperarInfoReportesMensual(i, int.Parse(cbxAño.Text.Trim()), ref tabla);
+                Reportes.RecuperarInfoReportesMensual(i, int.Parse(cbxAño.Text.Trim()),Usuarios.idUsuarioLog, ref tabla);
                 TotalTurnosCancelados = TotalTurnosCancelados + int.Parse(tabla.Rows[0]["Cancelados"].ToString());
                 switch (i)
                 {

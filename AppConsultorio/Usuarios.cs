@@ -48,7 +48,7 @@ namespace AppConsultorio
                 MessageBox.Show(ex.Message);
             }
         }
-        public static void EliminarUsuario(string idUsuarioSelec)
+        public static void EliminarUsuario(string idUsuarioSelec, string idGrupo)
         {
             try
             {
@@ -62,7 +62,7 @@ namespace AppConsultorio
                 Comando.CommandType = CommandType.StoredProcedure;
                 Comando.CommandText = "ELIMINAR_USUARIO";
                 Comando.Parameters.Add("@idUsuarioSelec", SqlDbType.Int).Value = idUsuarioSelec;
-
+                Comando.Parameters.Add("@idGrupo", SqlDbType.Int).Value = idGrupo;
                 Comando.ExecuteNonQuery();
 
                 MessageBox.Show("Usuario eliminado.", "Operacion Realizada", MessageBoxButtons.OK, MessageBoxIcon.Information);
