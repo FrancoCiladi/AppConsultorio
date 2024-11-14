@@ -22,8 +22,7 @@ namespace AppConsultorio
             DataTable tabla = new DataTable();
             Pacientes.RecuperarPacientesListado(Pacientes.opcionFiltrado, Pacientes.seleccion_OS, Pacientes.textoFiltrar, ref tabla);
 
-            //rpvPacientes.LocalReport.ReportPath = Application.StartupPath + "\\ReporteTurnos.rdlc";
-            rpvPacientes.LocalReport.ReportPath = "C:\\Users\\franc\\Documents\\GitHub Repositorios\\AppConsultorio\\AppConsultorio\\ReportePacientes.rdlc";
+            rpvPacientes.LocalReport.ReportPath = Application.StartupPath + "\\ReportePacientes.rdlc";
             rpvPacientes.LocalReport.DataSources.Clear();
             rpvPacientes.LocalReport.DataSources.Add(new Microsoft.Reporting.WinForms.ReportDataSource("DataSetPacientes", tabla));
 

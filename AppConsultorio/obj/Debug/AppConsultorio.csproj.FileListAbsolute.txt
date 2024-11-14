@@ -240,10 +240,6 @@ C:\Users\Ruben\Source\Repos\AppConsultorio\AppConsultorio\obj\Debug\AppConsultor
 C:\Users\Ruben\Source\Repos\AppConsultorio\AppConsultorio\obj\Debug\AppConsultorio.csproj.CopyComplete
 C:\Users\Ruben\Source\Repos\AppConsultorio\AppConsultorio\obj\Debug\AppConsultorio.exe
 C:\Users\Ruben\Source\Repos\AppConsultorio\AppConsultorio\obj\Debug\AppConsultorio.pdb
-C:\Users\franc\Documents\GitHub Repositorios\AppConsultorio\AppConsultorio\bin\Debug\SqlServerTypes\x64\msvcr120.dll
-C:\Users\franc\Documents\GitHub Repositorios\AppConsultorio\AppConsultorio\bin\Debug\SqlServerTypes\x64\SqlServerSpatial140.dll
-C:\Users\franc\Documents\GitHub Repositorios\AppConsultorio\AppConsultorio\bin\Debug\SqlServerTypes\x86\msvcr120.dll
-C:\Users\franc\Documents\GitHub Repositorios\AppConsultorio\AppConsultorio\bin\Debug\SqlServerTypes\x86\SqlServerSpatial140.dll
 C:\Users\franc\Documents\GitHub Repositorios\AppConsultorio\AppConsultorio\bin\Debug\AppConsultorio.exe.config
 C:\Users\franc\Documents\GitHub Repositorios\AppConsultorio\AppConsultorio\bin\Debug\AppConsultorio.exe
 C:\Users\franc\Documents\GitHub Repositorios\AppConsultorio\AppConsultorio\bin\Debug\AppConsultorio.pdb
@@ -313,7 +309,6 @@ C:\Users\franc\Documents\GitHub Repositorios\AppConsultorio\AppConsultorio\obj\D
 C:\Users\franc\Documents\GitHub Repositorios\AppConsultorio\AppConsultorio\obj\Debug\AppConsultorio.Properties.Resources.resources
 C:\Users\franc\Documents\GitHub Repositorios\AppConsultorio\AppConsultorio\obj\Debug\AppConsultorio.csproj.GenerateResource.cache
 C:\Users\franc\Documents\GitHub Repositorios\AppConsultorio\AppConsultorio\obj\Debug\AppConsultorio.csproj.CoreCompileInputs.cache
-C:\Users\franc\Documents\GitHub Repositorios\AppConsultorio\AppConsultorio\obj\Debug\AppConsultorio.csproj.CopyComplete
 C:\Users\franc\Documents\GitHub Repositorios\AppConsultorio\AppConsultorio\obj\Debug\AppConsultorio.exe
 C:\Users\franc\Documents\GitHub Repositorios\AppConsultorio\AppConsultorio\obj\Debug\AppConsultorio.pdb
 C:\Users\franc\Documents\GitHub Repositorios\AppConsultorio\AppConsultorio\bin\Debug\BouncyCastle.Cryptography.dll
@@ -340,7 +335,18 @@ C:\Users\franc\Documents\GitHub Repositorios\AppConsultorio\AppConsultorio\bin\D
 C:\Users\franc\Documents\GitHub Repositorios\AppConsultorio\AppConsultorio\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 C:\Users\franc\Documents\GitHub Repositorios\AppConsultorio\AppConsultorio\bin\Debug\System.Threading.Tasks.Extensions.xml
 C:\Users\franc\Documents\GitHub Repositorios\AppConsultorio\AppConsultorio\bin\Debug\System.ValueTuple.xml
-C:\Users\franc\Documents\GitHub Repositorios\AppConsultorio\AppConsultorio\bin\Debug\WindowsFormsCalendar.dll
-C:\Users\franc\Documents\GitHub Repositorios\AppConsultorio\AppConsultorio\bin\Debug\WindowsFormsCalendar.pdb
 C:\Users\franc\Documents\GitHub Repositorios\AppConsultorio\AppConsultorio\obj\Debug\AppConsultorio.frmInfoTurno.resources
 C:\Users\franc\Documents\GitHub Repositorios\AppConsultorio\AppConsultorio\obj\Debug\AppConsultorio.frmReportePacientes.resources
+C:\Users\franc\Documents\GitHub Repositorios\AppConsultorio\AppConsultorio\obj\Debug\AppConsu.51DCD380.Up2Date
+C:\Users\franc\Documents\GitHub Repositorios\AppConsultorio\AppConsultorio\bin\Debug\x86\SqlServerSpatial160.dll
+C:\Users\franc\Documents\GitHub Repositorios\AppConsultorio\AppConsultorio\bin\Debug\x64\SqlServerSpatial160.dll
+C:\Users\franc\Documents\GitHub Repositorios\AppConsultorio\AppConsultorio\bin\Debug\de\Microsoft.SqlServer.Types.resources.dll
+C:\Users\franc\Documents\GitHub Repositorios\AppConsultorio\AppConsultorio\bin\Debug\es\Microsoft.SqlServer.Types.resources.dll
+C:\Users\franc\Documents\GitHub Repositorios\AppConsultorio\AppConsultorio\bin\Debug\fr\Microsoft.SqlServer.Types.resources.dll
+C:\Users\franc\Documents\GitHub Repositorios\AppConsultorio\AppConsultorio\bin\Debug\it\Microsoft.SqlServer.Types.resources.dll
+C:\Users\franc\Documents\GitHub Repositorios\AppConsultorio\AppConsultorio\bin\Debug\ja\Microsoft.SqlServer.Types.resources.dll
+C:\Users\franc\Documents\GitHub Repositorios\AppConsultorio\AppConsultorio\bin\Debug\ko\Microsoft.SqlServer.Types.resources.dll
+C:\Users\franc\Documents\GitHub Repositorios\AppConsultorio\AppConsultorio\bin\Debug\pt\Microsoft.SqlServer.Types.resources.dll
+C:\Users\franc\Documents\GitHub Repositorios\AppConsultorio\AppConsultorio\bin\Debug\ru\Microsoft.SqlServer.Types.resources.dll
+C:\Users\franc\Documents\GitHub Repositorios\AppConsultorio\AppConsultorio\bin\Debug\zh-Hans\Microsoft.SqlServer.Types.resources.dll
+C:\Users\franc\Documents\GitHub Repositorios\AppConsultorio\AppConsultorio\bin\Debug\zh-Hant\Microsoft.SqlServer.Types.resources.dll
